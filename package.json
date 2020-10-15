@@ -1,24 +1,24 @@
 {
-  "name": "mnjs",
-  "version": "1.0.0",
-  "description": "MATH NODE JS PACKAGE",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dr-montasir/mnjs.git"
-  },
-  "keywords": [
-    "math",
-    "js",
-    "nodejs"
-  ],
-  "author": "Montasir Mirghani",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/dr-montasir/mnjs/issues"
-  },
-  "homepage": "https://github.com/dr-montasir/mnjs#readme"
+    "name": "mnjs",
+    "version": "1.0.2",
+    "description": "MATH NODE JS PACKAGE",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/dr-montasir/mnjs.git"
+    },
+    "keywords": [
+        "math",
+        "js",
+        "nodejs"
+    ],
+    "author": "Montasir Mirghani",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/dr-montasir/mnjs/issues"
+    },
+    "homepage": "https://github.com/dr-montasir/mnjs#readme"
 }

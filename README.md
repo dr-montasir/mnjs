@@ -9,9 +9,11 @@ MNJS: MATH NODE JS PACKAGE
 ### Example
 
 ```js
-import { mnjs } from `mnjs`;
+const { mnjs } = require(`mnjs`);
 
-mnjs.sqr(4) + mnjs.sqrt(4) / mnjs.pi  	// 16.63661977236754
+console.log(mnjs.sqr(2) + mnjs.sqrt(4));            // 6
+
+console.log(mnjs.sqr(4) + mnjs.sqrt(4) / mnjs.pi);  // 16.63661977236754
 ```
 
 
