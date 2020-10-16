@@ -28,6 +28,11 @@ const sqrt = (num) => {
   return Math.sqrt(num);
 };
 
+// The Power Function
+const power = (num1, num2) => {
+  return Math.pow(num1, num2);
+};
+
 // mnjs main function
 const mnjsFn = () => {
   const mnjs = {};
@@ -42,6 +47,7 @@ const mnjsFn = () => {
   mnjs.pi = 3.14159265359;
   // The Number e (Euler's number)
   mnjs.e = 2.71828;
+  mnjs.power = power;
 
   return mnjs;
 };
