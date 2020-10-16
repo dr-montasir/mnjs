@@ -23,9 +23,11 @@ console.log(mnjs.sqr(4) + mnjs.sqrt(4) / mnjs.pi);	// 16.63661977236754
 
 console.log(mnjs.e);	// 2.71828
 
-console.log(mnjs.power(2, 4));	// 16
+console.log(mnjs.pow(2, 4));	// 16
 
-console.log(mnjs.power(2, -2.5));	// 0.17677669529663687
+console.log(mnjs.pow(2, -2.5));	// 0.17677669529663687
+
+console.log(mnjs.cbrt(8));	// 2
 ```
 
 
