@@ -38,9 +38,9 @@ console.log(mnjs.power(2, -2.5));	// 0.17677669529663687
 | cube | Cube (n)^3                    | function:  cube(num)                    |
 | cbrt | Cube Root                     | function:  cbrt(num)                    |
 | divi | Division                      | function:  divi(numerator, denominator) |
-| e    | The Number e (Euler's number) | 2.71828                                 |
+| e    | The Number e (Euler's number) | number:  2.71828                        |
 | mult | Multiplication                | function:  mult(num1, num2)             |
-| pi   | The Number pi (π)             | 3.14159265359                           |
+| pi   | The Number pi (π)             | number:  3.14159265359                  |
 | pow  | power                         | function:  power(num1, num2)            |
 | sqr  | Square                        | function:  sqr(num)                     |
 | sqrt | Square Root                   | function:  sqrt(num)                    |
