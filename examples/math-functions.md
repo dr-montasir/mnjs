@@ -49,6 +49,12 @@ console.log(mnjs.sec.deg(60))  // 2
 
 (1 / mnjs.tan.deg(45)) === (mnjs.cot.deg(45)) // true
 console.log(mnjs.cot.deg(45));  // 1
+
+console.log(mnjs.cot.deg(0));  // Infinity
+
+console.log(mnjs.acsc(mnjs.csc(0.67)))  // 0.67
+
+mnjs.asec.rad(1) === mnjs.asec(1)  // true
 ```
 
 Back to [README](https://github.com/dr-montasir/mnjs/blob/master/README.md).

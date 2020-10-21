@@ -85,6 +85,21 @@ const secRad = (angleRadians) => {
   return 1 / cos(angleRadians);
 };
 
+// The asec function (num)
+const asec = (num) => {
+  return acos(1 / num);
+};
+
+// The asecDeg function (num)
+const asecDeg = (num) => {
+  return Number((deg(asec(num))).toFixed(5));
+};
+
+// The asecRad function (num)
+const asecRad = (num) => {
+  return acos(1 / num);
+};
+
 // Cube Function
 const cube = (num) => {
   return num * num * num;
@@ -155,6 +170,21 @@ const cscRad = (angleRadians) => {
   return 1 / sin(angleRadians);
 };
 
+// The acsc function (num)
+const acsc = (num) => {
+  return asin(1 / num);
+};
+
+// The acscDeg function (num)
+const acscDeg = (num) => {
+  return Number((deg(acsc(num))).toFixed(5));
+};
+
+// The acscRad function (num)
+const acscRad = (num) => {
+  return asin(1 / num);
+};
+
 // Square Function
 const sqr = (num) => {
   return num * num;
@@ -215,6 +245,21 @@ const cotRad = (angleRadians) => {
   return 1 / tan(angleRadians);
 };
 
+// The acot function (num)
+const acot = (num) => {
+  return atan(1 / num);
+};
+
+// The acotDeg function (num)
+const acotDeg = (num) => {
+  return Number((deg(acot(num))).toFixed(5));
+};
+
+// The acotRad function (num)
+const acotRad = (num) => {
+  return atan(1 / num);
+};
+
 // mnjs main function
 const mnjsFn = () => {
   const mnjs = {};
@@ -235,6 +280,9 @@ const mnjsFn = () => {
   mnjs.sec       = sec;
   mnjs.sec.deg   = secDeg;
   mnjs.sec.rad   = secRad;
+  mnjs.asec      = asec;
+  mnjs.asec.deg  = asecDeg;
+  mnjs.asec.rad  = asecRad;
   mnjs.cube      = cube;
   mnjs.cbrt      = cbrt;
   mnjs.deg       = deg;
@@ -251,6 +299,9 @@ const mnjsFn = () => {
   mnjs.csc       = csc;
   mnjs.csc.deg   = cscDeg;
   mnjs.csc.rad   = cscRad;
+  mnjs.acsc      = acsc;
+  mnjs.acsc.deg  = acscDeg;
+  mnjs.acsc.rad  = acscRad;
   mnjs.sqr       = sqr;
   mnjs.sqrt      = sqrt;
   mnjs.subt      = subt;
@@ -263,6 +314,9 @@ const mnjsFn = () => {
   mnjs.cot       = cot;
   mnjs.cot.deg   = cotDeg;
   mnjs.cot.rad   = cotRad;
+  mnjs.acot      = acot;
+  mnjs.acot.deg  = acotDeg;
+  mnjs.acot.rad  = acotRad;
 
   return mnjs;
 };

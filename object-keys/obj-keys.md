@@ -9,6 +9,15 @@ Back to [README](https://github.com/dr-montasir/mnjs/blob/master/README.md).
 | acos     | Inverse cosine (in radians)                              | function:  acos(num)                            |
 | acos.deg | Inverse cosine (in degrees)                              | function:  acos.deg(num)                        |
 | acos.rad | Inverse cosine (in radians)                              | function:  acos.rad(num)                        |
+| acot     | Inverse cotangent (in radians)                           | function:  acot(num)                            |
+| acot.deg | Inverse cotangent (in degrees)                           | function:  acot.deg(num)                        |
+| acot.rad | Inverse cotangent (in radians)                           | function:  acot.rad(num)                        |
+| acsc     | Inverse cosecant (in radians)                            | function:  acsc(num)                            |
+| acsc.deg | Inverse cosecant (in degrees)                            | function:  acsc.deg(num)                        |
+| acsc.rad | Inverse cosecant (in radians)                            | function:  acsc.rad(num)                        |
+| asec     | Inverse secant (in radians)                              | function:  asec(num)                            |
+| asec.deg | Inverse secant (in degrees)                              | function:  asec.deg(num)                        |
+| asec.rad | Inverse secant (in radians)                              | function:  asec.rad(num)                        |
 | asin     | Inverse sine (in radians)                                | function:  asin(num)                            |
 | asin.deg | Inverse sine (in degrees)                                | function:  asin.deg(num)                        |
 | asin.rad | Inverse sine (in radians)                                | function:  asin.rad(num)                        |
