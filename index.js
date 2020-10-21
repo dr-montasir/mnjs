@@ -47,12 +47,27 @@ const cos = (angleRadians) => {
 
 // The cosDeg function (angle degrees)
 const cosDeg = (angleDegrees) => {
-   return Number((Math.cos(rad(angleDegrees))).toFixed(5));
+  return Number((Math.cos(rad(angleDegrees))).toFixed(5));
 };
 
 // The cosRad function (angle radians)
 const cosRad = (angleRadians) => {
-   return cos(angleRadians);
+  return cos(angleRadians);
+};
+
+// The acos function (num)
+const acos = (num) => {
+  return Math.acos(num);
+}
+
+// The acosDeg function (num)
+const acosDeg = (num) => {
+  return Number((deg(acos(num))).toFixed(5));
+};
+
+// The acosRad function (num)
+const acosRad = (num) => {
+  return Math.acos(num);
 };
 
 // The sec function (angle radians)
@@ -110,6 +125,21 @@ const sinRad = (angleRadians) => {
   return sin(angleRadians);
 };
 
+// The asin function (num)
+const asin = (num) => {
+  return Math.asin(num);
+};
+
+// The asinDeg function (num)
+const asinDeg = (num) => {
+  return Number((deg(asin(num))).toFixed(5));
+};
+
+// The asinRad function (num)
+const asinRad = (num) => {
+  return Math.asin(num);
+};
+
 // The csc function (angle radians)
 const csc = (angleRadians) => {
   return 1 / sin(angleRadians);
@@ -155,6 +185,21 @@ const tanRad = (angleRadians) => {
   return tan(angleRadians);
 };
 
+// The atan function (num)
+const atan = (num) => {
+  return Math.atan(num);
+}
+
+// The atanDeg function (num)
+const atanDeg = (num) => {
+  return Number((deg(atan(num))).toFixed(5));
+};
+
+// The atanRad function (num)
+const atanRad = (num) => {
+  return Math.atan(num);
+};
+
 // The cot function (angle radians)
 const cot = (angleRadians) => {
   return 1 / tan(angleRadians);
@@ -184,6 +229,9 @@ const mnjsFn = () => {
   mnjs.cos       = cos;
   mnjs.cos.deg   = cosDeg;
   mnjs.cos.rad   = cosRad;
+  mnjs.acos      = acos;
+  mnjs.acos.deg  = acosDeg;
+  mnjs.acos.rad  = acosRad;
   mnjs.sec       = sec;
   mnjs.sec.deg   = secDeg;
   mnjs.sec.rad   = secRad;
@@ -197,6 +245,9 @@ const mnjsFn = () => {
   mnjs.sin       = sin;
   mnjs.sin.deg   = sinDeg;
   mnjs.sin.rad   = sinRad;
+  mnjs.asin      = asin;
+  mnjs.asin.deg  = asinDeg;
+  mnjs.asin.rad  = asinRad;
   mnjs.csc       = csc;
   mnjs.csc.deg   = cscDeg;
   mnjs.csc.rad   = cscRad;
@@ -206,6 +257,9 @@ const mnjsFn = () => {
   mnjs.tan       = tan;
   mnjs.tan.deg   = tanDeg;
   mnjs.tan.rad   = tanRad;
+  mnjs.atan      = atan;
+  mnjs.atan.deg  = atanDeg;
+  mnjs.atan.rad  = atanRad;
   mnjs.cot       = cot;
   mnjs.cot.deg   = cotDeg;
   mnjs.cot.rad   = cotRad;
