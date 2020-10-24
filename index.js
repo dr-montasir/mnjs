@@ -6,14 +6,14 @@
 
 // Mathematical constants
 
-// The Number e (Euler's number) Function
+// The Number e (Euler's number) Function. Math.E  
 const e = () => {
-  return 2.71828;
+  return 2.718281828459045;
 };
 
-// The Number Pi Function
+// The Number Pi Function. Math.PI
 const pi = () => {
-  return 3.14159265358979;
+  return 3.141592653589793;
 };
 
 // Mathematical units convert
@@ -113,6 +113,11 @@ const cbrt = (num) => {
 // Division Function
 const divi = (numerator, denominator) => {
   return numerator / denominator;
+};
+
+// The Natural logarithm (base e) of a number
+const log = (x) => {
+  return Math.log(x);
 };
 
 // Multiplication Function
@@ -287,6 +292,7 @@ const mnjsFn = () => {
   mnjs.cbrt      = cbrt;
   mnjs.deg       = deg;
   mnjs.divi      = divi;
+  mnjs.log       = log;
   mnjs.mult      = mult;
   mnjs.pow       = pow;
   mnjs.rad       = rad;
