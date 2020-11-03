@@ -2,7 +2,7 @@ Back to [README](https://github.com/dr-montasir/mnjs/blob/master/README.md).
 
 ### Examples
 
-> Use console.log() to output the result.  `console.log(mnjs.abs(-3.6));  // 3.6`
+> Use `console.log()` to output the result.  `console.log(mnjs.abs(-3.6));  // 3.6`
 
 ```js
 const { mnjs } = require(`mnjs`);
