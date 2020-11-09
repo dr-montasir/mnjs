@@ -1,6 +1,6 @@
 {
   "name": "mnjs",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "MATH NODE JS PACKAGE",
   "main": "index.js",
   "scripts": {

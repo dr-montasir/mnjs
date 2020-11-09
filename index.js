@@ -50,11 +50,6 @@ const cosDeg = (angleDegrees) => {
   return Number((Math.cos(rad(angleDegrees))).toFixed(5));
 };
 
-// The cosRad function (angle radians)
-const cosRad = (angleRadians) => {
-  return cos(angleRadians);
-};
-
 // The acos function (num)
 const acos = (num) => {
   return Math.acos(num);
@@ -63,11 +58,6 @@ const acos = (num) => {
 // The acosDeg function (num)
 const acosDeg = (num) => {
   return Number((deg(acos(num))).toFixed(5));
-};
-
-// The acosRad function (num)
-const acosRad = (num) => {
-  return Math.acos(num);
 };
 
 // The cosh function (angleRadians)
@@ -85,11 +75,6 @@ const secDeg = (angleDegrees) => {
    return 1 / cosDeg(angleDegrees);
 };
 
-// The sinRad function (angle radians)
-const secRad = (angleRadians) => {
-  return 1 / cos(angleRadians);
-};
-
 // The asec function (num)
 const asec = (num) => {
   return acos(1 / num);
@@ -98,11 +83,6 @@ const asec = (num) => {
 // The asecDeg function (num)
 const asecDeg = (num) => {
   return Number((deg(asec(num))).toFixed(5));
-};
-
-// The asecRad function (num)
-const asecRad = (num) => {
-  return acos(1 / num);
 };
 
 // Cube Function
@@ -145,11 +125,6 @@ const sinDeg = (angleDegrees) => {
    return Number((Math.sin(rad(angleDegrees))).toFixed(5));
 };
 
-// The sinRad function (angle radians)
-const sinRad = (angleRadians) => {
-  return sin(angleRadians);
-};
-
 // The asin function (num)
 const asin = (num) => {
   return Math.asin(num);
@@ -158,11 +133,6 @@ const asin = (num) => {
 // The asinDeg function (num)
 const asinDeg = (num) => {
   return Number((deg(asin(num))).toFixed(5));
-};
-
-// The asinRad function (num)
-const asinRad = (num) => {
-  return Math.asin(num);
 };
 
 // The sinh function (angleRadians)
@@ -180,11 +150,6 @@ const cscDeg = (angleDegrees) => {
    return 1 / sinDeg(angleDegrees);
 };
 
-// The sinRad function (angle radians)
-const cscRad = (angleRadians) => {
-  return 1 / sin(angleRadians);
-};
-
 // The acsc function (num)
 const acsc = (num) => {
   return asin(1 / num);
@@ -193,11 +158,6 @@ const acsc = (num) => {
 // The acscDeg function (num)
 const acscDeg = (num) => {
   return Number((deg(acsc(num))).toFixed(5));
-};
-
-// The acscRad function (num)
-const acscRad = (num) => {
-  return asin(1 / num);
 };
 
 // Square Function
@@ -225,11 +185,6 @@ const tanDeg = (angleDegrees) => {
   return sinDeg(angleDegrees) / cosDeg(angleDegrees);
 };
 
-// The tanRad function (angle radians)
-const tanRad = (angleRadians) => {
-  return tan(angleRadians);
-};
-
 // The atan function (num)
 const atan = (num) => {
   return Math.atan(num);
@@ -238,11 +193,6 @@ const atan = (num) => {
 // The atanDeg function (num)
 const atanDeg = (num) => {
   return Number((deg(atan(num))).toFixed(5));
-};
-
-// The atanRad function (num)
-const atanRad = (num) => {
-  return Math.atan(num);
 };
 
 // The tanh function (angleRadians)
@@ -260,11 +210,6 @@ const cotDeg = (angleDegrees) => {
    return 1 / tanDeg(angleDegrees);
 };
 
-// The cotRad function (angle radians)
-const cotRad = (angleRadians) => {
-  return 1 / tan(angleRadians);
-};
-
 // The acot function (num)
 const acot = (num) => {
   return atan(1 / num);
@@ -273,11 +218,6 @@ const acot = (num) => {
 // The acotDeg function (num)
 const acotDeg = (num) => {
   return Number((deg(acot(num))).toFixed(5));
-};
-
-// The acotRad function (num)
-const acotRad = (num) => {
-  return atan(1 / num);
 };
 
 // mnjs main function
@@ -293,17 +233,17 @@ const mnjsFn = () => {
   mnjs.add       = add;
   mnjs.cos       = cos;
   mnjs.cos.deg   = cosDeg;
-  mnjs.cos.rad   = cosRad;
+  mnjs.cos.rad   = cos;
   mnjs.acos      = acos;
   mnjs.acos.deg  = acosDeg;
-  mnjs.acos.rad  = acosRad;
+  mnjs.acos.rad  = acos;
   mnjs.cosh      = cosh;
   mnjs.sec       = sec;
   mnjs.sec.deg   = secDeg;
-  mnjs.sec.rad   = secRad;
+  mnjs.sec.rad   = sec;
   mnjs.asec      = asec;
   mnjs.asec.deg  = asecDeg;
-  mnjs.asec.rad  = asecRad;
+  mnjs.asec.rad  = asec;
   mnjs.cube      = cube;
   mnjs.cbrt      = cbrt;
   mnjs.deg       = deg;
@@ -314,33 +254,33 @@ const mnjsFn = () => {
   mnjs.rad       = rad;
   mnjs.sin       = sin;
   mnjs.sin.deg   = sinDeg;
-  mnjs.sin.rad   = sinRad;
+  mnjs.sin.rad   = sin;
   mnjs.asin      = asin;
   mnjs.asin.deg  = asinDeg;
-  mnjs.asin.rad  = asinRad;
+  mnjs.asin.rad  = asin;
   mnjs.sinh      = sinh;
   mnjs.csc       = csc;
   mnjs.csc.deg   = cscDeg;
-  mnjs.csc.rad   = cscRad;
+  mnjs.csc.rad   = csc;
   mnjs.acsc      = acsc;
   mnjs.acsc.deg  = acscDeg;
-  mnjs.acsc.rad  = acscRad;
+  mnjs.acsc.rad  = acsc;
   mnjs.sqr       = sqr;
   mnjs.sqrt      = sqrt;
   mnjs.subt      = subt;
   mnjs.tan       = tan;
   mnjs.tan.deg   = tanDeg;
-  mnjs.tan.rad   = tanRad;
+  mnjs.tan.rad   = tan;
   mnjs.atan      = atan;
   mnjs.atan.deg  = atanDeg;
-  mnjs.atan.rad  = atanRad;
+  mnjs.atan.rad  = atan;
   mnjs.tanh      = tanh;
   mnjs.cot       = cot;
   mnjs.cot.deg   = cotDeg;
-  mnjs.cot.rad   = cotRad;
+  mnjs.cot.rad   = cot;
   mnjs.acot      = acot;
   mnjs.acot.deg  = acotDeg;
-  mnjs.acot.rad  = acotRad;
+  mnjs.acot.rad  = acot;
 
   return mnjs;
 };
