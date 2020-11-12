@@ -32,7 +32,7 @@ mnjs.sin.rad(1);  // 0.8414709848078965
 mnjs.sin(1) === mnjs.sin.rad(1)  // true
 
 mnjs.sin.deg(30);  // 0.5
-mnjs.sin.deg(30) === Number(mnjs.sin(rad(30)).toFixed(5))  // true
+mnjs.sin.deg(30) === Number(mnjs.sin(dtr(30)).toFixed(5))  // true
 
 mnjs.cos.deg(60);  // 0.5
 

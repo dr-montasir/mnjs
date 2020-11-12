@@ -42,7 +42,7 @@ mnjs.sin.rad(1);  // 0.8414709848078965
 mnjs.sin(1) === mnjs.sin.rad(1)  // true
 
 mnjs.sin.deg(30);  // 0.5
-mnjs.sin.deg(30) === Number(mnjs.sin(rad(30)).toFixed(5))  // true
+mnjs.sin.deg(30) === Number(mnjs.sin(dtr(30)).toFixed(5))  // true
 
 mnjs.cos.deg(60);  // 0.5
 
@@ -76,14 +76,14 @@ mnjs.tan.deg(90);  // Infinity
 | csc.rad | Cosecant (in radians)                      | function:  csc.rad(angleRadians)                         |
 | cube    | Cube (n)^3                                 | function:  cube(num)                                     |
 | cbrt    | Cube Root                                  | function:  cbrt(num)                                     |
-| deg     | Radians to Degrees conversion              | function: deg(angleRadians).  Result in degrees          |
+| dtr     | Degrees to Radians conversion              | function: dtr(angleDegrees).  Result in radians          |
 | divi    | Division                                   | function:  divi(numerator, denominator)                  |
 | e       | The Number e (Euler's number)              | number:  2.71828                                         |
 | log     | The Natural logarithm (base e) of a number | function: log(x) is equivalent to *ln(x)* in mathematics |
 | mult    | Multiplication                             | function:  mult(num1, num2)                              |
 | pi      | The Number pi (π)                          | number:  3.14159265358979                                |
 | pow     | power                                      | function:  power(num1, num2)                             |
-| rad     | Degrees to Radians conversion              | function: rad(angleDegrees).  Result in radians          |
+| rtd     | Radians to Degrees conversion              | function: rtd(angleRadians).  Result in degrees          |
 | sin     | Sine (in radians)                          | function:  sin(angleRadians)                             |
 | sin.deg | Sine (in degrees)                          | function:  sin.deg(angleDegrees)                         |
 | sin.rad | Sine (in radians)                          | function:  sin.rad(angleRadians)                         |

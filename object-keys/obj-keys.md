@@ -35,14 +35,14 @@ Back to [README](https://github.com/dr-montasir/mnjs/blob/master/README.md).
 | cot      | Cotangent (or cotan or cotg or ctg or ctn). (in radians) | function:  cot(angleRadians)                             |
 | cot.deg  | Cotangent (in degrees)                                   | function:  cot.deg(angleDegrees)                         |
 | cot.rad  | Cotangent (in radians)                                   | function:  cot.rad(angleRadians)                         |
-| deg      | Radians to Degrees conversion                            | function: deg(angleRadians).  Result in degrees          |
+| dtr      | Degrees to Radians conversion                            | function: dtr(angleDegrees).  Result in radians          |
 | divi     | Division                                                 | function:  divi(numerator, denominator)                  |
 | e        | The Number e (Euler's number)                            | number:  2.71828                                         |
 | log      | The Natural logarithm (base e) of a number               | function: log(x) is equivalent to *ln(x)* in mathematics |
 | mult     | Multiplication                                           | function:  mult(num1, num2)                              |
 | pi       | The Number pi (π)                                        | number:  3.14159265358979                                |
 | pow      | power                                                    | function:  power(num1, num2)                             |
-| rad      | Degrees to Radians conversion                            | function: rad(angleDegrees).  Result in radians          |
+| rtd      | Radians to Degrees conversion                            | function: rtd(angleRadians).  Result in degrees          |
 | sec      | Secant (in radians)                                      | function:  sec(angleRadians)                             |
 | sec.deg  | Secant (in degrees)                                      | function:  sec.deg(angleDegrees)                         |
 | sec.rad  | Secant (in radians)                                      | function:  sec.rad(angleRadians)                         |

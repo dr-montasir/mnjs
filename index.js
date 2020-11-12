@@ -6,26 +6,29 @@
 
 // Mathematical constants
 
+// Angle (in degrees) of a straight line.
+const DEG_180 = 180;
+
 // The Number e (Euler's number) Function. Math.E  
-const e = () => {
+const E = () => {
   return 2.718281828459045;
 };
 
 // The Number Pi Function. Math.PI
-const pi = () => {
+const PI = () => {
   return 3.141592653589793;
 };
 
 // Mathematical units convert
 
-// Radians to Degrees conversion
-const deg = (angleRadians) => {
-  return (angleRadians * 180 / pi());
+// Radians to Degrees conversion. Result in degrees
+const rtd = (angleRadians) => {
+  return (angleRadians * DEG_180 / PI());
 };
 
-// Degrees to Radians conversion
-const rad = (angleDegrees) => {
-  return (angleDegrees * pi() / 180);
+// Degrees to Radians conversion. Result in radians
+const dtr = (angleDegrees) => {
+  return (angleDegrees * PI() / DEG_180);
 };
 
 // Mathematical functions
@@ -38,51 +41,6 @@ const abs = (num) => {
 // Addition Function
 const add = (num1, num2) => {
   return num1 + num2;
-};
-
-// The cos function (angle radians)
-const cos = (angleRadians) => {
-  return Math.cos(angleRadians);
-};
-
-// The cosDeg function (angle degrees)
-const cosDeg = (angleDegrees) => {
-  return Number((Math.cos(rad(angleDegrees))).toFixed(5));
-};
-
-// The acos function (num)
-const acos = (num) => {
-  return Math.acos(num);
-}
-
-// The acosDeg function (num)
-const acosDeg = (num) => {
-  return Number((deg(acos(num))).toFixed(5));
-};
-
-// The cosh function (angleRadians)
-const cosh = (angleRadians) => {
-  return Math.cosh(angleRadians);
-};
-
-// The sec function (angle radians)
-const sec = (angleRadians) => {
-  return 1 / cos(angleRadians);
-};
-
-// The cscDeg function (angle degrees)
-const secDeg = (angleDegrees) => {
-   return 1 / cosDeg(angleDegrees);
-};
-
-// The asec function (num)
-const asec = (num) => {
-  return acos(1 / num);
-};
-
-// The asecDeg function (num)
-const asecDeg = (num) => {
-  return Number((deg(asec(num))).toFixed(5));
 };
 
 // Cube Function
@@ -115,6 +73,68 @@ const pow = (num1, num2) => {
   return Math.pow(num1, num2);
 };
 
+// Square Function
+const sqr = (num) => {
+  return num * num;
+};
+
+// Square Root Function
+const sqrt = (num) => {
+  return Math.sqrt(num);
+};
+
+// Subtraction Function
+const subt = (num1, num2) => {
+  return num1 - num2;
+};
+
+// Trigonometric Functions
+
+// The cos function (angle radians)
+const cos = (angleRadians) => {
+  return Math.cos(angleRadians);
+};
+
+// The cosDeg function (angle degrees)
+const cosDeg = (angleDegrees) => {
+  return Number((Math.cos(dtr(angleDegrees))).toFixed(5));
+};
+
+// The acos function (num)
+const acos = (num) => {
+  return Math.acos(num);
+}
+
+// The acosDeg function (num)
+const acosDeg = (num) => {
+  return Number((rtd(acos(num))).toFixed(5));
+};
+
+// The cosh function (angleRadians)
+const cosh = (angleRadians) => {
+  return Math.cosh(angleRadians);
+};
+
+// The sec function (angle radians)
+const sec = (angleRadians) => {
+  return 1 / cos(angleRadians);
+};
+
+// The cscDeg function (angle degrees)
+const secDeg = (angleDegrees) => {
+   return 1 / cosDeg(angleDegrees);
+};
+
+// The asec function (num)
+const asec = (num) => {
+  return acos(1 / num);
+};
+
+// The asecDeg function (num)
+const asecDeg = (num) => {
+  return Number((rtd(asec(num))).toFixed(5));
+};
+
 // The sin function (angle radians)
 const sin = (angleRadians) => {
   return Math.sin(angleRadians);
@@ -122,7 +142,7 @@ const sin = (angleRadians) => {
 
 // The sinDeg function (angle degrees)
 const sinDeg = (angleDegrees) => {
-   return Number((Math.sin(rad(angleDegrees))).toFixed(5));
+   return Number((Math.sin(dtr(angleDegrees))).toFixed(5));
 };
 
 // The asin function (num)
@@ -132,7 +152,7 @@ const asin = (num) => {
 
 // The asinDeg function (num)
 const asinDeg = (num) => {
-  return Number((deg(asin(num))).toFixed(5));
+  return Number((rtd(asin(num))).toFixed(5));
 };
 
 // The sinh function (angleRadians)
@@ -157,22 +177,7 @@ const acsc = (num) => {
 
 // The acscDeg function (num)
 const acscDeg = (num) => {
-  return Number((deg(acsc(num))).toFixed(5));
-};
-
-// Square Function
-const sqr = (num) => {
-  return num * num;
-};
-
-// Square Root Function
-const sqrt = (num) => {
-  return Math.sqrt(num);
-};
-
-// Subtraction Function
-const subt = (num1, num2) => {
-  return num1 - num2;
+  return Number((rtd(acsc(num))).toFixed(5));
 };
 
 // The tan function (angle radians)
@@ -192,7 +197,7 @@ const atan = (num) => {
 
 // The atanDeg function (num)
 const atanDeg = (num) => {
-  return Number((deg(atan(num))).toFixed(5));
+  return Number((rtd(atan(num))).toFixed(5));
 };
 
 // The tanh function (angleRadians)
@@ -217,20 +222,35 @@ const acot = (num) => {
 
 // The acotDeg function (num)
 const acotDeg = (num) => {
-  return Number((deg(acot(num))).toFixed(5));
+  return Number((rtd(acot(num))).toFixed(5));
 };
 
 // mnjs main function
-const mnjsFn = () => {
+const useMnjs = () => {
   const mnjs = {};
 
   // Mathematical constants
-  mnjs.e         = e();    // The Number e (Euler's number)
-  mnjs.pi        = pi();   // The Number Pi
+  mnjs.e         = E();    // The Number e (Euler's number)
+  mnjs.pi        = PI();   // The Number Pi
+
+  // Mathematical units convert
+  mnjs.dtr       = dtr;  // Deg to Rad. Result in radians
+  mnjs.rtd       = rtd;  // Rad to Deg. Result in degrees
 
   // Mathematical functions
   mnjs.abs       = abs;
   mnjs.add       = add;
+  mnjs.cube      = cube;
+  mnjs.cbrt      = cbrt;
+  mnjs.divi      = divi;
+  mnjs.log       = log;
+  mnjs.mult      = mult;
+  mnjs.pow       = pow;
+  mnjs.sqr       = sqr;
+  mnjs.sqrt      = sqrt;
+  mnjs.subt      = subt;
+
+  // Trigonometric Functions
   mnjs.cos       = cos;
   mnjs.cos.deg   = cosDeg;
   mnjs.cos.rad   = cos;
@@ -244,14 +264,6 @@ const mnjsFn = () => {
   mnjs.asec      = asec;
   mnjs.asec.deg  = asecDeg;
   mnjs.asec.rad  = asec;
-  mnjs.cube      = cube;
-  mnjs.cbrt      = cbrt;
-  mnjs.deg       = deg;
-  mnjs.divi      = divi;
-  mnjs.log       = log;
-  mnjs.mult      = mult;
-  mnjs.pow       = pow;
-  mnjs.rad       = rad;
   mnjs.sin       = sin;
   mnjs.sin.deg   = sinDeg;
   mnjs.sin.rad   = sin;
@@ -265,10 +277,7 @@ const mnjsFn = () => {
   mnjs.acsc      = acsc;
   mnjs.acsc.deg  = acscDeg;
   mnjs.acsc.rad  = acsc;
-  mnjs.sqr       = sqr;
-  mnjs.sqrt      = sqrt;
-  mnjs.subt      = subt;
-  mnjs.tan       = tan;
+   mnjs.tan       = tan;
   mnjs.tan.deg   = tanDeg;
   mnjs.tan.rad   = tan;
   mnjs.atan      = atan;
@@ -285,6 +294,6 @@ const mnjsFn = () => {
   return mnjs;
 };
 
-const mnjs = mnjsFn();
+const mnjs = useMnjs();
 
 module.exports.mnjs = mnjs;
