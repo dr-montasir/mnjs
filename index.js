@@ -63,6 +63,16 @@ const log = (x) => {
   return Math.log(x);
 };
 
+// The max function returns the largest of the zero or more numbers
+const max = (...values) => {
+  return Math.max(...values);
+};
+
+// The min function returns the lowest-valued number
+const min = (...values) => {
+  return Math.min(...values);
+};
+
 // Multiplication Function
 const mult = (num1, num2) => {
   return num1 * num2;
@@ -244,6 +254,8 @@ const useMnjs = () => {
   mnjs.cbrt      = cbrt;
   mnjs.divi      = divi;
   mnjs.log       = log;
+  mnjs.max       = max;
+  mnjs.min       = min;
   mnjs.mult      = mult;
   mnjs.pow       = pow;
   mnjs.sqr       = sqr;

@@ -31,6 +31,10 @@ mnjs.log(10)  // 2.302585092994046
 
 mnjs.log(mnjs.e);  // 1
 
+mnjs.max(1, 10, 3, -2)	//	10
+
+mnjs.min(5, 1, -3.2, 0.5, 3)	// -3.2
+
 mnjs.pow(2, 4);  // 16
 
 mnjs.pow(2, -2.5);  // 0.17677669529663687
@@ -64,34 +68,36 @@ mnjs.tan.deg(90);  // Infinity
 
 ### MNJS Object Keys
 
-| Key     | Name                                       | Value                                                    |
-| ------- | ------------------------------------------ | :------------------------------------------------------- |
-| abs     | The absolute value of a number             | function:  abs(num)                                      |
-| add     | Addition                                   | function:  add(num1, num2)                               |
-| cos     | Cosine (in radians)                        | function:  cos(angleRadians)                             |
-| cos.deg | Cosine (in degrees)                        | function:  cos.deg(angleDegrees)                         |
-| cos.rad | Cosine (in radians)                        | function:  cos.rad(angleRadians)                         |
-| csc     | Cosecant (or cosec)                        | function:  csc(angleRadians)                             |
-| csc.deg | Cosecant (in degrees)                      | function: csc.deg(angleDegrees)                          |
-| csc.rad | Cosecant (in radians)                      | function:  csc.rad(angleRadians)                         |
-| cube    | Cube (n)^3                                 | function:  cube(num)                                     |
-| cbrt    | Cube Root                                  | function:  cbrt(num)                                     |
-| dtr     | Degrees to Radians conversion              | function: dtr(angleDegrees).  Result in radians          |
-| divi    | Division                                   | function:  divi(numerator, denominator)                  |
-| e       | The Number e (Euler's number)              | number:  2.71828                                         |
-| log     | The Natural logarithm (base e) of a number | function: log(x) is equivalent to *ln(x)* in mathematics |
-| mult    | Multiplication                             | function:  mult(num1, num2)                              |
-| pi      | The Number pi (π)                          | number:  3.14159265358979                                |
-| pow     | power                                      | function:  power(num1, num2)                             |
-| rtd     | Radians to Degrees conversion              | function: rtd(angleRadians).  Result in degrees          |
-| sin     | Sine (in radians)                          | function:  sin(angleRadians)                             |
-| sin.deg | Sine (in degrees)                          | function:  sin.deg(angleDegrees)                         |
-| sin.rad | Sine (in radians)                          | function:  sin.rad(angleRadians)                         |
-| sqr     | Square                                     | function:  sqr(num)                                      |
-| sqrt    | Square Root                                | function:  sqrt(num)                                     |
-| subt    | Subtraction                                | function:  subt(num1, num2)                              |
-| tan     | Tangent (in radians)                       | function:  tan(angleRadians)                             |
-| tan.deg | Tangen (in degrees)                        | function:  tan.deg(angleDegrees)                         |
-| tan.rad | Tangen (in radians)                        | function:  tan.rad(angleRadians)                         |
+| Key     | Name                                           | Value                                                    |
+| ------- | ---------------------------------------------- | :------------------------------------------------------- |
+| abs     | The absolute value of a number                 | function:  abs(num)                                      |
+| add     | Addition                                       | function:  add(num1, num2)                               |
+| cos     | Cosine (in radians)                            | function:  cos(angleRadians)                             |
+| cos.deg | Cosine (in degrees)                            | function:  cos.deg(angleDegrees)                         |
+| cos.rad | Cosine (in radians)                            | function:  cos.rad(angleRadians)                         |
+| csc     | Cosecant (or cosec)                            | function:  csc(angleRadians)                             |
+| csc.deg | Cosecant (in degrees)                          | function: csc.deg(angleDegrees)                          |
+| csc.rad | Cosecant (in radians)                          | function:  csc.rad(angleRadians)                         |
+| cube    | Cube (n)^3                                     | function:  cube(num)                                     |
+| cbrt    | Cube Root                                      | function:  cbrt(num)                                     |
+| dtr     | Degrees to Radians conversion                  | function: dtr(angleDegrees).  Result in radians          |
+| divi    | Division                                       | function:  divi(numerator, denominator)                  |
+| e       | The Number e (Euler's number)                  | number:  2.71828                                         |
+| log     | The Natural logarithm (base e) of a number     | function: log(x) is equivalent to *ln(x)* in mathematics |
+| max     | Max function returns the largest-valued number | function: max(num1, num2, ...)                           |
+| min     | Min function returns the lowest-valued number  | function: max(num1, num2, ...)                           |
+| mult    | Multiplication                                 | function:  mult(num1, num2)                              |
+| pi      | The Number pi (π)                              | number:  3.14159265358979                                |
+| pow     | power                                          | function:  power(num1, num2)                             |
+| rtd     | Radians to Degrees conversion                  | function: rtd(angleRadians).  Result in degrees          |
+| sin     | Sine (in radians)                              | function:  sin(angleRadians)                             |
+| sin.deg | Sine (in degrees)                              | function:  sin.deg(angleDegrees)                         |
+| sin.rad | Sine (in radians)                              | function:  sin.rad(angleRadians)                         |
+| sqr     | Square                                         | function:  sqr(num)                                      |
+| sqrt    | Square Root                                    | function:  sqrt(num)                                     |
+| subt    | Subtraction                                    | function:  subt(num1, num2)                              |
+| tan     | Tangent (in radians)                           | function:  tan(angleRadians)                             |
+| tan.deg | Tangen (in degrees)                            | function:  tan.deg(angleDegrees)                         |
+| tan.rad | Tangen (in radians)                            | function:  tan.rad(angleRadians)                         |
 
 ##### For all objects keys, click at this 👉 [link.](https://github.com/dr-montasir/mnjs/blob/master/object-keys/obj-keys.md)

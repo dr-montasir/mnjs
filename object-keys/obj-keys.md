@@ -39,6 +39,8 @@ Back to [README](https://github.com/dr-montasir/mnjs/blob/master/README.md).
 | divi     | Division                                                 | function:  divi(numerator, denominator)                  |
 | e        | The Number e (Euler's number)                            | number:  2.71828                                         |
 | log      | The Natural logarithm (base e) of a number               | function: log(x) is equivalent to *ln(x)* in mathematics |
+| max      | Max function returns the largest-valued number           | function: max(num1, num2, ...)                           |
+| min      | Min function returns the lowest-valued number            | function: max(num1, num2, ...)                           |
 | mult     | Multiplication                                           | function:  mult(num1, num2)                              |
 | pi       | The Number pi (π)                                        | number:  3.14159265358979                                |
 | pow      | power                                                    | function:  power(num1, num2)                             |
