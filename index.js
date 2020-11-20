@@ -9,26 +9,37 @@
 // Angle (in degrees) of a straight line.
 const DEG_180 = 180;
 
-// The Number e (Euler's number) Function. Math.E  
-const E = () => {
-  return 2.718281828459045;
-};
+// 15 digits after the decimal place.
+const DIG_15 = 15;
 
-// The Number Pi Function. Math.PI
-const PI = () => {
-  return 3.141592653589793;
-};
+// 10 digits after the decimal place.
+const DIG_10 = 10;
+
+// 8 digits after the decimal place.
+const DIG_8 = 8;
+
+// The number 2.
+const NUM_2 = 2;
+
+// The number 1.
+const NUM_1 = 1;
+
+// The Number e (Euler's number). Math.E  
+const E = 2.718281828459045;
+
+// The Number Pi. Math.PI
+const PI = 3.141592653589793;
 
 // Mathematical units convert
 
-// Radians to Degrees conversion. Result in degrees
-const rtd = (angleRadians) => {
-  return (angleRadians * DEG_180 / PI());
-};
-
 // Degrees to Radians conversion. Result in radians
 const dtr = (angleDegrees) => {
-  return (angleDegrees * PI() / DEG_180);
+  return Number((angleDegrees * PI / DEG_180).toFixed(DIG_10));
+};
+
+// Radians to Degrees conversion. Result in degrees
+const rtd = (angleRadians) => {
+  return Number((angleRadians * DEG_180 / PI).toFixed(DIG_8));
 };
 
 // Mathematical functions
@@ -40,27 +51,27 @@ const abs = (num) => {
 
 // Addition Function
 const add = (num1, num2) => {
-  return num1 + num2;
+  return Number((num1 + num2).toFixed(DIG_15));
 };
 
 // Cube Function
 const cube = (num) => {
-  return num * num * num;
+  return Number((num * num * num).toFixed(DIG_15));
 };
 
 // Cube Root Function
 const cbrt = (num) => {
-  return Math.cbrt(num);
+  return Number(Math.cbrt(num).toFixed(DIG_15));
 };
 
 // Division Function
 const divi = (numerator, denominator) => {
-  return numerator / denominator;
+  return Number((numerator / denominator).toFixed(DIG_15));
 };
 
-// The Natural logarithm (base e) of a number
+// The Natural logarithm (base e) of a number. (ln) in Math.
 const log = (x) => {
-  return Math.log(x);
+  return Number(Math.log(x).toFixed(DIG_15));
 };
 
 // The max function returns the largest of the zero or more numbers
@@ -75,173 +86,285 @@ const min = (...values) => {
 
 // Multiplication Function
 const mult = (num1, num2) => {
-  return num1 * num2;
+  return Number((num1 * num2).toFixed(DIG_15));
+};
+
+// N Root Function. root = (1, 2, ..., n)
+const nrt = (num, root) => {
+  return Number(Math.pow(num, NUM_1/root).toFixed(DIG_15));
 };
 
 // The Power Function
-const pow = (num1, num2) => {
-  return Math.pow(num1, num2);
+const pow = (num, power) => {
+  return Number(Math.pow(num, power).toFixed(DIG_15));
 };
 
 // Square Function
 const sqr = (num) => {
-  return num * num;
+  return Number((num * num).toFixed(DIG_15));
 };
 
 // Square Root Function
 const sqrt = (num) => {
-  return Math.sqrt(num);
+  return Number(Math.sqrt(num).toFixed(DIG_15));
 };
 
 // Subtraction Function
 const subt = (num1, num2) => {
-  return num1 - num2;
+  return Number((num1 - num2).toFixed(DIG_15));
 };
 
 // Trigonometric Functions
 
 // The cos function (angle radians)
 const cos = (angleRadians) => {
-  return Math.cos(angleRadians);
+  return Number(Math.cos(angleRadians).toFixed(DIG_10));
 };
 
 // The cosDeg function (angle degrees)
 const cosDeg = (angleDegrees) => {
-  return Number((Math.cos(dtr(angleDegrees))).toFixed(5));
+  return Number((Math.cos(dtr(angleDegrees))).toFixed(DIG_10));
 };
 
 // The acos function (num)
 const acos = (num) => {
-  return Math.acos(num);
-}
+  return Number(Math.acos(num).toFixed(DIG_10));
+};
 
 // The acosDeg function (num)
 const acosDeg = (num) => {
-  return Number((rtd(acos(num))).toFixed(5));
+  return Number((rtd(acos(num))).toFixed(DIG_10));
 };
 
 // The cosh function (angleRadians)
 const cosh = (angleRadians) => {
-  return Math.cosh(angleRadians);
+  return Number(Math.cosh(angleRadians).toFixed(DIG_10));
 };
 
-// The sec function (angle radians)
-const sec = (angleRadians) => {
-  return 1 / cos(angleRadians);
+// The coshDeg function (angle degrees)
+const coshDeg = (angleDegrees) => {
+  return Number((Math.cosh(dtr(angleDegrees))).toFixed(DIG_10));
 };
 
-// The cscDeg function (angle degrees)
-const secDeg = (angleDegrees) => {
-   return 1 / cosDeg(angleDegrees);
+// The acosh function (num)
+const acosh = (num) => {
+  return Number(Math.acosh(num).toFixed(DIG_10));
 };
 
-// The asec function (num)
-const asec = (num) => {
-  return acos(1 / num);
-};
-
-// The asecDeg function (num)
-const asecDeg = (num) => {
-  return Number((rtd(asec(num))).toFixed(5));
+// The acoshDeg function (num)
+const acoshDeg = (num) => {
+  return Number((rtd(acosh(num))).toFixed(DIG_10));
 };
 
 // The sin function (angle radians)
 const sin = (angleRadians) => {
-  return Math.sin(angleRadians);
+  return Number(Math.sin(angleRadians).toFixed(DIG_10));
 };
 
 // The sinDeg function (angle degrees)
 const sinDeg = (angleDegrees) => {
-   return Number((Math.sin(dtr(angleDegrees))).toFixed(5));
+  return Number((Math.sin(dtr(angleDegrees))).toFixed(DIG_10));
 };
 
 // The asin function (num)
 const asin = (num) => {
-  return Math.asin(num);
+  return Number(Math.asin(num).toFixed(DIG_10));
 };
 
 // The asinDeg function (num)
 const asinDeg = (num) => {
-  return Number((rtd(asin(num))).toFixed(5));
+  return Number((rtd(asin(num))).toFixed(DIG_10));
 };
 
 // The sinh function (angleRadians)
 const sinh = (angleRadians) => {
-  return Math.sinh(angleRadians);
+  return Number(Math.sinh(angleRadians).toFixed(DIG_10));
 };
 
-// The csc function (angle radians)
-const csc = (angleRadians) => {
-  return 1 / sin(angleRadians);
+// The sinhDeg function (angle degrees)
+const sinhDeg = (angleDegrees) => {
+  return Number((Math.sinh(dtr(angleDegrees))).toFixed(DIG_10));
 };
 
-// The cscDeg function (angle degrees)
-const cscDeg = (angleDegrees) => {
-   return 1 / sinDeg(angleDegrees);
+// The asinh function (num)
+const asinh = (num) => {
+  return Number(Math.asinh(num).toFixed(DIG_10));
 };
 
-// The acsc function (num)
-const acsc = (num) => {
-  return asin(1 / num);
-};
-
-// The acscDeg function (num)
-const acscDeg = (num) => {
-  return Number((rtd(acsc(num))).toFixed(5));
+// The asinhDeg function (num)
+const asinhDeg = (num) => {
+  return Number((rtd(asinh(num))).toFixed(DIG_10));
 };
 
 // The tan function (angle radians)
 const tan = (angleRadians) => {
-  return sin(angleRadians) / cos(angleRadians);
+  return Number((sin(angleRadians) / cos(angleRadians)).toFixed(DIG_10));
 };
 
 // The tanDeg function (angle degrees)
 const tanDeg = (angleDegrees) => {
-  return sinDeg(angleDegrees) / cosDeg(angleDegrees);
+  return Number((tan(dtr(angleDegrees))).toFixed(DIG_10));
 };
 
 // The atan function (num)
 const atan = (num) => {
-  return Math.atan(num);
-}
+  return Number(Math.atan(num).toFixed(DIG_10));
+};
 
 // The atanDeg function (num)
 const atanDeg = (num) => {
-  return Number((rtd(atan(num))).toFixed(5));
+  return Number((rtd(atan(num))).toFixed(DIG_10));
 };
 
 // The tanh function (angleRadians)
 const tanh = (angleRadians) => {
-  return Math.tanh(angleRadians);
+  return Number(Math.tanh(angleRadians).toFixed(DIG_10));
+};
+
+// The tanhDeg function (angle degrees)
+const tanhDeg = (angleDegrees) => {
+  return Number((Math.tanh(dtr(angleDegrees))).toFixed(DIG_10));
+};
+
+// The atanh function (num)
+const atanh = (num) => {
+  return Number(Math.atanh(num).toFixed(DIG_10));
+};
+
+// The atanhDeg function (num)
+const atanhDeg = (num) => {
+  return Number((rtd(Math.atanh(num))).toFixed(DIG_10));
+};
+
+// The csc function (angle radians)
+const csc = (angleRadians) => {
+  return Number((NUM_1 / sin(angleRadians)).toFixed(DIG_10));
+};
+
+// The cscDeg function (angle degrees)
+const cscDeg = (angleDegrees) => {
+  return Number((csc(dtr(angleDegrees))).toFixed(DIG_10));
+};
+
+// The acsc function (num)
+const acsc = (num) => {
+  return Number(asin((NUM_1 / num).toFixed(DIG_10)).toFixed(DIG_10));
+};
+
+// The acscDeg function (num)
+const acscDeg = (num) => {
+  return Number(rtd(asin((NUM_1 / num).toFixed(DIG_10))).toFixed(DIG_10));
+};
+
+// The csch function (angleRadians)
+const csch = (angleRadians) => {
+  return Number((NUM_1 / sinh(angleRadians)).toFixed(DIG_10));
+};
+
+// The cschDeg function (angle degrees)
+const cschDeg = (angleDegrees) => {
+  return Number((csch(dtr(angleDegrees))).toFixed(DIG_10));
+};
+
+// The acsch function (num)
+const acsch = (num) => {
+  return Number(asinh((NUM_1 / num).toFixed(DIG_10)).toFixed(DIG_10));
+};
+
+// The acschDeg function (num)
+const acschDeg = (num) => {
+  return Number(rtd(asinh((NUM_1 / num).toFixed(DIG_10))).toFixed(DIG_10));
+};
+
+// The sec function (angle radians)
+const sec = (angleRadians) => {
+  return Number((NUM_1 / cos(angleRadians)).toFixed(DIG_10));
+};
+
+// The secDeg function (angle degrees)
+const secDeg = (angleDegrees) => {
+  return Number((sec(dtr(angleDegrees))).toFixed(DIG_10));
+};
+
+// The asec function (num)
+const asec = (num) => {
+  return Number(acos((NUM_1 / num).toFixed(DIG_10)).toFixed(DIG_10));
+};
+
+// The asecDeg function (num)
+const asecDeg = (num) => {
+  return Number(rtd(acos((NUM_1 / num).toFixed(DIG_10))).toFixed(DIG_10));
+};
+
+// The sech function (angleRadians)
+const sech = (angleRadians) => {
+  return Number((NUM_1 / cosh(angleRadians)).toFixed(DIG_10));
+};
+
+// The sechDeg function (angle degrees)
+const sechDeg = (angleDegrees) => {
+  return Number((sech(dtr(angleDegrees))).toFixed(DIG_10));
+};
+
+// The asech function (num)
+const asech = (num) => {
+  return Number(acosh((NUM_1 / num).toFixed(DIG_10)).toFixed(DIG_10));
+};
+
+// The asechDeg function (num)
+const asechDeg = (num) => {
+  return Number(rtd(acosh((NUM_1 / num).toFixed(DIG_10))).toFixed(DIG_10));
 };
 
 // The cot function (angle radians)
 const cot = (angleRadians) => {
-  return 1 / tan(angleRadians);
+  return Number((cos(angleRadians) / sin(angleRadians)).toFixed(DIG_10));
 };
 
 // The cotDeg function (angle degrees)
 const cotDeg = (angleDegrees) => {
-   return 1 / tanDeg(angleDegrees);
+  return Number((cot(dtr(angleDegrees))).toFixed(DIG_10));
 };
 
 // The acot function (num)
 const acot = (num) => {
-  return atan(1 / num);
+  return Number(atan((NUM_1 / num).toFixed(DIG_10)).toFixed(DIG_10));
 };
 
 // The acotDeg function (num)
 const acotDeg = (num) => {
-  return Number((rtd(acot(num))).toFixed(5));
+  return Number(rtd(atan((NUM_1 / num).toFixed(DIG_10))).toFixed(DIG_10));
 };
 
-// mnjs main function
+// The coth function (angleRadians)
+const coth = (angleRadians) => {
+  return Number((Math.cosh(angleRadians) / Math.sinh(angleRadians)).toFixed(DIG_10));
+};
+
+// The cothDeg function (angle degrees)
+const cothDeg = (angleDegrees) => {
+  return Number((coth(dtr(angleDegrees))).toFixed(DIG_10));
+};
+
+// The acoth function (num)
+const acoth = (num) => {
+  return Number(((log((num + NUM_1) / num) + log(num / (num - NUM_1))) / NUM_2).toFixed(DIG_10));
+};
+
+// The acothDeg function (num)
+const acothDeg = (num) => {
+  return Number(rtd(acoth(num)).toFixed(DIG_10));
+};
+
+// The main function of mnjs
+
+// The useMnjs function
 const useMnjs = () => {
-  const mnjs = {};
+  const mnjs  = {};
 
   // Mathematical constants
-  mnjs.e         = E();    // The Number e (Euler's number)
-  mnjs.pi        = PI();   // The Number Pi
+  mnjs.e         = E;    // The Number e (Euler's number)
+  mnjs.pi        = PI;   // The Number Pi
 
   // Mathematical units convert
   mnjs.dtr       = dtr;  // Deg to Rad. Result in radians
@@ -257,6 +380,7 @@ const useMnjs = () => {
   mnjs.max       = max;
   mnjs.min       = min;
   mnjs.mult      = mult;
+  mnjs.nrt       = nrt;
   mnjs.pow       = pow;
   mnjs.sqr       = sqr;
   mnjs.sqrt      = sqrt;
@@ -264,44 +388,82 @@ const useMnjs = () => {
 
   // Trigonometric Functions
   mnjs.cos       = cos;
-  mnjs.cos.deg   = cosDeg;
   mnjs.cos.rad   = cos;
+  mnjs.cos.deg   = cosDeg;
   mnjs.acos      = acos;
-  mnjs.acos.deg  = acosDeg;
   mnjs.acos.rad  = acos;
+  mnjs.acos.deg  = acosDeg;
   mnjs.cosh      = cosh;
-  mnjs.sec       = sec;
-  mnjs.sec.deg   = secDeg;
-  mnjs.sec.rad   = sec;
-  mnjs.asec      = asec;
-  mnjs.asec.deg  = asecDeg;
-  mnjs.asec.rad  = asec;
+  mnjs.cosh.rad  = cosh;
+  mnjs.cosh.deg  = coshDeg;
+  mnjs.acosh     = acosh;
+  mnjs.acosh.rad = acosh;
+  mnjs.acosh.deg = acoshDeg;
+
   mnjs.sin       = sin;
-  mnjs.sin.deg   = sinDeg;
   mnjs.sin.rad   = sin;
+  mnjs.sin.deg   = sinDeg;
   mnjs.asin      = asin;
-  mnjs.asin.deg  = asinDeg;
   mnjs.asin.rad  = asin;
+  mnjs.asin.deg  = asinDeg;
   mnjs.sinh      = sinh;
-  mnjs.csc       = csc;
-  mnjs.csc.deg   = cscDeg;
-  mnjs.csc.rad   = csc;
-  mnjs.acsc      = acsc;
-  mnjs.acsc.deg  = acscDeg;
-  mnjs.acsc.rad  = acsc;
-   mnjs.tan       = tan;
-  mnjs.tan.deg   = tanDeg;
+  mnjs.sinh.rad  = sinh;
+  mnjs.sinh.deg  = sinhDeg;
+  mnjs.asinh     = asinh;
+  mnjs.asinh.rad = asinh;
+  mnjs.asinh.deg = asinhDeg;
+
+  mnjs.tan       = tan;
   mnjs.tan.rad   = tan;
+  mnjs.tan.deg   = tanDeg;
   mnjs.atan      = atan;
-  mnjs.atan.deg  = atanDeg;
   mnjs.atan.rad  = atan;
+  mnjs.atan.deg  = atanDeg;
   mnjs.tanh      = tanh;
+  mnjs.tanh.rad  = tanh;
+  mnjs.tanh.deg  = tanhDeg;
+  mnjs.atanh     = atanh;
+  mnjs.atanh.rad = atanh;
+  mnjs.atanh.deg = atanhDeg;
+
+  mnjs.csc       = csc;
+  mnjs.csc.rad   = csc;
+  mnjs.csc.deg   = cscDeg;
+  mnjs.acsc      = acsc;
+  mnjs.acsc.rad  = acsc;
+  mnjs.acsc.deg  = acscDeg;
+  mnjs.csch      = csch;
+  mnjs.csch.rad  = csch;
+  mnjs.csch.deg  = cschDeg;
+  mnjs.acsch     = acsch;
+  mnjs.acsch.rad = acsch;
+  mnjs.acsch.deg = acschDeg;
+
+  mnjs.sec       = sec;
+  mnjs.sec.rad   = sec;
+  mnjs.sec.deg   = secDeg;
+  mnjs.asec      = asec;
+  mnjs.asec.rad  = asec;
+  mnjs.asec.deg  = asecDeg;
+  mnjs.sech      = sech;
+  mnjs.sech.rad  = sech;
+  mnjs.sech.deg  = sechDeg;
+  mnjs.asech     = asech;
+  mnjs.asech.rad = asech;
+  mnjs.asech.deg = asechDeg;
+
   mnjs.cot       = cot;
-  mnjs.cot.deg   = cotDeg;
   mnjs.cot.rad   = cot;
+  mnjs.cot.deg   = cotDeg;
   mnjs.acot      = acot;
-  mnjs.acot.deg  = acotDeg;
   mnjs.acot.rad  = acot;
+  mnjs.acot.deg  = acotDeg;
+  mnjs.coth      = coth;
+  mnjs.coth.rad  = coth;
+  mnjs.coth.deg  = cothDeg;
+  mnjs.acoth     = acoth;
+  mnjs.acoth.rad = acoth;
+  mnjs.acoth.deg = acothDeg;
 
   return mnjs;
 };

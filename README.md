@@ -1,16 +1,39 @@
-### What is this?
+## mnjs
+[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT) [![mnjs version](https://img.shields.io/npm/v/mnjs.svg?style=flat-square)](https://www.npmjs.com/package/mnjs) [![npm bundle size (scoped)](https://img.shields.io/bundlephobia/minzip/mnjs.svg)]() [![npm](https://img.shields.io/npm/dt/mnjs.svg)]() [![npm](https://img.shields.io/npm/dm/mnjs.svg)]()
 
-MNJS: MATH NODE JS PACKAGE
+> MATH NODE.JS (MNJS): A tiny math library for node.js
 
 
 
-### Installation
+## Installation
 
 `npm i mnjs --save`
 
+[![https://nodei.co/npm/mnjs.png?downloads=true&downloadRank=true&stars=true](https://nodei.co/npm/mnjs.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/mnjs)
 
 
-### Example
+
+## Some of the solutions provided by the mnjs library
+
+```js
+// JavaScript
+0.1 + 0.2 = 0.30000000000000004		// 0.1 + 0.2 === 0.3 returns false
+0.2 + 0.7 = 0.8999999999999999		// 0.2 + 0.7 === 0.9 returns false
+0.7 - 0.2 = 0.49999999999999994		// 0.7 - 0.2 === 0.5 returns false
+0.1 * 0.2 = 0.020000000000000004	// 0.1 * 0.2 === 0.02 returns false
+0.3 / 0.1 = 2.9999999999999996		// 0.3 / 0.1 === 3 returns false
+
+// MNJS library
+mnjs.add(0.1, 0.2)   = 0.3			// mnjs.add(0.1, 0.2)  === 0.3 returns true
+mnjs.add(0.2, 0.7)   = 0.9			// mnjs.add(0.2, 0.7)  === 0.9 returns true
+mnjs.subt(0.7, 0.2)  = 0.5			// mnjs.subt(0.7, 0.2) === 0.5 returns true
+mnjs.mult(0.1, 0.2)  = 0.02			// mnjs.mult(0.1, 0.2) === 0.02 returns true
+mnjs.divi(0.3, 0.1)  = 3 			// mnjs.divi(0.3, 0.1) === 3 returns true
+```
+
+
+
+## Examples
 
 > Use `console.log()` to output the result.  `console.log(mnjs.abs(-3.6));  // 3.6`
 
@@ -31,15 +54,19 @@ mnjs.log(10)  // 2.302585092994046
 
 mnjs.log(mnjs.e);  // 1
 
-mnjs.max(1, 10, 3, -2)	//	10
+mnjs.max(1, 10, 3, -2)  // 10
 
-mnjs.min(5, 1, -3.2, 0.5, 3)	// -3.2
+mnjs.min(5, 1, -3.2, 0.5, 3)  // -3.2
 
 mnjs.pow(2, 4);  // 16
 
-mnjs.pow(2, -2.5);  // 0.17677669529663687
+mnjs.pow(2, -2.5);  // 0.176776695296637
 
 mnjs.cbrt(8);  // 2
+
+mnjs.nrt(0.0001, 4)  // 0.1
+mnjs.nrt(Infinity, Infinity)  // 1
+mnjs.nrt(Infinity, Infinity) === mnjs.pow(Infinity, 1 /Infinity)  // true
 
 mnjs.sin(1);  // 0.8414709848078965
 mnjs.sin.rad(1);  // 0.8414709848078965
@@ -66,7 +93,7 @@ mnjs.tan.deg(90);  // Infinity
 
 
 
-### MNJS Object Keys
+## MNJS Object Keys
 
 | Key     | Name                                           | Value                                                    |
 | ------- | ---------------------------------------------- | :------------------------------------------------------- |
@@ -87,8 +114,9 @@ mnjs.tan.deg(90);  // Infinity
 | max     | Max function returns the largest-valued number | function: max(num1, num2, ...)                           |
 | min     | Min function returns the lowest-valued number  | function: max(num1, num2, ...)                           |
 | mult    | Multiplication                                 | function:  mult(num1, num2)                              |
+| nrt     | N Root                                         | function:  nrt(num, root), when root=n={1,2,..}          |
 | pi      | The Number pi (π)                              | number:  3.14159265358979                                |
-| pow     | power                                          | function:  power(num1, num2)                             |
+| pow     | power                                          | function:  pow(num, power)                               |
 | rtd     | Radians to Degrees conversion                  | function: rtd(angleRadians).  Result in degrees          |
 | sin     | Sine (in radians)                              | function:  sin(angleRadians)                             |
 | sin.deg | Sine (in degrees)                              | function:  sin.deg(angleDegrees)                         |

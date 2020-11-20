@@ -27,9 +27,13 @@ mnjs.min(5, 1, -3.2, 0.5, 3)	// -3.2
 
 mnjs.pow(2, 4);  // 16
 
-mnjs.pow(2, -2.5);  // 0.17677669529663687
+mnjs.pow(2, -2.5);  // 0.176776695296637
 
 mnjs.cbrt(8);  // 2
+
+mnjs.nrt(0.0001, 4)  // 0.1
+mnjs.nrt(Infinity, Infinity)  // 1
+mnjs.nrt(Infinity, Infinity) === mnjs.pow(Infinity, 1 /Infinity)  // true
 
 mnjs.sin(1);  // 0.8414709848078965
 mnjs.sin.rad(1);  // 0.8414709848078965

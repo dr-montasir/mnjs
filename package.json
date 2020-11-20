@@ -1,7 +1,7 @@
 {
   "name": "mnjs",
-  "version": "1.0.14",
-  "description": "MATH NODE JS PACKAGE",
+  "version": "1.1.0",
+  "description": "A tiny math library for node.js",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/dr-montasir/mnjs.git"
   },
-  "keywords": ["math", "js", "nodejs"],
+  "keywords": ["math", "js", "nodejs", "library"],
   "author": "Montasir Mirghani",
   "license": "MIT",
   "bugs": {
