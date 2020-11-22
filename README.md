@@ -46,7 +46,7 @@ mnjs.subt(2, 5);  // -3
 
 mnjs.sqr(2) + mnjs.sqrt(4);  // 6
 
-mnjs.sqr(4) + mnjs.sqrt(4) / mnjs.pi;  // 16.63661977236754
+mnjs.sqr(4) + mnjs.sqrt(4) / mnjs.pi;  // 16.63661977236758
 
 mnjs.e;  // 2.718281828459045
 
@@ -68,12 +68,13 @@ mnjs.nrt(0.0001, 4)  // 0.1
 mnjs.nrt(Infinity, Infinity)  // 1
 mnjs.nrt(Infinity, Infinity) === mnjs.pow(Infinity, 1 /Infinity)  // true
 
-mnjs.sin(1);  // 0.8414709848078965
-mnjs.sin.rad(1);  // 0.8414709848078965
+mnjs.sin(1);  // 0.8414709848
+mnjs.sin.rad(1);  // 0.8414709848
 mnjs.sin(1) === mnjs.sin.rad(1)  // true
 
+mnjs.dtr(30)  // 0.5235987756
 mnjs.sin.deg(30);  // 0.5
-mnjs.sin.deg(30) === Number(mnjs.sin(dtr(30)).toFixed(5))  // true
+mnjs.sin.deg(30) === Number(mnjs.sin(mnjs.dtr(30)))  // true
 
 mnjs.cos.deg(60);  // 0.5
 
@@ -83,10 +84,10 @@ mnjs.cos(1) === mnjs.cos.rad(1)  // true
 
 mnjs.tan.deg(45);  // 1
 
-mnjs.tan(0.5);  // 0.5463024898437905
+mnjs.tan(0.5);  // 0.5463024898
 mnjs.tan(0.5) === mnjs.tan.rad(0.5)  // true
 
-mnjs.tan.deg(90);  // Infinity
+mnjs.tan.deg(90);  // -Infinity
 ```
 
 ##### For more examples, click at this 👉 [link.](https://github.com/dr-montasir/mnjs/blob/master/examples/math-functions.md)
