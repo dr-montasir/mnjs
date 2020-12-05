@@ -50,6 +50,12 @@ mnjs.sqr(4) + mnjs.sqrt(4) / mnjs.pi;  // 16.63661977236758
 
 mnjs.e;  // 2.718281828459045
 
+mnjs.exp(1);  // 2.718281828459045
+
+mnjs.exp(-1)  // 0.367879441171442
+
+mnjs.exp(mnjs.pi / 3)  // 2.849653908226361
+
 mnjs.log(10)  // 2.302585092994046
 
 mnjs.log(mnjs.e);  // 1
@@ -111,6 +117,7 @@ mnjs.tan.deg(90);  // -Infinity
 | dtr     | Degrees to Radians conversion                  | function: dtr(angleDegrees).  Result in radians          |
 | divi    | Division                                       | function:  divi(numerator, denominator)                  |
 | e       | The Number e (Euler's number)                  | number:  2.71828                                         |
+| exp     | The power of e e (Euler's number)              | function: exp(power)                                     |
 | log     | The Natural logarithm (base e) of a number     | function: log(x) is equivalent to *ln(x)* in mathematics |
 | max     | Max function returns the largest-valued number | function: max(num1, num2, ...)                           |
 | min     | Min function returns the lowest-valued number  | function: max(num1, num2, ...)                           |

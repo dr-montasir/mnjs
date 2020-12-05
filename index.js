@@ -114,6 +114,11 @@ const subt = (num1, num2) => {
   return Number((num1 - num2).toFixed(DIG_15));
 };
 
+// Calculate exponential of a number. The power of e (Euler's number)
+const exp = (power) => {
+  return pow(E, power);
+};
+
 // Trigonometric Functions
 
 // The cos function (angle radians)
@@ -376,6 +381,7 @@ const useMnjs = () => {
   mnjs.cube      = cube;
   mnjs.cbrt      = cbrt;
   mnjs.divi      = divi;
+  mnjs.exp       = exp;
   mnjs.log       = log;
   mnjs.max       = max;
   mnjs.min       = min;

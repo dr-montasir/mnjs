@@ -1,6 +1,6 @@
 {
   "name": "mnjs",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A tiny math library for node.js",
   "main": "index.js",
   "scripts": {
