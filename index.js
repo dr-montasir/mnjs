@@ -116,7 +116,7 @@ const subt = (num1, num2) => {
 
 // Calculate exponential of a number. The power of e (Euler's number)
 const exp = (power) => {
-  return pow(E, power);
+  return Number(Math.pow(E, power).toFixed(DIG_15));
 };
 
 // Trigonometric Functions
