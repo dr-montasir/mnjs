@@ -69,6 +69,11 @@ const divi = (numerator, denominator) => {
   return Number((numerator / denominator).toFixed(DIG_15));
 };
 
+// The Hypot Function
+const hypot = (...values) => {
+  return Number(Math.hypot(...values).toFixed(DIG_15));
+};
+
 // The Natural logarithm (base e) of a number. (ln) in Math.
 const log = (x) => {
   return Number(Math.log(x).toFixed(DIG_15));
@@ -382,6 +387,7 @@ const useMnjs = () => {
   mnjs.cbrt      = cbrt;
   mnjs.divi      = divi;
   mnjs.exp       = exp;
+  mnjs.hypot     = hypot;
   mnjs.log       = log;
   mnjs.max       = max;
   mnjs.min       = min;

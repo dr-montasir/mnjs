@@ -60,6 +60,13 @@ mnjs.log(10)  // 2.302585092994046
 
 mnjs.log(mnjs.e);  // 1
 
+mnjs.hypot(4)  // 4
+mnjs.hypot(3, 4)  // 5
+mnjs.hypot(4, 2, 4)  // 6
+mnjs.hypot(-3, -4)  // 5
+mnjs.hypot(-4)  // 4
+mnjs.sqrt(mnjs.add(mnjs.sqr(6), mnjs.sqr(8))) === mnjs.hypot(6, 8) // true
+
 mnjs.max(1, 10, 3, -2)  // 10
 
 mnjs.min(5, 1, -3.2, 0.5, 3)  // -3.2
@@ -118,6 +125,7 @@ mnjs.tan.deg(90);  // -Infinity
 | divi    | Division                                       | function:  divi(numerator, denominator)                  |
 | e       | The Number e (Euler's number)                  | number:  2.71828                                         |
 | exp     | The power of e (Euler's number)                | function: exp(power)                                     |
+| hypot   | The square root of the sum of squares          | function: hypot(num1, num2, ...)                         |
 | log     | The Natural logarithm (base e) of a number     | function: log(x) is equivalent to *ln(x)* in mathematics |
 | max     | Max function returns the largest-valued number | function: max(num1, num2, ...)                           |
 | min     | Min function returns the lowest-valued number  | function: max(num1, num2, ...)                           |

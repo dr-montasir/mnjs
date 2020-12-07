@@ -27,6 +27,13 @@ mnjs.log(10)  // 2.302585092994046
 
 mnjs.log(mnjs.e);  // 1
 
+mnjs.hypot(4)  // 4
+mnjs.hypot(3, 4)  // 5
+mnjs.hypot(4, 2, 4)  // 6
+mnjs.hypot(-3, -4)  // 5
+mnjs.hypot(-4)  // 4
+mnjs.sqrt(mnjs.add(mnjs.sqr(6), mnjs.sqr(8))) === mnjs.hypot(6, 8) // true
+
 mnjs.max(1, 10, 3, -2)	//	10
 
 mnjs.min(5, 1, -3.2, 0.5, 3)	// -3.2
