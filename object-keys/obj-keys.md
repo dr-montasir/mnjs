@@ -73,7 +73,8 @@ Back to [README](https://github.com/dr-montasir/mnjs/blob/master/README.md).
 | min       | Min function returns the lowest-valued number                | function: max(num1, num2, ...)                           |
 | mult      | Multiplication                                               | function:  mult(num1, num2)                              |
 | nrt       | N Root                                                       | function:  nrt(num, root), when root=n={1,2,..}          |
-| pi        | The Number pi (π)                                            | number:  3.14159265358979                                |
+| pi        | The Number pi (π)                                            | number:  3.141592653589793                               |
+| phi       | The Golden Ratio (Phi)                                       | number:  1.618033988749895                               |
 | pow       | power                                                        | function:  pow(num, power)                               |
 | rtd       | Radians to Degrees conversion                                | function: rtd(angleRadians).  Result in degrees          |
 | sec       | Secant (in radians)                                          | function:  sec(angleRadians)                             |

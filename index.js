@@ -30,6 +30,9 @@ const E = 2.718281828459045;
 // The Number Pi. Math.PI
 const PI = 3.141592653589793;
 
+// The Golden Ratio (Phi) 1.618033988749895
+const PHI = Number(((1 + Math.sqrt(5)) / 2).toFixed(DIG_15));
+
 // Mathematical units convert
 
 // Degrees to Radians conversion. Result in radians
@@ -380,6 +383,7 @@ const useMnjs = () => {
   // Mathematical constants
   mnjs.e         = E;    // The Number e (Euler's number)
   mnjs.pi        = PI;   // The Number Pi
+  mnjs.phi		 = PHI;  // The Golden Ratio (Phi)
 
   // Mathematical units convert
   mnjs.dtr       = dtr;  // Deg to Rad. Result in radians
