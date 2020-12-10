@@ -74,6 +74,11 @@ const hypot = (...values) => {
   return Number(Math.hypot(...values).toFixed(DIG_15));
 };
 
+// The Inverse Function
+const inv = (num) => {
+  return Number((1 / num).toFixed(DIG_15));
+};
+
 // The Natural logarithm (base e) of a number. (ln) in Math.
 const log = (x) => {
   return Number(Math.log(x).toFixed(DIG_15));
@@ -388,6 +393,7 @@ const useMnjs = () => {
   mnjs.divi      = divi;
   mnjs.exp       = exp;
   mnjs.hypot     = hypot;
+  mnjs.inv 		 = inv;
   mnjs.log       = log;
   mnjs.max       = max;
   mnjs.min       = min;

@@ -67,6 +67,7 @@ Back to [README](https://github.com/dr-montasir/mnjs/blob/master/README.md).
 | e         | The Number e (Euler's number)                                | number:  2.71828                                         |
 | exp       | The power of e (Euler's number)                              | function: exp(power)                                     |
 | hypot     | The square root of the sum of squares                        | function: hypot(num1, num2, ...)                         |
+| inv       | The inverse of a number                                      | function: inv(num)                                       |
 | log       | The Natural logarithm (base e) of a number                   | function: log(x) is equivalent to *ln(x)* in mathematics |
 | max       | Max function returns the largest-valued number               | function: max(num1, num2, ...)                           |
 | min       | Min function returns the lowest-valued number                | function: max(num1, num2, ...)                           |
