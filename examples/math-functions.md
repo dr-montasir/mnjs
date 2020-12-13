@@ -25,6 +25,14 @@ mnjs.exp(mnjs.pi / 3)  // 2.849653908226361
 
 mnjs.log(10)  // 2.302585092994046
 
+mnjs.ln2  // 0.693147180559945
+mnjs.ln10  // 2.302585092994046
+
+mnjs.log2e  // 1.4426950408889634
+mnjs.log10e  // 0.434294481903252
+
+mnjs.log1p(5)  // 1.791759469228055
+
 mnjs.log(mnjs.e)  // 1
 
 mnjs.hypot(4)  // 4
@@ -49,6 +57,8 @@ mnjs.cbrt(8)  // 2
 mnjs.nrt(0.0001, 4)  // 0.1
 mnjs.nrt(Infinity, Infinity)  // 1
 mnjs.nrt(Infinity, Infinity) === mnjs.pow(Infinity, 1 /Infinity)  // true
+
+mnjs.tau  // 6.283185307179586
 
 mnjs.sin(1)  // 0.8414709848
 mnjs.sin.rad(1)  // 0.8414709848

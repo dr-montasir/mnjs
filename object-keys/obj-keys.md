@@ -64,11 +64,18 @@ Back to [README](https://github.com/dr-montasir/mnjs/blob/master/README.md).
 | coth.deg  | Hyperbolic cotangent (in degrees)                            | function:  coth.deg(angleDegrees)                        |
 | dtr       | Degrees to Radians conversion                                | function: dtr(angleDegrees).  Result in radians          |
 | divi      | Division                                                     | function:  divi(numerator, denominator)                  |
-| e         | The Number e (Euler's number)                                | number:  2.71828                                         |
+| e         | The Number e (Euler's number)                                | number: 2.718281828459045                                |
 | exp       | The power of e (Euler's number)                              | function: exp(power)                                     |
 | hypot     | The square root of the sum of squares                        | function: hypot(num1, num2, ...)                         |
 | inv       | The inverse of a number                                      | function: inv(num)                                       |
+| ln2       | The natural logarithm of 2                                   | number: 0.693147180559945                                |
+| ln10      | The natural logarithm of 10                                  | number: 2.302585092994046                                |
 | log       | The Natural logarithm (base e) of a number                   | function: log(x) is equivalent to *ln(x)* in mathematics |
+| log1p     | The natural logarithm (base e) of 1 + a number               | function: log1p(x)                                       |
+| log2      | The base 2 logarithm of a number                             | function: log2(x)                                        |
+| log10     | The base 10 logarithm of a number                            | function: log10(x)                                       |
+| log2e     | The base 2 logarithm of E                                    | number: 1.4426950408889634                               |
+| log10e    | The base 10 logarithm of E                                   | number: 0.434294481903252                                |
 | max       | Max function returns the largest-valued number               | function: max(num1, num2, ...)                           |
 | min       | Min function returns the lowest-valued number                | function: max(num1, num2, ...)                           |
 | mult      | Multiplication                                               | function:  mult(num1, num2)                              |
@@ -98,6 +105,7 @@ Back to [README](https://github.com/dr-montasir/mnjs/blob/master/README.md).
 | tanh      | Hyperbolic tangent (in radians)                              | function:  tanh(angleRadians)                            |
 | tanh.rad  | Hyperbolic tangent (in radians)                              | function:  tanh.rad(angleRadians)                        |
 | tanh.deg  | Hyperbolic tangent (in degrees)                              | function:  tanh.deg(angleDegrees)                        |
+| tau       | The tau constant (2 x pi)                                    | number:  6.283185307179586                               |
 
 Back to [README](https://github.com/dr-montasir/mnjs/blob/master/README.md).
 

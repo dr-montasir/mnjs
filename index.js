@@ -18,6 +18,9 @@ const DIG_10 = 10;
 // 8 digits after the decimal place.
 const DIG_8 = 8;
 
+// The number 10.
+const NUM_10 = 10;
+
 // The number 2.
 const NUM_2 = 2;
 
@@ -27,11 +30,26 @@ const NUM_1 = 1;
 // The Number e (Euler's number). Math.E  
 const E = 2.718281828459045;
 
+// The natural logarithm of 2
+const ln2 = Number(Math.LN2.toFixed(DIG_15));
+
+// The natural logarithm of 10
+const ln10 = Number(Math.LN10.toFixed(DIG_15));
+
+// The base 2 logarithm of E
+const log2e = Number(Math.LOG2E.toFixed(DIG_15));
+
+// The base 10 logarithm of E
+const log10e = Number(Math.LOG10E.toFixed(DIG_15));
+
 // The Number Pi. Math.PI
 const PI = 3.141592653589793;
 
 // The Golden Ratio (Phi) 1.618033988749895
 const PHI = Number(((1 + Math.sqrt(5)) / 2).toFixed(DIG_15));
+
+//  The tau constant. The circle constant representing the ratio between circumference and radius
+const tau = Number((2 * PI).toFixed(DIG_15));
 
 // Mathematical units convert
 
@@ -85,6 +103,21 @@ const inv = (num) => {
 // The Natural logarithm (base e) of a number. (ln) in Math.
 const log = (x) => {
   return Number(Math.log(x).toFixed(DIG_15));
+};
+
+// The base 2 logarithm of a number
+const log2 = (x) => {
+  return Number(Math.log2(x).toFixed(DIG_15));
+};
+
+// The base 10 logarithm of a number
+const log10 = (x) => {
+  return Number(Math.log10(x).toFixed(DIG_15));
+};
+
+// The natural logarithm (base e) of 1 + a number
+const log1p = (x) => {
+  return Number(Math.log1p(x).toFixed(DIG_15));
 };
 
 // The max function returns the largest of the zero or more numbers
@@ -381,9 +414,14 @@ const useMnjs = () => {
   const mnjs  = {};
 
   // Mathematical constants
-  mnjs.e         = E;    // The Number e (Euler's number)
-  mnjs.pi        = PI;   // The Number Pi
-  mnjs.phi		 = PHI;  // The Golden Ratio (Phi)
+  mnjs.e         = E;      // The Number e (Euler's number)
+  mnjs.ln2       = ln2;    // The natural logarithm of 2
+  mnjs.ln10      = ln10;   // The natural logarithm of 10
+  mnjs.log2e     = log2e;  // The base 2 logarithm of E
+  mnjs.log10e    = log10e; // The base 10 logarithm of E
+  mnjs.pi        = PI;     // The Number Pi
+  mnjs.phi		   = PHI;    // The Golden Ratio (Phi)
+  mnjs.tau       = tau;    // The tau constant
 
   // Mathematical units convert
   mnjs.dtr       = dtr;  // Deg to Rad. Result in radians
@@ -397,8 +435,11 @@ const useMnjs = () => {
   mnjs.divi      = divi;
   mnjs.exp       = exp;
   mnjs.hypot     = hypot;
-  mnjs.inv 		 = inv;
+  mnjs.inv 		   = inv;
   mnjs.log       = log;
+  mnjs.log2      = log2;
+  mnjs.log10     = log10;
+  mnjs.log1p     = log1p;
   mnjs.max       = max;
   mnjs.min       = min;
   mnjs.mult      = mult;
