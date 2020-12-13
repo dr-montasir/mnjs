@@ -533,4 +533,8 @@ const useMnjs = () => {
 
 const mnjs = useMnjs();
 
-module.exports.mnjs = mnjs;
+if (typeof window === `undefined`) {
+  module.exports.mnjs = mnjs;
+} else {
+  window.mnjs = mnjs;
+};

@@ -1,7 +1,7 @@
 ## mnjs
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT) [![mnjs version](https://img.shields.io/npm/v/mnjs.svg?style=flat-square)](https://www.npmjs.com/package/mnjs) [![npm bundle size (scoped)](https://img.shields.io/bundlephobia/minzip/mnjs.svg)]() [![npm](https://img.shields.io/npm/dt/mnjs.svg)]() [![npm](https://img.shields.io/npm/dm/mnjs.svg)]()
 
-> MATH NODE.JS (MNJS): A tiny math library for node.js
+> MATH NODE JS (MNJS): A tiny math library for node.js & JavaScript on browser
 
 
 
@@ -9,7 +9,15 @@
 
 `npm i mnjs --save`
 
-[![https://nodei.co/npm/mnjs.png?downloads=true&downloadRank=true&stars=true](https://nodei.co/npm/mnjs.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/mnjs)
+[![http://placehold.jp/24/cb0101/ffffff/280x45.png?text=npm%20i%20mnjs%20--save](http://placehold.jp/24/cb0101/ffffff/280x45.png?text=npm%20i%20mnjs%20--save)](https://www.npmjs.com/package/mnjs)
+
+`yarn add mnjs`
+
+[![http://placehold.jp/24/25799f/ffffff/280x45.png?text=yarn%20add%20mnjs](http://placehold.jp/24/25799f/ffffff/280x45.png?text=yarn%20add%20mnjs)](https://classic.yarnpkg.com/en/package/mnjs)
+
+`<script src="https://cdn.jsdelivr.net/npm/mnjs@latest/index.js"></script>`
+
+[![http://placehold.jp/24/bd483b/fec82f/800x45.png?text=%3Cscript%20src%3D%22https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2Fmnjs%40latest%2Findex.js%22%3E%3C%2Fscript%3E](http://placehold.jp/24/bd483b/fec82f/800x45.png?text=%3Cscript%20src%3D%22https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2Fmnjs%40latest%2Findex.js%22%3E%3C%2Fscript%3E)](https://www.jsdelivr.com/package/npm/mnjs)
 
 
 
