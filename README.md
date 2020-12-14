@@ -1,5 +1,5 @@
 ## mnjs
-[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT) [![mnjs version](https://img.shields.io/npm/v/mnjs.svg?style=flat-square)](https://www.npmjs.com/package/mnjs) [![npm bundle size (scoped)](https://img.shields.io/bundlephobia/minzip/mnjs.svg)]() [![npm](https://img.shields.io/npm/dt/mnjs.svg)]() [![npm](https://img.shields.io/npm/dm/mnjs.svg)]()
+[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT) [![mnjs version](https://img.shields.io/npm/v/mnjs.svg?style=flat-square)](https://www.npmjs.com/package/mnjs) [![npm bundle size (scoped)](https://img.shields.io/bundlephobia/minzip/mnjs.svg)]() [![npm](https://img.shields.io/npm/dt/mnjs.svg)]() [![npm](https://img.shields.io/npm/dm/mnjs.svg)]() [![](https://data.jsdelivr.com/v1/package/npm/mnjs/badge)](https://www.jsdelivr.com/package/npm/mnjs)
 
 > MATH NODE JS (MNJS): A tiny math library for node.js & JavaScript on browser
 
@@ -15,9 +15,9 @@
 
 [![http://placehold.jp/24/25799f/ffffff/280x45.png?text=yarn%20add%20mnjs](http://placehold.jp/24/25799f/ffffff/280x45.png?text=yarn%20add%20mnjs)](https://classic.yarnpkg.com/en/package/mnjs)
 
-`<script src="https://cdn.jsdelivr.net/npm/mnjs@latest/index.js"></script>`
+`<script src="https://cdn.jsdelivr.net/npm/mnjs"></script>`
 
-[![http://placehold.jp/24/bd483b/fec82f/800x45.png?text=%3Cscript%20src%3D%22https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2Fmnjs%40latest%2Findex.js%22%3E%3C%2Fscript%3E](http://placehold.jp/24/bd483b/fec82f/800x45.png?text=%3Cscript%20src%3D%22https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2Fmnjs%40latest%2Findex.js%22%3E%3C%2Fscript%3E)](https://www.jsdelivr.com/package/npm/mnjs)
+[![http://placehold.jp/24/bd483b/fec82f/705x45.png?text=%3Cscript%20src%3D%22https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2Fmnjs%22%3E%3C%2Fscript%3E](http://placehold.jp/24/bd483b/fec82f/705x45.png?text=%3Cscript%20src%3D%22https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2Fmnjs%22%3E%3C%2Fscript%3E)](https://www.jsdelivr.com/package/npm/mnjs)
 
 
 
@@ -37,6 +37,32 @@ mnjs.add(0.2, 0.7)   = 0.9			// mnjs.add(0.2, 0.7)  === 0.9 returns true
 mnjs.subt(0.7, 0.2)  = 0.5			// mnjs.subt(0.7, 0.2) === 0.5 returns true
 mnjs.mult(0.1, 0.2)  = 0.02			// mnjs.mult(0.1, 0.2) === 0.02 returns true
 mnjs.divi(0.3, 0.1)  = 3 			// mnjs.divi(0.3, 0.1) === 3 returns true
+```
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>mnjs</title>
+    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@1.2.0/index.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/mnjs"></script>
+    <!--          This file is always minified ☝         -->
+  </head>
+  <body>
+    <script>
+      let myNumber = 0.1;
+      const myCube = mnjs.cube(myNumber);
+      // mnjs.cube(0.1) returns 0.001
+      console.log(
+        `(${myNumber})^3 returns ${myCube} in mnjs library`
+      );
+      // Math.pow(0.1, 3) or (0.1 * 0.1 * 0.1) returns 0.0010000000000000002
+      console.log(
+        `(${myNumber})^3 returns ${Math.pow(myNumber, 3)} in JavaScript`
+      );
+    </script>
+  </body>
+</html>
 ```
 
 
