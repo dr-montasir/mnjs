@@ -66,6 +66,7 @@ Back to [README](https://github.com/dr-montasir/mnjs/blob/master/README.md).
 | divi      | Division                                                     | function:  divi(numerator, denominator)                  |
 | e         | The Number e (Euler's number)                                | number: 2.718281828459045                                |
 | exp       | The power of e (Euler's number)                              | function: exp(power)                                     |
+| fix       | Fix to the certain decimal point                             | function: fix(num, point)                                |
 | hypot     | The square root of the sum of squares                        | function: hypot(num1, num2, ...)                         |
 | inv       | The inverse of a number                                      | function: inv(num)                                       |
 | ln2       | The natural logarithm of 2                                   | number: 0.693147180559945                                |

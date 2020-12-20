@@ -101,6 +101,8 @@ mnjs.hypot(-3, -4)  // 5
 mnjs.hypot(-4)  // 4
 mnjs.sqrt(mnjs.add(mnjs.sqr(6), mnjs.sqr(8))) === mnjs.hypot(6, 8) // true
 
+mnjs.fix(2.718281828459045, 2)  // 2.72 
+
 mnjs.inv(10)  // 0.1
 
 mnjs.max(1, 10, 3, -2)  // 10
@@ -159,8 +161,9 @@ mnjs.tan.deg(90)  // -Infinity
 | cbrt    | Cube Root                                      | function:  cbrt(num)                                     |
 | dtr     | Degrees to Radians conversion                  | function: dtr(angleDegrees).  Result in radians          |
 | divi    | Division                                       | function:  divi(numerator, denominator)                  |
-| e       | The Number e (Euler's number)                  | number:  2.71828                                         |
+| e       | The Number e (Euler's number)                  | number:  2.718281828459045                               |
 | exp     | The power of e (Euler's number)                | function: exp(power)                                     |
+| fix     | Fix to the certain decimal point               | function: fix(num, point)                                |
 | hypot   | The square root of the sum of squares          | function: hypot(num1, num2, ...)                         |
 | inv     | The inverse of a number                        | function: inv(num)                                       |
 | log     | The Natural logarithm (base e) of a number     | function: log(x) is equivalent to *ln(x)* in mathematics |

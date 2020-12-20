@@ -42,6 +42,8 @@ mnjs.hypot(-3, -4)  // 5
 mnjs.hypot(-4)  // 4
 mnjs.sqrt(mnjs.add(mnjs.sqr(6), mnjs.sqr(8))) === mnjs.hypot(6, 8) // true
 
+mnjs.fix(2.718281828459045, 2)  // 2.72
+
 mnjs.inv(10)  // 0.1
 
 mnjs.max(1, 10, 3, -2)	//	10
