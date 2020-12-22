@@ -63,6 +63,16 @@ const rtd = (angleRadians) => {
   return Number((angleRadians * DEG_180 / PI).toFixed(DIG_8));
 };
 
+// Number to String. Result as string
+const nts = (num) => {
+	return String(num);
+};
+
+// String to Number. Result as number
+const stn = (str) => {
+	return Number(str);
+};
+
 // Mathematical functions
 
 // The abs Function |-num| = num
@@ -431,6 +441,8 @@ const useMnjs = () => {
   // Mathematical units convert
   mnjs.dtr       = dtr;  // Deg to Rad. Result in radians
   mnjs.rtd       = rtd;  // Rad to Deg. Result in degrees
+  mnjs.nts 			 = nts;  // Number to String. Result as string
+  mnjs.stn 			 = stn;  // String to Number. Result as number
 
   // Mathematical functions
   mnjs.abs       = abs;

@@ -171,6 +171,7 @@ mnjs.tan.deg(90)  // -Infinity
 | min     | Min function returns the lowest-valued number  | function: max(num1, num2, ...)                           |
 | mult    | Multiplication                                 | function:  mult(num1, num2)                              |
 | nrt     | N Root                                         | function:  nrt(num, root), when root=n={1,2,..}          |
+| nts     | Number to String conversion                    | function: nts(num). Result as string                     |
 | pi      | The Number pi (π)                              | number:  3.141592653589793                               |
 | phi     | The Golden Ratio (Phi)                         | number:  1.618033988749895                               |
 | pow     | power                                          | function:  pow(num, power)                               |
@@ -180,6 +181,7 @@ mnjs.tan.deg(90)  // -Infinity
 | sin.rad | Sine (in radians)                              | function:  sin.rad(angleRadians)                         |
 | sqr     | Square                                         | function:  sqr(num)                                      |
 | sqrt    | Square Root                                    | function:  sqrt(num)                                     |
+| stn     | String to Number conversion                    | function: stn(str). Result as number                     |
 | subt    | Subtraction                                    | function:  subt(num1, num2)                              |
 | tan     | Tangent (in radians)                           | function:  tan(angleRadians)                             |
 | tan.deg | Tangen (in degrees)                            | function:  tan.deg(angleDegrees)                         |

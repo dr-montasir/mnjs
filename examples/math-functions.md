@@ -96,6 +96,9 @@ mnjs.cot.deg(0)  // Infinity
 mnjs.acsc(mnjs.csc(0.67))  // 0.67
 
 mnjs.asec.rad(1) === mnjs.asec(1)  // true
+
+mnjs.stn("123") // 123
+mnjs.nts(123) // "123"
 ```
 
 Back to [README](https://github.com/dr-montasir/mnjs/blob/master/README.md).
