@@ -31,16 +31,16 @@ const NUM_1 = 1;
 const E = 2.718281828459045;
 
 // The natural logarithm of 2
-const ln2 = Number(Math.LN2.toFixed(DIG_15));
+const LN2 = Number(Math.LN2.toFixed(DIG_15));
 
 // The natural logarithm of 10
-const ln10 = Number(Math.LN10.toFixed(DIG_15));
+const LN10 = Number(Math.LN10.toFixed(DIG_15));
 
 // The base 2 logarithm of E
-const log2e = Number(Math.LOG2E.toFixed(DIG_15));
+const LOG2E = Number(Math.LOG2E.toFixed(DIG_15));
 
 // The base 10 logarithm of E
-const log10e = Number(Math.LOG10E.toFixed(DIG_15));
+const LOG10E = Number(Math.LOG10E.toFixed(DIG_15));
 
 // The Number Pi. Math.PI
 const PI = 3.141592653589793;
@@ -49,7 +49,7 @@ const PI = 3.141592653589793;
 const PHI = Number(((1 + Math.sqrt(5)) / 2).toFixed(DIG_15));
 
 //  The tau constant. The circle constant representing the ratio between circumference and radius
-const tau = Number((2 * PI).toFixed(DIG_15));
+const TAU = Number((2 * PI).toFixed(DIG_15));
 
 // Mathematical units convert
 
@@ -429,122 +429,122 @@ const useMnjs = () => {
   const mnjs  = {};
 
   // Mathematical constants
-  mnjs.e         = E;      // The Number e (Euler's number)
-  mnjs.ln2       = ln2;    // The natural logarithm of 2
-  mnjs.ln10      = ln10;   // The natural logarithm of 10
-  mnjs.log2e     = log2e;  // The base 2 logarithm of E
-  mnjs.log10e    = log10e; // The base 10 logarithm of E
-  mnjs.pi        = PI;     // The Number Pi
-  mnjs.phi		   = PHI;    // The Golden Ratio (Phi)
-  mnjs.tau       = tau;    // The tau constant
+  mnjs.e					= E;      // The Number e (Euler's number)
+  mnjs.ln2				= LN2;    // The natural logarithm of 2
+  mnjs.ln10				= LN10;   // The natural logarithm of 10
+  mnjs.log2e			= LOG2E;  // The base 2 logarithm of E
+  mnjs.log10e			= LOG10E; // The base 10 logarithm of E
+  mnjs.pi					= PI;     // The Number Pi
+  mnjs.phi				= PHI;    // The Golden Ratio (Phi)
+  mnjs.tau				= TAU;    // The tau constant
 
   // Mathematical units convert
-  mnjs.dtr       = dtr;  // Deg to Rad. Result in radians
-  mnjs.rtd       = rtd;  // Rad to Deg. Result in degrees
-  mnjs.nts 			 = nts;  // Number to String. Result as string
-  mnjs.stn 			 = stn;  // String to Number. Result as number
+  mnjs.dtr				= dtr;  // Deg to Rad. Result in radians
+  mnjs.rtd				= rtd;  // Rad to Deg. Result in degrees
+  mnjs.nts				= nts;  // Number to String. Result as string
+  mnjs.stn				= stn;  // String to Number. Result as number
 
   // Mathematical functions
-  mnjs.abs       = abs;
-  mnjs.add       = add;
-  mnjs.cube      = cube;
-  mnjs.cbrt      = cbrt;
-  mnjs.divi      = divi;
-  mnjs.exp       = exp;
-  mnjs.fix       = fix;
-  mnjs.hypot     = hypot;
-  mnjs.inv 		   = inv;
-  mnjs.log       = log;
-  mnjs.log2      = log2;
-  mnjs.log10     = log10;
-  mnjs.log1p     = log1p;
-  mnjs.max       = max;
-  mnjs.min       = min;
-  mnjs.mult      = mult;
-  mnjs.nrt       = nrt;
-  mnjs.pow       = pow;
-  mnjs.sqr       = sqr;
-  mnjs.sqrt      = sqrt;
-  mnjs.subt      = subt;
+  mnjs.abs				= abs;
+  mnjs.add				= add;
+  mnjs.cube				= cube;
+  mnjs.cbrt				= cbrt;
+  mnjs.divi				= divi;
+  mnjs.exp				= exp;
+  mnjs.fix				= fix;
+  mnjs.hypot			= hypot;
+  mnjs.inv				= inv;
+  mnjs.log				= log;
+  mnjs.log2				= log2;
+  mnjs.log10			= log10;
+  mnjs.log1p			= log1p;
+  mnjs.max				= max;
+  mnjs.min				= min;
+  mnjs.mult				= mult;
+  mnjs.nrt				= nrt;
+  mnjs.pow				= pow;
+  mnjs.sqr				= sqr;
+  mnjs.sqrt				= sqrt;
+  mnjs.subt				= subt;
 
   // Trigonometric Functions
-  mnjs.cos       = cos;
-  mnjs.cos.rad   = cos;
-  mnjs.cos.deg   = cosDeg;
-  mnjs.acos      = acos;
-  mnjs.acos.rad  = acos;
-  mnjs.acos.deg  = acosDeg;
-  mnjs.cosh      = cosh;
-  mnjs.cosh.rad  = cosh;
-  mnjs.cosh.deg  = coshDeg;
-  mnjs.acosh     = acosh;
-  mnjs.acosh.rad = acosh;
-  mnjs.acosh.deg = acoshDeg;
+  mnjs.cos				= cos;
+  mnjs.cos.rad		= cos;
+  mnjs.cos.deg		= cosDeg;
+  mnjs.acos				= acos;
+  mnjs.acos.rad		= acos;
+  mnjs.acos.deg		= acosDeg;
+  mnjs.cosh				= cosh;
+  mnjs.cosh.rad		= cosh;
+  mnjs.cosh.deg		= coshDeg;
+  mnjs.acosh			= acosh;
+  mnjs.acosh.rad	= acosh;
+  mnjs.acosh.deg	= acoshDeg;
 
-  mnjs.sin       = sin;
-  mnjs.sin.rad   = sin;
-  mnjs.sin.deg   = sinDeg;
-  mnjs.asin      = asin;
-  mnjs.asin.rad  = asin;
-  mnjs.asin.deg  = asinDeg;
-  mnjs.sinh      = sinh;
-  mnjs.sinh.rad  = sinh;
-  mnjs.sinh.deg  = sinhDeg;
-  mnjs.asinh     = asinh;
-  mnjs.asinh.rad = asinh;
-  mnjs.asinh.deg = asinhDeg;
+  mnjs.sin				= sin;
+  mnjs.sin.rad		= sin;
+  mnjs.sin.deg		= sinDeg;
+  mnjs.asin				= asin;
+  mnjs.asin.rad		= asin;
+  mnjs.asin.deg		= asinDeg;
+  mnjs.sinh				= sinh;
+  mnjs.sinh.rad		= sinh;
+  mnjs.sinh.deg		= sinhDeg;
+  mnjs.asinh			= asinh;
+  mnjs.asinh.rad	= asinh;
+  mnjs.asinh.deg	= asinhDeg;
 
-  mnjs.tan       = tan;
-  mnjs.tan.rad   = tan;
-  mnjs.tan.deg   = tanDeg;
-  mnjs.atan      = atan;
-  mnjs.atan.rad  = atan;
-  mnjs.atan.deg  = atanDeg;
-  mnjs.tanh      = tanh;
-  mnjs.tanh.rad  = tanh;
-  mnjs.tanh.deg  = tanhDeg;
-  mnjs.atanh     = atanh;
-  mnjs.atanh.rad = atanh;
-  mnjs.atanh.deg = atanhDeg;
+  mnjs.tan				= tan;
+  mnjs.tan.rad		= tan;
+  mnjs.tan.deg		= tanDeg;
+  mnjs.atan				= atan;
+  mnjs.atan.rad		= atan;
+  mnjs.atan.deg		= atanDeg;
+  mnjs.tanh				= tanh;
+  mnjs.tanh.rad		= tanh;
+  mnjs.tanh.deg		= tanhDeg;
+  mnjs.atanh			= atanh;
+  mnjs.atanh.rad	= atanh;
+  mnjs.atanh.deg	= atanhDeg;
 
-  mnjs.csc       = csc;
-  mnjs.csc.rad   = csc;
-  mnjs.csc.deg   = cscDeg;
-  mnjs.acsc      = acsc;
-  mnjs.acsc.rad  = acsc;
-  mnjs.acsc.deg  = acscDeg;
-  mnjs.csch      = csch;
-  mnjs.csch.rad  = csch;
-  mnjs.csch.deg  = cschDeg;
-  mnjs.acsch     = acsch;
-  mnjs.acsch.rad = acsch;
-  mnjs.acsch.deg = acschDeg;
+  mnjs.csc				= csc;
+  mnjs.csc.rad		= csc;
+  mnjs.csc.deg		= cscDeg;
+  mnjs.acsc				= acsc;
+  mnjs.acsc.rad		= acsc;
+  mnjs.acsc.deg		= acscDeg;
+  mnjs.csch				= csch;
+  mnjs.csch.rad		= csch;
+  mnjs.csch.deg		= cschDeg;
+  mnjs.acsch			= acsch;
+  mnjs.acsch.rad	= acsch;
+  mnjs.acsch.deg	= acschDeg;
 
-  mnjs.sec       = sec;
-  mnjs.sec.rad   = sec;
-  mnjs.sec.deg   = secDeg;
-  mnjs.asec      = asec;
-  mnjs.asec.rad  = asec;
-  mnjs.asec.deg  = asecDeg;
-  mnjs.sech      = sech;
-  mnjs.sech.rad  = sech;
-  mnjs.sech.deg  = sechDeg;
-  mnjs.asech     = asech;
-  mnjs.asech.rad = asech;
-  mnjs.asech.deg = asechDeg;
+  mnjs.sec				= sec;
+  mnjs.sec.rad		= sec;
+  mnjs.sec.deg		= secDeg;
+  mnjs.asec				= asec;
+  mnjs.asec.rad		= asec;
+  mnjs.asec.deg		= asecDeg;
+  mnjs.sech				= sech;
+  mnjs.sech.rad		= sech;
+  mnjs.sech.deg		= sechDeg;
+  mnjs.asech			= asech;
+  mnjs.asech.rad	= asech;
+  mnjs.asech.deg	= asechDeg;
 
-  mnjs.cot       = cot;
-  mnjs.cot.rad   = cot;
-  mnjs.cot.deg   = cotDeg;
-  mnjs.acot      = acot;
-  mnjs.acot.rad  = acot;
-  mnjs.acot.deg  = acotDeg;
-  mnjs.coth      = coth;
-  mnjs.coth.rad  = coth;
-  mnjs.coth.deg  = cothDeg;
-  mnjs.acoth     = acoth;
-  mnjs.acoth.rad = acoth;
-  mnjs.acoth.deg = acothDeg;
+  mnjs.cot				= cot;
+  mnjs.cot.rad		= cot;
+  mnjs.cot.deg		= cotDeg;
+  mnjs.acot				= acot;
+  mnjs.acot.rad		= acot;
+  mnjs.acot.deg		= acotDeg;
+  mnjs.coth				= coth;
+  mnjs.coth.rad		= coth;
+  mnjs.coth.deg		= cothDeg;
+  mnjs.acoth			= acoth;
+  mnjs.acoth.rad	= acoth;
+  mnjs.acoth.deg	= acothDeg;
 
   return mnjs;
 };
