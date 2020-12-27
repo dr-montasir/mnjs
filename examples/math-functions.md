@@ -99,6 +99,22 @@ mnjs.asec.rad(1) === mnjs.asec(1)  // true
 
 mnjs.stn("123") // 123
 mnjs.nts(123) // "123"
+
+/***** Matrices *****/
+mnjs.range(1, 10, 1)   //  [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
+mnjs.range(1, 10)      //  [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
+mnjs.range(10, 1, 1)   //  [ 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 ]
+mnjs.range(10, 1)      //  [ 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 ]
+mnjs.range(1, 5, 0.5)  //  [ 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5 ]
+mnjs.range(1, 0, 0.2)  //  [ 1, 0.8, 0.6, 0.4, 0.2, 0 ]
+mnjs.range(10, 1, 2)   //  [ 10, 8, 6, 4, 2 ]
+
+mnjs.monolist(1, 5)    //  [ 1, 1, 1, 1, 1 ]
+mnjs.monolist(0.5, 3)  //  [ 0.5, 0.5, 0.5 ]
+mnjs.monolist(0, 5)    //  [ 0, 0, 0, 0, 0 ]
+mnjs.monolist(-0.5, 3) //  [ -0.5, -0.5, -0.5 ]
+mnjs.monolist(-1, 5)   //  [ -1, -1, -1, -1, -1 ]
+mnjs.monolist(5, 1.1)  //  RangeError: Invalid array length
 ```
 
 Back to [README](https://github.com/dr-montasir/mnjs/blob/master/README.md).

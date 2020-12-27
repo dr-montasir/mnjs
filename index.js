@@ -73,6 +73,60 @@ const stn = (str) => {
 	return Number(str);
 };
 
+// Matrices
+
+// The Range Function
+const range = (start, end, step) => {
+  let array = [];
+  if (typeof start !== "number" || typeof end !== "number") {
+    throw new Error(`All parameters must be a number`);
+  }
+  if (typeof step === "string" || typeof step === "boolean") {
+    throw new Error(`The step parameter must be a number`);
+  }
+  if (start === end) {
+    throw new Error(`The first and the second parameter should not be equal`);
+  }
+  if (step >  Math.abs(Math.abs(start) - Math.abs(end))) {
+    throw new Error(`The step parameter should not be greater than the difference between the first and second parameter`);
+  }
+  if (Math.sign(step) === -1) {
+    throw new Error(`The sign of the step parameter must be positive`);
+  }
+  if (!step) {
+    step = 1;
+  }
+  if (start > end) {
+    for(let i = start; i >= end; i = i - step){
+     array.push(Number(i.toFixed(10)));
+    }
+    return array;
+  }
+  if (start > end) {
+    for(let i = start; i >= end; i = i - step){
+     array.push(Number(i.toFixed(10)));
+    }
+    return array;
+  }
+  if (start < end) {
+    for(let i = start; i <= end; i = i + step){
+     array.push(Number(i.toFixed(10)));
+    }
+    return array;
+  }
+};
+
+// The MonoList Function
+const monolist = (value, size) => {
+  if (!value && !size || value && size === 0) {
+    throw new Error(`The monolist function should take two parameters (value: number, size: natural number & greater than zero).`);
+  } else if (typeof value !== "number" || typeof size !== "number") {
+    throw new Error(`All parameters must be a number (value: number, size: natural number & greater than zero).`);
+  } else {
+    return Array(size).fill(value);
+  }
+};
+
 // Mathematical functions
 
 // The abs Function |-num| = num
@@ -443,6 +497,10 @@ const useMnjs = () => {
   mnjs.rtd				= rtd;  // Rad to Deg. Result in degrees
   mnjs.nts				= nts;  // Number to String. Result as string
   mnjs.stn				= stn;  // String to Number. Result as number
+
+  // Matrices
+  mnjs.range			= range;
+  mnjs.monolist   = monolist;
 
   // Mathematical functions
   mnjs.abs				= abs;

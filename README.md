@@ -139,6 +139,22 @@ mnjs.tan(0.5)  // 0.5463024898
 mnjs.tan(0.5) === mnjs.tan.rad(0.5)  // true
 
 mnjs.tan.deg(90)  // -Infinity
+
+/***** Matrices *****/
+mnjs.range(1, 10, 1)   //  [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
+mnjs.range(1, 10)      //  [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
+mnjs.range(10, 1, 1)   //  [ 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 ]
+mnjs.range(10, 1)      //  [ 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 ]
+mnjs.range(1, 5, 0.5)  //  [ 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5 ]
+mnjs.range(1, 0, 0.2)  //  [ 1, 0.8, 0.6, 0.4, 0.2, 0 ]
+mnjs.range(10, 1, 2)   //  [ 10, 8, 6, 4, 2 ]
+
+mnjs.monolist(1, 5)    //  [ 1, 1, 1, 1, 1 ]
+mnjs.monolist(0.5, 3)  //  [ 0.5, 0.5, 0.5 ]
+mnjs.monolist(0, 5)    //  [ 0, 0, 0, 0, 0 ]
+mnjs.monolist(-0.5, 3) //  [ -0.5, -0.5, -0.5 ]
+mnjs.monolist(-1, 5)   //  [ -1, -1, -1, -1, -1 ]
+mnjs.monolist(5, 1.1)  //  RangeError: Invalid array length
 ```
 
 ##### For more examples, click at this 👉 [link.](https://github.com/dr-montasir/mnjs/blob/master/examples/math-functions.md)
@@ -224,12 +240,14 @@ mnjs.tan.deg(90)  // -Infinity
 | log10e    | The base 10 logarithm of E                                   | number: 0.434294481903252                                |
 | max       | Max function returns the largest-valued number               | function: max(num1, num2, ...)                           |
 | min       | Min function returns the lowest-valued number                | function: max(num1, num2, ...)                           |
+| monolist  | The monolist function returns an array of numbers of *equal values*, specifying the element's *value* and the *size* of the array. | function: monolist(value, size). It returns an array     |
 | mult      | Multiplication                                               | function:  mult(num1, num2)                              |
 | nrt       | N Root                                                       | function:  nrt(num, root), when root=n={1,2,..}          |
 | nts       | Number to String conversion                                  | function: nts(num). Result as string                     |
 | pi        | The Number pi (π)                                            | number:  3.141592653589793                               |
 | phi       | The Golden Ratio (Phi)                                       | number:  1.618033988749895                               |
 | pow       | power                                                        | function:  pow(num, power)                               |
+| range     | The range function returns a sequence of numbers, starting from *start* value by default, and increments or decrements by *step* value, and stops before or in specified *end* value. | function: range(start, end, step). It returns an array   |
 | rtd       | Radians to Degrees conversion                                | function: rtd(angleRadians).  Result in degrees          |
 | sec       | Secant (in radians)                                          | function:  sec(angleRadians)                             |
 | sec.rad   | Secant (in radians)                                          | function:  sec.rad(angleRadians)                         |
