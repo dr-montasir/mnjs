@@ -163,8 +163,8 @@ mnjs.monolist(5, 1.1)  //  RangeError: Invalid array length
 
 ## MNJS Object Keys
 
-| Key       | Name                                                         | Value                                                    |
-| --------- | ------------------------------------------------------------ | :------------------------------------------------------- |
+| Key       | Definition                                                   | Value                                                    |
+| :-------- | :----------------------------------------------------------- | -------------------------------------------------------- |
 | abs       | The absolute value of a number                               | function:  abs(num)                                      |
 | add       | Addition                                                     | function:  add(num1, num2)                               |
 | acos      | Inverse cosine (in radians)                                  | function:  acos(num)                                     |
