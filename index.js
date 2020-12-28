@@ -87,7 +87,7 @@ const range = (start, end, step) => {
   if (start === end) {
     throw new Error(`The first and the second parameter should not be equal`);
   }
-  if (step >  Math.abs(Math.abs(start) - Math.abs(end))) {
+  if (step >  Math.abs(start - end)) {
     throw new Error(`The step parameter should not be greater than the difference between the first and second parameter`);
   }
   if (Math.sign(step) === -1) {
