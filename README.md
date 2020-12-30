@@ -92,6 +92,14 @@ mnjs.exp(mnjs.pi / 3)  // 2.849653908226361
 
 mnjs.log(10)  // 2.302585092994046
 
+mnjs.ln2  // 0.693147180559945
+mnjs.ln10  // 2.302585092994046
+
+mnjs.log2e  // 1.4426950408889634
+mnjs.log10e  // 0.434294481903252
+
+mnjs.log1p(5)  // 1.791759469228055
+
 mnjs.log(mnjs.e)  // 1
 
 mnjs.hypot(4)  // 4
@@ -119,6 +127,8 @@ mnjs.nrt(0.0001, 4)  // 0.1
 mnjs.nrt(Infinity, Infinity)  // 1
 mnjs.nrt(Infinity, Infinity) === mnjs.pow(Infinity, 1 /Infinity)  // true
 
+mnjs.tau  // 6.283185307179586
+
 mnjs.sin(1)  // 0.8414709848
 mnjs.sin.rad(1)  // 0.8414709848
 mnjs.sin(1) === mnjs.sin.rad(1)  // true
@@ -135,10 +145,33 @@ mnjs.cos(1) === mnjs.cos.rad(1)  // true
 
 mnjs.tan.deg(45)  // 1
 
+mnjs.sin.deg(30)  // 0.5
+mnjs.sin.deg(30) === mnjs.sin(mnjs.dtr(30))  // true
+
+mnjs.cos.deg(60)  // 0.5
+
 mnjs.tan(0.5)  // 0.5463024898
 mnjs.tan(0.5) === mnjs.tan.rad(0.5)  // true
 
 mnjs.tan.deg(90)  // -Infinity
+
+1 / mnjs.sin.deg(30)  // 2
+mnjs.csc.deg(30)  // 2
+
+(1 / mnjs.cos.deg(60)) === (mnjs.sec.deg(60)) // true
+console.log(mnjs.sec.deg(60))  // 2
+
+(1 / mnjs.tan.deg(45)) === (mnjs.cot.deg(45)) // true
+mnjs.cot.deg(45)  // 1
+
+mnjs.cot.deg(0)  // Infinity
+
+mnjs.acsc(mnjs.csc(0.67))  // 0.67
+
+mnjs.asec.rad(1) === mnjs.asec(1)  // true
+
+mnjs.stn("123") // 123
+mnjs.nts(123) // "123"
 
 /***** Matrices *****/
 mnjs.range(1, 10, 1)   //  [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
@@ -148,6 +181,7 @@ mnjs.range(10, 1)      //  [ 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 ]
 mnjs.range(1, 5, 0.5)  //  [ 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5 ]
 mnjs.range(1, 0, 0.2)  //  [ 1, 0.8, 0.6, 0.4, 0.2, 0 ]
 mnjs.range(10, 1, 2)   //  [ 10, 8, 6, 4, 2 ]
+mnjs.range(-20, 1, 0)  //  Error: MNJS ERROR No. 02 : 05: The step parameter should not be equal zero
 
 mnjs.monolist(1, 5)    //  [ 1, 1, 1, 1, 1 ]
 mnjs.monolist(0.5, 3)  //  [ 0.5, 0.5, 0.5 ]
@@ -155,9 +189,24 @@ mnjs.monolist(0, 5)    //  [ 0, 0, 0, 0, 0 ]
 mnjs.monolist(-0.5, 3) //  [ -0.5, -0.5, -0.5 ]
 mnjs.monolist(-1, 5)   //  [ -1, -1, -1, -1, -1 ]
 mnjs.monolist(5, 1.1)  //  RangeError: Invalid array length
-```
 
-##### For more examples, click at this 👉 [link.](https://github.com/dr-montasir/mnjs/blob/master/examples/math-functions.md)
+// Most of the MNJS functions return a number or an array of numbers
+
+const myArray  = mnjs.range(0, 90, 15)
+const errArray = [ 0, -15, 30, -45, '60', -75, 90 ]
+
+myArray                //  [ 0, 15, 30, 45, 60, 75, 90 ]
+errArray               //  [ 0, -15, 30, -45, '60', -75, 90 ]
+
+mnjs.cube(myArray)     // [ 0, 3375, 27000, 91125, 216000, 421875, 729000 ]
+
+mnjs.cube(myArray)     // [ 0, 3375, 27000, 91125, 216000, 421875, 729000 ]
+
+mnjs.sin.deg(myArray)  // [ 0, 0.2588190451, 0.5, 0.7071067812, 0.8660254038, 0.9659258263, 1 ]
+
+mnjs.abs(errArray)     // Error: MNJS ERROR No. 01: This function accepting either a number or an array.
+                       // In the case of an array, all of its elements must be numbers.
+```
 
 
 
