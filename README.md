@@ -138,17 +138,11 @@ mnjs.sin.deg(30)  // 0.5
 mnjs.sin.deg(30) === mnjs.sin(mnjs.dtr(30))  // true
 
 mnjs.cos.deg(60)  // 0.5
-
 mnjs.cos(0)  // 1
 mnjs.cos.rad(0)  // 1
 mnjs.cos(1) === mnjs.cos.rad(1)  // true
 
 mnjs.tan.deg(45)  // 1
-
-mnjs.sin.deg(30)  // 0.5
-mnjs.sin.deg(30) === mnjs.sin(mnjs.dtr(30))  // true
-
-mnjs.cos.deg(60)  // 0.5
 
 mnjs.tan(0.5)  // 0.5463024898
 mnjs.tan(0.5) === mnjs.tan.rad(0.5)  // true
@@ -197,8 +191,6 @@ const errArray = [ 0, -15, 30, -45, '60', -75, 90 ]
 
 myArray                //  [ 0, 15, 30, 45, 60, 75, 90 ]
 errArray               //  [ 0, -15, 30, -45, '60', -75, 90 ]
-
-mnjs.cube(myArray)     // [ 0, 3375, 27000, 91125, 216000, 421875, 729000 ]
 
 mnjs.cube(myArray)     // [ 0, 3375, 27000, 91125, 216000, 421875, 729000 ]
 
