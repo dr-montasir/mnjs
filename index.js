@@ -148,12 +148,12 @@ const monolist = (value, size) => {
 // The dtr Function (x = angle in degrees). Degrees to Radians conversion. Result in radians
 // The dtr Function (x = angle in degrees). Degrees to Radians conversion. Result in radians
 const dtr = (x) => {
-  return Number((x * Math.PI / 180).toFixed(DIG_15));
+  return Number((x * Math.PI / DEG_180).toFixed(DIG_15));
 };
 
 // The rtd Function (x = angle in radians). Radians to Degrees conversion. Result in degrees
 const rtd = (x) => {
-  let radToDeg = Number((x * 180 / Math.PI).toFixed(DIG_11));
+  let radToDeg = Number((x * DEG_180 / Math.PI).toFixed(DIG_11));
   return Number((radToDeg).toFixed(DIG_15));
 };
 
@@ -632,9 +632,9 @@ const cscDeg = (x) => {
 // The acsc function (x)
 const acsc = (x) => {
   if (typeof x === "number") {
-    return Number(asin((NUM_1 / x).toFixed(DIG_15)).toFixed(DIG_15));
+    return Number(asin(NUM_1 / x).toFixed(DIG_15));
   } else if (typeof x === "object" && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(asin((NUM_1 / x).toFixed(DIG_15)).toFixed(DIG_15)));
+    return x.map(x => Number(asin(NUM_1 / x).toFixed(DIG_15)));
   } else {
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1.NO}: ${ERRORS.MNJS_1.TEXT}`);
   };
@@ -643,9 +643,9 @@ const acsc = (x) => {
 // The acscDeg function (x)
 const acscDeg = (x) => {
   if (typeof x === "number") {
-    return Number(rtd(asin((NUM_1 / x).toFixed(DIG_15))).toFixed(DIG_15));
+    return Number(rtd(asin(NUM_1 / x)).toFixed(DIG_15));
   } else if (typeof x === "object" && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(rtd(asin((NUM_1 / x).toFixed(DIG_15))).toFixed(DIG_15)));
+    return x.map(x => Number(rtd(asin(NUM_1 / x)).toFixed(DIG_15)));
   } else {
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1.NO}: ${ERRORS.MNJS_1.TEXT}`);
   };
@@ -676,9 +676,9 @@ const cschDeg = (x) => {
 // The acsch function (x)
 const acsch = (x) => {
   if (typeof x === "number") {
-    return Number(asinh((NUM_1 / x).toFixed(DIG_15)).toFixed(DIG_15));
+    return Number(asinh(NUM_1 / x).toFixed(DIG_15));
   } else if (typeof x === "object" && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(asinh((NUM_1 / x).toFixed(DIG_15)).toFixed(DIG_15)));
+    return x.map(x => Number(asinh(NUM_1 / x).toFixed(DIG_15)));
   } else {
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1.NO}: ${ERRORS.MNJS_1.TEXT}`);
   };
@@ -687,9 +687,9 @@ const acsch = (x) => {
 // The acschDeg function (x)
 const acschDeg = (x) => {
   if (typeof x === "number") {
-    return Number(rtd(asinh((NUM_1 / x).toFixed(DIG_15))).toFixed(DIG_15));
+    return Number(rtd(asinh(NUM_1 / x)).toFixed(DIG_15));
   } else if (typeof x === "object" && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(rtd(asinh((NUM_1 / x).toFixed(DIG_15))).toFixed(DIG_15)));
+    return x.map(x => Number(rtd(asinh(NUM_1 / x)).toFixed(DIG_15)));
   } else {
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1.NO}: ${ERRORS.MNJS_1.TEXT}`);
   };
@@ -720,9 +720,9 @@ const secDeg = (x) => {
 // The asec function (x)
 const asec = (x) => {
   if (typeof x === "number") {
-    return Number(acos((NUM_1 / x).toFixed(DIG_15)).toFixed(DIG_15));
+    return Number(acos(NUM_1 / x).toFixed(DIG_15));
   } else if (typeof x === "object" && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(acos((NUM_1 / x).toFixed(DIG_15)).toFixed(DIG_15)));
+    return x.map(x => Number(acos(NUM_1 / x).toFixed(DIG_15)));
   } else {
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1.NO}: ${ERRORS.MNJS_1.TEXT}`);
   };
@@ -731,9 +731,9 @@ const asec = (x) => {
 // The asecDeg function (x)
 const asecDeg = (x) => {
   if (typeof x === "number") {
-    return Number(rtd(acos((NUM_1 / x).toFixed(DIG_15))).toFixed(DIG_15));
+    return Number(rtd(acos(NUM_1 / x)).toFixed(DIG_15));
   } else if (typeof x === "object" && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(rtd(acos((NUM_1 / x).toFixed(DIG_15))).toFixed(DIG_15)));
+    return x.map(x => Number(rtd(acos(NUM_1 / x)).toFixed(DIG_15)));
   } else {
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1.NO}: ${ERRORS.MNJS_1.TEXT}`);
   };
@@ -764,9 +764,9 @@ const sechDeg = (x) => {
 // The asech function (x)
 const asech = (x) => {
   if (typeof x === "number") {
-    return Number(acosh((NUM_1 / x).toFixed(DIG_15)).toFixed(DIG_15));
+    return Number(acosh(NUM_1 / x).toFixed(DIG_15));
   } else if (typeof x === "object" && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(acosh((NUM_1 / x).toFixed(DIG_15)).toFixed(DIG_15)));
+    return x.map(x => Number(acosh(NUM_1 / x).toFixed(DIG_15)));
   } else {
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1.NO}: ${ERRORS.MNJS_1.TEXT}`);
   };
@@ -775,9 +775,9 @@ const asech = (x) => {
 // The asechDeg function (x)
 const asechDeg = (x) => {
   if (typeof x === "number") {
-    return Number(rtd(acosh((NUM_1 / x).toFixed(DIG_15))).toFixed(DIG_15));
+    return Number(rtd(acosh(NUM_1 / x)).toFixed(DIG_15));
   } else if (typeof x === "object" && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(rtd(acosh((NUM_1 / x).toFixed(DIG_15))).toFixed(DIG_15)));
+    return x.map(x => Number(rtd(acosh(NUM_1 / x)).toFixed(DIG_15)));
   } else {
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1.NO}: ${ERRORS.MNJS_1.TEXT}`);
   };
@@ -808,9 +808,9 @@ const cotDeg = (x) => {
 // The acot function (x)
 const acot = (x) => {
   if (typeof x === "number") {
-    return Number(atan((NUM_1 / x).toFixed(DIG_15)).toFixed(DIG_15));
+    return Number(atan(NUM_1 / x).toFixed(DIG_15));
   } else if (typeof x === "object" && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(atan((NUM_1 / x).toFixed(DIG_15)).toFixed(DIG_15)));
+    return x.map(x => Number(atan(NUM_1 / x).toFixed(DIG_15)));
   } else {
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1.NO}: ${ERRORS.MNJS_1.TEXT}`);
   };
@@ -819,9 +819,9 @@ const acot = (x) => {
 // The acotDeg function (x)
 const acotDeg = (x) => {
   if (typeof x === "number") {
-    return Number(rtd(atan((NUM_1 / x).toFixed(DIG_15))).toFixed(DIG_15));
+    return Number(rtd(atan(NUM_1 / x)).toFixed(DIG_15));
   } else if (typeof x === "object" && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(rtd(atan((NUM_1 / x).toFixed(DIG_15))).toFixed(DIG_15)));
+    return x.map(x => Number(rtd(atan(NUM_1 / x)).toFixed(DIG_15)));
   } else {
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1.NO}: ${ERRORS.MNJS_1.TEXT}`);
   };
