@@ -12,8 +12,11 @@ const DEG_180 = 180;
 // 15 digits after the decimal place.
 const DIG_15 = 15;
 
-// 11 digits after the decimal place.
-const DIG_11 = 11;
+// 10 digits after the decimal place.
+const DIG_10 = 10;
+
+// 8 digits after the decimal place.
+const DIG_8 = 8;
 
 // The number 2.
 const NUM_2 = 2;
@@ -114,19 +117,19 @@ const range = (start, end, step) => {
   };
   if (start > end) {
     for(let i = start; i >= end; i = i - step){
-     array.push(Number(i.toFixed(DIG_15)));
+     array.push(Number(i.toFixed(DIG_10)));
     }
     return array;
   };
   if (start > end) {
     for(let i = start; i >= end; i = i - step){
-     array.push(Number(i.toFixed(DIG_15)));
+     array.push(Number(i.toFixed(DIG_10)));
     }
     return array;
   };
   if (start < end) {
     for(let i = start; i <= end; i = i + step){
-     array.push(Number(i.toFixed(DIG_15)));
+     array.push(Number(i.toFixed(DIG_10)));
     }
     return array;
   };
@@ -146,14 +149,13 @@ const monolist = (value, size) => {
 // Mathematical units convert
 
 // The dtr Function (x = angle in degrees). Degrees to Radians conversion. Result in radians
-// The dtr Function (x = angle in degrees). Degrees to Radians conversion. Result in radians
 const dtr = (x) => {
   return Number((x * Math.PI / DEG_180).toFixed(DIG_15));
 };
 
 // The rtd Function (x = angle in radians). Radians to Degrees conversion. Result in degrees
 const rtd = (x) => {
-  let radToDeg = Number((x * DEG_180 / Math.PI).toFixed(DIG_11));
+  let radToDeg = Number((x * DEG_180 / Math.PI).toFixed(DIG_8));
   return Number((radToDeg).toFixed(DIG_15));
 };
 
