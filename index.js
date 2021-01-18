@@ -53,11 +53,11 @@ const TAU = Number((2 * PI).toFixed(DIG_15));
 const ERRORS = {
   MNJS_1_1: {
     NO: "01 : 01",
-    TEXT: `This function accepting either a number or an array. In the case of an array, the type of its all elements must be a number`
+    TEXT: `This function accepting either a number or an array. In the case of an array, all elements must be a number`
   },
   MNJS_1_2: {
     NO: "01 : 02",
-    TEXT: `This function accepting either a string or an array. In the case of an array, the type of its all elements must be a string`
+    TEXT: `This function accepting either a string or an array. In the case of an array, all elements must be a string`
   },
   MNJS_2_1: {
     NO: "02 : 01",
@@ -154,13 +154,26 @@ const monolist = (value, size) => {
 
 // The dtr Function (x = angle in degrees). Degrees to Radians conversion. Result in radians
 const dtr = (x) => {
-  return Number((x * Math.PI / DEG_180).toFixed(DIG_15));
+  if (typeof x === "number") {
+    return Number((x * Math.PI / DEG_180).toFixed(DIG_15));
+  } else if (typeof x === "object" && x.every(x => typeof x === "number")) {
+    return x.map(x => Number((x * Math.PI / DEG_180).toFixed(DIG_15)));
+  } else {
+    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+  };
 };
 
 // The rtd Function (x = angle in radians). Radians to Degrees conversion. Result in degrees
 const rtd = (x) => {
-  let radToDeg = Number((x * DEG_180 / Math.PI).toFixed(DIG_8));
-  return Number((radToDeg).toFixed(DIG_15));
+  if (typeof x === "number") {
+    let radToDeg = Number((x * DEG_180 / Math.PI).toFixed(DIG_8));
+    return Number((radToDeg).toFixed(DIG_15));
+  } else if (typeof x === "object" && x.every(x => typeof x === "number")) {
+    let radToDeg = x.map(x => Number((x * DEG_180 / Math.PI).toFixed(DIG_8)));
+    return radToDeg.map(radToDeg => Number((radToDeg).toFixed(DIG_15)));
+  } else {
+    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+  };
 };
 
 // Number to String. Result as string

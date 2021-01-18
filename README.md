@@ -198,6 +198,15 @@ mnjs.sin.deg(myArray)  // [ 0, 0.2588190451, 0.5, 0.7071067812, 0.8660254038, 0.
 
 mnjs.abs(errArray)     // Error: MNJS ERROR No. 01: This function accepting either a number or an array.
                        // In the case of an array, all of its elements must be numbers.
+mnjs.dtr(myArray)      /* [
+                            0,
+                            0.261799387799149,
+                            0.523598775598299,
+                            0.785398163397448,
+                            1.047197551196598,
+                            1.308996938995747,
+                            1.570796326794897
+                          ] */
 ```
 
 
