@@ -44,7 +44,7 @@ mnjs.divi(0.3, 0.1)  = 3 			// mnjs.divi(0.3, 0.1) === 3 returns true
 <html>
   <head>
     <title>mnjs</title>
-    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@1.3.4/index.js"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@1.3.6/index.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/mnjs"></script>
     <!--          This file is always minified ☝         -->
   </head>
@@ -186,27 +186,39 @@ mnjs.monolist(5, 1.1)  //  RangeError: Invalid array length
 
 // Most of the MNJS functions return a number or an array of numbers
 
-const myArray  = mnjs.range(0, 90, 15)
-const errArray = [ 0, -15, 30, -45, '60', -75, 90 ]
+const myArray  = mnjs.range(0, 90, 30)
+const errArray = [ 0, 30, '60', 90 ]
 
-myArray                //  [ 0, 15, 30, 45, 60, 75, 90 ]
-errArray               //  [ 0, -15, 30, -45, '60', -75, 90 ]
+myArray                   //  [ 0, 30, 60, 90 ]
+errArray                  //  [ 0, 30, '60', 90 ]
 
-mnjs.cube(myArray)     // [ 0, 3375, 27000, 91125, 216000, 421875, 729000 ]
+mnjs.cube(myArray)        // [ 0, 27000, 216000, 729000 ]
 
-mnjs.sin.deg(myArray)  // [ 0, 0.2588190451, 0.5, 0.7071067812, 0.8660254038, 0.9659258263, 1 ]
+mnjs.sin.deg(myArray[1])  // 0.5
+mnjs.sin.deg(myArray)     // [ 0, 0.5, 0.866025403784439, 1 ]
 
-mnjs.abs(errArray)     // Error: MNJS ERROR No. 01: This function accepting either a number or an array.
-                       // In the case of an array, all of its elements must be numbers.
-mnjs.dtr(myArray)      /* [
-                            0,
-                            0.261799387799149,
-                            0.523598775598299,
-                            0.785398163397448,
-                            1.047197551196598,
-                            1.308996938995747,
-                            1.570796326794897
-                          ] */
+mnjs.abs(errArray)        // Error: MNJS ERROR No. 01: This function accepting either a number or an array.
+                          // In the case of an array, all of its elements must be numbers.
+mnjs.dtr(myArray)         // [ 0, 0.523598775598299, 1.047197551196598, 1.570796326794897 ]
+
+// Note the result may change in some functions depending on the position of the arguments
+
+mnjs.add(2, 2)            //  4
+mnjs.add([0, 2], [4, 8])  //  [ 4, 10 ]
+mnjs.add([4, 8], [0, 2])  //  [ 4, 10 ]
+mnjs.add(2, [1, 2])       //  [ 3, 4 ]
+mnjs.add([1, 2], 2)       //  [ 3, 4 ]
+mnjs.subt(2, [1, 2])      //  [ 1, 0 ]
+mnjs.subt([1, 2], 2)      //  [ -1, 0 ]
+mnjs.subt([0, 2], [4, 8]) //  [ -4, -6 ]
+mnjs.subt([4, 8], [0, 2]) //  [ 4, 6 ]
+mnjs.mult(2, [1, 2])      //  [ 2, 4 ]
+mnjs.mult([1, 2], 2)      //  [ 2, 4 ]
+mnjs.divi(2, [1, 2])      //  [ 2, 1 ]
+mnjs.divi([1, 2], 2)      //  [ 0.5, 1 ]
+mnjs.divi([0, 2], [4, 8]) //  [ 0, 0.25 ]
+mnjs.divi([4, 8], [0, 2]) //  [ Infinity, 4 ]
+mnjs.add([2], [1, 2])     // Error: MNJS ERROR No. 01 : 03: This function accepting two arguments of numbers, arrays, or one of them must be a number, and the other must be an array; In the case of arrays, all elements must be a number, the length of arrays must be equal
 ```
 
 

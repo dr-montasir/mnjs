@@ -59,6 +59,10 @@ const ERRORS = {
     NO: "01 : 02",
     TEXT: `This function accepting either a string or an array. In the case of an array, all elements must be a string`
   },
+  MNJS_1_3: {
+    NO: "01 : 03",
+    TEXT: `This function accepting two arguments of numbers, arrays, or one of them must be a number, and the other must be an array; In the case of arrays, all elements must be a number, the length of arrays must be equal`
+  },
   MNJS_2_1: {
     NO: "02 : 01",
     TEXT: `All parameters must be a number`
@@ -85,11 +89,11 @@ const ERRORS = {
   },
   MNJS_3_1: {
     NO: "03 : 01",
-    TEXT: `The monolist function should take two parameters (value: number, size: natural number & greater than zero).`
+    TEXT: `The monolist function should take two parameters (value: number, size: natural number & greater than zero)`
   },
   MNJS_3_2: {
     NO: "03 : 02",
-    TEXT: `All parameters must be a number (value: number, size: natural number & greater than zero).`
+    TEXT: `All parameters must be a number (value: number, size: natural number & greater than zero)`
   }
 };
 
@@ -213,8 +217,18 @@ const abs = (x) => {
 };
 
 // Addition Function
-const add = (num1, num2) => {
-  return Number((num1 + num2).toFixed(DIG_15));
+const add = (x, y) => {
+	if (typeof x === "number" && typeof y === "number") {
+		return Number((x + y).toFixed(DIG_15));
+	} else if (typeof x === "number" && Array.isArray(y) && y.every(y => typeof y === "number")) {
+		return y.map(y => Number((x + y).toFixed(DIG_15)));
+	} else if (typeof y === "number" && Array.isArray(x) && x.every(x => typeof x === "number")) {
+		return x.map(x => Number((x + y).toFixed(DIG_15)));
+	} else if (Array.isArray(x) && Array.isArray(y) && x.length === y.length && x.every(x => typeof x === "number") && y.every(y => typeof y === "number")) {
+		return x.map((x, index) => Number((x + y[index]).toFixed(DIG_15)));
+	} else {
+    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_3.NO}: ${ERRORS.MNJS_1_3.TEXT}`);
+  };
 };
 
 // Cube Function
@@ -239,9 +253,19 @@ const cbrt = (x) => {
   };
 };
 
-// Division Function
-const divi = (numerator, denominator) => {
-  return Number((numerator / denominator).toFixed(DIG_15));
+// Division Function. (n = numerator, d = denominator)
+const divi = (n, d) => {
+	if (typeof n === "number" && typeof d === "number") {
+		return Number((n / d).toFixed(DIG_15));
+	} else if (typeof n === "number" && Array.isArray(d) && d.every(d => typeof d === "number")) {
+		return d.map(d => Number((n / d).toFixed(DIG_15)));
+	} else if (typeof d === "number" && Array.isArray(n) && n.every(n => typeof n === "number")) {
+		return n.map(n => Number((n / d).toFixed(DIG_15)));
+	} else if (Array.isArray(n) && Array.isArray(d) && n.length === d.length && n.every(n => typeof n === "number") && d.every(d => typeof d === "number")) {
+		return n.map((n, index) => Number((n / d[index]).toFixed(DIG_15)));
+	} else {
+    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_3.NO}: ${ERRORS.MNJS_1_3.TEXT}`);
+  };
 };
 
 // Fix to the certain decimal point.
@@ -320,8 +344,18 @@ const min = (...values) => {
 };
 
 // Multiplication Function
-const mult = (num1, num2) => {
-  return Number((num1 * num2).toFixed(DIG_15));
+const mult = (x, y) => {
+	if (typeof x === "number" && typeof y === "number") {
+		return Number((x * y).toFixed(DIG_15));
+	} else if (typeof x === "number" && Array.isArray(y) && y.every(y => typeof y === "number")) {
+		return y.map(y => Number((x * y).toFixed(DIG_15)));
+	} else if (typeof y === "number" && Array.isArray(x) && x.every(x => typeof x === "number")) {
+		return x.map(x => Number((x * y).toFixed(DIG_15)));
+	} else if (Array.isArray(x) && Array.isArray(y) && x.length === y.length && x.every(x => typeof x === "number") && y.every(y => typeof y === "number")) {
+		return x.map((x, index) => Number((x * y[index]).toFixed(DIG_15)));
+	} else {
+    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_3.NO}: ${ERRORS.MNJS_1_3.TEXT}`);
+  };
 };
 
 // N Root Function. root = (1, 2, ..., n)
@@ -357,8 +391,18 @@ const sqrt = (x) => {
 };
 
 // Subtraction Function
-const subt = (num1, num2) => {
-  return Number((num1 - num2).toFixed(DIG_15));
+const subt = (x, y) => {
+	if (typeof x === "number" && typeof y === "number") {
+		return Number((x - y).toFixed(DIG_15));
+	} else if (typeof x === "number" && Array.isArray(y) && y.every(y => typeof y === "number")) {
+		return y.map(y => Number((x - y).toFixed(DIG_15)));
+	} else if (typeof y === "number" && Array.isArray(x) && x.every(x => typeof x === "number")) {
+		return x.map(x => Number((x - y).toFixed(DIG_15)));
+	} else if (Array.isArray(x) && Array.isArray(y) && x.length === y.length && x.every(x => typeof x === "number") && y.every(y => typeof y === "number")) {
+		return x.map((x, index) => Number((x - y[index]).toFixed(DIG_15)));
+	} else {
+    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_3.NO}: ${ERRORS.MNJS_1_3.TEXT}`);
+  };
 };
 
 // Calculate exponential of a number. The power of e (Euler's number)
