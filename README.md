@@ -219,6 +219,12 @@ mnjs.divi([1, 2], 2)      //  [ 0.5, 1 ]
 mnjs.divi([0, 2], [4, 8]) //  [ 0, 0.25 ]
 mnjs.divi([4, 8], [0, 2]) //  [ Infinity, 4 ]
 mnjs.add([2], [1, 2])     // Error: MNJS ERROR No. 01 : 03: This function accepting two arguments of numbers, arrays, or one of them must be a number, and the other must be an array; In the case of arrays, all elements must be a number, the length of arrays must be equal
+
+mnjs.mult(0.2, [ 5, 10, 15])                   //  [ 1, 2, 3 ]
+mnjs.mult(0.2, mnjs.range(5, 15, 5))           //  [ 1, 2, 3 ] 
+mnjs.mult([0.2, 0.2, 0.2], [ 5, 10, 15])       //  [ 1, 2, 3 ] 
+mnjs.mult(mnjs.monolist(0.2, 3), [5, 10, 15])  //  [ 1, 2, 3 ] 
+mnjs.mult(0.2, [ 5, 10, 15])[1] === mnjs.mult(mnjs.monolist(0.2, 3), [5, 10, 15])[1] // true
 ```
 
 
