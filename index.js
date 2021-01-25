@@ -12,9 +12,6 @@ const DEG_180 = 180;
 // 15 digits after the decimal place.
 const DIG_15 = 15;
 
-// 10 digits after the decimal place.
-const DIG_10 = 10;
-
 // 8 digits after the decimal place.
 const DIG_8 = 8;
 
@@ -125,19 +122,19 @@ const range = (start, end, step) => {
   };
   if (start > end) {
     for(let i = start; i >= end; i = i - step){
-     array.push(Number(i.toFixed(DIG_10)));
+     array.push(Number(i.toFixed(DIG_8)));
     }
     return array;
   };
   if (start > end) {
     for(let i = start; i >= end; i = i - step){
-     array.push(Number(i.toFixed(DIG_10)));
+     array.push(Number(i.toFixed(DIG_8)));
     }
     return array;
   };
   if (start < end) {
     for(let i = start; i <= end; i = i + step){
-     array.push(Number(i.toFixed(DIG_10)));
+     array.push(Number(i.toFixed(DIG_8)));
     }
     return array;
   };

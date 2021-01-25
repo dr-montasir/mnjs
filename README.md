@@ -44,7 +44,7 @@ mnjs.divi(0.3, 0.1)  = 3 			// mnjs.divi(0.3, 0.1) === 3 returns true
 <html>
   <head>
     <title>mnjs</title>
-    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@1.3.6/index.js"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@1.3.8/index.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/mnjs"></script>
     <!--          This file is always minified ☝         -->
   </head>
@@ -95,7 +95,7 @@ mnjs.log(10)  // 2.302585092994046
 mnjs.ln2  // 0.693147180559945
 mnjs.ln10  // 2.302585092994046
 
-mnjs.log2e  // 1.4426950408889634
+mnjs.log2e  // 1.442695040888963
 mnjs.log10e  // 0.434294481903252
 
 mnjs.log1p(5)  // 1.791759469228055
@@ -129,11 +129,11 @@ mnjs.nrt(Infinity, Infinity) === mnjs.pow(Infinity, 1 /Infinity)  // true
 
 mnjs.tau  // 6.283185307179586
 
-mnjs.sin(1)  // 0.8414709848
-mnjs.sin.rad(1)  // 0.8414709848
+mnjs.sin(1)  // 0.841470984807897
+mnjs.sin.rad(1)  // 0.841470984807897
 mnjs.sin(1) === mnjs.sin.rad(1)  // true
 
-mnjs.dtr(30)  // 0.5235987756
+mnjs.dtr(30)  // 0.523598775598299
 mnjs.sin.deg(30)  // 0.5
 mnjs.sin.deg(30) === mnjs.sin(mnjs.dtr(30))  // true
 
@@ -144,7 +144,7 @@ mnjs.cos(1) === mnjs.cos.rad(1)  // true
 
 mnjs.tan.deg(45)  // 1
 
-mnjs.tan(0.5)  // 0.5463024898
+mnjs.tan(0.5)  // 0.54630248984379
 mnjs.tan(0.5) === mnjs.tan.rad(0.5)  // true
 
 mnjs.tan.deg(90)  // -Infinity
