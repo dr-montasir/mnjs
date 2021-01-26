@@ -60,6 +60,10 @@ const ERRORS = {
     NO: "01 : 03",
     TEXT: `This function accepting two arguments of numbers, arrays, or one of them must be a number, and the other must be an array; In the case of arrays, all elements must be a number, the length of arrays must be equal`
   },
+  MNJS_1_4: {
+    NO: "01 : 04",
+    TEXT: `The first parameter accepting either a number or an array. In the case of an array, all elements must be a number. The second parameter must be between 0 and 100`
+  },
   MNJS_2_1: {
     NO: "02 : 01",
     TEXT: `All parameters must be a number`
@@ -201,14 +205,24 @@ const stn = (x) => {
 
 // Mathematical functions
 
-// The abs Function |-x| = x
-
+// The abs function |-x| = x
 const abs = (x) => {
   if (typeof x === "number") {
     return Math.abs(x);
   } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
     return x.map(x => Math.abs(x));
   } else {
+    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+  };
+};
+
+// The sign function (+ : 1, - : -1)
+const sign = (x) => {
+	if (typeof x === "number") {
+		return Math.sign(x);
+	} else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
+		return x.map(x => Math.sign(x));
+	} else {
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
   };
 };
@@ -265,9 +279,15 @@ const divi = (x, y) => {
   };
 };
 
-// Fix to the certain decimal point.
-const fix = (value, point) => {
-  return Number(value.toFixed(point));
+// Fix to the certain decimal point. (x = value, y = point)
+const fix = (x, y) => {
+	if (typeof x === "number" && typeof y === "number" && y >= 0 && y <= 100) {
+		return Number(x.toFixed(y));
+	} else if (typeof y === "number" && y >= 0 && y <= 100 && Array.isArray(x) && x.every(x => typeof x === "number")) {
+		return x.map(x => Number(x.toFixed(y)));
+	} else {
+    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_4.NO}: ${ERRORS.MNJS_1_4.TEXT}`);
+  };
 };
 
 // The Hypot Function
@@ -355,14 +375,34 @@ const mult = (x, y) => {
   };
 };
 
-// N Root Function. root = (1, 2, ..., n)
-const nrt = (num, root) => {
-  return Number(Math.pow(num, NUM_1/root).toFixed(DIG_15));
+// N Root Function. x = num, y = root = (1, 2, ..., n)
+const nrt = (x, y) => {
+  if (typeof x === "number" && typeof y === "number") {
+  	return Number(Math.pow(x, NUM_1/y).toFixed(DIG_15));
+  } else if (typeof x === "number" && Array.isArray(y) && y.every(y => typeof y === "number")) {
+  	return y.map(y => Number(Math.pow(x, NUM_1/y).toFixed(DIG_15)));
+  } else if (typeof y === "number" && Array.isArray(x) && x.every(x => typeof x === "number")) {
+  	return x.map(x => Number(Math.pow(x, NUM_1/y).toFixed(DIG_15)));
+  } else if (Array.isArray(x) && Array.isArray(y) && x.length === y.length && x.every(x => typeof x === "number") && y.every(y => typeof y === "number")) {
+  	return x.map((x, index) => Number(Math.pow(x, NUM_1/y[index]).toFixed(DIG_15)));
+  } else {
+    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_3.NO}: ${ERRORS.MNJS_1_3.TEXT}`);
+  };
 };
 
-// The Power Function
-const pow = (num, power) => {
-  return Number(Math.pow(num, power).toFixed(DIG_15));
+// The Power Function. x = num, y = power = (1, 2, ..., n)
+const pow = (x, y) => {
+  if (typeof x === "number" && typeof y === "number") {
+  	return Number(Math.pow(x, y).toFixed(DIG_15));
+  } else if (typeof x === "number" && Array.isArray(y) && y.every(y => typeof y === "number")) {
+  	return y.map(y => Number(Math.pow(x, y).toFixed(DIG_15)));
+  } else if (typeof y === "number" && Array.isArray(x) && x.every(x => typeof x === "number")) {
+  	return x.map(x => Number(Math.pow(x, y).toFixed(DIG_15)));
+  } else if (Array.isArray(x) && Array.isArray(y) && x.length === y.length && x.every(x => typeof x === "number") && y.every(y => typeof y === "number")) {
+  	return x.map((x, index) => Number(Math.pow(x, y[index]).toFixed(DIG_15)));
+  } else {
+    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_3.NO}: ${ERRORS.MNJS_1_3.TEXT}`);
+  };
 };
 
 // Square Function
@@ -971,6 +1011,8 @@ const useMnjs = () => {
 
   // Mathematical functions
   mnjs.abs				= abs;
+  mnjs.sign				= sign;
+  
   mnjs.add				= add;
   mnjs.cube				= cube;
   mnjs.cbrt				= cbrt;

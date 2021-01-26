@@ -220,6 +220,14 @@ mnjs.divi([0, 2], [4, 8]) //  [ 0, 0.25 ]
 mnjs.divi([4, 8], [0, 2]) //  [ Infinity, 4 ]
 mnjs.add([2], [1, 2])     // Error: MNJS ERROR No. 01 : 03: This function accepting two arguments of numbers, arrays, or one of them must be a number, and the other must be an array; In the case of arrays, all elements must be a number, the length of arrays must be equal
 
+mnjs.pow(4, [1, 2, 3])    //  [ 4, 16, 64 ]
+mnjs.pow([1, 2, 3], 4)    //  [ 1, 16, 81 ]
+
+mnjs.nrt(8, [1, 2, 3])    //  [ 8, 2.82842712474619, 2 ]
+mnjs.nrt([1, 2, 3], 8)    //  [ 1, 1.090507732665258, 1.147202690439877 ]
+mnjs.nrt([1, 3], [3, 1])  //  [ 1, 3 ]
+mnjs.nrt([3, 1], [1, 3])  //  [ 3, 1 ]
+
 mnjs.mult(0.2, [ 5, 10, 15])                   //  [ 1, 2, 3 ]
 mnjs.mult(0.2, mnjs.range(5, 15, 5))           //  [ 1, 2, 3 ] 
 mnjs.mult([0.2, 0.2, 0.2], [ 5, 10, 15])       //  [ 1, 2, 3 ] 
@@ -323,6 +331,7 @@ mnjs.mult(0.2, [ 5, 10, 15])[1] === mnjs.mult(mnjs.monolist(0.2, 3), [5, 10, 15]
 | sech      | Hyperbolic secant (in radians)                               | function:  sech(angleRadians)                            |
 | sech.rad  | Hyperbolic secant (in radians)                               | function:  sech.rad(angleRadians)                        |
 | sech.deg  | Hyperbolic secant (in degrees)                               | function:  sech.deg(angleDegrees)                        |
+| sign      | The sign function (+, -)                                     | function: sign(num). It returns  -1, -0, 0, 1            |
 | sin       | Sine (in radians)                                            | function:  sin(angleRadians)                             |
 | sin.rad   | Sine (in radians)                                            | function:  sin.rad(angleRadians)                         |
 | sin.deg   | Sine (in degrees)                                            | function:  sin.deg(angleDegrees)                         |
