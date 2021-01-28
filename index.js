@@ -1,1125 +1,542 @@
-/*********************************************/
-/*  Author : Montasir Mirghani               */
-/*  Email  : contact@montasir.me             */
-/*  GitHub : https://github.com/dr-montasir  */
-/*********************************************/
-
-// Mathematical constants
-
-// Angle (in degrees) of a straight line.
-const DEG_180 = 180;
-
-// 15 digits after the decimal place.
-const DIG_15 = 15;
-
-// 8 digits after the decimal place.
-const DIG_8 = 8;
-
-// The number 2.
-const NUM_2 = 2;
-
-// The number 1.
-const NUM_1 = 1;
-
-// The Number e (Euler's number). Math.E  
-const E = 2.718281828459045;
-
-// The natural logarithm of 2
-const LN2 = Number(Math.LN2.toFixed(DIG_15));
-
-// The natural logarithm of 10
-const LN10 = Number(Math.LN10.toFixed(DIG_15));
-
-// The base 2 logarithm of E
-const LOG2E = Number(Math.LOG2E.toFixed(DIG_15));
-
-// The base 10 logarithm of E
-const LOG10E = Number(Math.LOG10E.toFixed(DIG_15));
-
-// The Number Pi. Math.PI
-const PI = 3.141592653589793;
-
-// The Golden Ratio (Phi) 1.618033988749895
-const PHI = Number(((1 + Math.sqrt(5)) / 2).toFixed(DIG_15));
-
-//  The tau constant. The circle constant representing the ratio between circumference and radius
-const TAU = Number((2 * PI).toFixed(DIG_15));
-
-// Throw errors
-
-const ERRORS = {
-  MNJS_1_1: {
-    NO: "01 : 01",
-    TEXT: `This function accepting either a number or an array. In the case of an array, all elements must be a number`
+const E = 2.718281828459045,
+  LN2 = Number(Math.LN2.toFixed(15)),
+  LN10 = Number(Math.LN10.toFixed(15)),
+  LOG2E = Number(Math.LOG2E.toFixed(15)),
+  LOG10E = Number(Math.LOG10E.toFixed(15)),
+  PI = 3.141592653589793,
+  PHI = Number(((1 + Math.sqrt(5)) / 2).toFixed(15)),
+  TAU = Number((2 * PI).toFixed(15)),
+  ERRORS = {
+    MNJS_1_1: { NO: "01 : 01", TEXT: "This function accepting either a number or an array. In the case of an array, all elements must be a number" },
+    MNJS_1_2: { NO: "01 : 02", TEXT: "This function accepting either a string or an array. In the case of an array, all elements must be a string" },
+    MNJS_1_3: {
+      NO: "01 : 03",
+      TEXT: "This function accepting two arguments of numbers, arrays, or one of them must be a number, and the other must be an array; In the case of arrays, all elements must be a number, the length of arrays must be equal",
+    },
+    MNJS_1_4: { NO: "01 : 04", TEXT: "The first parameter accepting either a number or an array. In the case of an array, all elements must be a number. The second parameter must be between 0 and 100" },
+    MNJS_2_1: { NO: "02 : 01", TEXT: "All parameters must be a number" },
+    MNJS_2_2: { NO: "02 : 02", TEXT: "The step parameter must be a number" },
+    MNJS_2_3: { NO: "02 : 03", TEXT: "The first and the second parameter should not be equal" },
+    MNJS_2_4: { NO: "02 : 04", TEXT: "The step parameter should not be greater than the difference between the first and second parameter" },
+    MNJS_2_5: { NO: "02 : 05", TEXT: "The step parameter should not be equal zero" },
+    MNJS_2_6: { NO: "02 : 06", TEXT: "The sign of the step parameter must be positive" },
+    MNJS_3_1: { NO: "03 : 01", TEXT: "The monolist function should take two parameters (value: number, size: natural number & greater than zero)" },
+    MNJS_3_2: { NO: "03 : 02", TEXT: "All parameters must be a number (value: number, size: natural number & greater than zero)" },
   },
-  MNJS_1_2: {
-    NO: "01 : 02",
-    TEXT: `This function accepting either a string or an array. In the case of an array, all elements must be a string`
-  },
-  MNJS_1_3: {
-    NO: "01 : 03",
-    TEXT: `This function accepting two arguments of numbers, arrays, or one of them must be a number, and the other must be an array; In the case of arrays, all elements must be a number, the length of arrays must be equal`
-  },
-  MNJS_1_4: {
-    NO: "01 : 04",
-    TEXT: `The first parameter accepting either a number or an array. In the case of an array, all elements must be a number. The second parameter must be between 0 and 100`
-  },
-  MNJS_2_1: {
-    NO: "02 : 01",
-    TEXT: `All parameters must be a number`
-  },
-  MNJS_2_2: {
-    NO: "02 : 02",
-    TEXT: `The step parameter must be a number`
-  },
-  MNJS_2_3: {
-    NO: "02 : 03",
-    TEXT: `The first and the second parameter should not be equal`
-  },
-  MNJS_2_4: {
-    NO: "02 : 04",
-    TEXT: `The step parameter should not be greater than the difference between the first and second parameter`
-  },
-  MNJS_2_5: {
-    NO: "02 : 05",
-    TEXT: `The step parameter should not be equal zero`
-  },
-  MNJS_2_6: {
-    NO: "02 : 06",
-    TEXT: `The sign of the step parameter must be positive`
-  },
-  MNJS_3_1: {
-    NO: "03 : 01",
-    TEXT: `The monolist function should take two parameters (value: number, size: natural number & greater than zero)`
-  },
-  MNJS_3_2: {
-    NO: "03 : 02",
-    TEXT: `All parameters must be a number (value: number, size: natural number & greater than zero)`
-  }
-};
-
-// Matrices
-
-// The Range Function
-const range = (start, end, step) => {
-  let array = [];
-  if (typeof start !== "number" || typeof end !== "number") {
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_2_1.NO}: ${ERRORS.MNJS_2_1.TEXT}`);
-  };
-  if (typeof step === "string" || typeof step === "boolean") {
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_2_2.NO}: ${ERRORS.MNJS_2_2.TEXT}`);
-  };
-  if (start === end) {
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_2_3.NO}: ${ERRORS.MNJS_2_3.TEXT}`);
-  };
-  if (step >  Math.abs(start - end)) {
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_2_4.NO}: ${ERRORS.MNJS_2_4.TEXT}`);
-  };
-  if (step === 0) {
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_2_5.NO}: ${ERRORS.MNJS_2_5.TEXT}`);
-  };
-  if (Math.sign(step) === -1) {
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_2_6.NO}: ${ERRORS.MNJS_2_6.TEXT}`);
-  };
-  if (!step) {
-    step = 1;
-  };
-  if (start > end) {
-    for(let i = start; i >= end; i = i - step){
-     array.push(Number(i.toFixed(DIG_8)));
+  range = (r, e, t) => {
+    let o = [];
+    if ("number" != typeof r || "number" != typeof e) throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_2_1.NO}: ${ERRORS.MNJS_2_1.TEXT}`);
+    if ("string" == typeof t || "boolean" == typeof t) throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_2_2.NO}: ${ERRORS.MNJS_2_2.TEXT}`);
+    if (r === e) throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_2_3.NO}: ${ERRORS.MNJS_2_3.TEXT}`);
+    if (t > Math.abs(r - e)) throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_2_4.NO}: ${ERRORS.MNJS_2_4.TEXT}`);
+    if (0 === t) throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_2_5.NO}: ${ERRORS.MNJS_2_5.TEXT}`);
+    if (-1 === Math.sign(t)) throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_2_6.NO}: ${ERRORS.MNJS_2_6.TEXT}`);
+    if ((t || (t = 1), r > e)) {
+      for (let R = r; R >= e; R -= t) o.push(Number(R.toFixed(8)));
+      return o;
     }
-    return array;
-  };
-  if (start > end) {
-    for(let i = start; i >= end; i = i - step){
-     array.push(Number(i.toFixed(DIG_8)));
+    if (r > e) {
+      for (let R = r; R >= e; R -= t) o.push(Number(R.toFixed(8)));
+      return o;
     }
-    return array;
-  };
-  if (start < end) {
-    for(let i = start; i <= end; i = i + step){
-     array.push(Number(i.toFixed(DIG_8)));
+    if (r < e) {
+      for (let R = r; R <= e; R += t) o.push(Number(R.toFixed(8)));
+      return o;
     }
-    return array;
-  };
-};
-
-// The MonoList Function
-const monolist = (value, size) => {
-  if (!value && !size || value && size === 0) {
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_3_1.NO}: ${ERRORS.MNJS_3_1.TEXT}`);
-  } else if (typeof value !== "number" || typeof size !== "number") {
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_3_2.NO}: ${ERRORS.MNJS_3_2.TEXT}`);
-  } else {
-    return Array(size).fill(value);
-  };
-};
-
-// Mathematical units convert
-
-// The dtr Function (x = angle in degrees). Degrees to Radians conversion. Result in radians
-const dtr = (x) => {
-  if (typeof x === "number") {
-    return Number((x * Math.PI / DEG_180).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number((x * Math.PI / DEG_180).toFixed(DIG_15)));
-  } else {
+  },
+  monolist = (r, e) => {
+    if ((!r && !e) || (r && 0 === e)) throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_3_1.NO}: ${ERRORS.MNJS_3_1.TEXT}`);
+    if ("number" != typeof r || "number" != typeof e) throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_3_2.NO}: ${ERRORS.MNJS_3_2.TEXT}`);
+    return Array(e).fill(r);
+  },
+  dtr = (r) => {
+    if ("number" == typeof r) return Number(((r * Math.PI) / 180).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(((r * Math.PI) / 180).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The rtd Function (x = angle in radians). Radians to Degrees conversion. Result in degrees
-const rtd = (x) => {
-  if (typeof x === "number") {
-    let radToDeg = Number((x * DEG_180 / Math.PI).toFixed(DIG_8));
-    return Number((radToDeg).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    let radToDeg = x.map(x => Number((x * DEG_180 / Math.PI).toFixed(DIG_8)));
-    return radToDeg.map(radToDeg => Number((radToDeg).toFixed(DIG_15)));
-  } else {
+  },
+  rtd = (r) => {
+    if ("number" == typeof r) {
+      let e = Number(((180 * r) / Math.PI).toFixed(8));
+      return Number(e.toFixed(15));
+    }
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) {
+      return r.map((r) => Number(((180 * r) / Math.PI).toFixed(8))).map((r) => Number(r.toFixed(15)));
+    }
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// Number to String. Result as string
-const nts = (x) => {
-  if (typeof x === "number") {
-  	return String(x);
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-  	return x.map(x => String(x));
-  } else {
-  	throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// String to Number. Result as number
-const stn = (x) => {
-  if (typeof x === "string") {
-  	return Number(x);
-  } else if (Array.isArray(x) && x.every(x => typeof x === "string")) {
-  	return x.map(x => Number(x));
-  } else {
-  	throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_2.NO}: ${ERRORS.MNJS_1_2.TEXT}`);
-  };
-};
-
-// Mathematical functions
-
-// The abs function |-x| = x
-const abs = (x) => {
-  if (typeof x === "number") {
-    return Math.abs(x);
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Math.abs(x));
-  } else {
+  },
+  nts = (r) => {
+    if ("number" == typeof r) return String(r);
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => String(r));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The sign function (+ : 1, - : -1)
-const sign = (x) => {
-	if (typeof x === "number") {
-		return Math.sign(x);
-	} else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-		return x.map(x => Math.sign(x));
-	} else {
+  },
+  stn = (r) => {
+    if ("string" == typeof r) return Number(r);
+    if (Array.isArray(r) && r.every((r) => "string" == typeof r)) return r.map((r) => Number(r));
+    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_2.NO}: ${ERRORS.MNJS_1_2.TEXT}`);
+  },
+  abs = (r) => {
+    if ("number" == typeof r) return Math.abs(r);
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Math.abs(r));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// Addition Function
-const add = (x, y) => {
-	if (typeof x === "number" && typeof y === "number") {
-		return Number((x + y).toFixed(DIG_15));
-	} else if (typeof x === "number" && Array.isArray(y) && y.every(y => typeof y === "number")) {
-		return y.map(y => Number((x + y).toFixed(DIG_15)));
-	} else if (typeof y === "number" && Array.isArray(x) && x.every(x => typeof x === "number")) {
-		return x.map(x => Number((x + y).toFixed(DIG_15)));
-	} else if (Array.isArray(x) && Array.isArray(y) && x.length === y.length && x.every(x => typeof x === "number") && y.every(y => typeof y === "number")) {
-		return x.map((x, index) => Number((x + y[index]).toFixed(DIG_15)));
-	} else {
+  },
+  sign = (r) => {
+    if ("number" == typeof r) return Math.sign(r);
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Math.sign(r));
+    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+  },
+  add = (r, e) => {
+    if ("number" == typeof r && "number" == typeof e) return Number((r + e).toFixed(15));
+    if ("number" == typeof r && Array.isArray(e) && e.every((r) => "number" == typeof r)) return e.map((e) => Number((r + e).toFixed(15)));
+    if ("number" == typeof e && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number((r + e).toFixed(15)));
+    if (Array.isArray(r) && Array.isArray(e) && r.length === e.length && r.every((r) => "number" == typeof r) && e.every((r) => "number" == typeof r)) return r.map((r, t) => Number((r + e[t]).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_3.NO}: ${ERRORS.MNJS_1_3.TEXT}`);
-  };
-};
-
-// Cube Function
-const cube = (x) => {
-  if (typeof x === "number") {
-    return Number((x * x * x).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number((x * x * x).toFixed(DIG_15)));
-  } else {
+  },
+  cube = (r) => {
+    if ("number" == typeof r) return Number((r * r * r).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number((r * r * r).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// Cube Root Function
-const cbrt = (x) => {
-  if (typeof x === "number") {
-    return Number(Math.cbrt(x).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(Math.cbrt(x).toFixed(DIG_15)));
-  } else {
+  },
+  cbrt = (r) => {
+    if ("number" == typeof r) return Number(Math.cbrt(r).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.cbrt(r).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// Division Function. (x = numerator, y = denominator)
-const divi = (x, y) => {
-	if (typeof x === "number" && typeof y === "number") {
-		return Number((x / y).toFixed(DIG_15));
-	} else if (typeof x === "number" && Array.isArray(y) && y.every(y => typeof y === "number")) {
-		return y.map(y => Number((x / y).toFixed(DIG_15)));
-	} else if (typeof y === "number" && Array.isArray(x) && x.every(x => typeof x === "number")) {
-		return x.map(x => Number((x / y).toFixed(DIG_15)));
-	} else if (Array.isArray(x) && Array.isArray(y) && x.length === y.length && x.every(x => typeof x === "number") && y.every(y => typeof y === "number")) {
-		return x.map((x, index) => Number((x / y[index]).toFixed(DIG_15)));
-	} else {
+  },
+  divi = (r, e) => {
+    if ("number" == typeof r && "number" == typeof e) return Number((r / e).toFixed(15));
+    if ("number" == typeof r && Array.isArray(e) && e.every((r) => "number" == typeof r)) return e.map((e) => Number((r / e).toFixed(15)));
+    if ("number" == typeof e && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number((r / e).toFixed(15)));
+    if (Array.isArray(r) && Array.isArray(e) && r.length === e.length && r.every((r) => "number" == typeof r) && e.every((r) => "number" == typeof r)) return r.map((r, t) => Number((r / e[t]).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_3.NO}: ${ERRORS.MNJS_1_3.TEXT}`);
-  };
-};
-
-// Fix to the certain decimal point. (x = value, y = point)
-const fix = (x, y) => {
-	if (typeof x === "number" && typeof y === "number" && y >= 0 && y <= 100) {
-		return Number(x.toFixed(y));
-	} else if (typeof y === "number" && y >= 0 && y <= 100 && Array.isArray(x) && x.every(x => typeof x === "number")) {
-		return x.map(x => Number(x.toFixed(y)));
-	} else {
+  },
+  fix = (r, e) => {
+    if ("number" == typeof r && "number" == typeof e && e >= 0 && e <= 100) return Number(r.toFixed(e));
+    if ("number" == typeof e && e >= 0 && e <= 100 && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(r.toFixed(e)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_4.NO}: ${ERRORS.MNJS_1_4.TEXT}`);
-  };
-};
-
-// The Hypot Function
-const hypot = (...values) => {
-  return Number(Math.hypot(...values).toFixed(DIG_15));
-};
-
-// The Inverse Function
-const inv = (x) => {
-  if (typeof x === "number") {
-    return Number((1 / x).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number((1 / x).toFixed(DIG_15)));
-  } else {
+  },
+  hypot = (...r) => Number(Math.hypot(...r).toFixed(15)),
+  inv = (r) => {
+    if ("number" == typeof r) return Number((1 / r).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number((1 / r).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The Natural logarithm (base e) of a number. (ln) in Math.
-const log = (x) => {
-  if (typeof x === "number") {
-    return Number(Math.log(x).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(Math.log(x).toFixed(DIG_15)));
-  } else {
+  },
+  log = (r) => {
+    if ("number" == typeof r) return Number(Math.log(r).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.log(r).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The base 2 logarithm of a number
-const log2 = (x) => {
-  if (typeof x === "number") {
-    return Number(Math.log2(x).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(Math.log2(x).toFixed(DIG_15)));
-  } else {
+  },
+  log2 = (r) => {
+    if ("number" == typeof r) return Number(Math.log2(r).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.log2(r).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The base 10 logarithm of a number
-const log10 = (x) => {
-  if (typeof x === "number") {
-    return Number(Math.log10(x).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(Math.log10(x).toFixed(DIG_15)));
-  } else {
+  },
+  log10 = (r) => {
+    if ("number" == typeof r) return Number(Math.log10(r).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.log10(r).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The natural logarithm (base e) of 1 + a number
-const log1p = (x) => {
-  if (typeof x === "number") {
-    return Number(Math.log1p(x).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(Math.log1p(x).toFixed(DIG_15)));
-  } else {
+  },
+  log1p = (r) => {
+    if ("number" == typeof r) return Number(Math.log1p(r).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.log1p(r).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The max function returns the largest of the zero or more numbers
-const max = (...values) => {
-  return Math.max(...values);
-};
-
-// The min function returns the lowest-valued number
-const min = (...values) => {
-  return Math.min(...values);
-};
-
-// Multiplication Function
-const mult = (x, y) => {
-	if (typeof x === "number" && typeof y === "number") {
-		return Number((x * y).toFixed(DIG_15));
-	} else if (typeof x === "number" && Array.isArray(y) && y.every(y => typeof y === "number")) {
-		return y.map(y => Number((x * y).toFixed(DIG_15)));
-	} else if (typeof y === "number" && Array.isArray(x) && x.every(x => typeof x === "number")) {
-		return x.map(x => Number((x * y).toFixed(DIG_15)));
-	} else if (Array.isArray(x) && Array.isArray(y) && x.length === y.length && x.every(x => typeof x === "number") && y.every(y => typeof y === "number")) {
-		return x.map((x, index) => Number((x * y[index]).toFixed(DIG_15)));
-	} else {
+  },
+  max = (...r) => Math.max(...r),
+  min = (...r) => Math.min(...r),
+  mult = (r, e) => {
+    if ("number" == typeof r && "number" == typeof e) return Number((r * e).toFixed(15));
+    if ("number" == typeof r && Array.isArray(e) && e.every((r) => "number" == typeof r)) return e.map((e) => Number((r * e).toFixed(15)));
+    if ("number" == typeof e && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number((r * e).toFixed(15)));
+    if (Array.isArray(r) && Array.isArray(e) && r.length === e.length && r.every((r) => "number" == typeof r) && e.every((r) => "number" == typeof r)) return r.map((r, t) => Number((r * e[t]).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_3.NO}: ${ERRORS.MNJS_1_3.TEXT}`);
-  };
-};
-
-// N Root Function. x = num, y = root = (1, 2, ..., n)
-const nrt = (x, y) => {
-  if (typeof x === "number" && typeof y === "number") {
-  	return Number(Math.pow(x, NUM_1/y).toFixed(DIG_15));
-  } else if (typeof x === "number" && Array.isArray(y) && y.every(y => typeof y === "number")) {
-  	return y.map(y => Number(Math.pow(x, NUM_1/y).toFixed(DIG_15)));
-  } else if (typeof y === "number" && Array.isArray(x) && x.every(x => typeof x === "number")) {
-  	return x.map(x => Number(Math.pow(x, NUM_1/y).toFixed(DIG_15)));
-  } else if (Array.isArray(x) && Array.isArray(y) && x.length === y.length && x.every(x => typeof x === "number") && y.every(y => typeof y === "number")) {
-  	return x.map((x, index) => Number(Math.pow(x, NUM_1/y[index]).toFixed(DIG_15)));
-  } else {
+  },
+  nrt = (r, e) => {
+    if ("number" == typeof r && "number" == typeof e) return Number(Math.pow(r, 1 / e).toFixed(15));
+    if ("number" == typeof r && Array.isArray(e) && e.every((r) => "number" == typeof r)) return e.map((e) => Number(Math.pow(r, 1 / e).toFixed(15)));
+    if ("number" == typeof e && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.pow(r, 1 / e).toFixed(15)));
+    if (Array.isArray(r) && Array.isArray(e) && r.length === e.length && r.every((r) => "number" == typeof r) && e.every((r) => "number" == typeof r)) return r.map((r, t) => Number(Math.pow(r, 1 / e[t]).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_3.NO}: ${ERRORS.MNJS_1_3.TEXT}`);
-  };
-};
-
-// The Power Function. x = num, y = power = (1, 2, ..., n)
-const pow = (x, y) => {
-  if (typeof x === "number" && typeof y === "number") {
-  	return Number(Math.pow(x, y).toFixed(DIG_15));
-  } else if (typeof x === "number" && Array.isArray(y) && y.every(y => typeof y === "number")) {
-  	return y.map(y => Number(Math.pow(x, y).toFixed(DIG_15)));
-  } else if (typeof y === "number" && Array.isArray(x) && x.every(x => typeof x === "number")) {
-  	return x.map(x => Number(Math.pow(x, y).toFixed(DIG_15)));
-  } else if (Array.isArray(x) && Array.isArray(y) && x.length === y.length && x.every(x => typeof x === "number") && y.every(y => typeof y === "number")) {
-  	return x.map((x, index) => Number(Math.pow(x, y[index]).toFixed(DIG_15)));
-  } else {
+  },
+  pow = (r, e) => {
+    if ("number" == typeof r && "number" == typeof e) return Number(Math.pow(r, e).toFixed(15));
+    if ("number" == typeof r && Array.isArray(e) && e.every((r) => "number" == typeof r)) return e.map((e) => Number(Math.pow(r, e).toFixed(15)));
+    if ("number" == typeof e && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.pow(r, e).toFixed(15)));
+    if (Array.isArray(r) && Array.isArray(e) && r.length === e.length && r.every((r) => "number" == typeof r) && e.every((r) => "number" == typeof r)) return r.map((r, t) => Number(Math.pow(r, e[t]).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_3.NO}: ${ERRORS.MNJS_1_3.TEXT}`);
-  };
-};
-
-// Square Function
-const sqr = (x) => {
-  if (typeof x === "number") {
-    return Number((x * x).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number((x * x).toFixed(DIG_15)));
-  } else {
+  },
+  sqr = (r) => {
+    if ("number" == typeof r) return Number((r * r).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number((r * r).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// Square Root Function
-const sqrt = (x) => {
-  if (typeof x === "number") {
-    return Number(Math.sqrt(x).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(Math.sqrt(x).toFixed(DIG_15)));
-  } else {
+  },
+  sqrt = (r) => {
+    if ("number" == typeof r) return Number(Math.sqrt(r).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.sqrt(r).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// Subtraction Function
-const subt = (x, y) => {
-	if (typeof x === "number" && typeof y === "number") {
-		return Number((x - y).toFixed(DIG_15));
-	} else if (typeof x === "number" && Array.isArray(y) && y.every(y => typeof y === "number")) {
-		return y.map(y => Number((x - y).toFixed(DIG_15)));
-	} else if (typeof y === "number" && Array.isArray(x) && x.every(x => typeof x === "number")) {
-		return x.map(x => Number((x - y).toFixed(DIG_15)));
-	} else if (Array.isArray(x) && Array.isArray(y) && x.length === y.length && x.every(x => typeof x === "number") && y.every(y => typeof y === "number")) {
-		return x.map((x, index) => Number((x - y[index]).toFixed(DIG_15)));
-	} else {
+  },
+  subt = (r, e) => {
+    if ("number" == typeof r && "number" == typeof e) return Number((r - e).toFixed(15));
+    if ("number" == typeof r && Array.isArray(e) && e.every((r) => "number" == typeof r)) return e.map((e) => Number((r - e).toFixed(15)));
+    if ("number" == typeof e && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number((r - e).toFixed(15)));
+    if (Array.isArray(r) && Array.isArray(e) && r.length === e.length && r.every((r) => "number" == typeof r) && e.every((r) => "number" == typeof r)) return r.map((r, t) => Number((r - e[t]).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_3.NO}: ${ERRORS.MNJS_1_3.TEXT}`);
-  };
-};
-
-// Calculate exponential of a number. The power of e (Euler's number)
-const exp = (x) => {
-  if (typeof x === "number") {
-    return Number(Math.pow(E, x).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(Math.pow(E, x).toFixed(DIG_15)));
-  } else {
+  },
+  exp = (r) => {
+    if ("number" == typeof r) return Number(Math.pow(E, r).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.pow(E, r).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// Trigonometric Functions
-
-// The cos function (x = angle in radians)
-const cos = (x) => {
-  if (typeof x === "number") {
-    return Number(Math.cos(x).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(Math.cos(x).toFixed(DIG_15)));
-  } else {
+  },
+  cos = (r) => {
+    if ("number" == typeof r) return Number(Math.cos(r).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.cos(r).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The cosDeg function (x = angle in degrees)
-const cosDeg = (x) => {
-  if (typeof x === "number") {
-    return Number((Math.cos(dtr(x))).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number((Math.cos(dtr(x))).toFixed(DIG_15)));
-  } else {
+  },
+  cosDeg = (r) => {
+    if ("number" == typeof r) return Number(Math.cos(dtr(r)).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.cos(dtr(r)).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The acos function (x)
-const acos = (x) => {
-  if (typeof x === "number") {
-    return Number(Math.acos(x).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(Math.acos(x).toFixed(DIG_15)));
-  } else {
+  },
+  acos = (r) => {
+    if ("number" == typeof r) return Number(Math.acos(r).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.acos(r).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The acosDeg function (x)
-const acosDeg = (x) => {
-  if (typeof x === "number") {
-    return Number((rtd(acos(x))).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number((rtd(acos(x))).toFixed(DIG_15)));
-  } else {
+  },
+  acosDeg = (r) => {
+    if ("number" == typeof r) return Number(rtd(acos(r)).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(rtd(acos(r)).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The cosh function (x = angle in radians)
-const cosh = (x) => {
-  if (typeof x === "number") {
-    return Number(Math.cosh(x).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(Math.cosh(x).toFixed(DIG_15)));
-  } else {
+  },
+  cosh = (r) => {
+    if ("number" == typeof r) return Number(Math.cosh(r).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.cosh(r).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The coshDeg function (x = angle in degrees)
-const coshDeg = (x) => {
-  if (typeof x === "number") {
-    return Number((Math.cosh(dtr(x))).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number((Math.cosh(dtr(x))).toFixed(DIG_15)));
-  } else {
+  },
+  coshDeg = (r) => {
+    if ("number" == typeof r) return Number(Math.cosh(dtr(r)).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.cosh(dtr(r)).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The acosh function (x)
-const acosh = (x) => {
-  if (typeof x === "number") {
-    return Number(Math.acosh(x).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(Math.acosh(x).toFixed(DIG_15)));
-  } else {
+  },
+  acosh = (r) => {
+    if ("number" == typeof r) return Number(Math.acosh(r).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.acosh(r).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The acoshDeg function (x)
-const acoshDeg = (x) => {
-  if (typeof x === "number") {
-    return Number((rtd(acosh(x))).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number((rtd(acosh(x))).toFixed(DIG_15)));
-  } else {
+  },
+  acoshDeg = (r) => {
+    if ("number" == typeof r) return Number(rtd(acosh(r)).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(rtd(acosh(r)).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The sin function (x = angle in radians)
-const sin = (x) => {
-  if (typeof x === "number") {
-    return Number(Math.sin(x).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(Math.sin(x).toFixed(DIG_15)));
-  } else {
+  },
+  sin = (r) => {
+    if ("number" == typeof r) return Number(Math.sin(r).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.sin(r).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The sinDeg function (x = angle in degrees)
-const sinDeg = (x) => {
-  if (typeof x === "number") {
-    return Number((Math.sin(dtr(x))).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number((Math.sin(dtr(x))).toFixed(DIG_15)));
-  } else {
+  },
+  sinDeg = (r) => {
+    if ("number" == typeof r) return Number(Math.sin(dtr(r)).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.sin(dtr(r)).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The asin function (x)
-const asin = (x) => {
-  if (typeof x === "number") {
-    return Number(Math.asin(x).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(Math.asin(x).toFixed(DIG_15)));
-  } else {
+  },
+  asin = (r) => {
+    if ("number" == typeof r) return Number(Math.asin(r).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.asin(r).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The asinDeg function (x)
-const asinDeg = (x) => {
-  if (typeof x === "number") {
-    return Number((rtd(asin(x))).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number((rtd(asin(x))).toFixed(DIG_15)));
-  } else {
+  },
+  asinDeg = (r) => {
+    if ("number" == typeof r) return Number(rtd(asin(r)).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(rtd(asin(r)).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The sinh function (x = angle in radians)
-const sinh = (x) => {
-  if (typeof x === "number") {
-    return Number(Math.sinh(x).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(Math.sinh(x).toFixed(DIG_15)));
-  } else {
+  },
+  sinh = (r) => {
+    if ("number" == typeof r) return Number(Math.sinh(r).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.sinh(r).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The sinhDeg function (x = angle in degrees)
-const sinhDeg = (x) => {
-  if (typeof x === "number") {
-    return Number((Math.sinh(dtr(x))).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number((Math.sinh(dtr(x))).toFixed(DIG_15)));
-  } else {
+  },
+  sinhDeg = (r) => {
+    if ("number" == typeof r) return Number(Math.sinh(dtr(r)).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.sinh(dtr(r)).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The asinh function (x)
-const asinh = (x) => {
-  if (typeof x === "number") {
-    return Number(Math.asinh(x).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(Math.asinh(x).toFixed(DIG_15)));
-  } else {
+  },
+  asinh = (r) => {
+    if ("number" == typeof r) return Number(Math.asinh(r).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.asinh(r).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The asinhDeg function (x)
-const asinhDeg = (x) => {
-  if (typeof x === "number") {
-    return Number((rtd(asinh(x))).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number((rtd(asinh(x))).toFixed(DIG_15)));
-  } else {
+  },
+  asinhDeg = (r) => {
+    if ("number" == typeof r) return Number(rtd(asinh(r)).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(rtd(asinh(r)).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The tan function (x = angle in radians)
-const tan = (x) => {
-  if (typeof x === "number") {
-    return Number((sin(x) / cos(x)).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number((sin(x) / cos(x)).toFixed(DIG_15)));
-  } else {
+  },
+  tan = (r) => {
+    if ("number" == typeof r) return Number((sin(r) / cos(r)).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number((sin(r) / cos(r)).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The tanDeg function (x = angle in degrees)
-const tanDeg = (x) => {
-  if (typeof x === "number") {
-    return Number((tan(dtr(x))).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number((tan(dtr(x))).toFixed(DIG_15)));
-  } else {
+  },
+  tanDeg = (r) => {
+    if ("number" == typeof r) return Number(tan(dtr(r)).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(tan(dtr(r)).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The atan function (x)
-const atan = (x) => {
-  if (typeof x === "number") {
-    return Number(Math.atan(x).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(Math.atan(x).toFixed(DIG_15)));
-  } else {
+  },
+  atan = (r) => {
+    if ("number" == typeof r) return Number(Math.atan(r).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.atan(r).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The atanDeg function (x)
-const atanDeg = (x) => {
-  if (typeof x === "number") {
-    return Number((rtd(atan(x))).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number((rtd(atan(x))).toFixed(DIG_15)));
-  } else {
+  },
+  atanDeg = (r) => {
+    if ("number" == typeof r) return Number(rtd(atan(r)).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(rtd(atan(r)).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The tanh function (x = angle in radians)
-const tanh = (x) => {
-  if (typeof x === "number") {
-    return Number(Math.tanh(x).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(Math.tanh(x).toFixed(DIG_15)));
-  } else {
+  },
+  tanh = (r) => {
+    if ("number" == typeof r) return Number(Math.tanh(r).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.tanh(r).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The tanhDeg function (x = angle in degrees)
-const tanhDeg = (x) => {
-  if (typeof x === "number") {
-    return Number((Math.tanh(dtr(x))).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number((Math.tanh(dtr(x))).toFixed(DIG_15)));
-  } else {
+  },
+  tanhDeg = (r) => {
+    if ("number" == typeof r) return Number(Math.tanh(dtr(r)).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.tanh(dtr(r)).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The atanh function (x)
-const atanh = (x) => {
-  if (typeof x === "number") {
-    return Number(Math.atanh(x).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(Math.atanh(x).toFixed(DIG_15)));
-  } else {
+  },
+  atanh = (r) => {
+    if ("number" == typeof r) return Number(Math.atanh(r).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.atanh(r).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The atanhDeg function (x)
-const atanhDeg = (x) => {
-  if (typeof x === "number") {
-    return Number((rtd(Math.atanh(x))).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number((rtd(Math.atanh(x))).toFixed(DIG_15)));
-  } else {
+  },
+  atanhDeg = (r) => {
+    if ("number" == typeof r) return Number(rtd(Math.atanh(r)).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(rtd(Math.atanh(r)).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The csc function (x = angle in radians)
-const csc = (x) => {
-  if (typeof x === "number") {
-    return Number((NUM_1 / sin(x)).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number((NUM_1 / sin(x)).toFixed(DIG_15)));
-  } else {
+  },
+  csc = (r) => {
+    if ("number" == typeof r) return Number((1 / sin(r)).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number((1 / sin(r)).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The cscDeg function (x = angle in degrees)
-const cscDeg = (x) => {
-  if (typeof x === "number") {
-    return Number((csc(dtr(x))).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number((csc(dtr(x))).toFixed(DIG_15)));
-  } else {
+  },
+  cscDeg = (r) => {
+    if ("number" == typeof r) return Number(csc(dtr(r)).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(csc(dtr(r)).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The acsc function (x)
-const acsc = (x) => {
-  if (typeof x === "number") {
-    return Number(asin(NUM_1 / x).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(asin(NUM_1 / x).toFixed(DIG_15)));
-  } else {
+  },
+  acsc = (r) => {
+    if ("number" == typeof r) return Number(asin(1 / r).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(asin(1 / r).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The acscDeg function (x)
-const acscDeg = (x) => {
-  if (typeof x === "number") {
-    return Number(rtd(asin(NUM_1 / x)).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(rtd(asin(NUM_1 / x)).toFixed(DIG_15)));
-  } else {
+  },
+  acscDeg = (r) => {
+    if ("number" == typeof r) return Number(rtd(asin(1 / r)).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(rtd(asin(1 / r)).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The csch function (x = angle in radians)
-const csch = (x) => {
-  if (typeof x === "number") {
-    return Number((NUM_1 / sinh(x)).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number((NUM_1 / sinh(x)).toFixed(DIG_15)));
-  } else {
+  },
+  csch = (r) => {
+    if ("number" == typeof r) return Number((1 / sinh(r)).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number((1 / sinh(r)).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The cschDeg function (x = angle in degrees)
-const cschDeg = (x) => {
-  if (typeof x === "number") {
-    return Number((csch(dtr(x))).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number((csch(dtr(x))).toFixed(DIG_15)));
-  } else {
+  },
+  cschDeg = (r) => {
+    if ("number" == typeof r) return Number(csch(dtr(r)).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(csch(dtr(r)).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The acsch function (x)
-const acsch = (x) => {
-  if (typeof x === "number") {
-    return Number(asinh(NUM_1 / x).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(asinh(NUM_1 / x).toFixed(DIG_15)));
-  } else {
+  },
+  acsch = (r) => {
+    if ("number" == typeof r) return Number(asinh(1 / r).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(asinh(1 / r).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The acschDeg function (x)
-const acschDeg = (x) => {
-  if (typeof x === "number") {
-    return Number(rtd(asinh(NUM_1 / x)).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(rtd(asinh(NUM_1 / x)).toFixed(DIG_15)));
-  } else {
+  },
+  acschDeg = (r) => {
+    if ("number" == typeof r) return Number(rtd(asinh(1 / r)).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(rtd(asinh(1 / r)).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The sec function (x = angle in radians)
-const sec = (x) => {
-  if (typeof x === "number") {
-    return Number((NUM_1 / cos(x)).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number((NUM_1 / cos(x)).toFixed(DIG_15)));
-  } else {
+  },
+  sec = (r) => {
+    if ("number" == typeof r) return Number((1 / cos(r)).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number((1 / cos(r)).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The secDeg function (x = angle in degrees)
-const secDeg = (x) => {
-  if (typeof x === "number") {
-    return Number((sec(dtr(x))).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number((sec(dtr(x))).toFixed(DIG_15)));
-  } else {
+  },
+  secDeg = (r) => {
+    if ("number" == typeof r) return Number(sec(dtr(r)).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(sec(dtr(r)).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The asec function (x)
-const asec = (x) => {
-  if (typeof x === "number") {
-    return Number(acos(NUM_1 / x).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(acos(NUM_1 / x).toFixed(DIG_15)));
-  } else {
+  },
+  asec = (r) => {
+    if ("number" == typeof r) return Number(acos(1 / r).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(acos(1 / r).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The asecDeg function (x)
-const asecDeg = (x) => {
-  if (typeof x === "number") {
-    return Number(rtd(acos(NUM_1 / x)).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(rtd(acos(NUM_1 / x)).toFixed(DIG_15)));
-  } else {
+  },
+  asecDeg = (r) => {
+    if ("number" == typeof r) return Number(rtd(acos(1 / r)).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(rtd(acos(1 / r)).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The sech function (x = angle in radians)
-const sech = (x) => {
-  if (typeof x === "number") {
-    return Number((NUM_1 / cosh(x)).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number((NUM_1 / cosh(x)).toFixed(DIG_15)));
-  } else {
+  },
+  sech = (r) => {
+    if ("number" == typeof r) return Number((1 / cosh(r)).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number((1 / cosh(r)).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The sechDeg function (x = angle in degrees)
-const sechDeg = (x) => {
-  if (typeof x === "number") {
-    return Number((sech(dtr(x))).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number((sech(dtr(x))).toFixed(DIG_15)));
-  } else {
+  },
+  sechDeg = (r) => {
+    if ("number" == typeof r) return Number(sech(dtr(r)).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(sech(dtr(r)).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The asech function (x)
-const asech = (x) => {
-  if (typeof x === "number") {
-    return Number(acosh(NUM_1 / x).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(acosh(NUM_1 / x).toFixed(DIG_15)));
-  } else {
+  },
+  asech = (r) => {
+    if ("number" == typeof r) return Number(acosh(1 / r).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(acosh(1 / r).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The asechDeg function (x)
-const asechDeg = (x) => {
-  if (typeof x === "number") {
-    return Number(rtd(acosh(NUM_1 / x)).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(rtd(acosh(NUM_1 / x)).toFixed(DIG_15)));
-  } else {
+  },
+  asechDeg = (r) => {
+    if ("number" == typeof r) return Number(rtd(acosh(1 / r)).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(rtd(acosh(1 / r)).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The cot function (x = angle in radians)
-const cot = (x) => {
-  if (typeof x === "number") {
-    return Number((cos(x) / sin(x)).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number((cos(x) / sin(x)).toFixed(DIG_15)));
-  } else {
+  },
+  cot = (r) => {
+    if ("number" == typeof r) return Number((cos(r) / sin(r)).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number((cos(r) / sin(r)).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The cotDeg function (x = angle in degrees)
-const cotDeg = (x) => {
-  if (typeof x === "number") {
-    return Number((cot(dtr(x))).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number((cot(dtr(x))).toFixed(DIG_15)));
-  } else {
+  },
+  cotDeg = (r) => {
+    if ("number" == typeof r) return Number(cot(dtr(r)).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(cot(dtr(r)).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The acot function (x)
-const acot = (x) => {
-  if (typeof x === "number") {
-    return Number(atan(NUM_1 / x).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(atan(NUM_1 / x).toFixed(DIG_15)));
-  } else {
+  },
+  acot = (r) => {
+    if ("number" == typeof r) return Number(atan(1 / r).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(atan(1 / r).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The acotDeg function (x)
-const acotDeg = (x) => {
-  if (typeof x === "number") {
-    return Number(rtd(atan(NUM_1 / x)).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(rtd(atan(NUM_1 / x)).toFixed(DIG_15)));
-  } else {
+  },
+  acotDeg = (r) => {
+    if ("number" == typeof r) return Number(rtd(atan(1 / r)).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(rtd(atan(1 / r)).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The coth function (x = angle in radians)
-const coth = (x) => {
-  if (typeof x === "number") {
-    return Number((Math.cosh(x) / Math.sinh(x)).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number((Math.cosh(x) / Math.sinh(x)).toFixed(DIG_15)));
-  } else {
+  },
+  coth = (r) => {
+    if ("number" == typeof r) return Number((Math.cosh(r) / Math.sinh(r)).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number((Math.cosh(r) / Math.sinh(r)).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The cothDeg function (x = angle in degrees)
-const cothDeg = (x) => {
-  if (typeof x === "number") {
-    return Number((coth(dtr(x))).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number((coth(dtr(x))).toFixed(DIG_15)));
-  } else {
+  },
+  cothDeg = (r) => {
+    if ("number" == typeof r) return Number(coth(dtr(r)).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(coth(dtr(r)).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The acoth function (x)
-const acoth = (x) => {
-  if (typeof x === "number") {
-    return Number(((log((x + NUM_1) / x) + log(x / (x - NUM_1))) / NUM_2).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(((log((x + NUM_1) / x) + log(x / (x - NUM_1))) / NUM_2).toFixed(DIG_15)));
-  } else {
+  },
+  acoth = (r) => {
+    if ("number" == typeof r) return Number(((log((r + 1) / r) + log(r / (r - 1))) / 2).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(((log((r + 1) / r) + log(r / (r - 1))) / 2).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The acothDeg function (x)
-const acothDeg = (x) => {
-  if (typeof x === "number") {
-    return Number(rtd(acoth(x)).toFixed(DIG_15));
-  } else if (Array.isArray(x) && x.every(x => typeof x === "number")) {
-    return x.map(x => Number(rtd(acoth(x)).toFixed(DIG_15)));
-  } else {
+  },
+  acothDeg = (r) => {
+    if ("number" == typeof r) return Number(rtd(acoth(r)).toFixed(15));
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(rtd(acoth(r)).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
-  };
-};
-
-// The main function of mnjs
-
-// The useMnjs function
-const useMnjs = () => {
-  const mnjs  = {};
-
-  // Mathematical constants
-  mnjs.e					= E;      // The Number e (Euler's number)
-  mnjs.ln2				= LN2;    // The natural logarithm of 2
-  mnjs.ln10				= LN10;   // The natural logarithm of 10
-  mnjs.log2e			= LOG2E;  // The base 2 logarithm of E
-  mnjs.log10e			= LOG10E; // The base 10 logarithm of E
-  mnjs.pi					= PI;     // The Number Pi
-  mnjs.phi				= PHI;    // The Golden Ratio (Phi)
-  mnjs.tau				= TAU;    // The tau constant
-
-  // Mathematical units convert
-  mnjs.dtr				= dtr;  // Deg to Rad. Result in radians
-  mnjs.rtd				= rtd;  // Rad to Deg. Result in degrees
-  mnjs.nts				= nts;  // Number to String. Result as string
-  mnjs.stn				= stn;  // String to Number. Result as number
-
-  // Matrices
-  mnjs.range			= range;
-  mnjs.monolist   = monolist;
-
-  // Mathematical functions
-  mnjs.abs				= abs;
-  mnjs.sign				= sign;
-  
-  mnjs.add				= add;
-  mnjs.cube				= cube;
-  mnjs.cbrt				= cbrt;
-  mnjs.divi				= divi;
-  mnjs.exp				= exp;
-  mnjs.fix				= fix;
-  mnjs.hypot			= hypot;
-  mnjs.inv				= inv;
-  mnjs.log				= log;
-  mnjs.log2				= log2;
-  mnjs.log10			= log10;
-  mnjs.log1p			= log1p;
-  mnjs.max				= max;
-  mnjs.min				= min;
-  mnjs.mult				= mult;
-  mnjs.nrt				= nrt;
-  mnjs.pow				= pow;
-  mnjs.sqr				= sqr;
-  mnjs.sqrt				= sqrt;
-  mnjs.subt				= subt;
-
-  // Trigonometric Functions
-  mnjs.cos				= cos;
-  mnjs.cos.rad		= cos;
-  mnjs.cos.deg		= cosDeg;
-  mnjs.acos				= acos;
-  mnjs.acos.rad		= acos;
-  mnjs.acos.deg		= acosDeg;
-  mnjs.cosh				= cosh;
-  mnjs.cosh.rad		= cosh;
-  mnjs.cosh.deg		= coshDeg;
-  mnjs.acosh			= acosh;
-  mnjs.acosh.rad	= acosh;
-  mnjs.acosh.deg	= acoshDeg;
-
-  mnjs.sin				= sin;
-  mnjs.sin.rad		= sin;
-  mnjs.sin.deg		= sinDeg;
-  mnjs.asin				= asin;
-  mnjs.asin.rad		= asin;
-  mnjs.asin.deg		= asinDeg;
-  mnjs.sinh				= sinh;
-  mnjs.sinh.rad		= sinh;
-  mnjs.sinh.deg		= sinhDeg;
-  mnjs.asinh			= asinh;
-  mnjs.asinh.rad	= asinh;
-  mnjs.asinh.deg	= asinhDeg;
-
-  mnjs.tan				= tan;
-  mnjs.tan.rad		= tan;
-  mnjs.tan.deg		= tanDeg;
-  mnjs.atan				= atan;
-  mnjs.atan.rad		= atan;
-  mnjs.atan.deg		= atanDeg;
-  mnjs.tanh				= tanh;
-  mnjs.tanh.rad		= tanh;
-  mnjs.tanh.deg		= tanhDeg;
-  mnjs.atanh			= atanh;
-  mnjs.atanh.rad	= atanh;
-  mnjs.atanh.deg	= atanhDeg;
-
-  mnjs.csc				= csc;
-  mnjs.csc.rad		= csc;
-  mnjs.csc.deg		= cscDeg;
-  mnjs.acsc				= acsc;
-  mnjs.acsc.rad		= acsc;
-  mnjs.acsc.deg		= acscDeg;
-  mnjs.csch				= csch;
-  mnjs.csch.rad		= csch;
-  mnjs.csch.deg		= cschDeg;
-  mnjs.acsch			= acsch;
-  mnjs.acsch.rad	= acsch;
-  mnjs.acsch.deg	= acschDeg;
-
-  mnjs.sec				= sec;
-  mnjs.sec.rad		= sec;
-  mnjs.sec.deg		= secDeg;
-  mnjs.asec				= asec;
-  mnjs.asec.rad		= asec;
-  mnjs.asec.deg		= asecDeg;
-  mnjs.sech				= sech;
-  mnjs.sech.rad		= sech;
-  mnjs.sech.deg		= sechDeg;
-  mnjs.asech			= asech;
-  mnjs.asech.rad	= asech;
-  mnjs.asech.deg	= asechDeg;
-
-  mnjs.cot				= cot;
-  mnjs.cot.rad		= cot;
-  mnjs.cot.deg		= cotDeg;
-  mnjs.acot				= acot;
-  mnjs.acot.rad		= acot;
-  mnjs.acot.deg		= acotDeg;
-  mnjs.coth				= coth;
-  mnjs.coth.rad		= coth;
-  mnjs.coth.deg		= cothDeg;
-  mnjs.acoth			= acoth;
-  mnjs.acoth.rad	= acoth;
-  mnjs.acoth.deg	= acothDeg;
-
-  return mnjs;
-};
-
-const mnjs = useMnjs();
-
-if (typeof window === `undefined`) {
-  module.exports.mnjs = mnjs;
-} else {
-  window.mnjs = mnjs;
-};
+  },
+  useMnjs = () => {
+    const r = {};
+    return (
+      (r.e = E),
+      (r.ln2 = LN2),
+      (r.ln10 = LN10),
+      (r.log2e = LOG2E),
+      (r.log10e = LOG10E),
+      (r.pi = PI),
+      (r.phi = PHI),
+      (r.tau = TAU),
+      (r.dtr = dtr),
+      (r.rtd = rtd),
+      (r.nts = nts),
+      (r.stn = stn),
+      (r.range = range),
+      (r.monolist = monolist),
+      (r.abs = abs),
+      (r.sign = sign),
+      (r.add = add),
+      (r.cube = cube),
+      (r.cbrt = cbrt),
+      (r.divi = divi),
+      (r.exp = exp),
+      (r.fix = fix),
+      (r.hypot = hypot),
+      (r.inv = inv),
+      (r.log = log),
+      (r.log2 = log2),
+      (r.log10 = log10),
+      (r.log1p = log1p),
+      (r.max = max),
+      (r.min = min),
+      (r.mult = mult),
+      (r.nrt = nrt),
+      (r.pow = pow),
+      (r.sqr = sqr),
+      (r.sqrt = sqrt),
+      (r.subt = subt),
+      (r.cos = cos),
+      (r.cos.rad = cos),
+      (r.cos.deg = cosDeg),
+      (r.acos = acos),
+      (r.acos.rad = acos),
+      (r.acos.deg = acosDeg),
+      (r.cosh = cosh),
+      (r.cosh.rad = cosh),
+      (r.cosh.deg = coshDeg),
+      (r.acosh = acosh),
+      (r.acosh.rad = acosh),
+      (r.acosh.deg = acoshDeg),
+      (r.sin = sin),
+      (r.sin.rad = sin),
+      (r.sin.deg = sinDeg),
+      (r.asin = asin),
+      (r.asin.rad = asin),
+      (r.asin.deg = asinDeg),
+      (r.sinh = sinh),
+      (r.sinh.rad = sinh),
+      (r.sinh.deg = sinhDeg),
+      (r.asinh = asinh),
+      (r.asinh.rad = asinh),
+      (r.asinh.deg = asinhDeg),
+      (r.tan = tan),
+      (r.tan.rad = tan),
+      (r.tan.deg = tanDeg),
+      (r.atan = atan),
+      (r.atan.rad = atan),
+      (r.atan.deg = atanDeg),
+      (r.tanh = tanh),
+      (r.tanh.rad = tanh),
+      (r.tanh.deg = tanhDeg),
+      (r.atanh = atanh),
+      (r.atanh.rad = atanh),
+      (r.atanh.deg = atanhDeg),
+      (r.csc = csc),
+      (r.csc.rad = csc),
+      (r.csc.deg = cscDeg),
+      (r.acsc = acsc),
+      (r.acsc.rad = acsc),
+      (r.acsc.deg = acscDeg),
+      (r.csch = csch),
+      (r.csch.rad = csch),
+      (r.csch.deg = cschDeg),
+      (r.acsch = acsch),
+      (r.acsch.rad = acsch),
+      (r.acsch.deg = acschDeg),
+      (r.sec = sec),
+      (r.sec.rad = sec),
+      (r.sec.deg = secDeg),
+      (r.asec = asec),
+      (r.asec.rad = asec),
+      (r.asec.deg = asecDeg),
+      (r.sech = sech),
+      (r.sech.rad = sech),
+      (r.sech.deg = sechDeg),
+      (r.asech = asech),
+      (r.asech.rad = asech),
+      (r.asech.deg = asechDeg),
+      (r.cot = cot),
+      (r.cot.rad = cot),
+      (r.cot.deg = cotDeg),
+      (r.acot = acot),
+      (r.acot.rad = acot),
+      (r.acot.deg = acotDeg),
+      (r.coth = coth),
+      (r.coth.rad = coth),
+      (r.coth.deg = cothDeg),
+      (r.acoth = acoth),
+      (r.acoth.rad = acoth),
+      (r.acoth.deg = acothDeg),
+      r
+    );
+  },
+  mnjs = useMnjs();
+"undefined" == typeof window ? (module.exports.mnjs = mnjs) : (window.mnjs = mnjs);
