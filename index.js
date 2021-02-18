@@ -9,11 +9,9 @@ const E = 2.718281828459045,
   ERRORS = {
     MNJS_1_1: { NO: "01 : 01", TEXT: "This function accepting either a number or an array. In the case of an array, all elements must be a number" },
     MNJS_1_2: { NO: "01 : 02", TEXT: "This function accepting either a string or an array. In the case of an array, all elements must be a string" },
-    MNJS_1_3: {
-      NO: "01 : 03",
-      TEXT: "This function accepting two arguments of numbers, arrays, or one of them must be a number, and the other must be an array; In the case of arrays, all elements must be a number, the length of arrays must be equal",
-    },
+    MNJS_1_3: { NO: "01 : 03", TEXT: "This function accepting two arguments of numbers, arrays, or one of them must be a number, and the other must be an array; In the case of arrays, all elements must be a number, the length of arrays must be equal" },
     MNJS_1_4: { NO: "01 : 04", TEXT: "The first parameter accepting either a number or an array. In the case of an array, all elements must be a number. The second parameter must be between 0 and 100" },
+    MNJS_1_5: { NO: "01 : 05", TEXT: "This function accepts numeric arguments or one numeric array argument. (num1, num2, ..., num) => {} or ([num1, num2, ..., num]) => {}" },
     MNJS_2_1: { NO: "02 : 01", TEXT: "All parameters must be a number" },
     MNJS_2_2: { NO: "02 : 02", TEXT: "The step parameter must be a number" },
     MNJS_2_3: { NO: "02 : 03", TEXT: "The first and the second parameter should not be equal" },
@@ -113,7 +111,11 @@ const E = 2.718281828459045,
     if ("number" == typeof e && e >= 0 && e <= 100 && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(r.toFixed(e)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_4.NO}: ${ERRORS.MNJS_1_4.TEXT}`);
   },
-  hypot = (...r) => Number(Math.hypot(...r).toFixed(15)),
+  hypot = (...r) => {
+    if (r.length > 0 && r.every((r) => "number" == typeof r)) return Number(Math.hypot(...r).toFixed(15));
+    if (1 === r.length && r[0].length > 0 && Array.isArray(r[0]) && r[0].every((r) => "number" == typeof r)) return Number(Math.hypot(...r[0]).toFixed(15));
+    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_5.NO}: ${ERRORS.MNJS_1_5.TEXT}`);
+  },
   inv = (r) => {
     if ("number" == typeof r) return Number((1 / r).toFixed(15));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number((1 / r).toFixed(15)));
@@ -139,8 +141,16 @@ const E = 2.718281828459045,
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.log1p(r).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
   },
-  max = (...r) => Math.max(...r),
-  min = (...r) => Math.min(...r),
+  max = (...r) => {
+    if (r.length > 0 && r.every((r) => "number" == typeof r)) return Math.max(...r);
+    if (1 === r.length && r[0].length > 0 && Array.isArray(r[0]) && r[0].every((r) => "number" == typeof r)) return Math.max(...r[0]);
+    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_5.NO}: ${ERRORS.MNJS_1_5.TEXT}`);
+  },
+  min = (...r) => {
+    if (r.length > 0 && r.every((r) => "number" == typeof r)) return Math.min(...r);
+    if (1 === r.length && r[0].length > 0 && Array.isArray(r[0]) && r[0].every((r) => "number" == typeof r)) return Math.min(...r[0]);
+    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_5.NO}: ${ERRORS.MNJS_1_5.TEXT}`);
+  },
   mult = (r, e) => {
     if ("number" == typeof r && "number" == typeof e) return Number((r * e).toFixed(15));
     if ("number" == typeof r && Array.isArray(e) && e.every((r) => "number" == typeof r)) return e.map((e) => Number((r * e).toFixed(15)));
