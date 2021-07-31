@@ -44,7 +44,7 @@ mnjs.divi(0.3, 0.1)  = 3      // mnjs.divi(0.3, 0.1) === 3 returns true
 <html>
   <head>
     <title>mnjs</title>
-    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@1.5.6/index.js"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@1.5.7/index.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/mnjs"></script>
     <!--          This file is always minified ☝         -->
   </head>
@@ -65,6 +65,26 @@ mnjs.divi(0.3, 0.1)  = 3      // mnjs.divi(0.3, 0.1) === 3 returns true
 </html>
 ```
 
+```js
+import React from 'react';
+import mnjs from 'mnjs';
+
+const Home = () => {
+  return (
+    <div>
+      <ul>
+        <li>{mnjs.add([1,8], 1).[1]}</li>
+        <li>{mnjs.fix(1, 2)}</li>
+        <li>{mnjs.fix(mnjs.phi,2)}</li>
+        <li>{mnjs.stn('8.00')}</li>
+      </ul>
+    </div>
+  );
+};
+
+export default Home;
+```
+
 
 
 ## Examples
@@ -72,7 +92,7 @@ mnjs.divi(0.3, 0.1)  = 3      // mnjs.divi(0.3, 0.1) === 3 returns true
 > Use `console.log()` to output the result.  `console.log(mnjs.abs(-3.6));  // 3.6`
 
 ```js
-const { mnjs } = require(`mnjs`);
+const mnjs = require(`mnjs`);
 
 mnjs.abs(-3.6)  // 3.6
 
