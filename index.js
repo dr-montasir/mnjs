@@ -550,5 +550,6 @@ const E = 2.718281828459045,
       (r.acoth.deg = acothDeg),
       r
     );
-  };
-"undefined" == typeof window && ((module.exports.mnjs = mnjs), (module.exports = mnjs));
+  },
+  mnjs = useMnjs();
+"undefined" == typeof window ? ((module.exports.mnjs = mnjs), (module.exports = mnjs)) : ((window.mnjs = mnjs), (module.exports = mnjs));
