@@ -550,5 +550,5 @@ const E = 2.718281828459045,
       (r.acoth.deg = acothDeg),
       r
     );
-  },
-  mnjs = useMnjs();
+  };
+"undefined" == typeof window && ((module.exports.mnjs = mnjs), (module.exports = mnjs));
