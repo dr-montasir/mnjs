@@ -9,7 +9,10 @@ const E = 2.718281828459045,
   ERRORS = {
     MNJS_1_1: { NO: "01 : 01", TEXT: "This function accepting either a number or an array. In the case of an array, all elements must be a number" },
     MNJS_1_2: { NO: "01 : 02", TEXT: "This function accepting either a string or an array. In the case of an array, all elements must be a string" },
-    MNJS_1_3: { NO: "01 : 03", TEXT: "This function accepting two arguments of numbers, arrays, or one of them must be a number, and the other must be an array; In the case of arrays, all elements must be a number, the length of arrays must be equal" },
+    MNJS_1_3: {
+      NO: "01 : 03",
+      TEXT: "This function accepting two arguments of numbers, arrays, or one of them must be a number, and the other must be an array; In the case of arrays, all elements must be a number, the length of arrays must be equal",
+    },
     MNJS_1_4: { NO: "01 : 04", TEXT: "The first parameter accepting either a number or an array. In the case of an array, all elements must be a number. The second parameter must be between 0 and 100" },
     MNJS_1_5: { NO: "01 : 05", TEXT: "This function accepts numeric arguments or one numeric array argument. (num1, num2, ..., num) => {} or ([num1, num2, ..., num]) => {}" },
     MNJS_2_1: { NO: "02 : 01", TEXT: "All parameters must be a number" },
@@ -549,4 +552,4 @@ const E = 2.718281828459045,
     );
   },
   mnjs = useMnjs();
-"undefined" == typeof window ? (module.exports.mnjs = mnjs) : (window.mnjs = mnjs);
+"undefined" == typeof window ? ((module.exports.mnjs = mnjs), (module.exports = mnjs)) : ((window.mnjs = mnjs), (module.exports = mnjs));
