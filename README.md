@@ -44,7 +44,7 @@ mnjs.divi(0.3, 0.1)  = 3      // mnjs.divi(0.3, 0.1) === 3 returns true
 <html>
   <head>
     <title>mnjs</title>
-    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@1.5.3/index.js"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@1.5.4/index.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/mnjs"></script>
     <!--          This file is always minified ☝         -->
   </head>
