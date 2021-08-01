@@ -44,7 +44,7 @@ mnjs.divi(0.3, 0.1)  = 3      // mnjs.divi(0.3, 0.1) === 3 returns true
 <html>
   <head>
     <title>mnjs</title>
-    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@1.6.0/index.js"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@1.6.1/index.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/mnjs"></script>
     <!--          This file is always minified ☝         -->
   </head>
@@ -70,6 +70,9 @@ import React from 'react';
 import mnjs from 'mnjs';
 
 const Home = () => {
+
+  const price = 4.5 / 3;
+
   return (
     <div>
       <ul>
@@ -77,6 +80,11 @@ const Home = () => {
         <li>{mnjs.fix(1, 2)}</li>
         <li>{mnjs.fix(mnjs.phi,2)}</li>
         <li>{mnjs.stn('8.00')}</li>
+        <li>{mnjs.zeros(2,2)}</li>
+        <li>{mnjs.zeros(2.1,2)}</li>
+        <li>{mnjs.zeros(2.1440000000,2)}</li>
+        <li>{mnjs.zeros(2.1440000000,5)}</li>
+        <li>${mnjs.zeros(price,2)}</li>
       </ul>
     </div>
   );
