@@ -75,6 +75,15 @@ const E = 2.718281828459045,
     if (Array.isArray(r) && r.every((r) => "string" == typeof r)) return r.map((r) => Number(r));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_2.NO}: ${ERRORS.MNJS_1_2.TEXT}`);
   },
+  zeros = (r, e) => {
+    if ("number" == typeof r && "number" == typeof e && e >= 0 && e <= 100) {
+      return Number(r.toFixed(e)).toLocaleString("en", { useGrouping: !1, minimumFractionDigits: e });
+    }
+    if ("number" == typeof e && e >= 0 && e <= 100 && Array.isArray(r) && r.every((r) => "number" == typeof r)) {
+      return r.map((r) => Number(r.toFixed(e))).toLocaleString("en", { useGrouping: !1, minimumFractionDigits: e });
+    }
+    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_4.NO}: ${ERRORS.MNJS_1_4.TEXT}`);
+  },
   abs = (r) => {
     if ("number" == typeof r) return Math.abs(r);
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Math.abs(r));
@@ -452,6 +461,7 @@ const E = 2.718281828459045,
       (r.rtd = rtd),
       (r.nts = nts),
       (r.stn = stn),
+      (r.zeros = zeros),
       (r.range = range),
       (r.monolist = monolist),
       (r.abs = abs),

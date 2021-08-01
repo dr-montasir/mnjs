@@ -44,7 +44,7 @@ mnjs.divi(0.3, 0.1)  = 3      // mnjs.divi(0.3, 0.1) === 3 returns true
 <html>
   <head>
     <title>mnjs</title>
-    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@1.5.7/index.js"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@1.6.0/index.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/mnjs"></script>
     <!--          This file is always minified ☝         -->
   </head>
@@ -382,6 +382,7 @@ mnjs.mult(0.2, [ 5, 10, 15])[1] === mnjs.mult(mnjs.monolist(0.2, 3), [5, 10, 15]
 | tanh.rad  | Hyperbolic tangent (in radians)                              | function:  tanh.rad(angleRadians)                            |
 | tanh.deg  | Hyperbolic tangent (in degrees)                              | function:  tanh.deg(angleDegrees)                            |
 | tau       | The tau constant (2 x pi)                                    | number:  6.283185307179586                                   |
+| zeros     | Add .00 to number                                            | function: zeros(num, point). Result as string                |
 
 
 
