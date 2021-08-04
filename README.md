@@ -15,9 +15,9 @@
 
 [![http://placehold.jp/24/25799f/ffffff/280x45.png?text=yarn%20add%20mnjs](http://placehold.jp/24/25799f/ffffff/280x45.png?text=yarn%20add%20mnjs)](https://classic.yarnpkg.com/en/package/mnjs)
 
-`<script src="https://cdn.jsdelivr.net/npm/mnjs/browser"></script>`
+`<script src="https://cdn.jsdelivr.net/npm/mnjs/browser/index.js"></script>`
 
-[![http://placehold.jp/24/bd483b/fec82f/705x45.png?text=%3Cscript%20src%3D%22https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2Fmnjs%22%3E%3C%2Fscript%3E](http://placehold.jp/24/bd483b/fec82f/705x45.png?text=%3Cscript%20src%3D%22https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2Fmnjs%2Fbrowser%22%3E%3C%2Fscript%3E)](https://www.jsdelivr.com/package/npm/mnjs)
+[![http://placehold.jp/24/bd483b/fec82f/785x45.png?text=%3Cscript%20src%3D%22https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2Fmnjs%22%3E%3C%2Fscript%3E](http://placehold.jp/24/bd483b/fec82f/785x45.png?text=%3Cscript%20src%3D%22https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2Fmnjs%2Fbrowser%2Findex.js%22%3E%3C%2Fscript%3E)](https://www.jsdelivr.com/package/npm/mnjs)
 
 
 
@@ -45,9 +45,9 @@ mnjs.divi(0.3, 0.1)  = 3      // mnjs.divi(0.3, 0.1) === 3 returns true
 <html>
   <head>
     <title>mnjs</title>
-    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@1.7.0/browser/index.min.js"></script>-->
-    <script src="https://cdn.jsdelivr.net/npm/mnjs/browser"></script>
-    <!--          This file is always minified ☝         -->
+    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@1.7.1/browser/index.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/mnjs/browser/index.js"></script>
+    <!--                       This file is always minified ☝              -->
   </head>
   <body>
     <script>
