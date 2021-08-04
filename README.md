@@ -40,11 +40,12 @@ mnjs.divi(0.3, 0.1)  = 3      // mnjs.divi(0.3, 0.1) === 3 returns true
 ```
 
 ```html
+<!-- html -->
 <!DOCTYPE html>
 <html>
   <head>
     <title>mnjs</title>
-    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@1.6.1/index.js"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@1.6.2/index.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/mnjs"></script>
     <!--          This file is always minified ☝         -->
   </head>
@@ -66,6 +67,8 @@ mnjs.divi(0.3, 0.1)  = 3      // mnjs.divi(0.3, 0.1) === 3 returns true
 ```
 
 ```js
+// next
+// index.js
 import React from 'react';
 import mnjs from 'mnjs';
 
@@ -85,12 +88,73 @@ const Home = () => {
         <li>{mnjs.zeros(2.1440000000,2)}</li>
         <li>{mnjs.zeros(2.1440000000,5)}</li>
         <li>${mnjs.zeros(price,2)}</li>
+        <li>
+            <a
+              className="App-link"
+              href="https://www.npmjs.com/package/mnjs"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Learn MNJS (Math Node JS)
+            </a>
+        </li>
       </ul>
     </div>
   );
 };
 
 export default Home;
+```
+
+```js
+// react
+// App.js
+import logo from './logo.svg';
+import './App.css';
+import {divi, zeros, stn, nts} from 'mnjs';
+
+function App() {
+  const price = divi(4.2, 3);
+  const priceWithFormat = zeros(price, 2);
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+        <br />
+        <a
+          className="App-link"
+          href="https://www.npmjs.com/package/mnjs"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn MNJS (Math Node JS)
+        </a>
+        <h2>
+          <p>${nts(0.00)}</p>
+          Free $
+          {
+            zeros(stn('0.00'), 2)
+          } <strike>${priceWithFormat}</strike>
+        </h2>
+        <small>Type: {typeof priceWithFormat}</small>
+      </header>
+    </div>
+  );
+}
+
+export default App;
 ```
 
 
