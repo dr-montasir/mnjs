@@ -206,6 +206,11 @@ const E = 2.718281828459045,
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.pow(E, r).toFixed(15)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
   },
+  trunc = (r) => {
+    if ("number" == typeof r) return Math.trunc(r);
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Math.trunc(r));
+    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+  },
   cos = (r) => {
     if ("number" == typeof r) return Number(Math.cos(r).toFixed(15));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.cos(r).toFixed(15)));
@@ -471,6 +476,7 @@ const E = 2.718281828459045,
       (r.cbrt = cbrt),
       (r.divi = divi),
       (r.exp = exp),
+      (r.trunc = trunc),
       (r.fix = fix),
       (r.hypot = hypot),
       (r.inv = inv),
