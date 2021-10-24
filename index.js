@@ -211,6 +211,13 @@ const E = 2.718281828459045,
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Math.trunc(r));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
   },
+  imul = (r, e) => {
+    if ("number" == typeof r && "number" == typeof e) return Number(Math.imul(r, e).toFixed(15));
+    if ("number" == typeof r && Array.isArray(e) && e.every((r) => "number" == typeof r)) return e.map((e) => Number(Math.imul(r, e).toFixed(15)));
+    if ("number" == typeof e && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.imul(r, e).toFixed(15)));
+    if (Array.isArray(r) && Array.isArray(e) && r.length === e.length && r.every((r) => "number" == typeof r) && e.every((r) => "number" == typeof r)) return r.map((r, t) => Number(Math.imul(r, e[t]).toFixed(15)));
+    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_3.NO}: ${ERRORS.MNJS_1_3.TEXT}`);
+  },
   cos = (r) => {
     if ("number" == typeof r) return Number(Math.cos(r).toFixed(15));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.cos(r).toFixed(15)));
@@ -477,6 +484,7 @@ const E = 2.718281828459045,
       (r.divi = divi),
       (r.exp = exp),
       (r.trunc = trunc),
+      (r.imul = imul),
       (r.fix = fix),
       (r.hypot = hypot),
       (r.inv = inv),

@@ -45,7 +45,7 @@ mnjs.divi(0.3, 0.1)  = 3      // mnjs.divi(0.3, 0.1) === 3 returns true
 <html>
   <head>
     <title>mnjs</title>
-    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@1.7.2/browser/index.js"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@1.8.0/browser/index.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/mnjs/browser/index.js"></script>
     <!--                       This file is always minified ☝              -->
   </head>
@@ -338,6 +338,8 @@ mnjs.mult(0.2, mnjs.range(5, 15, 5))           //  [ 1, 2, 3 ]
 mnjs.mult([0.2, 0.2, 0.2], [ 5, 10, 15])       //  [ 1, 2, 3 ] 
 mnjs.mult(mnjs.monolist(0.2, 3), [5, 10, 15])  //  [ 1, 2, 3 ] 
 mnjs.mult(0.2, [ 5, 10, 15])[1] === mnjs.mult(mnjs.monolist(0.2, 3), [5, 10, 15])[1] // true
+
+mnjs.imul(0xffffffff, [1,2,3,4,5])             //  [ -1, -2, -3, -4, -5 ]
 ```
 
 
@@ -410,6 +412,7 @@ mnjs.mult(0.2, [ 5, 10, 15])[1] === mnjs.mult(mnjs.monolist(0.2, 3), [5, 10, 15]
 | exp       | The power of e (Euler's number)                              | function: exp(power)                                         |
 | fix       | Fix to the certain decimal point                             | function: fix(num, point)                                    |
 | hypot     | The square root of the sum of squares                        | function: hypot(num1, num2, ..., num) or function: hypot([num1, num2, ..., num]) |
+| imul      | The imul function returns the result of the C-like 32-bit multiplication of the two parameters | function:  imul(num1, num2)                                  |
 | inv       | The inverse of a number                                      | function: inv(num)                                           |
 | ln2       | The natural logarithm of 2                                   | number: 0.693147180559945                                    |
 | ln10      | The natural logarithm of 10                                  | number: 2.302585092994046                                    |
