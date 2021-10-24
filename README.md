@@ -45,7 +45,7 @@ mnjs.divi(0.3, 0.1)  = 3      // mnjs.divi(0.3, 0.1) === 3 returns true
 <html>
   <head>
     <title>mnjs</title>
-    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@1.8.0/browser/index.js"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@1.9.0/browser/index.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/mnjs/browser/index.js"></script>
     <!--                       This file is always minified ☝              -->
   </head>
@@ -432,6 +432,7 @@ mnjs.imul(0xffffffff, [1,2,3,4,5])             //  [ -1, -2, -3, -4, -5 ]
 | phi       | The Golden Ratio (Phi)                                       | number:  1.618033988749895                                   |
 | pow       | power                                                        | function:  pow(num, power)                                   |
 | range     | The range function returns a sequence of numbers, starting from *start* value by default, and increments or decrements by *step* value, and stops before or in specified *end* value. | function: range(start, end, step). It returns an array       |
+| round     | The round function returns the value of a number rounded to the nearest integer | function: round(num)                                         |
 | rtd       | Radians to Degrees conversion                                | function: rtd(angleRadians).  Result in degrees              |
 | sec       | Secant (in radians)                                          | function:  sec(angleRadians)                                 |
 | sec.rad   | Secant (in radians)                                          | function:  sec.rad(angleRadians)                             |
