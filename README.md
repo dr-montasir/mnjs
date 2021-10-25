@@ -45,7 +45,7 @@ mnjs.divi(0.3, 0.1)  = 3      // mnjs.divi(0.3, 0.1) === 3 returns true
 <html>
   <head>
     <title>mnjs</title>
-    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@1.9.0/browser/index.js"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@2.0.0/browser/index.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/mnjs/browser/index.js"></script>
     <!--                       This file is always minified ☝              -->
   </head>
@@ -340,6 +340,7 @@ mnjs.mult(mnjs.monolist(0.2, 3), [5, 10, 15])  //  [ 1, 2, 3 ]
 mnjs.mult(0.2, [ 5, 10, 15])[1] === mnjs.mult(mnjs.monolist(0.2, 3), [5, 10, 15])[1] // true
 
 mnjs.imul(0xffffffff, [1,2,3,4,5])             //  [ -1, -2, -3, -4, -5 ]
+mnjs.rib(100000, 999999)                       //  returns random int between 1000000 and 999999
 ```
 
 
@@ -411,6 +412,7 @@ mnjs.imul(0xffffffff, [1,2,3,4,5])             //  [ -1, -2, -3, -4, -5 ]
 | e         | The Number e (Euler's number)                                | number: 2.718281828459045                                    |
 | exp       | The power of e (Euler's number)                              | function: exp(power)                                         |
 | fix       | Fix to the certain decimal point                             | function: fix(num, point)                                    |
+| floor     | The floor function returns the largest integer less than or equal to a given number | function: floor(num)                                         |
 | hypot     | The square root of the sum of squares                        | function: hypot(num1, num2, ..., num) or function: hypot([num1, num2, ..., num]) |
 | imul      | The imul function returns the result of the C-like 32-bit multiplication of the two parameters | function:  imul(num1, num2)                                  |
 | inv       | The inverse of a number                                      | function: inv(num)                                           |
@@ -432,6 +434,7 @@ mnjs.imul(0xffffffff, [1,2,3,4,5])             //  [ -1, -2, -3, -4, -5 ]
 | phi       | The Golden Ratio (Phi)                                       | number:  1.618033988749895                                   |
 | pow       | power                                                        | function:  pow(num, power)                                   |
 | range     | The range function returns a sequence of numbers, starting from *start* value by default, and increments or decrements by *step* value, and stops before or in specified *end* value. | function: range(start, end, step). It returns an array       |
+| rib       | The rib function returns a random integer between two values, inclusive | function:  rib(min, max)                                     |
 | round     | The round function returns the value of a number rounded to the nearest integer | function: round(num)                                         |
 | rtd       | Radians to Degrees conversion                                | function: rtd(angleRadians).  Result in degrees              |
 | sec       | Secant (in radians)                                          | function:  sec(angleRadians)                                 |

@@ -223,6 +223,18 @@ const E = 2.718281828459045,
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Math.round(r));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
   },
+  floor = (r) => {
+    if ("number" == typeof r) return Math.floor(r);
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Math.floor(r));
+    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+  },
+  rib = (r, e) => {
+    if ("number" == typeof r && "number" == typeof e) return Number(Math.floor(Math.random() * (e - r) + r).toFixed(15));
+    if ("number" == typeof r && Array.isArray(e) && e.every((r) => "number" == typeof r)) return e.map((e) => Number(Math.floor(Math.random() * (e - r) + r).toFixed(15)));
+    if ("number" == typeof e && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.floor(Math.random() * (e - r) + r).toFixed(15)));
+    if (Array.isArray(r) && Array.isArray(e) && r.length === e.length && r.every((r) => "number" == typeof r) && e.every((r) => "number" == typeof r)) return r.map((r, t) => Number(Math.floor(Math.random() * (e[t] - r) + r).toFixed(15)));
+    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_3.NO}: ${ERRORS.MNJS_1_3.TEXT}`);
+  },
   cos = (r) => {
     if ("number" == typeof r) return Number(Math.cos(r).toFixed(15));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.cos(r).toFixed(15)));
@@ -491,6 +503,8 @@ const E = 2.718281828459045,
       (r.trunc = trunc),
       (r.imul = imul),
       (r.round = round),
+      (r.floor = floor),
+      (r.rib = rib),
       (r.fix = fix),
       (r.hypot = hypot),
       (r.inv = inv),
