@@ -45,7 +45,7 @@ mnjs.divi(0.3, 0.1)  = 3      // mnjs.divi(0.3, 0.1) === 3 returns true
 <html>
   <head>
     <title>mnjs</title>
-    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@2.0.0/browser/index.js"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@2.1.0/browser/index.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/mnjs/browser/index.js"></script>
     <!--                       This file is always minified ☝              -->
   </head>
@@ -67,10 +67,11 @@ mnjs.divi(0.3, 0.1)  = 3      // mnjs.divi(0.3, 0.1) === 3 returns true
 ```
 
 ```js
-// next
+// Next JS
 // index.js
-import React from 'react';
+// npm install mnjs --save
 import mnjs from 'mnjs';
+import React from 'react';
 
 const Home = () => {
 
@@ -107,11 +108,12 @@ export default Home;
 ```
 
 ```js
-// react
+// React JS
 // App.js
+// npm install mnjs --save
+import {divi, zeros, stn, nts} from 'mnjs';
 import logo from './logo.svg';
 import './App.css';
-import {divi, zeros, stn, nts} from 'mnjs';
 
 function App() {
   const price = divi(4.2, 3);
@@ -155,6 +157,19 @@ function App() {
 }
 
 export default App;
+```
+
+```js
+// Node JS
+// index.js
+// npm install mnjs --save
+
+// import mnjs from 'mnjs';
+// console.log(mnjs.sin.deg(mnjs.range(0, 90, 30)));
+// Or
+
+import { sin, range } from 'mnjs';
+console.log(sin.deg(range(0, 90, 30)));
 ```
 
 
@@ -411,6 +426,7 @@ mnjs.rib(100000, 999999)                       //  returns random int between 10
 | divi      | Division                                                     | function:  divi(numerator, denominator)                      |
 | e         | The Number e (Euler's number)                                | number: 2.718281828459045                                    |
 | exp       | The power of e (Euler's number)                              | function: exp(power)                                         |
+| expm1     | The expm1 function returns e^x - 1, where x is the argument, and e the base of the natural logarithms | function: expm1(power)                                       |
 | fix       | Fix to the certain decimal point                             | function: fix(num, point)                                    |
 | floor     | The floor function returns the largest integer less than or equal to a given number | function: floor(num)                                         |
 | hypot     | The square root of the sum of squares                        | function: hypot(num1, num2, ..., num) or function: hypot([num1, num2, ..., num]) |
