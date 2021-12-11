@@ -228,6 +228,11 @@ const E = 2.718281828459045,
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Math.round(r));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
   },
+  fround = (r) => {
+    if ("number" == typeof r) return Math.fround(r);
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Math.fround(r));
+    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+  },
   floor = (r) => {
     if ("number" == typeof r) return Math.floor(r);
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Math.floor(r));
@@ -509,6 +514,7 @@ const E = 2.718281828459045,
       (r.trunc = trunc),
       (r.imul = imul),
       (r.round = round),
+      (r.fround = fround),
       (r.floor = floor),
       (r.rib = rib),
       (r.fix = fix),
@@ -602,4 +608,4 @@ const E = 2.718281828459045,
     );
   },
   mnjs = useMnjs();
-"undefined" == typeof window ? ((module.exports.mnjs = mnjs), (module.exports = mnjs)) : ((window.mnjs = mnjs), (module.exports = mnjs));
+window.mnjs = mnjs;

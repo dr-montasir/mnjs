@@ -45,7 +45,7 @@ mnjs.divi(0.3, 0.1)  = 3      // mnjs.divi(0.3, 0.1) === 3 returns true
 <html>
   <head>
     <title>mnjs</title>
-    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@2.1.0/browser/index.js"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@2.1.1/browser/index.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/mnjs/browser/index.js"></script>
     <!--                       This file is always minified ☝              -->
   </head>
@@ -429,6 +429,7 @@ mnjs.rib(100000, 999999)                       //  returns random int between 10
 | expm1     | The expm1 function returns e^x - 1, where x is the argument, and e the base of the natural logarithms | function: expm1(power)                                       |
 | fix       | Fix to the certain decimal point                             | function: fix(num, point)                                    |
 | floor     | The floor function returns the largest integer less than or equal to a given number | function: floor(num)                                         |
+| fround    | The fround function returns the nearest 32-bit single precision float representation of a Number | function: fround(num)                                        |
 | hypot     | The square root of the sum of squares                        | function: hypot(num1, num2, ..., num) or function: hypot([num1, num2, ..., num]) |
 | imul      | The imul function returns the result of the C-like 32-bit multiplication of the two parameters | function:  imul(num1, num2)                                  |
 | inv       | The inverse of a number                                      | function: inv(num)                                           |
