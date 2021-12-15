@@ -45,7 +45,7 @@ mnjs.divi(0.3, 0.1)  = 3      // mnjs.divi(0.3, 0.1) === 3 returns true
 <html>
   <head>
     <title>mnjs</title>
-    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@2.1.2/browser/index.js"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@2.1.3/browser/index.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/mnjs/browser/index.js"></script>
     <!--                       This file is always minified ☝              -->
   </head>
@@ -360,6 +360,32 @@ mnjs.rib(100000, 999999)                       //  returns random int between 10
 
 
 
+
+
+## Demo Projects
+
+
+
+___
+### Svelte Demo Project [https://svelte-mnjs-chartjs.vercel.app]
+___
+
+[![https://raw.githubusercontent.com/dr-montasir/public/main/mnjs/images/svelte-mnjs-chartjs.png](https://raw.githubusercontent.com/dr-montasir/public/main/mnjs/images/svelte-mnjs-chartjs.png)](https://svelte-mnjs-chartjs.vercel.app)
+
+
+
+
+
+---
+
+### React Demo Project [https://react-mnjs-plotlyjs.vercel.app]
+
+---
+
+[![https://raw.githubusercontent.com/dr-montasir/public/main/mnjs/images/react-mnjs-plotlyjs.png](https://raw.githubusercontent.com/dr-montasir/public/main/mnjs/images/react-mnjs-plotlyjs.png)](https://react-mnjs-plotlyjs.vercel.app)
+
+
+
 ## MNJS Object Keys
 
 | Key       | Definition                                                   | Value                                                        |
@@ -480,6 +506,3 @@ mnjs.rib(100000, 999999)                       //  returns random int between 10
 | tau       | The tau constant (2 x pi)                                    | number:  6.283185307179586                                   |
 | trunc     | Returns the integer part of a number                         | function:  trunc(num)                                        |
 | zeros     | Add .00 to number                                            | function: zeros(num, point). Result as string                |
-
-
-
