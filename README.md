@@ -30,13 +30,15 @@
 0.7 - 0.2 = 0.49999999999999994   // 0.7 - 0.2 === 0.5 returns false
 0.1 * 0.2 = 0.020000000000000004  // 0.1 * 0.2 === 0.02 returns false
 0.3 / 0.1 = 2.9999999999999996    // 0.3 / 0.1 === 3 returns false
+1.2 % 0.5 = 0.19999999999999996   // 1.2 / 0.5 === 0.2 returns false
 
 // MNJS library
 mnjs.add(0.1, 0.2)   = 0.3      // mnjs.add(0.1, 0.2)  === 0.3 returns true
 mnjs.add(0.2, 0.7)   = 0.9      // mnjs.add(0.2, 0.7)  === 0.9 returns true
 mnjs.subt(0.7, 0.2)  = 0.5      // mnjs.subt(0.7, 0.2) === 0.5 returns true
 mnjs.mult(0.1, 0.2)  = 0.02     // mnjs.mult(0.1, 0.2) === 0.02 returns true
-mnjs.divi(0.3, 0.1)  = 3      // mnjs.divi(0.3, 0.1) === 3 returns true
+mnjs.divi(0.3, 0.1)  = 3        // mnjs.divi(0.3, 0.1) === 3 returns true
+mnjs.rem(1.2, 0.5)   = 0.2      // mnjs.rem(1.2, 0.5)  === 0.2 returns true
 ```
 
 ```html
@@ -45,7 +47,7 @@ mnjs.divi(0.3, 0.1)  = 3      // mnjs.divi(0.3, 0.1) === 3 returns true
 <html>
   <head>
     <title>mnjs</title>
-    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@2.1.3/browser/index.js"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@2.2.0/browser/index.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/mnjs/browser/index.js"></script>
     <!--                       This file is always minified ☝              -->
   </head>
@@ -477,6 +479,7 @@ ___
 | phi       | The Golden Ratio (Phi)                                       | number:  1.618033988749895                                   |
 | pow       | power                                                        | function:  pow(num, power)                                   |
 | range     | The range function returns a sequence of numbers, starting from *start* value by default, and increments or decrements by *step* value, and stops before or in specified *end* value. | function: range(start, end, step). It returns an array       |
+| rem       | The remainder function (%) returns the remainder or signed remainder of a division, after one number is divided by another (called the modulus of the operation) | function:  rem(num1, num2)                                   |
 | rib       | The rib function returns a random integer between two values, inclusive | function:  rib(min, max)                                     |
 | round     | The round function returns the value of a number rounded to the nearest integer | function: round(num)                                         |
 | rtd       | Radians to Degrees conversion                                | function: rtd(angleRadians).  Result in degrees              |
@@ -506,3 +509,6 @@ ___
 | tau       | The tau constant (2 x pi)                                    | number:  6.283185307179586                                   |
 | trunc     | Returns the integer part of a number                         | function:  trunc(num)                                        |
 | zeros     | Add .00 to number                                            | function: zeros(num, point). Result as string                |
+
+
+
