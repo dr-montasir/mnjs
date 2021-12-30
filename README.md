@@ -47,7 +47,7 @@ mnjs.rem(1.2, 0.5)   = 0.2      // mnjs.rem(1.2, 0.5)  === 0.2 returns true
 <html>
   <head>
     <title>mnjs</title>
-    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@2.2.0/browser/index.js"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@2.2.1/browser/index.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/mnjs/browser/index.js"></script>
     <!--                       This file is always minified ☝              -->
   </head>
@@ -500,6 +500,7 @@ ___
 | sqrt      | Square Root                                                  | function:  sqrt(num)                                         |
 | stn       | String to Number conversion                                  | function: stn(str). Result as number                         |
 | subt      | Subtraction                                                  | function:  subt(num1, num2)                                  |
+| sum       | The Sum Function, Also Called The Reducer Function. The final result of running the sum function across all arguments or all elements of the array is a single value. | function: max(num1, num2, ..., num) or function: max([num1, num2, ..., num]) |
 | tan       | Tangent (in radians)                                         | function:  tan(angleRadians)                                 |
 | tan.rad   | Tangent (in radians)                                         | function:  tan.rad(angleRadians)                             |
 | tan.deg   | Tangen (in degrees)                                          | function:  tan.deg(angleDegrees)                             |

@@ -163,6 +163,12 @@ const E = 2.718281828459045,
     if (1 === r.length && r[0].length > 0 && Array.isArray(r[0]) && r[0].every((r) => "number" == typeof r)) return Math.min(...r[0]);
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_5.NO}: ${ERRORS.MNJS_1_5.TEXT}`);
   },
+  sum = (...r) => {
+    const e = (r, e) => Number((r + e).toFixed(14));
+    if (r.length > 0 && r.every((r) => "number" == typeof r)) return r.reduce(e, 0);
+    if (1 === r.length && r[0].length > 0 && Array.isArray(r[0]) && r[0].every((r) => "number" == typeof r)) return r[0].reduce(e, 0);
+    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_5.NO}: ${ERRORS.MNJS_1_5.TEXT}`);
+  },
   mult = (r, e) => {
     if ("number" == typeof r && "number" == typeof e) return Number((r * e).toFixed(14));
     if ("number" == typeof r && Array.isArray(e) && e.every((r) => "number" == typeof r)) return e.map((e) => Number((r * e).toFixed(14)));
@@ -533,6 +539,7 @@ const E = 2.718281828459045,
       (r.log1p = log1p),
       (r.max = max),
       (r.min = min),
+      (r.sum = sum),
       (r.mult = mult),
       (r.nrt = nrt),
       (r.pow = pow),
