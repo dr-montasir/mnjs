@@ -15,6 +15,7 @@ const E = 2.718281828459045,
     },
     MNJS_1_4: { NO: "01 : 04", TEXT: "The first parameter accepting either a number or an array. In the case of an array, all elements must be a number. The second parameter must be between 0 and 100" },
     MNJS_1_5: { NO: "01 : 05", TEXT: "This function accepts numeric arguments or one numeric array argument. (num1, num2, ..., num) => {} or ([num1, num2, ..., num]) => {}" },
+    MNJS_1_6: { NO: "01 : 06", TEXT: "This function only accepts one numeric array. ([num1, num2, ..., num]) => {}" },
     MNJS_2_1: { NO: "02 : 01", TEXT: "All parameters must be a number" },
     MNJS_2_2: { NO: "02 : 02", TEXT: "The step parameter must be a number" },
     MNJS_2_3: { NO: "02 : 03", TEXT: "The first and the second parameter should not be equal" },
@@ -163,11 +164,13 @@ const E = 2.718281828459045,
     if (1 === r.length && r[0].length > 0 && Array.isArray(r[0]) && r[0].every((r) => "number" == typeof r)) return Math.min(...r[0]);
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_5.NO}: ${ERRORS.MNJS_1_5.TEXT}`);
   },
-  sum = (...r) => {
-    const e = (r, e) => Number((r + e).toFixed(14));
-    if (r.length > 0 && r.every((r) => "number" == typeof r)) return r.reduce(e, 0);
-    if (1 === r.length && r[0].length > 0 && Array.isArray(r[0]) && r[0].every((r) => "number" == typeof r)) return r[0].reduce(e, 0);
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_5.NO}: ${ERRORS.MNJS_1_5.TEXT}`);
+  sum = (r) => {
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) {
+      return r.reduce(function (r, e) {
+        return r + e;
+      }, 0);
+    }
+    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_6.NO}: ${ERRORS.MNJS_1_6.TEXT}`);
   },
   mult = (r, e) => {
     if ("number" == typeof r && "number" == typeof e) return Number((r * e).toFixed(14));
