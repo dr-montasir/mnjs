@@ -166,8 +166,8 @@ const E = 2.718281828459045,
   },
   sum = (r) => {
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) {
-      return r.reduce(function (r, e) {
-        return r + e;
+      return r.reduce((r, e) => {
+        Number((r + e).toFixed(14));
       }, 0);
     }
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_6.NO}: ${ERRORS.MNJS_1_6.TEXT}`);
