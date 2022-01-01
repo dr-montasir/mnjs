@@ -15,7 +15,11 @@ const E = 2.718281828459045,
     },
     MNJS_1_4: { NO: "01 : 04", TEXT: "The first parameter accepting either a number or an array. In the case of an array, all elements must be a number. The second parameter must be between 0 and 100" },
     MNJS_1_5: { NO: "01 : 05", TEXT: "This function accepts numeric arguments or one numeric array argument. (num1, num2, ..., num) => {} or ([num1, num2, ..., num]) => {}" },
-    MNJS_1_6: { NO: "01 : 06", TEXT: "This function only accepts one numeric array. ([num1, num2, ..., num]) => {}" },
+    MNJS_1_6: {
+      NO: "01 : 06",
+      TEXT:
+        "This function accepting two arguments. The first argument should be one (numeric or empty) array and the second should be a number. All next examples are valid: sum([num1, num2, ..., num_x]); sum([]); sum([num1, num2, ..., num_x], num); sum([], num)",
+    },
     MNJS_2_1: { NO: "02 : 01", TEXT: "All parameters must be a number" },
     MNJS_2_2: { NO: "02 : 02", TEXT: "The step parameter must be a number" },
     MNJS_2_3: { NO: "02 : 03", TEXT: "The first and the second parameter should not be equal" },
@@ -34,15 +38,15 @@ const E = 2.718281828459045,
     if (0 === t) throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_2_5.NO}: ${ERRORS.MNJS_2_5.TEXT}`);
     if (-1 === Math.sign(t)) throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_2_6.NO}: ${ERRORS.MNJS_2_6.TEXT}`);
     if ((t || (t = 1), r > e)) {
-      for (let R = r; R >= e; R -= t) o.push(Number(R.toFixed(7)));
+      for (let n = r; n >= e; n -= t) o.push(Number(n.toFixed(7)));
       return o;
     }
     if (r > e) {
-      for (let R = r; R >= e; R -= t) o.push(Number(R.toFixed(7)));
+      for (let n = r; n >= e; n -= t) o.push(Number(n.toFixed(7)));
       return o;
     }
     if (r < e) {
-      for (let R = r; R <= e; R += t) o.push(Number(R.toFixed(7)));
+      for (let n = r; n <= e; n += t) o.push(Number(n.toFixed(7)));
       return o;
     }
   },
@@ -164,9 +168,9 @@ const E = 2.718281828459045,
     if (1 === r.length && r[0].length > 0 && Array.isArray(r[0]) && r[0].every((r) => "number" == typeof r)) return Math.min(...r[0]);
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_5.NO}: ${ERRORS.MNJS_1_5.TEXT}`);
   },
-  sum = (r) => {
-    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) {
-      return r.reduce((r, e) => Number((r + e).toFixed(14)), 0);
+  sum = (r, e) => {
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r) && ((e && "number" == typeof e) || !e)) {
+      return r.reduce((r, e) => Number((r + e).toFixed(14)), (e = e || 0));
     }
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_6.NO}: ${ERRORS.MNJS_1_6.TEXT}`);
   },

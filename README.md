@@ -47,7 +47,7 @@ mnjs.rem(1.2, 0.5)   = 0.2      // mnjs.rem(1.2, 0.5)  === 0.2 returns true
 <html>
   <head>
     <title>mnjs</title>
-    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@2.3.1/browser/index.js"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@2.3.2/browser/index.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/mnjs/browser/index.js"></script>
     <!--                       This file is always minified ☝              -->
   </head>
@@ -469,8 +469,8 @@ ___
 | log10     | The base 10 logarithm of a number                            | function: log10(x)                                           |
 | log2e     | The base 2 logarithm of E                                    | number: 1.4426950408889634                                   |
 | log10e    | The base 10 logarithm of E                                   | number: 0.434294481903252                                    |
-| max       | Max function returns the largest-valued number               | function: max(num1, num2, ..., num) or function: max([num1, num2, ..., num]) |
-| min       | Min function returns the lowest-valued number                | function: max(num1, num2, ..., num) or function: max([num1, num2, ..., num]) |
+| max       | Max function returns the largest-valued number               | function: max(num1, num2, ..., num) or max(array of numbers) |
+| min       | Min function returns the lowest-valued number                | function: min(num1, num2, ..., num) or min(array of numbers) |
 | monolist  | The monolist function returns an array of numbers of *equal values*, specifying the element's *value* and the *size* of the array. | function: monolist(value, size). It returns an array         |
 | mult      | Multiplication                                               | function:  mult(num1, num2)                                  |
 | nrt       | N Root                                                       | function:  nrt(num, root), when root=n={1,2,..}              |
@@ -500,7 +500,7 @@ ___
 | sqrt      | Square Root                                                  | function:  sqrt(num)                                         |
 | stn       | String to Number conversion                                  | function: stn(str). Result as number                         |
 | subt      | Subtraction                                                  | function:  subt(num1, num2)                                  |
-| sum       | The Sum Function, Also Called The Reducer Function. The final result of running the sum function across all elements of the array is a single value. This function only accepts one numeric array | function: sum([num1, num2, ..., num])                        |
+| sum       | The Sum Function, Also Called The Reducer Function. The final result of running the sum function across all elements of the array is a single value. The first argument should be one (numeric or empty) array and the second should be a number. | function: sum(Array, number) or sum(Array), number=0         |
 | tan       | Tangent (in radians)                                         | function:  tan(angleRadians)                                 |
 | tan.rad   | Tangent (in radians)                                         | function:  tan.rad(angleRadians)                             |
 | tan.deg   | Tangen (in degrees)                                          | function:  tan.deg(angleDegrees)                             |
