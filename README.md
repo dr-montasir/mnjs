@@ -47,7 +47,7 @@ mnjs.rem(1.2, 0.5)   = 0.2      // mnjs.rem(1.2, 0.5)  === 0.2 returns true
 <html>
   <head>
     <title>mnjs</title>
-    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@2.3.2/browser/index.js"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@2.4.0/browser/index.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/mnjs/browser/index.js"></script>
     <!--                       This file is always minified ☝              -->
   </head>
@@ -229,6 +229,10 @@ mnjs.hypot([-3, -4, '1'])  // Error: MNJS ERROR No. 01 : 05
 mnjs.fix(2.718281828459045, 2)  // 2.72 
 
 mnjs.inv(10)  // 0.1
+
+mnjs.ceil(1.1)  // 2
+mnjs.ceil(-1.1) // -1
+mnjs.ceil([-0.2, 0, 0.2]) // [-0, 0, 1]
 
 mnjs.max(1, 10, 3, -2)  // 10
 mnjs.max([1, 10, 3, -2])  // 10
@@ -430,6 +434,7 @@ ___
 | atanh     | Inverse hyperbolic tangen (in radians)                       | function:  atanh(num)                                        |
 | atanh.rad | Inverse hyperbolic tangen (in radians)                       | function:  atanh.rad(num)                                    |
 | atanh.deg | Inverse hyperbolic tangen (in degrees)                       | function:  atanh.deg(num)                                    |
+| ceil      | The ceil function returns the smallest integer greater than or equal to a number | function: ceil(num)                                          |
 | cos       | Cosine (in radians)                                          | function:  cos(angleRadians)                                 |
 | cos.rad   | Cosine (in radians)                                          | function:  cos.rad(angleRadians)                             |
 | cos.deg   | Cosine (in degrees)                                          | function:  cos.deg(angleDegrees)                             |

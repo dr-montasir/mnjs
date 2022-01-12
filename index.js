@@ -38,15 +38,15 @@ const E = 2.718281828459045,
     if (0 === t) throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_2_5.NO}: ${ERRORS.MNJS_2_5.TEXT}`);
     if (-1 === Math.sign(t)) throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_2_6.NO}: ${ERRORS.MNJS_2_6.TEXT}`);
     if ((t || (t = 1), r > e)) {
-      for (let n = r; n >= e; n -= t) o.push(Number(n.toFixed(7)));
+      for (let R = r; R >= e; R -= t) o.push(Number(R.toFixed(7)));
       return o;
     }
     if (r > e) {
-      for (let n = r; n >= e; n -= t) o.push(Number(n.toFixed(7)));
+      for (let R = r; R >= e; R -= t) o.push(Number(R.toFixed(7)));
       return o;
     }
     if (r < e) {
-      for (let n = r; n <= e; n += t) o.push(Number(n.toFixed(7)));
+      for (let R = r; R <= e; R += t) o.push(Number(R.toFixed(7)));
       return o;
     }
   },
@@ -262,6 +262,11 @@ const E = 2.718281828459045,
     if ("number" == typeof e && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number((r - Math.floor(r / e) * e).toFixed(14)));
     if (Array.isArray(r) && Array.isArray(e) && r.length === e.length && r.every((r) => "number" == typeof r) && e.every((r) => "number" == typeof r)) return r.map((r, t) => Number((r - Math.floor(r / e[t]) * e[t]).toFixed(14)));
     throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_3.NO}: ${ERRORS.MNJS_1_3.TEXT}`);
+  },
+  ceil = (r) => {
+    if ("number" == typeof r) return Math.ceil(r);
+    if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Math.ceil(r));
+    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
   },
   cos = (r) => {
     if ("number" == typeof r) return Number(Math.cos(r).toFixed(14));
@@ -526,6 +531,7 @@ const E = 2.718281828459045,
       (r.add = add),
       (r.cube = cube),
       (r.cbrt = cbrt),
+      (r.ceil = ceil),
       (r.divi = divi),
       (r.exp = exp),
       (r.expm1 = expm1),
