@@ -47,7 +47,7 @@ mnjs.rem(1.2, 0.5)   = 0.2      // mnjs.rem(1.2, 0.5)  === 0.2 returns true
 <html>
   <head>
     <title>mnjs</title>
-    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@2.4.0/browser/index.js"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@2.4.1/browser/index.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/mnjs/browser/index.js"></script>
     <!--                       This file is always minified ☝              -->
   </head>
@@ -361,7 +361,7 @@ mnjs.mult(mnjs.monolist(0.2, 3), [5, 10, 15])  //  [ 1, 2, 3 ]
 mnjs.mult(0.2, [ 5, 10, 15])[1] === mnjs.mult(mnjs.monolist(0.2, 3), [5, 10, 15])[1] // true
 
 mnjs.imul(0xffffffff, [1,2,3,4,5])             //  [ -1, -2, -3, -4, -5 ]
-mnjs.rib(100000, 999999)                       //  returns random int between 1000000 and 999999
+mnjs.rib(100000, 999999)                       //  returns random integer between two values, inclusive min and max value
 ```
 
 
@@ -485,7 +485,7 @@ ___
 | pow       | power                                                        | function:  pow(num, power)                                   |
 | range     | The range function returns a sequence of numbers, starting from *start* value by default, and increments or decrements by *step* value, and stops before or in specified *end* value. | function: range(start, end, step). It returns an array       |
 | rem       | The remainder function (%) returns the remainder or signed remainder of a division, after one number is divided by another (called the modulus of the operation) | function:  rem(num1, num2)                                   |
-| rib       | The rib function returns a random integer between two values, inclusive | function:  rib(min, max)                                     |
+| rib       | The rib function returns a random integer between two values, inclusive min and max value | function:  rib(min, max)                                     |
 | round     | The round function returns the value of a number rounded to the nearest integer | function: round(num)                                         |
 | rtd       | Radians to Degrees conversion                                | function: rtd(angleRadians).  Result in degrees              |
 | sec       | Secant (in radians)                                          | function:  sec(angleRadians)                                 |
