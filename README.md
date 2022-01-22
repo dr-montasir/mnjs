@@ -47,7 +47,7 @@ mnjs.rem(1.2, 0.5)   = 0.2      // mnjs.rem(1.2, 0.5)  === 0.2 returns true
 <html>
   <head>
     <title>mnjs</title>
-    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@2.4.1/browser/index.js"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@3.0.0/browser/index.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/mnjs/browser/index.js"></script>
     <!--                       This file is always minified ☝              -->
   </head>
@@ -362,6 +362,12 @@ mnjs.mult(0.2, [ 5, 10, 15])[1] === mnjs.mult(mnjs.monolist(0.2, 3), [5, 10, 15]
 
 mnjs.imul(0xffffffff, [1,2,3,4,5])             //  [ -1, -2, -3, -4, -5 ]
 mnjs.rib(100000, 999999)                       //  returns random integer between two values, inclusive min and max value
+
+// The change function replace x (number or numeric array element) with z if x = y
+// mnjs.change(x=1, y=1, z=0)
+mnjs.change(1, 1, 0)      //  returns 0
+mnjs.change(1, NaN, 0)    //  returns 1
+mnjs.change([1, NaN, 1, NaN], NaN, 0)    //  returns [1, 0, 1, 0]
 ```
 
 
@@ -435,6 +441,7 @@ ___
 | atanh.rad | Inverse hyperbolic tangen (in radians)                       | function:  atanh.rad(num)                                    |
 | atanh.deg | Inverse hyperbolic tangen (in degrees)                       | function:  atanh.deg(num)                                    |
 | ceil      | The ceil function returns the smallest integer greater than or equal to a number | function: ceil(num)                                          |
+| change    | The change function replace x (number or numeric array element) with z if x = y | function: change(x, y, z)                                    |
 | cos       | Cosine (in radians)                                          | function:  cos(angleRadians)                                 |
 | cos.rad   | Cosine (in radians)                                          | function:  cos.rad(angleRadians)                             |
 | cos.deg   | Cosine (in degrees)                                          | function:  cos.deg(angleDegrees)                             |

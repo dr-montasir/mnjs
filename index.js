@@ -7,58 +7,55 @@ const E = 2.718281828459045,
   PHI = Number(((1 + Math.sqrt(5)) / 2).toFixed(14)),
   TAU = Number((2 * PI).toFixed(14)),
   ERRORS = {
-    MNJS_1_1: { NO: "01 : 01", TEXT: "This function accepting either a number or an array. In the case of an array, all elements must be a number" },
-    MNJS_1_2: { NO: "01 : 02", TEXT: "This function accepting either a string or an array. In the case of an array, all elements must be a string" },
-    MNJS_1_3: {
-      NO: "01 : 03",
-      TEXT: "This function accepting two arguments of numbers, arrays, or one of them must be a number, and the other must be an array; In the case of arrays, all elements must be a number, the length of arrays must be equal",
-    },
-    MNJS_1_4: { NO: "01 : 04", TEXT: "The first parameter accepting either a number or an array. In the case of an array, all elements must be a number. The second parameter must be between 0 and 100" },
-    MNJS_1_5: { NO: "01 : 05", TEXT: "This function accepts numeric arguments or one numeric array argument. (num1, num2, ..., num) => {} or ([num1, num2, ..., num]) => {}" },
-    MNJS_1_6: {
-      NO: "01 : 06",
-      TEXT:
-        "This function accepting two arguments. The first argument should be one (numeric or empty) array and the second should be a number. All next examples are valid: sum([num1, num2, ..., num_x]); sum([]); sum([num1, num2, ..., num_x], num); sum([], num)",
-    },
-    MNJS_2_1: { NO: "02 : 01", TEXT: "All parameters must be a number" },
-    MNJS_2_2: { NO: "02 : 02", TEXT: "The step parameter must be a number" },
-    MNJS_2_3: { NO: "02 : 03", TEXT: "The first and the second parameter should not be equal" },
-    MNJS_2_4: { NO: "02 : 04", TEXT: "The step parameter should not be greater than the difference between the first and second parameter" },
-    MNJS_2_5: { NO: "02 : 05", TEXT: "The step parameter should not be equal zero" },
-    MNJS_2_6: { NO: "02 : 06", TEXT: "The sign of the step parameter must be positive" },
-    MNJS_3_1: { NO: "03 : 01", TEXT: "The monolist function should take two parameters (value: number, size: natural number & greater than zero)" },
-    MNJS_3_2: { NO: "03 : 02", TEXT: "All parameters must be a number (value: number, size: natural number & greater than zero)" },
+    MNJS_1_1: "MNJS ERROR No. 01 : 01: This function accepting either a number or an array. In the case of an array, all elements must be a number",
+    MNJS_1_2: "MNJS ERROR No. 01 : 02: This function accepting either a string or an array. In the case of an array, all elements must be a string",
+    MNJS_1_3:
+      "MNJS ERROR No. 01 : 03: This function accepting two arguments of numbers, arrays, or one of them must be a number, and the other must be an array; In the case of arrays, all elements must be a number, the length of arrays must be equal",
+    MNJS_1_4: "MNJS ERROR No. 01 : 04: The first parameter accepting either a number or an array. In the case of an array, all elements must be a number. The second parameter must be between 0 and 100",
+    MNJS_1_5: "MNJS ERROR No. 01 : 05: This function accepts numeric arguments or one numeric array argument. (num1, num2, ..., num) => {} or ([num1, num2, ..., num]) => {}",
+    MNJS_1_6:
+      "MNJS ERROR No. 01 : 06: This function accepting two arguments. The first argument should be one (numeric or empty) array and the second should be a number. All next examples are valid: sum([num1, num2, ..., num_x]); sum([]); sum([num1, num2, ..., num_x], num); sum([], num)",
+    MNJS_1_7:
+      "MNJS ERROR No. 01 : 07: This function accepts three arguments. The first argument should be  a number or one (numeric or empty) array. The second and third arguments must be a number. What does the function do? f(x, y, z): Replace x (number or numeric array element) with z if x = y",
+    MNJS_2_1: "MNJS ERROR No. 02 : 01: All parameters must be a number",
+    MNJS_2_2: "MNJS ERROR No. 02 : 02: The step parameter must be a number",
+    MNJS_2_3: "MNJS ERROR No. 02 : 03: The first and the second parameter should not be equal",
+    MNJS_2_4: "MNJS ERROR No. 02 : 04: The step parameter should not be greater than the difference between the first and second parameter",
+    MNJS_2_5: "MNJS ERROR No. 02 : 05: The step parameter should not be equal zero",
+    MNJS_2_6: "MNJS ERROR No. 02 : 06: The sign of the step parameter must be positive",
+    MNJS_3_1: "MNJS ERROR No. 03 : 01: The monolist function should take two parameters (value: number, size: natural number & greater than zero)",
+    MNJS_3_2: "MNJS ERROR No. 03 : 02: All parameters must be a number (value: number, size: natural number & greater than zero)",
   },
   range = (r, e, t) => {
     let o = [];
-    if ("number" != typeof r || "number" != typeof e) throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_2_1.NO}: ${ERRORS.MNJS_2_1.TEXT}`);
-    if ("string" == typeof t || "boolean" == typeof t) throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_2_2.NO}: ${ERRORS.MNJS_2_2.TEXT}`);
-    if (r === e) throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_2_3.NO}: ${ERRORS.MNJS_2_3.TEXT}`);
-    if (t > Math.abs(r - e)) throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_2_4.NO}: ${ERRORS.MNJS_2_4.TEXT}`);
-    if (0 === t) throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_2_5.NO}: ${ERRORS.MNJS_2_5.TEXT}`);
-    if (-1 === Math.sign(t)) throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_2_6.NO}: ${ERRORS.MNJS_2_6.TEXT}`);
+    if ("number" != typeof r || "number" != typeof e) throw new Error(ERRORS.MNJS_2_1);
+    if ("string" == typeof t || "boolean" == typeof t) throw new Error(ERRORS.MNJS_2_2);
+    if (r === e) throw new Error(ERRORS.MNJS_2_3);
+    if (t > Math.abs(r - e)) throw new Error(ERRORS.MNJS_2_4);
+    if (0 === t) throw new Error(ERRORS.MNJS_2_5);
+    if (-1 === Math.sign(t)) throw new Error(ERRORS.MNJS_2_6);
     if ((t || (t = 1), r > e)) {
-      for (let R = r; R >= e; R -= t) o.push(Number(R.toFixed(7)));
+      for (let n = r; n >= e; n -= t) o.push(Number(n.toFixed(7)));
       return o;
     }
     if (r > e) {
-      for (let R = r; R >= e; R -= t) o.push(Number(R.toFixed(7)));
+      for (let n = r; n >= e; n -= t) o.push(Number(n.toFixed(7)));
       return o;
     }
     if (r < e) {
-      for (let R = r; R <= e; R += t) o.push(Number(R.toFixed(7)));
+      for (let n = r; n <= e; n += t) o.push(Number(n.toFixed(7)));
       return o;
     }
   },
   monolist = (r, e) => {
-    if ((!r && !e) || (r && 0 === e)) throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_3_1.NO}: ${ERRORS.MNJS_3_1.TEXT}`);
-    if ("number" != typeof r || "number" != typeof e) throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_3_2.NO}: ${ERRORS.MNJS_3_2.TEXT}`);
+    if ((!r && !e) || (r && 0 === e)) throw new Error(ERRORS.MNJS_3_1);
+    if ("number" != typeof r || "number" != typeof e) throw new Error(ERRORS.MNJS_3_2);
     return Array(e).fill(r);
   },
   dtr = (r) => {
     if ("number" == typeof r) return Number(((r * Math.PI) / 180).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(((r * Math.PI) / 180).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   rtd = (r) => {
     if ("number" == typeof r) {
@@ -68,17 +65,17 @@ const E = 2.718281828459045,
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) {
       return r.map((r) => Number(((180 * r) / Math.PI).toFixed(7))).map((r) => Number(r.toFixed(14)));
     }
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   nts = (r) => {
     if ("number" == typeof r) return String(r);
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => String(r));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   stn = (r) => {
     if ("string" == typeof r) return Number(r);
     if (Array.isArray(r) && r.every((r) => "string" == typeof r)) return r.map((r) => Number(r));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_2.NO}: ${ERRORS.MNJS_1_2.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_2);
   },
   zeros = (r, e) => {
     if ("number" == typeof r && "number" == typeof e && e >= 0 && e <= 100) {
@@ -87,167 +84,172 @@ const E = 2.718281828459045,
     if ("number" == typeof e && e >= 0 && e <= 100 && Array.isArray(r) && r.every((r) => "number" == typeof r)) {
       return r.map((r) => Number(r.toFixed(e))).toLocaleString("en", { useGrouping: !1, minimumFractionDigits: e });
     }
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_4.NO}: ${ERRORS.MNJS_1_4.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_4);
+  },
+  change = (r, e, t) => {
+    if ("number" == typeof r && "number" == typeof e && "number" == typeof t) return (r = r === e || (isNaN(r) && isNaN(e)) ? t : r);
+    if ("number" == typeof e && "number" == typeof t && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => (r = r === e || (isNaN(r) && isNaN(e)) ? t : r));
+    throw new Error(ERRORS.MNJS_1_7);
   },
   abs = (r) => {
     if ("number" == typeof r) return Math.abs(r);
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Math.abs(r));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   sign = (r) => {
     if ("number" == typeof r) return Math.sign(r);
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Math.sign(r));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   add = (r, e) => {
     if ("number" == typeof r && "number" == typeof e) return Number((r + e).toFixed(14));
     if ("number" == typeof r && Array.isArray(e) && e.every((r) => "number" == typeof r)) return e.map((e) => Number((r + e).toFixed(14)));
     if ("number" == typeof e && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number((r + e).toFixed(14)));
     if (Array.isArray(r) && Array.isArray(e) && r.length === e.length && r.every((r) => "number" == typeof r) && e.every((r) => "number" == typeof r)) return r.map((r, t) => Number((r + e[t]).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_3.NO}: ${ERRORS.MNJS_1_3.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_3);
   },
   cube = (r) => {
     if ("number" == typeof r) return Number((r * r * r).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number((r * r * r).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   cbrt = (r) => {
     if ("number" == typeof r) return Number(Math.cbrt(r).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.cbrt(r).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   divi = (r, e) => {
     if ("number" == typeof r && "number" == typeof e) return Number((r / e).toFixed(14));
     if ("number" == typeof r && Array.isArray(e) && e.every((r) => "number" == typeof r)) return e.map((e) => Number((r / e).toFixed(14)));
     if ("number" == typeof e && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number((r / e).toFixed(14)));
     if (Array.isArray(r) && Array.isArray(e) && r.length === e.length && r.every((r) => "number" == typeof r) && e.every((r) => "number" == typeof r)) return r.map((r, t) => Number((r / e[t]).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_3.NO}: ${ERRORS.MNJS_1_3.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_3);
   },
   fix = (r, e) => {
     if ("number" == typeof r && "number" == typeof e && e >= 0 && e <= 100) return Number(r.toFixed(e));
     if ("number" == typeof e && e >= 0 && e <= 100 && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(r.toFixed(e)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_4.NO}: ${ERRORS.MNJS_1_4.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_4);
   },
   hypot = (...r) => {
     if (r.length > 0 && r.every((r) => "number" == typeof r)) return Number(Math.hypot(...r).toFixed(14));
     if (1 === r.length && r[0].length > 0 && Array.isArray(r[0]) && r[0].every((r) => "number" == typeof r)) return Number(Math.hypot(...r[0]).toFixed(14));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_5.NO}: ${ERRORS.MNJS_1_5.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_5);
   },
   inv = (r) => {
     if ("number" == typeof r) return Number((1 / r).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number((1 / r).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   log = (r) => {
     if ("number" == typeof r) return Number(Math.log(r).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.log(r).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   log2 = (r) => {
     if ("number" == typeof r) return Number(Math.log2(r).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.log2(r).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   log10 = (r) => {
     if ("number" == typeof r) return Number(Math.log10(r).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.log10(r).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   log1p = (r) => {
     if ("number" == typeof r) return Number(Math.log1p(r).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.log1p(r).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   max = (...r) => {
     if (r.length > 0 && r.every((r) => "number" == typeof r)) return Math.max(...r);
     if (1 === r.length && r[0].length > 0 && Array.isArray(r[0]) && r[0].every((r) => "number" == typeof r)) return Math.max(...r[0]);
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_5.NO}: ${ERRORS.MNJS_1_5.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_5);
   },
   min = (...r) => {
     if (r.length > 0 && r.every((r) => "number" == typeof r)) return Math.min(...r);
     if (1 === r.length && r[0].length > 0 && Array.isArray(r[0]) && r[0].every((r) => "number" == typeof r)) return Math.min(...r[0]);
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_5.NO}: ${ERRORS.MNJS_1_5.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_5);
   },
   sum = (r, e) => {
     if (Array.isArray(r) && r.every((r) => "number" == typeof r) && ((e && "number" == typeof e) || !e)) {
       return r.reduce((r, e) => Number((r + e).toFixed(14)), (e = e || 0));
     }
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_6.NO}: ${ERRORS.MNJS_1_6.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_6);
   },
   mult = (r, e) => {
     if ("number" == typeof r && "number" == typeof e) return Number((r * e).toFixed(14));
     if ("number" == typeof r && Array.isArray(e) && e.every((r) => "number" == typeof r)) return e.map((e) => Number((r * e).toFixed(14)));
     if ("number" == typeof e && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number((r * e).toFixed(14)));
     if (Array.isArray(r) && Array.isArray(e) && r.length === e.length && r.every((r) => "number" == typeof r) && e.every((r) => "number" == typeof r)) return r.map((r, t) => Number((r * e[t]).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_3.NO}: ${ERRORS.MNJS_1_3.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_3);
   },
   nrt = (r, e) => {
     if ("number" == typeof r && "number" == typeof e) return Number(Math.pow(r, 1 / e).toFixed(14));
     if ("number" == typeof r && Array.isArray(e) && e.every((r) => "number" == typeof r)) return e.map((e) => Number(Math.pow(r, 1 / e).toFixed(14)));
     if ("number" == typeof e && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.pow(r, 1 / e).toFixed(14)));
     if (Array.isArray(r) && Array.isArray(e) && r.length === e.length && r.every((r) => "number" == typeof r) && e.every((r) => "number" == typeof r)) return r.map((r, t) => Number(Math.pow(r, 1 / e[t]).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_3.NO}: ${ERRORS.MNJS_1_3.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_3);
   },
   pow = (r, e) => {
     if ("number" == typeof r && "number" == typeof e) return Number(Math.pow(r, e).toFixed(14));
     if ("number" == typeof r && Array.isArray(e) && e.every((r) => "number" == typeof r)) return e.map((e) => Number(Math.pow(r, e).toFixed(14)));
     if ("number" == typeof e && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.pow(r, e).toFixed(14)));
     if (Array.isArray(r) && Array.isArray(e) && r.length === e.length && r.every((r) => "number" == typeof r) && e.every((r) => "number" == typeof r)) return r.map((r, t) => Number(Math.pow(r, e[t]).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_3.NO}: ${ERRORS.MNJS_1_3.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_3);
   },
   sqr = (r) => {
     if ("number" == typeof r) return Number((r * r).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number((r * r).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   sqrt = (r) => {
     if ("number" == typeof r) return Number(Math.sqrt(r).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.sqrt(r).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   subt = (r, e) => {
     if ("number" == typeof r && "number" == typeof e) return Number((r - e).toFixed(14));
     if ("number" == typeof r && Array.isArray(e) && e.every((r) => "number" == typeof r)) return e.map((e) => Number((r - e).toFixed(14)));
     if ("number" == typeof e && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number((r - e).toFixed(14)));
     if (Array.isArray(r) && Array.isArray(e) && r.length === e.length && r.every((r) => "number" == typeof r) && e.every((r) => "number" == typeof r)) return r.map((r, t) => Number((r - e[t]).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_3.NO}: ${ERRORS.MNJS_1_3.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_3);
   },
   exp = (r) => {
     if ("number" == typeof r) return Number(Math.pow(E, r).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.pow(E, r).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   expm1 = (r) => {
     if ("number" == typeof r) return Number(Math.expm1(r).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.expm1(r).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   trunc = (r) => {
     if ("number" == typeof r) return Math.trunc(r);
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Math.trunc(r));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   imul = (r, e) => {
     if ("number" == typeof r && "number" == typeof e) return Number(Math.imul(r, e).toFixed(14));
     if ("number" == typeof r && Array.isArray(e) && e.every((r) => "number" == typeof r)) return e.map((e) => Number(Math.imul(r, e).toFixed(14)));
     if ("number" == typeof e && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.imul(r, e).toFixed(14)));
     if (Array.isArray(r) && Array.isArray(e) && r.length === e.length && r.every((r) => "number" == typeof r) && e.every((r) => "number" == typeof r)) return r.map((r, t) => Number(Math.imul(r, e[t]).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_3.NO}: ${ERRORS.MNJS_1_3.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_3);
   },
   round = (r) => {
     if ("number" == typeof r) return Math.round(r);
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Math.round(r));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   fround = (r) => {
     if ("number" == typeof r) return Math.fround(r);
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Math.fround(r));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   floor = (r) => {
     if ("number" == typeof r) return Math.floor(r);
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Math.floor(r));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   rib = (r, e) => {
     if ("number" == typeof r && "number" == typeof e) return Number(Math.floor(Math.random() * (e + 1 - r) + r).toFixed(14));
@@ -255,259 +257,259 @@ const E = 2.718281828459045,
     if ("number" == typeof e && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.floor(Math.random() * (e + 1 - r) + r).toFixed(14)));
     if (Array.isArray(r) && Array.isArray(e) && r.length === e.length && r.every((r) => "number" == typeof r) && e.every((r) => "number" == typeof r))
       return r.map((r, t) => Number(Math.floor(Math.random() * (e[t] + 1 - r) + r).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_3.NO}: ${ERRORS.MNJS_1_3.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_3);
   },
   rem = (r, e) => {
     if ("number" == typeof r && "number" == typeof e) return Number((r - Math.floor(r / e) * e).toFixed(14));
     if ("number" == typeof r && Array.isArray(e) && e.every((r) => "number" == typeof r)) return e.map((e) => Number((r - Math.floor(r / e) * e).toFixed(14)));
     if ("number" == typeof e && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number((r - Math.floor(r / e) * e).toFixed(14)));
     if (Array.isArray(r) && Array.isArray(e) && r.length === e.length && r.every((r) => "number" == typeof r) && e.every((r) => "number" == typeof r)) return r.map((r, t) => Number((r - Math.floor(r / e[t]) * e[t]).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_3.NO}: ${ERRORS.MNJS_1_3.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_3);
   },
   ceil = (r) => {
     if ("number" == typeof r) return Math.ceil(r);
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Math.ceil(r));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   cos = (r) => {
     if ("number" == typeof r) return Number(Math.cos(r).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.cos(r).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   cosDeg = (r) => {
     if ("number" == typeof r) return Number(Math.cos(dtr(r)).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.cos(dtr(r)).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   acos = (r) => {
     if ("number" == typeof r) return Number(Math.acos(r).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.acos(r).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   acosDeg = (r) => {
     if ("number" == typeof r) return Number(rtd(acos(r)).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(rtd(acos(r)).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   cosh = (r) => {
     if ("number" == typeof r) return Number(Math.cosh(r).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.cosh(r).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   coshDeg = (r) => {
     if ("number" == typeof r) return Number(Math.cosh(dtr(r)).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.cosh(dtr(r)).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   acosh = (r) => {
     if ("number" == typeof r) return Number(Math.acosh(r).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.acosh(r).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   acoshDeg = (r) => {
     if ("number" == typeof r) return Number(rtd(acosh(r)).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(rtd(acosh(r)).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   sin = (r) => {
     if ("number" == typeof r) return Number(Math.sin(r).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.sin(r).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   sinDeg = (r) => {
     if ("number" == typeof r) return Number(Math.sin(dtr(r)).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.sin(dtr(r)).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   asin = (r) => {
     if ("number" == typeof r) return Number(Math.asin(r).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.asin(r).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   asinDeg = (r) => {
     if ("number" == typeof r) return Number(rtd(asin(r)).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(rtd(asin(r)).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   sinh = (r) => {
     if ("number" == typeof r) return Number(Math.sinh(r).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.sinh(r).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   sinhDeg = (r) => {
     if ("number" == typeof r) return Number(Math.sinh(dtr(r)).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.sinh(dtr(r)).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   asinh = (r) => {
     if ("number" == typeof r) return Number(Math.asinh(r).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.asinh(r).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   asinhDeg = (r) => {
     if ("number" == typeof r) return Number(rtd(asinh(r)).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(rtd(asinh(r)).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   tan = (r) => {
     if ("number" == typeof r) return Number((sin(r) / cos(r)).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number((sin(r) / cos(r)).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   tanDeg = (r) => {
     if ("number" == typeof r) return Number(tan(dtr(r)).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(tan(dtr(r)).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   atan = (r) => {
     if ("number" == typeof r) return Number(Math.atan(r).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.atan(r).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   atanDeg = (r) => {
     if ("number" == typeof r) return Number(rtd(atan(r)).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(rtd(atan(r)).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   tanh = (r) => {
     if ("number" == typeof r) return Number(Math.tanh(r).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.tanh(r).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   tanhDeg = (r) => {
     if ("number" == typeof r) return Number(Math.tanh(dtr(r)).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.tanh(dtr(r)).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   atanh = (r) => {
     if ("number" == typeof r) return Number(Math.atanh(r).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(Math.atanh(r).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   atanhDeg = (r) => {
     if ("number" == typeof r) return Number(rtd(Math.atanh(r)).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(rtd(Math.atanh(r)).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   csc = (r) => {
     if ("number" == typeof r) return Number((1 / sin(r)).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number((1 / sin(r)).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   cscDeg = (r) => {
     if ("number" == typeof r) return Number(csc(dtr(r)).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(csc(dtr(r)).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   acsc = (r) => {
     if ("number" == typeof r) return Number(asin(1 / r).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(asin(1 / r).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   acscDeg = (r) => {
     if ("number" == typeof r) return Number(rtd(asin(1 / r)).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(rtd(asin(1 / r)).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   csch = (r) => {
     if ("number" == typeof r) return Number((1 / sinh(r)).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number((1 / sinh(r)).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   cschDeg = (r) => {
     if ("number" == typeof r) return Number(csch(dtr(r)).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(csch(dtr(r)).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   acsch = (r) => {
     if ("number" == typeof r) return Number(asinh(1 / r).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(asinh(1 / r).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   acschDeg = (r) => {
     if ("number" == typeof r) return Number(rtd(asinh(1 / r)).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(rtd(asinh(1 / r)).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   sec = (r) => {
     if ("number" == typeof r) return Number((1 / cos(r)).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number((1 / cos(r)).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   secDeg = (r) => {
     if ("number" == typeof r) return Number(sec(dtr(r)).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(sec(dtr(r)).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   asec = (r) => {
     if ("number" == typeof r) return Number(acos(1 / r).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(acos(1 / r).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   asecDeg = (r) => {
     if ("number" == typeof r) return Number(rtd(acos(1 / r)).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(rtd(acos(1 / r)).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   sech = (r) => {
     if ("number" == typeof r) return Number((1 / cosh(r)).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number((1 / cosh(r)).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   sechDeg = (r) => {
     if ("number" == typeof r) return Number(sech(dtr(r)).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(sech(dtr(r)).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   asech = (r) => {
     if ("number" == typeof r) return Number(acosh(1 / r).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(acosh(1 / r).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   asechDeg = (r) => {
     if ("number" == typeof r) return Number(rtd(acosh(1 / r)).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(rtd(acosh(1 / r)).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   cot = (r) => {
     if ("number" == typeof r) return Number((cos(r) / sin(r)).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number((cos(r) / sin(r)).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   cotDeg = (r) => {
     if ("number" == typeof r) return Number(cot(dtr(r)).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(cot(dtr(r)).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   acot = (r) => {
     if ("number" == typeof r) return Number(atan(1 / r).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(atan(1 / r).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   acotDeg = (r) => {
     if ("number" == typeof r) return Number(rtd(atan(1 / r)).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(rtd(atan(1 / r)).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   coth = (r) => {
     if ("number" == typeof r) return Number((Math.cosh(r) / Math.sinh(r)).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number((Math.cosh(r) / Math.sinh(r)).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   cothDeg = (r) => {
     if ("number" == typeof r) return Number(coth(dtr(r)).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(coth(dtr(r)).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   acoth = (r) => {
     if ("number" == typeof r) return Number(((log((r + 1) / r) + log(r / (r - 1))) / 2).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(((log((r + 1) / r) + log(r / (r - 1))) / 2).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   acothDeg = (r) => {
     if ("number" == typeof r) return Number(rtd(acoth(r)).toFixed(14));
     if (Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => Number(rtd(acoth(r)).toFixed(14)));
-    throw new Error(`MNJS ERROR No. ${ERRORS.MNJS_1_1.NO}: ${ERRORS.MNJS_1_1.TEXT}`);
+    throw new Error(ERRORS.MNJS_1_1);
   },
   useMnjs = () => {
     const r = {};
@@ -525,6 +527,7 @@ const E = 2.718281828459045,
       (r.nts = nts),
       (r.stn = stn),
       (r.zeros = zeros),
+      (r.change = change),
       (r.range = range),
       (r.monolist = monolist),
       (r.abs = abs),
