@@ -87,8 +87,8 @@ const E = 2.718281828459045,
     throw new Error(ERRORS.MNJS_1_4);
   },
   change = (r, e, t) => {
-    if ("number" == typeof r && "number" == typeof e && "number" == typeof t) return (r = r === e || (isNaN(r) && isNaN(e)) ? t : r);
-    if ("number" == typeof e && "number" == typeof t && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => (r = r === e || (isNaN(r) && isNaN(e)) ? t : r));
+    if ("number" == typeof r && "number" == typeof e && "number" == typeof t) return (r = r === e && isNaN(r) === isNaN(e) ? t : r);
+    if ("number" == typeof e && "number" == typeof t && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => (r = r === e && isNaN(r) === isNaN(e) ? t : r));
     throw new Error(ERRORS.MNJS_1_7);
   },
   abs = (r) => {

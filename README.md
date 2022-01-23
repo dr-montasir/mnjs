@@ -363,11 +363,22 @@ mnjs.mult(0.2, [ 5, 10, 15])[1] === mnjs.mult(mnjs.monolist(0.2, 3), [5, 10, 15]
 mnjs.imul(0xffffffff, [1,2,3,4,5])             //  [ -1, -2, -3, -4, -5 ]
 mnjs.rib(100000, 999999)                       //  returns random integer between two values, inclusive min and max value
 
+// Remember that:
+// 0 / 0 = NaN, NaN / NaN = NaN, Infinity / Infinity = NaN, Infinity / NaN = NaN
+// NaN / Infinity = NaN, 0 / NaN = NaN, NaN / 0 = Nan
+// 0 / Infinity = 0, Infinity / 0 = Infinity
+// Infinity === Infinity returns true. Infinity is equal to itself
+// NaN === NaN = false
+
 // The change function replace x (number or numeric array element) with z if x = y
 // mnjs.change(x=1, y=1, z=0)
 mnjs.change(1, 1, 0)      //  returns 0
 mnjs.change(1, NaN, 0)    //  returns 1
-mnjs.change([1, NaN, 1, NaN], NaN, 0)    //  returns [1, 0, 1, 0]
+mnjs.change(Infinity, Infinity, 0)                //  returns 0
+mnjs.change([0, NaN, 1, Infinity], NaN, 0)        //  returns [0, NaN, 1, Infinity]
+// where [0 = old value, NaN = old value, 1 = old value, Infinity = old value], nothing changed!
+mnjs.change([0, NaN, 1, Infinity], Infinity, 0)   //  returns [0, NaN, 1, 0]
+// where [0 = old value, NaN = old value, 1 = old value, 0 = new value ], only Infinity value replaced with 0
 ```
 
 
