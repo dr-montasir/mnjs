@@ -15,8 +15,6 @@ const E = 2.718281828459045,
     MNJS_1_5: "MNJS ERROR No. 01 : 05: This function accepts numeric arguments or one numeric array argument. (num1, num2, ..., num) => {} or ([num1, num2, ..., num]) => {}",
     MNJS_1_6:
       "MNJS ERROR No. 01 : 06: This function accepting two arguments. The first argument should be one (numeric or empty) array and the second should be a number. All next examples are valid: sum([num1, num2, ..., num_x]); sum([]); sum([num1, num2, ..., num_x], num); sum([], num)",
-    MNJS_1_7:
-      "MNJS ERROR No. 01 : 07: This function accepts three arguments. The first argument should be  a number or one (numeric or empty) array. The second and third arguments must be a number. What does the function do? f(x, y, z): Replace x (number or numeric array element) with z if x = y",
     MNJS_2_1: "MNJS ERROR No. 02 : 01: All parameters must be a number",
     MNJS_2_2: "MNJS ERROR No. 02 : 02: The step parameter must be a number",
     MNJS_2_3: "MNJS ERROR No. 02 : 03: The first and the second parameter should not be equal",
@@ -25,6 +23,10 @@ const E = 2.718281828459045,
     MNJS_2_6: "MNJS ERROR No. 02 : 06: The sign of the step parameter must be positive",
     MNJS_3_1: "MNJS ERROR No. 03 : 01: The monolist function should take two parameters (value: number, size: natural number & greater than zero)",
     MNJS_3_2: "MNJS ERROR No. 03 : 02: All parameters must be a number (value: number, size: natural number & greater than zero)",
+    MNJS_4_1:
+      "MNJS ERROR No. 04 : 01: This function accepts three arguments. The first argument should be  a number or one (numeric or empty) array. The second and third arguments must be a number. What does the function do? f(x, y, z): Replace x (number or numeric array element) with z if x ",
+    MNJS_4_1_SUB_1: "= y",
+    MNJS_4_1_SUB_2: "is not equal to y",
   },
   range = (r, e, t) => {
     let o = [];
@@ -89,7 +91,12 @@ const E = 2.718281828459045,
   change = (r, e, t) => {
     if ("number" == typeof r && "number" == typeof e && "number" == typeof t) return (r = r === e && isNaN(r) === isNaN(e) ? t : r);
     if ("number" == typeof e && "number" == typeof t && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => (r = r === e && isNaN(r) === isNaN(e) ? t : r));
-    throw new Error(ERRORS.MNJS_1_7);
+    throw new Error(ERRORS.MNJS_4_1 + ERRORS.MNJS_4_1_SUB_1);
+  },
+  notequal = (r, e, t) => {
+    if ("number" == typeof r && "number" == typeof e && "number" == typeof t) return (r = r !== e || isNaN(r) !== isNaN(e) ? t : r);
+    if ("number" == typeof e && "number" == typeof t && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => (r = r !== e || isNaN(r) !== isNaN(e) ? t : r));
+    throw new Error(ERRORS.MNJS_4_1 + ERRORS.MNJS_4_1_SUB_2);
   },
   abs = (r) => {
     if ("number" == typeof r) return Math.abs(r);
@@ -528,6 +535,8 @@ const E = 2.718281828459045,
       (r.stn = stn),
       (r.zeros = zeros),
       (r.change = change),
+      (r.change.equal = change),
+      (r.change.notequal = notequal),
       (r.range = range),
       (r.monolist = monolist),
       (r.abs = abs),
