@@ -47,7 +47,7 @@ mnjs.rem(1.2, 0.5)   = 0.2      // mnjs.rem(1.2, 0.5)  === 0.2 returns true
 <html>
   <head>
     <title>mnjs</title>
-    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@3.1.2/browser/index.js"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@3.2.1/browser/index.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/mnjs/browser/index.js"></script>
     <!--                 This link is the latest mini version ☝                 -->
   </head>
@@ -386,7 +386,7 @@ mnjs.change([0, NaN, 1, Infinity], Infinity, 0)          //  returns [0, NaN, 1,
 
 // The change.isNotEqual function replace x (number or numeric array element) with z if x is not equal to y
 // mnjs.change.isNotEqual(x=1, y=1, z=0)
-mnjs.change.isEqual(1, 1, 0) !== mnjs.change.isNotEqual(1, 1, 0)  // returns true
+mnjs.change.isEqual(1, 1, 0) !== mnjs.change.isNotEqual(1, 1, 0)   // returns true
 mnjs.change.isNotEqual(1, 1, 0)   //  returns 1, where 1 is the old value of x
 mnjs.change.isNotEqual(1, NaN, 0) //  returns 0, where 0 is the new value of x
 mnjs.change.isNotEqual(Infinity, Infinity, 0)              //  returns Infinity
@@ -396,11 +396,17 @@ mnjs.change.isNotEqual([0, NaN, 1, Infinity], Infinity, 0) //  returns [0, 0, 0,
 // where [0 = new value, 0 = new value, 0 = new value, Infinity = old value ], all elements replaced with 0 except Infinity
 mnjs.change.isGreater([0, NaN, 1, Infinity], NaN, 0)       //  returns [0, NaN, 1, Infinity]
 mnjs.change.isLess([0, NaN, 1, Infinity], NaN, 0)          //  returns [0, NaN, 1, Infinity]
-mnjs.change.isGreaterOrEqual([0, NaN, 1, Infinity], Infinity, 0)  //  returns [0, NaN, 1, Infinity]
-mnjs.change.isGreaterOrEqual([0, NaN, 1, Infinity], Infinity, 0)  // returns [0, NaN, 1, 0]
+mnjs.change.isGreaterOrEqual([0, NaN, 1, Infinity], Infinity, 0)   //  returns [0, NaN, 1, Infinity]
+mnjs.change.isGreaterOrEqual([0, NaN, 1, Infinity], Infinity, 0)   // returns [0, NaN, 1, 0]
 // where orEqual is true (Infinity replaced by 0)
-mnjs.change.isLessOrEqual([0, NaN, 1, Infinity], Infinity, 0)     // returns [0, NaN, 0, 0]
-
+mnjs.change.isLessOrEqual([0, NaN, 1, Infinity], Infinity, 0)      // returns [0, NaN, 0, 0]
+// change.isFiniteNum(x, y) or change.isFiniteNum(xArray, y)
+mnjs.change.isFiniteNum([0, NaN, 1, Infinity], Infinity)           // returns [Infinity, NaN, Infinity, Infinity]
+// where [Infinity = new value, NaN = old value, Infinity = new value, Infinity = old value]
+mnjs.change.isInfinity([-Infinity, NaN, 1, Infinity], 0)           // returns [0, NaN, 1, 0]  (change ±Infinity)
+mnjs.change.isPlusInfinity([-Infinity, NaN, 1, Infinity], 0)       // returns [-Infinity, NaN, 1, 0]
+mnjs.change.isMinusInfinity([-Infinity, NaN, 1, Infinity], 0)      // returns [0, NaN, 1, Infinity]
+mnjs.change.isNAN([-Infinity, NaN, 1, Infinity], 0)                // returns [-Infinity, 0, 1, Infinity]
 ```
 
 
@@ -481,6 +487,11 @@ ___
 | change.isLess           | The change.isLess replace x (number or numeric array element) with z if x is less than y | function: change.isLess(x, y, z)                             |
 | change.isGreaterOrEqual | The change.isGreaterOrEqual replace x (number or numeric array element) with z if x is greater than or equal to y | function: change.isGreaterOrEqua(x, y, z)                    |
 | change.isLessOrEqual    | The change.isLess replace x (number or numeric array element) with z if x is less than y | function: change.isLessOrEqual(x, y, z)                      |
+| change.isFiniteNum      | The change.isFiniteNum replace x (number or numeric array element) with y if x is finite | function: change.isFiniteNum(x,y)                            |
+| change.isInfinity       | The change.isInfinity replace x (number or numeric array element) with y if x is infinity | function: change.isInfinity(x,y)                             |
+| change.isPlusInfinity   | The change.isPlusInfinity replace x (number or numeric array element) with y if x is plus infinity | function: change.isPlusInfinity(x,y)                         |
+| change.isMinusInfinity  | The change.isMinusInfinity replace x (number or numeric array element) with y if x is minus infinity | function: change.isMinusInfinity(x,y)                        |
+| change.isNAN            | The change.isNAN replace x (number or numeric array element) with y if x is NAN | function: change.isNAN(x,y)                                  |
 | cos                     | Cosine (in radians)                                          | function:  cos(angleRadians)                                 |
 | cos.rad                 | Cosine (in radians)                                          | function:  cos.rad(angleRadians)                             |
 | cos.deg                 | Cosine (in degrees)                                          | function:  cos.deg(angleDegrees)                             |

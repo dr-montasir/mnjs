@@ -31,9 +31,16 @@ const E = 2.718281828459045,
     MNJS_4_1_SUB_4: "less than y",
     MNJS_4_1_SUB_5: "greater than or equal to y",
     MNJS_4_1_SUB_6: "less than or equal to y",
+    MNJS_5_1:
+      "MNJS ERROR No. 05 : 01: This function accepts two arguments. The first argument should be  a number or one (numeric or empty) array. The second argument must be a number. What does the function do? f(x, y): Replace x (number or numeric array element) with y if x is ",
+    MNJS_5_1_SUB_1: "finity num",
+    MNJS_5_1_SUB_2: "infinity",
+    MNJS_5_1_SUB_3: "plus infinity",
+    MNJS_5_1_SUB_4: "minus infinity",
+    MNJS_5_1_SUB_5: "NAN",
   },
   range = (r, e, t) => {
-    let o = [];
+    let n = [];
     if ("number" != typeof r || "number" != typeof e) throw new Error(ERRORS.MNJS_2_1);
     if ("string" == typeof t || "boolean" == typeof t) throw new Error(ERRORS.MNJS_2_2);
     if (r === e) throw new Error(ERRORS.MNJS_2_3);
@@ -41,16 +48,16 @@ const E = 2.718281828459045,
     if (0 === t) throw new Error(ERRORS.MNJS_2_5);
     if (-1 === Math.sign(t)) throw new Error(ERRORS.MNJS_2_6);
     if ((t || (t = 1), r > e)) {
-      for (let n = r; n >= e; n -= t) o.push(Number(n.toFixed(7)));
-      return o;
+      for (let o = r; o >= e; o -= t) n.push(Number(o.toFixed(7)));
+      return n;
     }
     if (r > e) {
-      for (let n = r; n >= e; n -= t) o.push(Number(n.toFixed(7)));
-      return o;
+      for (let o = r; o >= e; o -= t) n.push(Number(o.toFixed(7)));
+      return n;
     }
     if (r < e) {
-      for (let n = r; n <= e; n += t) o.push(Number(n.toFixed(7)));
-      return o;
+      for (let o = r; o <= e; o += t) n.push(Number(o.toFixed(7)));
+      return n;
     }
   },
   monolist = (r, e) => {
@@ -121,6 +128,31 @@ const E = 2.718281828459045,
     if ("number" == typeof r && "number" == typeof e && "number" == typeof t) return (r = r <= e ? t : r);
     if ("number" == typeof e && "number" == typeof t && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => (r = r <= e ? t : r));
     throw new Error(ERRORS.MNJS_4_1 + ERRORS.MNJS_4_1_SUB_6);
+  },
+  isFiniteNum = (r, e) => {
+    if ("number" == typeof r && "number" == typeof e) return (r = !0 === isFinite(r) ? e : r);
+    if ("number" == typeof e && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => (r = !0 === isFinite(r) ? e : r));
+    throw new Error(ERRORS.MNJS_5_1 + ERRORS.MNJS_5_1_SUB_1);
+  },
+  isInfinity = (r, e) => {
+    if ("number" == typeof r && "number" == typeof e) return (r = r === 1 / 0 || r === -1 / 0 ? e : r);
+    if ("number" == typeof e && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => (r = r === 1 / 0 || r === -1 / 0 ? e : r));
+    throw new Error(ERRORS.MNJS_5_1 + ERRORS.MNJS_5_1_SUB_2);
+  },
+  isPlusInfinity = (r, e) => {
+    if ("number" == typeof r && "number" == typeof e) return (r = r === 1 / 0 ? e : r);
+    if ("number" == typeof e && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => (r = r === 1 / 0 ? e : r));
+    throw new Error(ERRORS.MNJS_5_1 + ERRORS.MNJS_5_1_SUB_3);
+  },
+  isMinusInfinity = (r, e) => {
+    if ("number" == typeof r && "number" == typeof e) return (r = r === -1 / 0 ? e : r);
+    if ("number" == typeof e && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => (r = r === -1 / 0 ? e : r));
+    throw new Error(ERRORS.MNJS_5_1 + ERRORS.MNJS_5_1_SUB_4);
+  },
+  isNAN = (r, e) => {
+    if ("number" == typeof r && "number" == typeof e) return (r = !0 === isNaN(r) ? e : r);
+    if ("number" == typeof e && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => (r = !0 === isNaN(r) ? e : r));
+    throw new Error(ERRORS.MNJS_5_1 + ERRORS.MNJS_5_1_SUB_5);
   },
   abs = (r) => {
     if ("number" == typeof r) return Math.abs(r);
@@ -565,6 +597,11 @@ const E = 2.718281828459045,
       (r.change.isLess = isLess),
       (r.change.isGreaterOrEqual = isGreaterOrEqual),
       (r.change.isLessOrEqual = isLessOrEqual),
+      (r.change.isFiniteNum = isFiniteNum),
+      (r.change.isInfinity = isInfinity),
+      (r.change.isPlusInfinity = isPlusInfinity),
+      (r.change.isMinusInfinity = isMinusInfinity),
+      (r.change.isNAN = isNAN),
       (r.range = range),
       (r.monolist = monolist),
       (r.abs = abs),
