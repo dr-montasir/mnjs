@@ -93,7 +93,7 @@ const E = 2.718281828459045,
     if ("number" == typeof e && "number" == typeof t && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => (r = r === e && isNaN(r) === isNaN(e) ? t : r));
     throw new Error(ERRORS.MNJS_4_1 + ERRORS.MNJS_4_1_SUB_1);
   },
-  notequal = (r, e, t) => {
+  isNotEqual = (r, e, t) => {
     if ("number" == typeof r && "number" == typeof e && "number" == typeof t) return (r = r !== e || isNaN(r) !== isNaN(e) ? t : r);
     if ("number" == typeof e && "number" == typeof t && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => (r = r !== e || isNaN(r) !== isNaN(e) ? t : r));
     throw new Error(ERRORS.MNJS_4_1 + ERRORS.MNJS_4_1_SUB_2);
@@ -535,8 +535,8 @@ const E = 2.718281828459045,
       (r.stn = stn),
       (r.zeros = zeros),
       (r.change = change),
-      (r.change.equal = change),
-      (r.change.notequal = notequal),
+      (r.change.isEqual = change),
+      (r.change.isNotEqual = isNotEqual),
       (r.range = range),
       (r.monolist = monolist),
       (r.abs = abs),
