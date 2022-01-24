@@ -24,9 +24,13 @@ const E = 2.718281828459045,
     MNJS_3_1: "MNJS ERROR No. 03 : 01: The monolist function should take two parameters (value: number, size: natural number & greater than zero)",
     MNJS_3_2: "MNJS ERROR No. 03 : 02: All parameters must be a number (value: number, size: natural number & greater than zero)",
     MNJS_4_1:
-      "MNJS ERROR No. 04 : 01: This function accepts three arguments. The first argument should be  a number or one (numeric or empty) array. The second and third arguments must be a number. What does the function do? f(x, y, z): Replace x (number or numeric array element) with z if x ",
-    MNJS_4_1_SUB_1: "= y",
-    MNJS_4_1_SUB_2: "is not equal to y",
+      "MNJS ERROR No. 04 : 01: This function accepts three arguments. The first argument should be  a number or one (numeric or empty) array. The second and third arguments must be a number. What does the function do? f(x, y, z): Replace x (number or numeric array element) with z if x is ",
+    MNJS_4_1_SUB_1: "equal to y",
+    MNJS_4_1_SUB_2: "not equal to y",
+    MNJS_4_1_SUB_3: "greater than y",
+    MNJS_4_1_SUB_4: "less than y",
+    MNJS_4_1_SUB_5: "greater than or equal to y",
+    MNJS_4_1_SUB_6: "less than or equal to y",
   },
   range = (r, e, t) => {
     let o = [];
@@ -89,14 +93,34 @@ const E = 2.718281828459045,
     throw new Error(ERRORS.MNJS_1_4);
   },
   change = (r, e, t) => {
-    if ("number" == typeof r && "number" == typeof e && "number" == typeof t) return (r = r === e && isNaN(r) === isNaN(e) ? t : r);
-    if ("number" == typeof e && "number" == typeof t && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => (r = r === e && isNaN(r) === isNaN(e) ? t : r));
+    if ("number" == typeof r && "number" == typeof e && "number" == typeof t) return (r = r === e ? t : r);
+    if ("number" == typeof e && "number" == typeof t && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => (r = r === e ? t : r));
     throw new Error(ERRORS.MNJS_4_1 + ERRORS.MNJS_4_1_SUB_1);
   },
   isNotEqual = (r, e, t) => {
-    if ("number" == typeof r && "number" == typeof e && "number" == typeof t) return (r = r !== e || isNaN(r) !== isNaN(e) ? t : r);
-    if ("number" == typeof e && "number" == typeof t && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => (r = r !== e || isNaN(r) !== isNaN(e) ? t : r));
+    if ("number" == typeof r && "number" == typeof e && "number" == typeof t) return (r = r !== e ? t : r);
+    if ("number" == typeof e && "number" == typeof t && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => (r = r !== e ? t : r));
     throw new Error(ERRORS.MNJS_4_1 + ERRORS.MNJS_4_1_SUB_2);
+  },
+  isGreater = (r, e, t) => {
+    if ("number" == typeof r && "number" == typeof e && "number" == typeof t) return (r = r > e ? t : r);
+    if ("number" == typeof e && "number" == typeof t && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => (r = r > e ? t : r));
+    throw new Error(ERRORS.MNJS_4_1 + ERRORS.MNJS_4_1_SUB_3);
+  },
+  isLess = (r, e, t) => {
+    if ("number" == typeof r && "number" == typeof e && "number" == typeof t) return (r = r < e ? t : r);
+    if ("number" == typeof e && "number" == typeof t && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => (r = r < e ? t : r));
+    throw new Error(ERRORS.MNJS_4_1 + ERRORS.MNJS_4_1_SUB_4);
+  },
+  isGreaterOrEqual = (r, e, t) => {
+    if ("number" == typeof r && "number" == typeof e && "number" == typeof t) return (r = r >= e ? t : r);
+    if ("number" == typeof e && "number" == typeof t && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => (r = r >= e ? t : r));
+    throw new Error(ERRORS.MNJS_4_1 + ERRORS.MNJS_4_1_SUB_5);
+  },
+  isLessOrEqual = (r, e, t) => {
+    if ("number" == typeof r && "number" == typeof e && "number" == typeof t) return (r = r <= e ? t : r);
+    if ("number" == typeof e && "number" == typeof t && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => (r = r <= e ? t : r));
+    throw new Error(ERRORS.MNJS_4_1 + ERRORS.MNJS_4_1_SUB_6);
   },
   abs = (r) => {
     if ("number" == typeof r) return Math.abs(r);
@@ -537,6 +561,10 @@ const E = 2.718281828459045,
       (r.change = change),
       (r.change.isEqual = change),
       (r.change.isNotEqual = isNotEqual),
+      (r.change.isGreater = isGreater),
+      (r.change.isLess = isLess),
+      (r.change.isGreaterOrEqual = isGreaterOrEqual),
+      (r.change.isLessOrEqual = isLessOrEqual),
       (r.range = range),
       (r.monolist = monolist),
       (r.abs = abs),
