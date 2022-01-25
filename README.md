@@ -47,7 +47,7 @@ mnjs.rem(1.2, 0.5)   = 0.2      // mnjs.rem(1.2, 0.5)  === 0.2 returns true
 <html>
   <head>
     <title>mnjs</title>
-    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@3.2.1/browser/index.js"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@3.2.3/browser/index.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/mnjs/browser/index.js"></script>
     <!--                 This link is the latest mini version ☝                 -->
   </head>
@@ -396,7 +396,6 @@ mnjs.change.isNotEqual([0, NaN, 1, Infinity], Infinity, 0) //  returns [0, 0, 0,
 // where [0 = new value, 0 = new value, 0 = new value, Infinity = old value ], all elements replaced with 0 except Infinity
 mnjs.change.isGreater([0, NaN, 1, Infinity], NaN, 0)       //  returns [0, NaN, 1, Infinity]
 mnjs.change.isLess([0, NaN, 1, Infinity], NaN, 0)          //  returns [0, NaN, 1, Infinity]
-mnjs.change.isGreaterOrEqual([0, NaN, 1, Infinity], Infinity, 0)   //  returns [0, NaN, 1, Infinity]
 mnjs.change.isGreaterOrEqual([0, NaN, 1, Infinity], Infinity, 0)   // returns [0, NaN, 1, 0]
 // where orEqual is true (Infinity replaced by 0)
 mnjs.change.isLessOrEqual([0, NaN, 1, Infinity], Infinity, 0)      // returns [0, NaN, 0, 0]
