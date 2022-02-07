@@ -7,17 +7,17 @@
 
 ## Installation
 
-`npm i mnjs --save`
+`npm install mnjs`
 
-[![http://placehold.jp/24/cb0101/ffffff/280x45.png?text=npm%20i%20mnjs%20--save](http://placehold.jp/24/cb0101/ffffff/280x45.png?text=npm%20i%20mnjs%20--save)](https://www.npmjs.com/package/mnjs)
+[![http://placehold.jp/24/cb0101/ffffff/280x45.png?text=npm%20install%20mnjs](http://placehold.jp/24/cb0101/ffffff/280x45.png?text=npm%20install%20mnjs)](https://www.npmjs.com/package/mnjs)
 
 `yarn add mnjs`
 
 [![http://placehold.jp/24/25799f/ffffff/280x45.png?text=yarn%20add%20mnjs](http://placehold.jp/24/25799f/ffffff/280x45.png?text=yarn%20add%20mnjs)](https://classic.yarnpkg.com/en/package/mnjs)
 
-`<script src="https://cdn.jsdelivr.net/npm/mnjs/browser/index.js"></script>`
+`<script src="https://cdn.jsdelivr.net/npm/mnjs/index.js"></script>`
 
-[![http://placehold.jp/24/bd483b/fec82f/785x45.png?text=%3Cscript%20src%3D%22https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2Fmnjs%22%3E%3C%2Fscript%3E](http://placehold.jp/24/bd483b/fec82f/785x45.png?text=%3Cscript%20src%3D%22https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2Fmnjs%2Fbrowser%2Findex.js%22%3E%3C%2Fscript%3E)](https://www.jsdelivr.com/package/npm/mnjs)
+[![http://placehold.jp/24/bd483b/fec82f/785x45.png?text=%3Cscript%20src%3D%22https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2Fmnjs%22%3E%3C%2Fscript%3E](http://placehold.jp/24/bd483b/fec82f/785x45.png?text=%3Cscript%20src%3D%22https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2Fmnjs%2Findex.js%22%3E%3C%2Fscript%3E)](https://www.jsdelivr.com/package/npm/mnjs)
 
 
 
@@ -47,9 +47,9 @@ mnjs.rem(1.2, 0.5)   = 0.2      // mnjs.rem(1.2, 0.5)  === 0.2 returns true
 <html>
   <head>
     <title>mnjs</title>
-    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@3.2.3/browser/index.js"></script>-->
-    <script src="https://cdn.jsdelivr.net/npm/mnjs/browser/index.js"></script>
-    <!--                 This link is the latest mini version ☝                 -->
+    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@3.3.0/index.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/mnjs/index.min.js"></script>
+    <!--            This link is the latest mini version ☝             -->
   </head>
   <body>
     <script>
