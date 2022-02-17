@@ -21,8 +21,7 @@ const E = 2.718281828459045,
     MNJS_2_4: "MNJS ERROR No. 02 : 04: The step parameter should not be greater than the difference between the first and second parameter",
     MNJS_2_5: "MNJS ERROR No. 02 : 05: The step parameter should not be equal zero",
     MNJS_2_6: "MNJS ERROR No. 02 : 06: The sign of the step parameter must be positive",
-    MNJS_3_1: "MNJS ERROR No. 03 : 01: The monolist function should take two parameters (value: number, size: natural number & greater than zero)",
-    MNJS_3_2: "MNJS ERROR No. 03 : 02: All parameters must be a number (value: number, size: natural number & greater than zero)",
+    MNJS_3_1: "MNJS ERROR No. 03 : 01: The monolist function should take two numeric parameters (value: number, size: natural number & greater than zero)",
     MNJS_4_1:
       "MNJS ERROR No. 04 : 01: This function accepts three arguments. The first argument should be  a number or one (numeric or empty) array. The second and third arguments must be a number. What does the function do? f(x, y, z): Replace x (number or numeric array element) with z if x is ",
     MNJS_4_1_SUB_1: "equal to y",
@@ -51,19 +50,15 @@ const E = 2.718281828459045,
       for (let o = r; o >= e; o -= t) n.push(Number(o.toFixed(7)));
       return n;
     }
-    if (r > e) {
-      for (let o = r; o >= e; o -= t) n.push(Number(o.toFixed(7)));
-      return n;
-    }
     if (r < e) {
       for (let o = r; o <= e; o += t) n.push(Number(o.toFixed(7)));
       return n;
     }
   },
   monolist = (r, e) => {
-    if ((!r && !e) || (r && 0 === e)) throw new Error(ERRORS.MNJS_3_1);
-    if ("number" != typeof r || "number" != typeof e || e < 1 || e % 1 != 0) throw new Error(ERRORS.MNJS_3_2);
-    return Array(e).fill(r);
+    if (!r || !e || "number" != typeof r || "number" != typeof e || 0 === r || e < 1 || e % 1 != 0) throw new Error(ERRORS.MNJS_3_1);
+    let n = Array(e).fill(r);
+    return n;
   },
   dtr = (r) => {
     if ("number" == typeof r) return Number(((r * Math.PI) / 180).toFixed(14));
