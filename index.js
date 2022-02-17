@@ -62,7 +62,7 @@ const E = 2.718281828459045,
   },
   monolist = (r, e) => {
     if ((!r && !e) || (r && 0 === e)) throw new Error(ERRORS.MNJS_3_1);
-    if ("number" != typeof r || "number" != typeof e) throw new Error(ERRORS.MNJS_3_2);
+    if ("number" != typeof r || "number" != typeof e || e < 1 || e % 1 != 0) throw new Error(ERRORS.MNJS_3_2);
     return Array(e).fill(r);
   },
   dtr = (r) => {
@@ -710,6 +710,6 @@ const E = 2.718281828459045,
       (r.acoth.deg = acothDeg),
       r
     );
-  },
-  mnjs = useMnjs();
+  };
+var mnjs = useMnjs();
 "undefined" == typeof window ? ((module.exports.mnjs = mnjs), (module.exports = mnjs)) : "object" == typeof module ? ((window.mnjs = mnjs), (module.exports = mnjs)) : (window.mnjs = mnjs);
