@@ -57,8 +57,7 @@ const E = 2.718281828459045,
   },
   monolist = (r, e) => {
     if (!r || !e || "number" != typeof r || "number" != typeof e || 0 === r || e < 1 || e % 1 != 0) throw new Error(ERRORS.MNJS_3_1);
-    let n = Array(e).fill(r);
-    return n;
+    return Array(e).fill(r);
   },
   dtr = (r) => {
     if ("number" == typeof r) return Number(((r * Math.PI) / 180).toFixed(14));
@@ -86,12 +85,8 @@ const E = 2.718281828459045,
     throw new Error(ERRORS.MNJS_1_2);
   },
   zeros = (r, e) => {
-    if ("number" == typeof r && "number" == typeof e && e >= 0 && e <= 100) {
-      return Number(r.toFixed(e)).toLocaleString("en", { useGrouping: !1, minimumFractionDigits: e });
-    }
-    if ("number" == typeof e && e >= 0 && e <= 100 && Array.isArray(r) && r.every((r) => "number" == typeof r)) {
-      return r.map((r) => Number(r.toFixed(e))).toLocaleString("en", { useGrouping: !1, minimumFractionDigits: e });
-    }
+    if ("number" == typeof r && "number" == typeof e && e >= 0 && e <= 100) return r.toLocaleString("en", { minimumFractionDigits: e });
+    if ("number" == typeof e && e >= 0 && e <= 100 && Array.isArray(r) && r.every((r) => "number" == typeof r)) return r.map((r) => r.toLocaleString("en", { minimumFractionDigits: e }));
     throw new Error(ERRORS.MNJS_1_4);
   },
   change = (r, e, t) => {
