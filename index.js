@@ -15,12 +15,8 @@ const E = 2.718281828459045,
     MNJS_1_5: "MNJS ERROR No. 01 : 05: This function accepts numeric arguments or one numeric array argument. (num1, num2, ..., num) => {} or ([num1, num2, ..., num]) => {}",
     MNJS_1_6:
       "MNJS ERROR No. 01 : 06: This function accepting two arguments. The first argument should be one (numeric or empty) array and the second should be a number. All next examples are valid: sum([num1, num2, ..., num_x]); sum([]); sum([num1, num2, ..., num_x], num); sum([], num)",
-    MNJS_2_1: "MNJS ERROR No. 02 : 01: All parameters must be a number",
-    MNJS_2_2: "MNJS ERROR No. 02 : 02: The step parameter must be a number",
-    MNJS_2_3: "MNJS ERROR No. 02 : 03: The first and the second parameter should not be equal",
-    MNJS_2_4: "MNJS ERROR No. 02 : 04: The step parameter should not be greater than the difference between the first and second parameter",
-    MNJS_2_5: "MNJS ERROR No. 02 : 05: The step parameter should not be equal zero",
-    MNJS_2_6: "MNJS ERROR No. 02 : 06: The sign of the step parameter must be positive",
+    MNJS_2_1: "MNJS ERROR No. 02 : 01: The step parameter should not be: 1/ null  2/ equal or less than zero. 3/ greater than the absolute difference between the first and second parameter",
+    MNJS_2_2: "MNJS ERROR No. 02 : 02: All parameters must be a number. The first and the second parameter should not be equal",
     MNJS_3_1: "MNJS ERROR No. 03 : 01: The monolist function should take two numeric parameters (value: number, size: natural number & greater than zero)",
     MNJS_4_1:
       "MNJS ERROR No. 04 : 01: This function accepts three arguments. The first argument should be  a number or one (numeric or empty) array. The second and third arguments must be a number. What does the function do? f(x, y, z): Replace x (number or numeric array element) with z if x is ",
@@ -40,20 +36,16 @@ const E = 2.718281828459045,
   },
   range = (r, e, t) => {
     let n = [];
-    if ("number" != typeof r || "number" != typeof e) throw new Error(ERRORS.MNJS_2_1);
-    if ("string" == typeof t || "boolean" == typeof t) throw new Error(ERRORS.MNJS_2_2);
-    if (r === e) throw new Error(ERRORS.MNJS_2_3);
-    if (t > Math.abs(r - e)) throw new Error(ERRORS.MNJS_2_4);
-    if (0 === t) throw new Error(ERRORS.MNJS_2_5);
-    if (-1 === Math.sign(t)) throw new Error(ERRORS.MNJS_2_6);
-    if ((t || (t = 1), r > e)) {
-      for (let o = r; o >= e; o -= t) n.push(Number(o.toFixed(7)));
-      return n;
-    }
-    if (r < e) {
+    if (t <= 0 || t > Math.abs(r - e)) throw new Error(ERRORS.MNJS_2_1);
+    if ((t || (t = 1), "number" == typeof r && "number" == typeof e && "number" == typeof t && r < e)) {
       for (let o = r; o <= e; o += t) n.push(Number(o.toFixed(7)));
       return n;
     }
+    if ("number" == typeof r && "number" == typeof e && "number" == typeof t && r > e) {
+      for (let o = r; o >= e; o -= t) n.push(Number(o.toFixed(7)));
+      return n;
+    }
+    throw new Error(ERRORS.MNJS_2_2);
   },
   monolist = (r, e) => {
     if (!r || !e || "number" != typeof r || "number" != typeof e || 0 === r || e < 1 || e % 1 != 0) throw new Error(ERRORS.MNJS_3_1);
