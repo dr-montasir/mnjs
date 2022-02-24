@@ -47,7 +47,7 @@ mnjs.rem(1.2, 0.5)   = 0.2      // mnjs.rem(1.2, 0.5)  === 0.2 returns true
 <html>
   <head>
     <title>mnjs</title>
-    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@3.3.4/index.js"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/mnjs@3.3.5/index.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/mnjs/index.min.js"></script>
     <!--            This link is the latest mini version ☝             -->
   </head>
@@ -301,7 +301,10 @@ mnjs.range(10, 1)      //  [ 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 ]
 mnjs.range(1, 5, 0.5)  //  [ 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5 ]
 mnjs.range(1, 0, 0.2)  //  [ 1, 0.8, 0.6, 0.4, 0.2, 0 ]
 mnjs.range(10, 1, 2)   //  [ 10, 8, 6, 4, 2 ]
-mnjs.range(-20, 1, 0)  //  Error: MNJS ERROR No. 02 : 05: The step parameter should not be equal zero
+mnjs.range(-20, 1, 0)  //  Error: MNJS ERROR No. 02 : 01: The step parameter should not be: 
+                       //  1/ null  
+                       //  2/ equal or less than zero. 
+                       //  3/ greater than the absolute difference between the first and second parameter
 
 mnjs.monolist(1, 5)    //  [ 1, 1, 1, 1, 1 ]
 mnjs.monolist(0.5, 3)  //  [ 0.5, 0.5, 0.5 ]
