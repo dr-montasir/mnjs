@@ -1,4 +1,3 @@
-'use strict';
 /**
  * @package : MNJS MATH NODE JS
  * @author  : Montasir Mirghani
@@ -53,12 +52,12 @@ const ERRORS = {
 	 * @name The Number e (Euler's number) @section Mathematical constants
 	 * @origin Math.E
 	 */
-	E = 2.718281828459045,
+	E: number = 2.718281828459045,
 	/**
 	 * @name The Number Pi @section Mathematical constants
 	 * @origin (21.991148575128552 / 7) = 3.141592653589793 = Math.PI
 	 */
-	PI = 3.141592653589793,
+	PI: number = 3.141592653589793,
 	/**
 	 * @name The Golden Ratio (Phi) @section Mathematical constants
 	 * @origin 1.618033988749895
@@ -94,7 +93,7 @@ const ERRORS = {
 	 * @example abs0(-1, 0) => 1
 	 */
 	// abs0 = (r: number, e: number) => (r > e ? r - e : e - r),
-	abs0 = (r, e) => {
+	abs0 = (r: number, e: number) => {
 		if ('number' == typeof r && 'number' == typeof e) return r > e ? r - e : e - r;
 		throw new Error(ERRORS.MNJS_0_1);
 	},
@@ -103,7 +102,7 @@ const ERRORS = {
 	 * @description signx is the native function use to generate sign function
 	 * @example signx(9) => 1, signx(-9) => -1, signx(0) => 0, signx(NaN) => NaN
 	 */
-	signx = (r) => {
+	signx = (r: number) => {
 		if ('number' != typeof r) throw new Error(ERRORS.MNJS_0_1);
 		return 0 === r || isNaN(r) ? r : r > 0 ? 1 : -1;
 	},
@@ -112,7 +111,7 @@ const ERRORS = {
 	 * @description The native fact function use to generate native sine function
 	 * @example fact(4) => 24, 4! = 4 × 3 × 2 × 1 = 24
 	 */
-	fact = (r) => {
+	fact = (r: number): any => {
 		if (0 === r) return 1;
 		if (r > 0 && r % 1 == 0) return r * fact(r - 1);
 		throw new Error(ERRORS.MNJS_0_2);
@@ -121,7 +120,7 @@ const ERRORS = {
 	 * @name degToRad
 	 * @rule never fix or round
 	 */
-	degToRad = (r) => {
+	degToRad = (r: number) => {
 		return (r * PI) / 180;
 	},
 	/**
@@ -130,14 +129,14 @@ const ERRORS = {
 	 * @why check (Math.PI) / (x=1, .., 3, 6, 12) * 180 / Math.PI => 180, .., 59.99999999999999, .., ..
 	 * @correction check Math.fround((Math.PI) / (x=1,2,3) * 180 / Math.PI)
 	 */
-	radToDeg = (r) => {
+	radToDeg = (r: number) => {
 		return Math.fround((r * 180) / PI);
 	},
 	/**
 	 * @name Sine function
 	 * @description sine is the native function use to generate (sin, cos, tan, ..) functions
 	 */
-	sine = (r) => {
+	sine = (r: number) => {
 		let eps = 1e-17,
 			n = 2,
 			v1 = r,
@@ -149,7 +148,7 @@ const ERRORS = {
 	 * @name sineRad
 	 * @rule (0 < r < π/2), (π/2 < r < π), (2π < r < 3π/2), (3π/2 < r < 2π) => +, +, -, -
 	 */
-	sineRad = (r) => {
+	sineRad = (r: number) => {
 		// determine the sign of r (+ or -)
 		let sign = signx(r);
 		// convert any +r or -r angle to +r value from 0 to 2π. Ex. (2π + π/6 = π/6) => ((2π + π/6) % 2π = π/6)
@@ -165,7 +164,7 @@ const ERRORS = {
 	 * @name sineDeg
 	 * @rule (0 < r < 90), (90 < r < 180), (180 < r < 270), (270 < r < 360) => +, +, -, -
 	 */
-	sineDeg = (r) => {
+	sineDeg = (r: number): any => {
 		// determine the sign of r (+ or -)
 		let sign = signx(r);
 		// convert any +r or -r angle to +r value from 0 to 360. Ex. (390deg = 30deg) => (390 % 360 = 30)
@@ -180,403 +179,403 @@ const ERRORS = {
 	/**
 	 * @name asine
 	 */
-	asine = (r) => {
+	asine = (r: number) => {
 		return Math.asin(r);
 	},
 	/**
 	 * @name asineRad
 	 */
-	asineRad = (r) => {
+	asineRad = (r: number) => {
 		return Math.fround(asine(r));
 	},
 	/**
 	 * @name asineDeg
 	 */
-	asineDeg = (r) => {
+	asineDeg = (r: number) => {
 		return radToDeg(Math.fround(asine(r)));
 	},
 	/**
 	 * @name Hyperbolic sine (sineh)
 	 */
-	sineh = (r) => {
+	sineh = (r: number) => {
 		return (Math.pow(E, r) - Math.pow(E, -r)) / 2;
 	},
 	/**
 	 * @name Hyperbolic sine (sinehRad)
 	 */
-	sinehRad = (r) => {
+	sinehRad = (r: number) => {
 		return Math.fround(sineh(r));
 	},
 	/**
 	 * @name Hyperbolic sineDeg (sinehDeg)
 	 */
-	sinehDeg = (r) => {
+	sinehDeg = (r: number) => {
 		return Math.fround(sineh(degToRad(r)));
 	},
 	/**
 	 * @name Inverse hyperbolic sine (asineh)
 	 */
-	asineh = (r) => {
+	asineh = (r: number) => {
 		return Math.log(r + Math.sqrt(r * r + 1));
 	},
 	/**
 	 * @name Inverse hyperbolic sine (asinehRad)
 	 */
-	asinehRad = (r) => {
+	asinehRad = (r: number) => {
 		return Math.fround(asineh(r));
 	},
 	/**
 	 * @name Inverse hyperbolic sineDeg (asinehDeg)
 	 */
-	asinehDeg = (r) => {
+	asinehDeg = (r: number) => {
 		return radToDeg(Math.fround(asineh(r)));
 	},
 	/**
 	 * @name cosine
 	 */
-	cosine = (r) => {
+	cosine = (r: number) => {
 		return Math.sqrt(1 - Math.pow(sine(r), 2));
 	},
 	/**
 	 * @name cosineRad
 	 */
-	cosineRad = (r) => {
+	cosineRad = (r: number) => {
 		return Math.fround(cosine(r));
 	},
 	/**
 	 * @name cosineDeg
 	 */
-	cosineDeg = (r) => {
+	cosineDeg = (r: number) => {
 		return Math.fround(cosine(degToRad(r)));
 	},
 	/**
 	 * @name acosine
 	 */
-	acosine = (r) => {
+	acosine = (r: number) => {
 		return Math.acos(r);
 	},
 	/**
 	 * @name acosineRad
 	 */
-	acosineRad = (r) => {
+	acosineRad = (r: number) => {
 		return Math.fround(acosine(r));
 	},
 	/**
 	 * @name acosineDeg
 	 */
-	acosineDeg = (r) => {
+	acosineDeg = (r: number) => {
 		return radToDeg(Math.fround(acosine(r)));
 	},
 	/**
 	 * @name Hyperbolic cosine (cosineh)
 	 */
-	cosineh = (r) => {
+	cosineh = (r: number) => {
 		return (Math.pow(E, r) + Math.pow(E, -r)) / 2;
 	},
 	/**
 	 * @name Hyperbolic cosine (cosinehRad)
 	 */
-	cosinehRad = (r) => {
+	cosinehRad = (r: number) => {
 		return Math.fround(cosineh(r));
 	},
 	/**
 	 * @name Hyperbolic cosineDeg (cosinehDeg)
 	 */
-	cosinehDeg = (r) => {
+	cosinehDeg = (r: number) => {
 		return Math.fround(cosineh(degToRad(r)));
 	},
 	/**
 	 * @name Inverse hyperbolic cosine (acosineh)
 	 */
-	acosineh = (r) => {
+	acosineh = (r: number) => {
 		return Math.log(r + Math.sqrt(r * r - 1));
 	},
 	/**
 	 * @name Inverse hyperbolic cosine (acosinehRad)
 	 */
-	acosinehRad = (r) => {
+	acosinehRad = (r: number) => {
 		return Math.fround(acosineh(r));
 	},
 	/**
 	 * @name Inverse hyperbolic cosine (acosinehDeg)
 	 */
-	acosinehDeg = (r) => {
+	acosinehDeg = (r: number) => {
 		return radToDeg(Math.fround(acosineh(r)));
 	},
 	/**
 	 * @name tangentRad
 	 */
-	tangentRad = (r) => {
+	tangentRad = (r: number) => {
 		return Math.fround(sineRad(r) / cosineRad(r));
 	},
 	/**
 	 * @name tangentDeg
 	 */
-	tangentDeg = (r) => {
+	tangentDeg = (r: number) => {
 		return Math.fround(sineDeg(r) / cosineDeg(r));
 	},
 	/**
 	 * @name atangent
 	 */
-	atangent = (r) => {
+	atangent = (r: number) => {
 		return Math.atan(r);
 	},
 	/**
 	 * @name atangentRad
 	 */
-	atangentRad = (r) => {
+	atangentRad = (r: number) => {
 		return Math.fround(atangent(r));
 	},
 	/**
 	 * @name atangentDeg
 	 */
-	atangentDeg = (r) => {
+	atangentDeg = (r: number) => {
 		return radToDeg(Math.fround(atangent(r)));
 	},
 	/**
 	 * @name Hyperbolic tangent (tangenth)
 	 */
-	tangenth = (r) => {
+	tangenth = (r: number) => {
 		return (Math.pow(E, r) - Math.pow(E, -r)) / (Math.pow(E, r) + Math.pow(E, -r));
 	},
 	/**
 	 * @name Hyperbolic tangent (tangenthRad)
 	 */
-	tangenthRad = (r) => {
+	tangenthRad = (r: number) => {
 		return Math.fround(tangenth(r));
 	},
 	/**
 	 * @name Hyperbolic tangentDeg (tangenthDeg)
 	 */
-	tangenthDeg = (r) => {
+	tangenthDeg = (r: number) => {
 		return Math.fround(tangenth(degToRad(r)));
 	},
 	/**
 	 * @name Inverse hyperbolic tangent (atangenth)
 	 */
-	atangenth = (r) => {
+	atangenth = (r: number) => {
 		return 0.5 * Math.log((1 + r) / (1 - r));
 	},
 	/**
 	 * @name Inverse hyperbolic tangent (atangenthRad)
 	 */
-	atangenthRad = (r) => {
+	atangenthRad = (r: number) => {
 		return Math.fround(atangenth(r));
 	},
 	/**
 	 * @name Inverse hyperbolic tangent (atangenthDeg)
 	 */
-	atangenthDeg = (r) => {
+	atangenthDeg = (r: number) => {
 		return radToDeg(Math.fround(atangenth(r)));
 	},
 	/**
 	 * @name cotangentRad
 	 */
-	cotangentRad = (r) => {
+	cotangentRad = (r: number) => {
 		return Math.fround(cosineRad(r) / sineRad(r));
 	},
 	/**
 	 * @name cotangentDeg
 	 */
-	cotangentDeg = (r) => {
+	cotangentDeg = (r: number) => {
 		return Math.fround(cosineDeg(r) / sineDeg(r));
 	},
 	/**
 	 * @name acotangent
 	 */
-	acotangent = (r) => {
+	acotangent = (r: number) => {
 		return atangent(1 / r);
 	},
 	/**
 	 * @name acotangentRad
 	 */
-	acotangentRad = (r) => {
+	acotangentRad = (r: number) => {
 		return Math.fround(acotangent(r));
 	},
 	/**
 	 * @name acotangentDeg
 	 */
-	acotangentDeg = (r) => {
+	acotangentDeg = (r: number) => {
 		return radToDeg(Math.fround(acotangent(r)));
 	},
 	/**
 	 * @name Hyperbolic cotangent (cotangenth)
 	 */
-	cotangenth = (r) => {
+	cotangenth = (r: number) => {
 		return (Math.pow(E, r) + Math.pow(E, -r)) / (Math.pow(E, r) - Math.pow(E, -r));
 	},
 	/**
 	 * @name Hyperbolic cotangent (cotangenthRad)
 	 */
-	cotangenthRad = (r) => {
+	cotangenthRad = (r: number) => {
 		return Math.fround(cotangenth(r));
 	},
 	/**
 	 * @name Hyperbolic cotangentDeg (cotangenthDeg)
 	 */
-	cotangenthDeg = (r) => {
+	cotangenthDeg = (r: number) => {
 		return Math.fround(cotangenth(degToRad(r)));
 	},
 	/**
 	 * @name Inverse hyperbolic cotangent (acotangenth)
 	 */
-	acotangenth = (r) => {
+	acotangenth = (r: number) => {
 		return 0.5 * Math.log((r + 1) / (r - 1));
 	},
 	/**
 	 * @name Inverse hyperbolic cotangent (acotangenthRad)
 	 */
-	acotangenthRad = (r) => {
+	acotangenthRad = (r: number) => {
 		return Math.fround(acotangenth(r));
 	},
 	/**
 	 * @name Inverse hyperbolic cotangent (acotangenthDeg)
 	 */
-	acotangenthDeg = (r) => {
+	acotangenthDeg = (r: number) => {
 		return radToDeg(Math.fround(acotangenth(r)));
 	},
 	/**
 	 * @name secant
 	 */
-	secant = (r) => {
+	secant = (r: number) => {
 		return 1 / cosine(r);
 	},
 	/**
 	 * @name secantRad
 	 */
-	secantRad = (r) => {
+	secantRad = (r: number) => {
 		return Math.fround(secant(r));
 	},
 	/**
 	 * @name secantDeg
 	 */
-	secantDeg = (r) => {
+	secantDeg = (r: number) => {
 		return Math.fround(secant(degToRad(r)));
 	},
 	/**
 	 * @name asecant
 	 */
-	asecant = (r) => {
+	asecant = (r: number) => {
 		return Math.acos(1 / r);
 	},
 	/**
 	 * @name asecantRad
 	 */
-	asecantRad = (r) => {
+	asecantRad = (r: number) => {
 		return Math.fround(asecant(r));
 	},
 	/**
 	 * @name asecantDeg
 	 */
-	asecantDeg = (r) => {
+	asecantDeg = (r: number) => {
 		return radToDeg(Math.fround(asecant(r)));
 	},
 	/**
 	 * @name Hyperbolic secant (secanth)
 	 */
-	secanth = (r) => {
+	secanth = (r: number) => {
 		return 2 / (Math.pow(E, r) + Math.pow(E, -r));
 	},
 	/**
 	 * @name Hyperbolic secant (secanthRad)
 	 */
-	secanthRad = (r) => {
+	secanthRad = (r: number) => {
 		return Math.fround(secanth(r));
 	},
 	/**
 	 * @name Hyperbolic secantDeg (secanthDeg)
 	 */
-	secanthDeg = (r) => {
+	secanthDeg = (r: number) => {
 		return Math.fround(secanth(degToRad(r)));
 	},
 	/**
 	 * @name Inverse hyperbolic secant (asecanth)
 	 */
-	asecanth = (r) => {
+	asecanth = (r: number) => {
 		return Math.log(1 / r + Math.sqrt(1 / (r * r) - 1));
 	},
 	/**
 	 * @name Inverse hyperbolic secant (asecanthRad)
 	 */
-	asecanthRad = (r) => {
+	asecanthRad = (r: number) => {
 		return Math.fround(asecanth(r));
 	},
 	/**
 	 * @name Inverse hyperbolic secant (asecanthDeg)
 	 */
-	asecanthDeg = (r) => {
+	asecanthDeg = (r: number) => {
 		return radToDeg(Math.fround(asecanth(r)));
 	},
 	/**
 	 * @name cosecant
 	 */
-	cosecant = (r) => {
+	cosecant = (r: number) => {
 		return 1 / sineRad(r);
 	},
 	/**
 	 * @name cosecantRad
 	 */
-	cosecantRad = (r) => {
+	cosecantRad = (r: number) => {
 		return Math.fround(cosecant(r));
 	},
 	/**
 	 * @name cosecantDeg
 	 */
-	cosecantDeg = (r) => {
+	cosecantDeg = (r: number) => {
 		return Math.fround(cosecant(degToRad(r)));
 	},
 	/**
 	 * @name acosecant
 	 */
-	acosecant = (r) => {
+	acosecant = (r: number) => {
 		return Math.asin(1 / r);
 	},
 	/**
 	 * @name acosecantRad
 	 */
-	acosecantRad = (r) => {
+	acosecantRad = (r: number) => {
 		return Math.fround(acosecant(r));
 	},
 	/**
 	 * @name acosecantDeg
 	 */
-	acosecantDeg = (r) => {
+	acosecantDeg = (r: number) => {
 		return radToDeg(Math.fround(acosecant(r)));
 	},
 	/**
 	 * @name Hyperbolic cosecant (cosecanth)
 	 */
-	cosecanth = (r) => {
+	cosecanth = (r: number) => {
 		return 2 / (Math.pow(E, r) - Math.pow(E, -r));
 	},
 	/**
 	 * @name Hyperbolic cosecant (cosecanthRad)
 	 */
-	cosecanthRad = (r) => {
+	cosecanthRad = (r: number) => {
 		return Math.fround(cosecanth(r));
 	},
 	/**
 	 * @name Hyperbolic cosecantDeg (cosecanthDeg)
 	 */
-	cosecanthDeg = (r) => {
+	cosecanthDeg = (r: number) => {
 		return Math.fround(cosecanth(degToRad(r)));
 	},
 	/**
 	 * @name Inverse hyperbolic cosecant (acosecanth)
 	 */
-	acosecanth = (r) => {
+	acosecanth = (r: number) => {
 		return Math.log(1 / r + Math.sqrt(1 / (r * r) + 1));
 	},
 	/**
 	 * @name Inverse hyperbolic cosecant (acosecanthRad)
 	 */
-	acosecanthRad = (r) => {
+	acosecanthRad = (r: number) => {
 		return Math.fround(acosecanth(r));
 	},
 	/**
 	 * @name Inverse hyperbolic secant (acosecanthDeg)
 	 */
-	acosecanthDeg = (r) => {
+	acosecanthDeg = (r: number) => {
 		return radToDeg(Math.fround(acosecanth(r)));
 	},
 	/**
@@ -585,7 +584,7 @@ const ERRORS = {
 	/**
 	 * @name The abs function |-x| = x
 	 */
-	abs = (r) => {
+	abs = (r: number | number[]) => {
 		if ('number' == typeof r) return abs0(r, 0);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => abs0(r, 0));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -593,7 +592,7 @@ const ERRORS = {
 	/**
 	 * @name The sign function
 	 */
-	sign = (r) => {
+	sign = (r: number | number[]) => {
 		if ('number' == typeof r) return signx(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => signx(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -604,7 +603,7 @@ const ERRORS = {
 	 * @example range(0, 10, 2.5) => [0, 2.5, 5, 7.5, 10]
 	 * range(10, 0, 2.5) => [10, 7.5, 5, 2.5, 0]
 	 */
-	range = (r, e, t) => {
+	range = (r: number, e: number, t: number) => {
 		let n = [];
 		if (t <= 0 || t > Math.abs(r - e)) throw new Error(ERRORS.MNJS_2_1);
 		if ((t || (t = 1), 'number' == typeof r && 'number' == typeof e && 'number' == typeof t && r < e)) {
@@ -623,16 +622,16 @@ const ERRORS = {
 	 * @example monolist(0.1, 3) => [0.1, 0.1, 0.1]
 	 * monolist(-1, 4) => [-1, -1, -1, -1]
 	 */
-	monolist = (r, e) => {
+	monolist = (r: number, e: number) => {
 		if (!r || !e || 'number' != typeof r || 'number' != typeof e || 0 === r || e < 1 || e % 1 != 0) throw new Error(ERRORS.MNJS_3_1);
-		let n = Array(e).fill(r);
+		let n: number[] = Array(e).fill(r);
 		return n;
 	},
 	/**
 	 * @name Degree to Radian @section Mathematical units conversion
 	 * @description Degree to Radian conversion. (x = angle in degrees). Result in radians
 	 */
-	dtr = (r) => {
+	dtr = (r: number | number[]) => {
 		if ('number' == typeof r) return degToRad(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => degToRad(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -641,7 +640,7 @@ const ERRORS = {
 	 * @name Radian to Degree @section Mathematical units conversion
 	 * @description Radians to Degrees conversion. (x = angle in radians). Result in degrees
 	 */
-	rtd = (r) => {
+	rtd = (r: number | number[]) => {
 		if ('number' == typeof r) return radToDeg(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => radToDeg(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -649,7 +648,7 @@ const ERRORS = {
 	/**
 	 * @name Number to String. Result as string
 	 */
-	nts = (r) => {
+	nts = (r: number | string | any[]) => {
 		if ('number' == typeof r) return String(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => String(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -657,7 +656,7 @@ const ERRORS = {
 	/**
 	 * @name String to Number. Result as number
 	 */
-	stn = (r) => {
+	stn = (r: string | number | any[]) => {
 		if ('string' == typeof r) return Number(r);
 		if (Array.isArray(r) && r.every((r) => 'string' == typeof r)) return r.map((r) => Number(r));
 		throw new Error(ERRORS.MNJS_1_2);
@@ -665,7 +664,7 @@ const ERRORS = {
 	/**
 	 * @name zeros. Add fraction digits
 	 */
-	zeros = (r, e) => {
+	zeros = (r: number | number[], e: number) => {
 		if ('number' == typeof r && 'number' == typeof e && e >= 0 && e <= 100) return r.toLocaleString('en', { minimumFractionDigits: e });
 		if ('number' == typeof e && e >= 0 && e <= 100 && Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => r.toLocaleString('en', { minimumFractionDigits: e }));
 		throw new Error(ERRORS.MNJS_1_4);
@@ -676,7 +675,7 @@ const ERRORS = {
 	 * @example change(1, 1, 0) => 0
 	 * change([0, NaN, 1, 2], 2, 0) => [0, NaN, 1, 0]
 	 */
-	change = (r, e, t) => {
+	change = (r: number | number[], e: number, t: number) => {
 		if ('number' == typeof r && 'number' == typeof e && 'number' == typeof t) return (r = r === e ? t : r);
 		if ('number' == typeof e && 'number' == typeof t && Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => (r = r === e ? t : r));
 		throw new Error(ERRORS.MNJS_4_1 + ERRORS.MNJS_4_1_SUB_1);
@@ -685,7 +684,7 @@ const ERRORS = {
 	 * @name The change.isNotEqual function
 	 * @description change.isNotEqual(x, y, z): Replace x (number or numeric array element) with z if x is not equal to y
 	 */
-	isNotEqual = (r, e, t) => {
+	isNotEqual = (r: number | number[], e: number, t: number) => {
 		if ('number' == typeof r && 'number' == typeof e && 'number' == typeof t) return (r = r !== e ? t : r);
 		if ('number' == typeof e && 'number' == typeof t && Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => (r = r !== e ? t : r));
 		throw new Error(ERRORS.MNJS_4_1 + ERRORS.MNJS_4_1_SUB_2);
@@ -694,7 +693,7 @@ const ERRORS = {
 	 * @name The change.isGreater function
 	 * @description change.isGreater(x, y, z): Replace x (number or numeric array element) with z if x is greater than y
 	 */
-	isGreater = (r, e, t) => {
+	isGreater = (r: number | number[], e: number, t: number) => {
 		if ('number' == typeof r && 'number' == typeof e && 'number' == typeof t) return (r = r > e ? t : r);
 		if ('number' == typeof e && 'number' == typeof t && Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => (r = r > e ? t : r));
 		throw new Error(ERRORS.MNJS_4_1 + ERRORS.MNJS_4_1_SUB_3);
@@ -703,7 +702,7 @@ const ERRORS = {
 	 * @name The change.isLess function
 	 * @description change.isLess(x, y, z): Replace x (number or numeric array element) with z if x is less than y
 	 */
-	isLess = (r, e, t) => {
+	isLess = (r: number | number[], e: number, t: number) => {
 		if ('number' == typeof r && 'number' == typeof e && 'number' == typeof t) return (r = r < e ? t : r);
 		if ('number' == typeof e && 'number' == typeof t && Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => (r = r < e ? t : r));
 		throw new Error(ERRORS.MNJS_4_1 + ERRORS.MNJS_4_1_SUB_4);
@@ -712,7 +711,7 @@ const ERRORS = {
 	 * @name The change.isGreaterOrEqual function
 	 * @description change.isGreaterOrEqual(x, y, z): Replace x (number or numeric array element) with z if x is greater than or equal y
 	 */
-	isGreaterOrEqual = (r, e, t) => {
+	isGreaterOrEqual = (r: number | number[], e: number, t: number) => {
 		if ('number' == typeof r && 'number' == typeof e && 'number' == typeof t) return (r = r >= e ? t : r);
 		if ('number' == typeof e && 'number' == typeof t && Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => (r = r >= e ? t : r));
 		throw new Error(ERRORS.MNJS_4_1 + ERRORS.MNJS_4_1_SUB_5);
@@ -721,7 +720,7 @@ const ERRORS = {
 	 * @name The change.isLessOrEqual function
 	 * @description change.isLessOrEqual(x, y, z): Replace x (number or numeric array element) with z if x is less than or equal y
 	 */
-	isLessOrEqual = (r, e, t) => {
+	isLessOrEqual = (r: number | number[], e: number, t: number) => {
 		if ('number' == typeof r && 'number' == typeof e && 'number' == typeof t) return (r = r <= e ? t : r);
 		if ('number' == typeof e && 'number' == typeof t && Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => (r = r <= e ? t : r));
 		throw new Error(ERRORS.MNJS_4_1 + ERRORS.MNJS_4_1_SUB_6);
@@ -730,7 +729,7 @@ const ERRORS = {
 	 * @name The change.isFiniteNum function
 	 * @description change.isFiniteNum(x, y): Replace x with y if x is finity number.
 	 */
-	isFiniteNum = (r, e) => {
+	isFiniteNum = (r: number | number[], e: number) => {
 		if ('number' == typeof r && 'number' == typeof e) return (r = !0 === isFinite(r) ? e : r);
 		if ('number' == typeof e && Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => (r = !0 === isFinite(r) ? e : r));
 		throw new Error(ERRORS.MNJS_5_1 + ERRORS.MNJS_5_1_SUB_1);
@@ -739,7 +738,7 @@ const ERRORS = {
 	 * @name The change.isInfinity function
 	 * @description change.isInfinity(x, y): Replace x with y if x is infinity number.
 	 */
-	isInfinity = (r, e) => {
+	isInfinity = (r: number | number[], e: number) => {
 		if ('number' == typeof r && 'number' == typeof e) return (r = r === 1 / 0 || r === -1 / 0 ? e : r);
 		if ('number' == typeof e && Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => (r = r === 1 / 0 || r === -1 / 0 ? e : r));
 		throw new Error(ERRORS.MNJS_5_1 + ERRORS.MNJS_5_1_SUB_2);
@@ -748,7 +747,7 @@ const ERRORS = {
 	 * @name The change.isPlusInfinity function
 	 * @description change.isPlusInfinity(x, y): Replace x with y if x is (+infinity) number.
 	 */
-	isPlusInfinity = (r, e) => {
+	isPlusInfinity = (r: number | number[], e: number) => {
 		if ('number' == typeof r && 'number' == typeof e) return (r = r === 1 / 0 ? e : r);
 		if ('number' == typeof e && Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => (r = r === 1 / 0 ? e : r));
 		throw new Error(ERRORS.MNJS_5_1 + ERRORS.MNJS_5_1_SUB_3);
@@ -757,7 +756,7 @@ const ERRORS = {
 	 * @name The change.isMinusInfinity function
 	 * @description change.isMinusInfinity(x, y): Replace x with y if x is (-infinity) number.
 	 */
-	isMinusInfinity = (r, e) => {
+	isMinusInfinity = (r: number | number[], e: number) => {
 		if ('number' == typeof r && 'number' == typeof e) return (r = r === -1 / 0 ? e : r);
 		if ('number' == typeof e && Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => (r = r === -1 / 0 ? e : r));
 		throw new Error(ERRORS.MNJS_5_1 + ERRORS.MNJS_5_1_SUB_4);
@@ -766,7 +765,7 @@ const ERRORS = {
 	 * @name The change.isNAN function
 	 * @description change.isNAN(x, y): Replace x with y if x is NAN.
 	 */
-	isNAN = (r, e) => {
+	isNAN = (r: number | number[], e: number) => {
 		if ('number' == typeof r && 'number' == typeof e) return (r = !0 === isNaN(r) ? e : r);
 		if ('number' == typeof e && Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => (r = !0 === isNaN(r) ? e : r));
 		throw new Error(ERRORS.MNJS_5_1 + ERRORS.MNJS_5_1_SUB_5);
@@ -774,7 +773,7 @@ const ERRORS = {
 	/**
 	 * @name Addition Operation @section Mathematical operations
 	 */
-	add = (r, e) => {
+	add = (r: number | any[], e: number | any[]) => {
 		if ('number' == typeof r && 'number' == typeof e) return Number((r + e).toFixed(15));
 		if ('number' == typeof r && Array.isArray(e) && e.every((r) => 'number' == typeof r)) return e.map((e) => Number((r + e).toFixed(15)));
 		if ('number' == typeof e && Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => Number((r + e).toFixed(15)));
@@ -784,7 +783,7 @@ const ERRORS = {
 	/**
 	 * @name Cube Function
 	 */
-	cube = (r) => {
+	cube = (r: number | number[]) => {
 		if ('number' == typeof r) return Number((r * r * r).toFixed(15));
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => Number((r * r * r).toFixed(15)));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -792,7 +791,7 @@ const ERRORS = {
 	/**
 	 * @name Cube Root Function
 	 */
-	cbrt = (r) => {
+	cbrt = (r: number | number[]) => {
 		if ('number' == typeof r) return Number(Math.cbrt(r).toFixed(15));
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => Number(Math.cbrt(r).toFixed(15)));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -800,7 +799,7 @@ const ERRORS = {
 	/**
 	 * @name Division Function. (r = numerator, e = denominator)
 	 */
-	divi = (r, e) => {
+	divi = (r: number | any[], e: number | any[]) => {
 		if ('number' == typeof r && 'number' == typeof e) return Number((r / e).toFixed(15));
 		if ('number' == typeof r && Array.isArray(e) && e.every((r) => 'number' == typeof r)) return e.map((e) => Number((r / e).toFixed(15)));
 		if ('number' == typeof e && Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => Number((r / e).toFixed(15)));
@@ -810,7 +809,7 @@ const ERRORS = {
 	/**
 	 *
 	 */
-	fix = (r, e) => {
+	fix = (r: number | any[], e: number) => {
 		if ('number' == typeof r && 'number' == typeof e && e >= 0 && e <= 100) return Number(r.toFixed(e));
 		if ('number' == typeof e && e >= 0 && e <= 100 && Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => Number(r.toFixed(e)));
 		throw new Error(ERRORS.MNJS_1_4);
@@ -818,7 +817,7 @@ const ERRORS = {
 	/**
 	 * @name The hypot function
 	 */
-	hypot = (...r) => {
+	hypot = (...r: any[]) => {
 		if (r.length > 0 && r.every((r) => 'number' == typeof r)) return Number(Math.hypot(...r).toFixed(15));
 		if (1 === r.length && r[0].length > 0 && Array.isArray(r[0]) && r[0].every((r) => 'number' == typeof r)) return Number(Math.hypot(...r[0]).toFixed(15));
 		throw new Error(ERRORS.MNJS_1_5);
@@ -826,7 +825,7 @@ const ERRORS = {
 	/**
 	 * @name inv
 	 */
-	inv = (r) => {
+	inv = (r: number | number[]) => {
 		if ('number' == typeof r) return Number((1 / r).toFixed(15));
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => Number((1 / r).toFixed(15)));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -834,7 +833,7 @@ const ERRORS = {
 	/**
 	 * @name log
 	 */
-	log = (r) => {
+	log = (r: number | number[]) => {
 		if ('number' == typeof r) return Number(Math.log(r).toFixed(15));
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => Number(Math.log(r).toFixed(15)));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -842,7 +841,7 @@ const ERRORS = {
 	/**
 	 * @name log2
 	 */
-	log2 = (r) => {
+	log2 = (r: number | number[]) => {
 		if ('number' == typeof r) return Number(Math.log2(r).toFixed(15));
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => Number(Math.log2(r).toFixed(15)));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -850,7 +849,7 @@ const ERRORS = {
 	/**
 	 * @name log10
 	 */
-	log10 = (r) => {
+	log10 = (r: number | number[]) => {
 		if ('number' == typeof r) return Number(Math.log10(r).toFixed(15));
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => Number(Math.log10(r).toFixed(15)));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -858,7 +857,7 @@ const ERRORS = {
 	/**
 	 * @name log1p
 	 */
-	log1p = (r) => {
+	log1p = (r: number | number[]) => {
 		if ('number' == typeof r) return Number(Math.log1p(r).toFixed(15));
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => Number(Math.log1p(r).toFixed(15)));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -866,7 +865,7 @@ const ERRORS = {
 	/**
 	 * @name max
 	 */
-	max = (...r) => {
+	max = (...r: any[]) => {
 		if (r.length > 0 && r.every((r) => 'number' == typeof r)) return Math.max(...r);
 		if (1 === r.length && r[0].length > 0 && Array.isArray(r[0]) && r[0].every((r) => 'number' == typeof r)) return Math.max(...r[0]);
 		throw new Error(ERRORS.MNJS_1_5);
@@ -874,7 +873,7 @@ const ERRORS = {
 	/**
 	 * @name min
 	 */
-	min = (...r) => {
+	min = (...r: any[]) => {
 		if (r.length > 0 && r.every((r) => 'number' == typeof r)) return Math.min(...r);
 		if (1 === r.length && r[0].length > 0 && Array.isArray(r[0]) && r[0].every((r) => 'number' == typeof r)) return Math.min(...r[0]);
 		throw new Error(ERRORS.MNJS_1_5);
@@ -882,7 +881,7 @@ const ERRORS = {
 	/**
 	 * @name sum
 	 */
-	sum = (r, e) => {
+	sum = (r: number[], e: number) => {
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r) && ((e && 'number' == typeof e) || !e)) {
 			return r.reduce((r, e) => Number((r + e).toFixed(15)), (e = e || 0));
 		}
@@ -891,7 +890,7 @@ const ERRORS = {
 	/**
 	 * @name mult
 	 */
-	mult = (r, e) => {
+	mult = (r: number | any[], e: number | any[]) => {
 		if ('number' == typeof r && 'number' == typeof e) return Number((r * e).toFixed(15));
 		if ('number' == typeof r && Array.isArray(e) && e.every((r) => 'number' == typeof r)) return e.map((e) => Number((r * e).toFixed(15)));
 		if ('number' == typeof e && Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => Number((r * e).toFixed(15)));
@@ -901,7 +900,7 @@ const ERRORS = {
 	/**
 	 * @name nrt
 	 */
-	nrt = (r, e) => {
+	nrt = (r: number | any[], e: number | any[]) => {
 		if ('number' == typeof r && 'number' == typeof e) return Number(Math.pow(r, 1 / e).toFixed(15));
 		if ('number' == typeof r && Array.isArray(e) && e.every((r) => 'number' == typeof r)) return e.map((e) => Number(Math.pow(r, 1 / e).toFixed(15)));
 		if ('number' == typeof e && Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => Number(Math.pow(r, 1 / e).toFixed(15)));
@@ -912,7 +911,7 @@ const ERRORS = {
 	/**
 	 * @name pow
 	 */
-	pow = (r, e) => {
+	pow = (r: number | any[], e: number | any[]) => {
 		if ('number' == typeof r && 'number' == typeof e) return Number(Math.pow(r, e).toFixed(15));
 		if ('number' == typeof r && Array.isArray(e) && e.every((r) => 'number' == typeof r)) return e.map((e) => Number(Math.pow(r, e).toFixed(15)));
 		if ('number' == typeof e && Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => Number(Math.pow(r, e).toFixed(15)));
@@ -923,7 +922,7 @@ const ERRORS = {
 	/**
 	 * @name sqr
 	 */
-	sqr = (r) => {
+	sqr = (r: number | number[]) => {
 		if ('number' == typeof r) return Number((r * r).toFixed(15));
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => Number((r * r).toFixed(15)));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -931,7 +930,7 @@ const ERRORS = {
 	/**
 	 * @name sqrt
 	 */
-	sqrt = (r) => {
+	sqrt = (r: number | number[]) => {
 		if ('number' == typeof r) return Number(Math.sqrt(r).toFixed(15));
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => Number(Math.sqrt(r).toFixed(15)));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -939,7 +938,7 @@ const ERRORS = {
 	/**
 	 * @name subt
 	 */
-	subt = (r, e) => {
+	subt = (r: number | any[], e: number | any[]) => {
 		if ('number' == typeof r && 'number' == typeof e) return Number((r - e).toFixed(15));
 		if ('number' == typeof r && Array.isArray(e) && e.every((r) => 'number' == typeof r)) return e.map((e) => Number((r - e).toFixed(15)));
 		if ('number' == typeof e && Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => Number((r - e).toFixed(15)));
@@ -949,7 +948,7 @@ const ERRORS = {
 	/**
 	 * @name exp
 	 */
-	exp = (r) => {
+	exp = (r: number | number[]) => {
 		if ('number' == typeof r) return Number(Math.pow(E, r).toFixed(15));
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => Number(Math.pow(E, r).toFixed(15)));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -957,7 +956,7 @@ const ERRORS = {
 	/**
 	 * @name expm1
 	 */
-	expm1 = (r) => {
+	expm1 = (r: number | number[]) => {
 		if ('number' == typeof r) return Number(Math.expm1(r).toFixed(15));
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => Number(Math.expm1(r).toFixed(15)));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -965,7 +964,7 @@ const ERRORS = {
 	/**
 	 * @name trunc
 	 */
-	trunc = (r) => {
+	trunc = (r: number | number[]) => {
 		if ('number' == typeof r) return Math.trunc(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => Math.trunc(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -973,7 +972,7 @@ const ERRORS = {
 	/**
 	 * @name
 	 */
-	imul = (r, e) => {
+	imul = (r: number | any[], e: number | any[]) => {
 		if ('number' == typeof r && 'number' == typeof e) return Number(Math.imul(r, e).toFixed(15));
 		if ('number' == typeof r && Array.isArray(e) && e.every((r) => 'number' == typeof r)) return e.map((e) => Number(Math.imul(r, e).toFixed(15)));
 		if ('number' == typeof e && Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => Number(Math.imul(r, e).toFixed(15)));
@@ -984,7 +983,7 @@ const ERRORS = {
 	/**
 	 * @name round
 	 */
-	round = (r) => {
+	round = (r: number | number[]) => {
 		if ('number' == typeof r) return Math.round(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => Math.round(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -992,7 +991,7 @@ const ERRORS = {
 	/**
 	 * @name fround
 	 */
-	fround = (r) => {
+	fround = (r: number | number[]) => {
 		if ('number' == typeof r) return Math.fround(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => Math.fround(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1000,7 +999,7 @@ const ERRORS = {
 	/**
 	 * @name floor
 	 */
-	floor = (r) => {
+	floor = (r: number | number[]) => {
 		if ('number' == typeof r) return Math.floor(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => Math.floor(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1008,7 +1007,7 @@ const ERRORS = {
 	/**
 	 * @name rib
 	 */
-	rib = (r, e) => {
+	rib = (r: number | any[], e: number | any[]) => {
 		if ('number' == typeof r && 'number' == typeof e) return Number(Math.floor(Math.random() * (e + 1 - r) + r).toFixed(15));
 		if ('number' == typeof r && Array.isArray(e) && e.every((r) => 'number' == typeof r)) return e.map((e) => Number(Math.floor(Math.random() * (e + 1 - r) + r).toFixed(15)));
 		if ('number' == typeof e && Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => Number(Math.floor(Math.random() * (e + 1 - r) + r).toFixed(15)));
@@ -1019,7 +1018,7 @@ const ERRORS = {
 	/**
 	 * @name rem
 	 */
-	rem = (r, e) => {
+	rem = (r: number | any[], e: number | any[]) => {
 		if ('number' == typeof r && 'number' == typeof e) return Number((r - Math.floor(r / e) * e).toFixed(15));
 		if ('number' == typeof r && Array.isArray(e) && e.every((r) => 'number' == typeof r)) return e.map((e) => Number((r - Math.floor(r / e) * e).toFixed(15)));
 		if ('number' == typeof e && Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => Number((r - Math.floor(r / e) * e).toFixed(15)));
@@ -1030,7 +1029,7 @@ const ERRORS = {
 	/**
 	 * @name ceil
 	 */
-	ceil = (r) => {
+	ceil = (r: number | number[]) => {
 		if ('number' == typeof r) return Math.ceil(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => Math.ceil(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1039,7 +1038,7 @@ const ERRORS = {
 	 * @name sin
 	 * @example math.sin(0.523598775598299) = 0.5
 	 */
-	sin = (r) => {
+	sin = (r: number | number[]) => {
 		if ('number' == typeof r) return sineRad(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => sineRad(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1048,7 +1047,7 @@ const ERRORS = {
 	 * @name sinDeg
 	 * @example math.sin.deg(30) = 0.5
 	 */
-	sinDeg = (r) => {
+	sinDeg = (r: number | number[]) => {
 		if ('number' == typeof r) return sineDeg(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => sineDeg(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1056,7 +1055,7 @@ const ERRORS = {
 	/**
 	 * @name asin
 	 */
-	asin = (r) => {
+	asin = (r: number | number[]) => {
 		if ('number' == typeof r) return asineRad(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => asineRad(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1064,7 +1063,7 @@ const ERRORS = {
 	/**
 	 * @name asin.deg
 	 */
-	asinDeg = (r) => {
+	asinDeg = (r: number | number[]) => {
 		if ('number' == typeof r) return asineDeg(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => asineDeg(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1072,7 +1071,7 @@ const ERRORS = {
 	/**
 	 * @name sinh
 	 */
-	sinh = (r) => {
+	sinh = (r: number | number[]) => {
 		if ('number' == typeof r) return sinehRad(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => sinehRad(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1080,7 +1079,7 @@ const ERRORS = {
 	/**
 	 * @name sinh.deg
 	 */
-	sinhDeg = (r) => {
+	sinhDeg = (r: number | number[]) => {
 		if ('number' == typeof r) return sinehDeg(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => sinehDeg(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1088,7 +1087,7 @@ const ERRORS = {
 	/**
 	 * @name asinh
 	 */
-	asinh = (r) => {
+	asinh = (r: number | number[]) => {
 		if ('number' == typeof r) return asinehRad(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => asinehRad(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1096,7 +1095,7 @@ const ERRORS = {
 	/**
 	 * @name asinh.deg
 	 */
-	asinhDeg = (r) => {
+	asinhDeg = (r: number | number[]) => {
 		if ('number' == typeof r) return asinehDeg(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => asinehDeg(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1105,7 +1104,7 @@ const ERRORS = {
 	 * @name cos
 	 * @example math.cos(1.047197551196598) = 0.5
 	 */
-	cos = (r) => {
+	cos = (r: number | number[]) => {
 		if ('number' == typeof r) return cosineRad(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => cosineRad(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1114,7 +1113,7 @@ const ERRORS = {
 	 * @name cos.deg
 	 * @example math.cos.deg(60) = 0.5
 	 */
-	cosDeg = (r) => {
+	cosDeg = (r: number | number[]) => {
 		if ('number' == typeof r) return cosineDeg(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => cosineDeg(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1122,7 +1121,7 @@ const ERRORS = {
 	/**
 	 * @name acos
 	 */
-	acos = (r) => {
+	acos = (r: number | number[]) => {
 		if ('number' == typeof r) return acosineRad(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => acosineRad(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1130,7 +1129,7 @@ const ERRORS = {
 	/**
 	 * @name acos.deg
 	 */
-	acosDeg = (r) => {
+	acosDeg = (r: number | number[]) => {
 		if ('number' == typeof r) return acosineDeg(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => acosineDeg(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1138,7 +1137,7 @@ const ERRORS = {
 	/**
 	 * @name cosh
 	 */
-	cosh = (r) => {
+	cosh = (r: number | number[]) => {
 		if ('number' == typeof r) return cosinehRad(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => cosinehRad(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1146,7 +1145,7 @@ const ERRORS = {
 	/**
 	 * @name cosh.deg
 	 */
-	coshDeg = (r) => {
+	coshDeg = (r: number | number[]) => {
 		if ('number' == typeof r) return cosinehDeg(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => cosinehDeg(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1154,7 +1153,7 @@ const ERRORS = {
 	/**
 	 * @name acosh
 	 */
-	acosh = (r) => {
+	acosh = (r: number | number[]) => {
 		if ('number' == typeof r) return acosinehRad(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => acosinehRad(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1162,7 +1161,7 @@ const ERRORS = {
 	/**
 	 * @name acosh.deg
 	 */
-	acoshDeg = (r) => {
+	acoshDeg = (r: number | number[]) => {
 		if ('number' == typeof r) return acosinehDeg(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => acosinehDeg(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1170,7 +1169,7 @@ const ERRORS = {
 	/**
 	 * @name tan
 	 */
-	tan = (r) => {
+	tan = (r: number | number[]) => {
 		if ('number' == typeof r) return tangentRad(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => tangentRad(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1178,7 +1177,7 @@ const ERRORS = {
 	/**
 	 * @name tan.deg
 	 */
-	tanDeg = (r) => {
+	tanDeg = (r: number | number[]) => {
 		if ('number' == typeof r) return tangentDeg(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => tangentDeg(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1186,7 +1185,7 @@ const ERRORS = {
 	/**
 	 * @name atan
 	 */
-	atan = (r) => {
+	atan = (r: number | number[]) => {
 		if ('number' == typeof r) return atangentRad(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => atangentRad(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1194,7 +1193,7 @@ const ERRORS = {
 	/**
 	 * @name atan.deg
 	 */
-	atanDeg = (r) => {
+	atanDeg = (r: number | number[]) => {
 		if ('number' == typeof r) return atangentDeg(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => atangentDeg(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1202,7 +1201,7 @@ const ERRORS = {
 	/**
 	 * @name tanh
 	 */
-	tanh = (r) => {
+	tanh = (r: number | number[]) => {
 		if ('number' == typeof r) return tangenthRad(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => tangenthRad(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1210,7 +1209,7 @@ const ERRORS = {
 	/**
 	 * @name tanh.deg
 	 */
-	tanhDeg = (r) => {
+	tanhDeg = (r: number | number[]) => {
 		if ('number' == typeof r) return tangenthDeg(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => tangenthDeg(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1218,7 +1217,7 @@ const ERRORS = {
 	/**
 	 * @name atanh
 	 */
-	atanh = (r) => {
+	atanh = (r: number | number[]) => {
 		if ('number' == typeof r) return atangenthRad(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => atangenthRad(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1226,7 +1225,7 @@ const ERRORS = {
 	/**
 	 * @name atanh.deg
 	 */
-	atanhDeg = (r) => {
+	atanhDeg = (r: number | number[]) => {
 		if ('number' == typeof r) return atangenthDeg(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => atangenthDeg(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1234,7 +1233,7 @@ const ERRORS = {
 	/**
 	 * @name cot
 	 */
-	cot = (r) => {
+	cot = (r: number | number[]) => {
 		if ('number' == typeof r) return cotangentRad(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => cotangentRad(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1242,7 +1241,7 @@ const ERRORS = {
 	/**
 	 * @name cot.deg
 	 */
-	cotDeg = (r) => {
+	cotDeg = (r: number | number[]) => {
 		if ('number' == typeof r) return cotangentDeg(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => cotangentDeg(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1250,7 +1249,7 @@ const ERRORS = {
 	/**
 	 * @name acot
 	 */
-	acot = (r) => {
+	acot = (r: number | number[]) => {
 		if ('number' == typeof r) return acotangentRad(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => acotangentRad(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1258,7 +1257,7 @@ const ERRORS = {
 	/**
 	 * @name acot.deg
 	 */
-	acotDeg = (r) => {
+	acotDeg = (r: number | number[]) => {
 		if ('number' == typeof r) return acotangentDeg(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => acotangentDeg(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1266,7 +1265,7 @@ const ERRORS = {
 	/**
 	 * @name coth
 	 */
-	coth = (r) => {
+	coth = (r: number | number[]) => {
 		if ('number' == typeof r) return cotangenthRad(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => cotangenthRad(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1274,7 +1273,7 @@ const ERRORS = {
 	/**
 	 * @name coth.deg
 	 */
-	cothDeg = (r) => {
+	cothDeg = (r: number | number[]) => {
 		if ('number' == typeof r) return cotangenthDeg(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => cotangenthDeg(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1282,7 +1281,7 @@ const ERRORS = {
 	/**
 	 * @name acoth
 	 */
-	acoth = (r) => {
+	acoth = (r: number | number[]) => {
 		if ('number' == typeof r) return acotangenthRad(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => acotangenthRad(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1290,7 +1289,7 @@ const ERRORS = {
 	/**
 	 * @name acoth.deg
 	 */
-	acothDeg = (r) => {
+	acothDeg = (r: number | number[]) => {
 		if ('number' == typeof r) return acotangenthDeg(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => acotangenthDeg(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1298,7 +1297,7 @@ const ERRORS = {
 	/**
 	 * @name sec
 	 */
-	sec = (r) => {
+	sec = (r: number | number[]) => {
 		if ('number' == typeof r) return secantRad(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => secantRad(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1306,7 +1305,7 @@ const ERRORS = {
 	/**
 	 * @name sec.deg
 	 */
-	secDeg = (r) => {
+	secDeg = (r: number | number[]) => {
 		if ('number' == typeof r) return secantDeg(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => secantDeg(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1314,7 +1313,7 @@ const ERRORS = {
 	/**
 	 * @name asec
 	 */
-	asec = (r) => {
+	asec = (r: number | number[]) => {
 		if ('number' == typeof r) return asecantRad(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => asecantRad(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1322,7 +1321,7 @@ const ERRORS = {
 	/**
 	 * @name asec.deg
 	 */
-	asecDeg = (r) => {
+	asecDeg = (r: number | number[]) => {
 		if ('number' == typeof r) return asecantDeg(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => asecantDeg(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1330,7 +1329,7 @@ const ERRORS = {
 	/**
 	 * @name sech
 	 */
-	sech = (r) => {
+	sech = (r: number | number[]) => {
 		if ('number' == typeof r) return secanthRad(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => secanthRad(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1338,7 +1337,7 @@ const ERRORS = {
 	/**
 	 * @name sech.deg
 	 */
-	sechDeg = (r) => {
+	sechDeg = (r: number | number[]) => {
 		if ('number' == typeof r) return secanthDeg(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => secanthDeg(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1346,7 +1345,7 @@ const ERRORS = {
 	/**
 	 * @name asech
 	 */
-	asech = (r) => {
+	asech = (r: number | number[]) => {
 		if ('number' == typeof r) return asecanthRad(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => asecanthRad(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1354,7 +1353,7 @@ const ERRORS = {
 	/**
 	 * @name asech.deg
 	 */
-	asechDeg = (r) => {
+	asechDeg = (r: number | number[]) => {
 		if ('number' == typeof r) return asecanthDeg(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => asecanthDeg(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1362,7 +1361,7 @@ const ERRORS = {
 	/**
 	 * @name csc
 	 */
-	csc = (r) => {
+	csc = (r: number | number[]) => {
 		if ('number' == typeof r) return cosecantRad(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => cosecantRad(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1370,7 +1369,7 @@ const ERRORS = {
 	/**
 	 * @name csc.deg
 	 */
-	cscDeg = (r) => {
+	cscDeg = (r: number | number[]) => {
 		if ('number' == typeof r) return cosecantDeg(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => cosecantDeg(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1378,7 +1377,7 @@ const ERRORS = {
 	/**
 	 * @name acsc
 	 */
-	acsc = (r) => {
+	acsc = (r: number | number[]) => {
 		if ('number' == typeof r) return acosecantRad(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => acosecantRad(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1386,7 +1385,7 @@ const ERRORS = {
 	/**
 	 * @name acsc.deg
 	 */
-	acscDeg = (r) => {
+	acscDeg = (r: number | number[]) => {
 		if ('number' == typeof r) return acosecantDeg(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => acosecantDeg(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1394,7 +1393,7 @@ const ERRORS = {
 	/**
 	 * @name csch
 	 */
-	csch = (r) => {
+	csch = (r: number | number[]) => {
 		if ('number' == typeof r) return cosecanthRad(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => cosecanthRad(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1402,7 +1401,7 @@ const ERRORS = {
 	/**
 	 * @name csch.deg
 	 */
-	cschDeg = (r) => {
+	cschDeg = (r: number | number[]) => {
 		if ('number' == typeof r) return cosecanthDeg(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => cosecanthDeg(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1410,7 +1409,7 @@ const ERRORS = {
 	/**
 	 * @name acsch
 	 */
-	acsch = (r) => {
+	acsch = (r: number | number[]) => {
 		if ('number' == typeof r) return acosecanthRad(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => acosecanthRad(r));
 		throw new Error(ERRORS.MNJS_1_1);
@@ -1418,13 +1417,13 @@ const ERRORS = {
 	/**
 	 * @name acsch.deg
 	 */
-	acschDeg = (r) => {
+	acschDeg = (r: number | number[]) => {
 		if ('number' == typeof r) return acosecanthDeg(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => acosecanthDeg(r));
 		throw new Error(ERRORS.MNJS_1_1);
 	},
-	useMNJS = () => {
-		let r = {};
+	useMNJS = (): object => {
+		let r: any = {};
 		return (
 			(r.e = E),
 			(r.pi = PI),

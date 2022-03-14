@@ -1,0 +1,18 @@
+{
+	"compilerOptions": {
+		"module": "es6",
+		"lib": ["es6", "dom"],
+		"target": "es6",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"declaration": true,
+		"noImplicitAny": true,
+		"inlineSourceMap": false,
+		"strict": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"forceConsistentCasingInFileNames": true
+	},
+	"include": ["index.ts"]
+}

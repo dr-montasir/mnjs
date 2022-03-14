@@ -1,0 +1,6 @@
+# Files
+index.ts
+tsconfig.json
+package-lock.json
+.prettierrc
+dev.info.md

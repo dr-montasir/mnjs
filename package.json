@@ -1,20 +1,44 @@
 {
-  "name": "mnjs",
-  "version": "3.3.5",
-  "description": "MATH NODE JS (MNJS): A tiny math library for node.js & JavaScript on browser",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dr-montasir/mnjs.git"
-  },
-  "keywords": ["math", "js", "nodejs", "next.js", "react", "svelte", "library", "npm", "yarn", "jsdelivr", "data science", "data analysis"],
-  "author": "Montasir Mirghani",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/dr-montasir/mnjs/issues"
-  },
-  "homepage": "https://github.com/dr-montasir/mnjs#readme"
+	"name": "mnjs",
+	"version": "4.0.0",
+	"description": "MATH NODE JS (MNJS): A tiny math library for node.js & JavaScript on browser",
+	"main": "index.js",
+	"types": "index.d.ts",
+	"scripts": {
+		"build": "tsc -p . && npm run format",
+		"preversion": "npm run build",
+		"format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. ."
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/dr-montasir/mnjs.git"
+	},
+	"keywords": [
+		"math",
+		"js",
+		"ts",
+		"javascript",
+		"typescript",
+		"nodejs",
+		"next.js",
+		"react",
+		"svelte",
+		"library",
+		"npm",
+		"yarn",
+		"jsdelivr",
+		"data science",
+		"data analysis"
+	],
+	"author": "Montasir Mirghani",
+	"license": "MIT",
+	"devDependencies": {
+		"@types/node": "^17.0.17",
+		"prettier": "^2.5.1",
+		"typescript": "^4.5.5"
+	},
+	"bugs": {
+		"url": "https://github.com/dr-montasir/mnjs/issues"
+	},
+	"homepage": "https://github.com/dr-montasir/mnjs#readme"
 }
