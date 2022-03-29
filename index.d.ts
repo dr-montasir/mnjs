@@ -24,6 +24,7 @@ declare const ERRORS: {
 		MNJS_1_4: string;
 		MNJS_1_5: string;
 		MNJS_1_6: string;
+		MNJS_1_7: string;
 		MNJS_2_1: string;
 		MNJS_2_2: string;
 		MNJS_3_1: string;
@@ -620,6 +621,17 @@ declare const ERRORS: {
 	 * @name ceil
 	 */
 	ceil: (r: number | number[]) => number | number[],
+	/**
+	 * Doubly exponential sequences
+	 */
+	/**
+	 * @name Fermat number => 3, 5, 17, 257, 65537, ...
+	 * @equation F_{n}=2^{2^{n}}+1,}, where n is a non-negative integer
+	 */
+	fermat: (r: number | number[]) => number | number[],
+	/**
+	 * Trigonometric functions
+	 */
 	/**
 	 * @name sin
 	 * @example math.sin(0.523598775598299) = 0.5

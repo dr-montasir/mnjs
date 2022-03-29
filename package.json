@@ -1,6 +1,6 @@
 {
 	"name": "mnjs",
-	"version": "4.0.0",
+	"version": "4.1.0",
 	"description": "MATH NODE JS (MNJS): A tiny math library for node.js & JavaScript on browser",
 	"main": "index.js",
 	"types": "index.d.ts",

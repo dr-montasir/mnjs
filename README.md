@@ -44,7 +44,7 @@ mnjs.rem(1.2, 0.5)   = 0.2      // mnjs.rem(1.2, 0.5)  === 0.2 returns true
 <html>
 	<head>
 		<title>mnjs</title>
-		<!--<script src="https://cdn.jsdelivr.net/npm/mnjs@4.0.0/index.js"></script>-->
+		<!--<script src="https://cdn.jsdelivr.net/npm/mnjs@4.1.0/index.js"></script>-->
 		<script src="https://cdn.jsdelivr.net/npm/mnjs/index.min.js"></script>
 		<!--            This link is the latest mini version ☝             -->
 	</head>
@@ -391,6 +391,11 @@ mnjs.change.isInfinity([-Infinity, NaN, 1, Infinity], 0); // returns [0, NaN, 1,
 mnjs.change.isPlusInfinity([-Infinity, NaN, 1, Infinity], 0); // returns [-Infinity, NaN, 1, 0]
 mnjs.change.isMinusInfinity([-Infinity, NaN, 1, Infinity], 0); // returns [0, NaN, 1, Infinity]
 mnjs.change.isNAN([-Infinity, NaN, 1, Infinity], 0); // returns [-Infinity, 0, 1, Infinity]
+
+// Fermat number
+mnjs.fermat(-1) or mnjs.fermat(1.2) // returns error
+mnjs.fermat(0) // returns 3
+mnjs.fermat([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) // returns [5, 17, 257, ..., 1.3407807929942597e+154, Infinity]
 ```
 
 ## Demo Projects
@@ -491,6 +496,7 @@ mnjs.change.isNAN([-Infinity, NaN, 1, Infinity], 0); // returns [-Infinity, 0, 1
 | e                       | The Number e (Euler's number)                                                                                                                                                                                                                     | number: 2.718281828459045                                                        |
 | exp                     | The power of e (Euler's number)                                                                                                                                                                                                                   | function: exp(power)                                                             |
 | expm1                   | The expm1 function returns e^x - 1, where x is the argument, and e the base of the natural logarithms                                                                                                                                             | function: expm1(power)                                                           |
+| fermat                  | The fermat function accepting a non-negative integer                                                                                                                                                                                              | function: fermat(num)                                                            |
 | fix                     | Fix to the certain decimal point                                                                                                                                                                                                                  | function: fix(num, point)                                                        |
 | floor                   | The floor function returns the largest integer less than or equal to a given number                                                                                                                                                               | function: floor(num)                                                             |
 | fround                  | The fround function returns the nearest 32-bit single precision float representation of a Number                                                                                                                                                  | function: fround(num)                                                            |

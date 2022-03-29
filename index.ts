@@ -26,6 +26,7 @@ const ERRORS = {
 		MNJS_1_5: 'NATIVE MATH ERROR No. 01 : 05: This function accepts numeric arguments or one numeric array argument. (num1, num2, ..., num) => {} or ([num1, num2, ..., num]) => {}',
 		MNJS_1_6:
 			'NATIVE MATH ERROR No. 01 : 06: This function accepting two arguments. The first argument should be one (numeric or empty) array and the second should be a number. All next examples are valid: sum([num1, num2, ..., num_x]); sum([]); sum([num1, num2, ..., num_x], num); sum([], num)',
+		MNJS_1_7: 'NATIVE MATH ERROR No. 01 : 07: This function accepting either a non-negative integer or an array. In the case of an array, all elements must be a non-negative integer',
 		MNJS_2_1: 'NATIVE MATH ERROR No. 02 : 01: The step parameter should not be: 1/ null 2/ equal or less than zero. 3/ greater than the absolute difference between the first and second parameter',
 		MNJS_2_2: 'NATIVE MATH ERROR No. 02 : 02: All parameters must be a number. The first and the second parameter should not be equal',
 		MNJS_3_1: 'NATIVE MATH ERROR No. 03 : 01: The monolist function should take two numeric parameters (value: number, size: natural number & greater than zero)',
@@ -1035,6 +1036,21 @@ const ERRORS = {
 		throw new Error(ERRORS.MNJS_1_1);
 	},
 	/**
+	 * Doubly exponential sequences
+	 */
+	/**
+	 * @name Fermat number => 3, 5, 17, 257, 65537, ...
+	 * @equation F_{n}=2^{2^{n}}+1,}, where n is a non-negative integer
+	 */
+	fermat = (r: number | number[]) => {
+		if ('number' == typeof r && r >= 0 && r % 1 == 0) return Math.pow(2, Math.pow(2, r)) + 1;
+		if (Array.isArray(r) && r.every((r) => 'number' == typeof r && r >= 0 && r % 1 == 0)) return r.map((r) => Math.pow(2, Math.pow(2, r)) + 1);
+		throw new Error(ERRORS.MNJS_1_7);
+	},
+	/**
+	 * Trigonometric functions
+	 */
+	/**
 	 * @name sin
 	 * @example math.sin(0.523598775598299) = 0.5
 	 */
@@ -1559,6 +1575,7 @@ const ERRORS = {
 			(r.rib = rib),
 			(r.rem = rem),
 			(r.ceil = ceil),
+			(r.fermat = fermat),
 			(r.sin = sin),
 			(r.sin.rad = sin),
 			(r.sin.deg = sinDeg),
