@@ -138,11 +138,10 @@ const ERRORS = {
 	 * @description sine is the native function use to generate (sin, cos, tan, ..) functions
 	 */
 	sine = (r: number) => {
-		let eps = 1e-17,
-			n = 2,
+		let n = 2,
 			v1 = r,
 			v2 = v1 - Math.pow(r, 3) / fact(3);
-		while (abs0(v1, v2) >= eps) (v1 = v2), (v2 += (Math.pow(-1, n) * Math.pow(r, 2 * n + 1)) / fact(2 * n + 1)), (n += 1);
+		for (; abs0(v1, v2) >= 1e-17; ) (v1 = v2), (v2 += (Math.pow(-1, n) * Math.pow(r, 2 * n + 1)) / fact(2 * n + 1)), (n += 1);
 		return v2;
 	},
 	/**
