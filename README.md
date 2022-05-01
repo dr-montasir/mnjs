@@ -44,7 +44,7 @@ mnjs.rem(1.2, 0.5)   = 0.2      // mnjs.rem(1.2, 0.5)  === 0.2 returns true
 <html>
 	<head>
 		<title>mnjs</title>
-		<!--<script src="https://cdn.jsdelivr.net/npm/mnjs@4.2.0/index.js"></script>-->
+		<!--<script src="https://cdn.jsdelivr.net/npm/mnjs@4.2.1/index.js"></script>-->
 		<script src="https://cdn.jsdelivr.net/npm/mnjs/index.min.js"></script>
 		<!--            This link is the latest mini version ☝             -->
 	</head>

@@ -234,7 +234,7 @@ const ERRORS = {
 	 * @name cosine
 	 */
 	cosine = (r: number) => {
-		return Math.sqrt(1 - Math.pow(sine(r), 2));
+		return Math.sqrt(1 - Math.pow(sineRad(r), 2));
 	},
 	/**
 	 * @name cosineRad
