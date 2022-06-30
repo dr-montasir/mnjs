@@ -135,449 +135,307 @@ const ERRORS = {
 		return Math.fround((r * 180) / PI);
 	},
 	/**
-	 * @name Sine function
-	 * @description sine is the native function use to generate (sin, cos, tan, ..) functions
-	 */
-	sine = (r) => {
-		let n = 2,
-			v1 = r,
-			v2 = v1 - Math.pow(r, 3) / fact(3);
-		for (; abs0(v1, v2) >= 1e-17; ) (v1 = v2), (v2 += (Math.pow(-1, n) * Math.pow(r, 2 * n + 1)) / fact(2 * n + 1)), (n += 1);
-		return v2;
-	},
-	/**
 	 * @name sineRad
-	 * @rule (0 < r < π/2), (π/2 < r < π), (2π < r < 3π/2), (3π/2 < r < 2π) => +, +, -, -
+	 * @rule sin.rad(number in rad: -∞*2π <= x <= ∞*2π) => (number: -1 <= x <= 1)
 	 */
 	sineRad = (r) => {
-		// determine the sign of r (+ or -)
-		let sign = signx(r);
-		// convert any +r or -r angle to +r value from 0 to 2π. Ex. (2π + π/6 = π/6) => ((2π + π/6) % 2π = π/6)
-		r = abs0(r % (2 * PI), 0);
-		// limit r value from 0 to π/2 and save the rule of sign sine
-		r >= 0 && r <= 0.5 * PI ? r : r > 0.5 * PI && r <= PI ? (r = PI - r) : r > PI && r < 1.5 * PI ? (r = -1 * (r - PI)) : (r = -1 * (2 * PI - r));
-		// return the sign of r
-		r = sign * r;
-		// use the fround method to avoid the fractions of js operations
-		return Math.fround(sine(r));
+		return abs0(r, 0) <= 1e-8 ? r : Number(Math.sin(r).toFixed(15));
 	},
 	/**
 	 * @name sineDeg
-	 * @rule (0 < r < 90), (90 < r < 180), (180 < r < 270), (270 < r < 360) => +, +, -, -
+	 * @rule sin.deg(number in deg: -∞ <= x <= ∞) => (number: -1 <= x <= 1)
 	 */
 	sineDeg = (r) => {
-		// determine the sign of r (+ or -)
-		let sign = signx(r);
-		// convert any +r or -r angle to +r value from 0 to 360. Ex. (390deg = 30deg) => (390 % 360 = 30)
-		r = abs0(r % 360, 0);
-		// limit r value from 0 to 90 and save the rule of sign sine
-		r >= 0 && r <= 90 ? r : r > 90 && r <= 180 ? (r = 180 - r) : r > 180 && r < 270 ? (r = -1 * (r - 180)) : (r = -1 * (360 - r));
-		// return the sign of r
-		r = (sign * (r * PI)) / 180;
-		// use the fround method to avoid the fractions of js operations
-		return Math.fround(sine(r));
+		return abs0(degToRad(r), 0) <= degToRad(1e-8) ? degToRad(r) : Number(Math.sin(degToRad(r)).toFixed(15));
 	},
 	/**
-	 * @name asine
-	 */
-	asine = (r) => {
-		return Math.asin(r);
-	},
-	/**
-	 * @name asineRad
+	 * @name asineRad radAsin
+	 * @rule rad.asin(number: -1 <= x <= 1) === asin(number: -1 <= x <= 1) => result in radian (number: -π/2 <= x <= π/2)
 	 */
 	asineRad = (r) => {
-		return Math.fround(asine(r));
+		return abs0(r, 0) <= 1e-8 ? r : Number(Math.asin(r).toFixed(15));
 	},
 	/**
 	 * @name asineDeg
+	 * @rule deg.asin(number: -1 <= x <= 1) => result in degree (number: -90 <= x <= 90)
 	 */
 	asineDeg = (r) => {
-		return radToDeg(Math.fround(asine(r)));
-	},
-	/**
-	 * @name Hyperbolic sine (sineh)
-	 */
-	sineh = (r) => {
-		return (Math.pow(E, r) - Math.pow(E, -r)) / 2;
+		return abs0(r, 0) <= 1e-8 ? radToDeg(r) : Number(radToDeg(Math.asin(r)).toFixed(15));
 	},
 	/**
 	 * @name Hyperbolic sine (sinehRad)
 	 */
 	sinehRad = (r) => {
-		return Math.fround(sineh(r));
+		return abs0(r, 0) <= 1e-8 ? r : Number(Math.sinh(r).toFixed(15));
 	},
 	/**
 	 * @name Hyperbolic sineDeg (sinehDeg)
 	 */
 	sinehDeg = (r) => {
-		return Math.fround(sineh(degToRad(r)));
-	},
-	/**
-	 * @name Inverse hyperbolic sine (asineh)
-	 */
-	asineh = (r) => {
-		return Math.log(r + Math.sqrt(r * r + 1));
+		return abs0(degToRad(r), 0) <= degToRad(1e-8) ? degToRad(r) : Number(Math.sinh(degToRad(r)).toFixed(15));
 	},
 	/**
 	 * @name Inverse hyperbolic sine (asinehRad)
 	 */
 	asinehRad = (r) => {
-		return Math.fround(asineh(r));
+		return abs0(r, 0) <= 1e-8 ? r : Number(Math.asinh(r).toFixed(15));
 	},
 	/**
-	 * @name Inverse hyperbolic sineDeg (asinehDeg)
+	 * @name Inverse hyperbolic sineDeg (asinehDeg) deg.asinh(x)
 	 */
 	asinehDeg = (r) => {
-		return radToDeg(Math.fround(asineh(r)));
-	},
-	/**
-	 * @name cosine
-	 */
-	cosine = (r) => {
-		return Math.sqrt(1 - Math.pow(sineRad(r), 2));
+		return abs0(r, 0) <= 1e-8 ? radToDeg(r) : Number(radToDeg(Math.asinh(r)).toFixed(15));
 	},
 	/**
 	 * @name cosineRad
 	 */
 	cosineRad = (r) => {
-		return Math.fround(cosine(r));
+		return abs0(r, 0) <= 1e-8 ? 1 : Number(Math.cos(r).toFixed(15));
 	},
 	/**
 	 * @name cosineDeg
 	 */
 	cosineDeg = (r) => {
-		return Math.fround(cosine(degToRad(r)));
-	},
-	/**
-	 * @name acosine
-	 */
-	acosine = (r) => {
-		return Math.acos(r);
+		return abs0(degToRad(r), 0) <= degToRad(1e-8) ? 1 : Number(Math.cos(degToRad(r)).toFixed(15));
 	},
 	/**
 	 * @name acosineRad
 	 */
 	acosineRad = (r) => {
-		return Math.fround(acosine(r));
+		return abs0(r, 0) <= 1e-8 ? PI / 2 : Number(Math.acos(r).toFixed(15));
 	},
 	/**
 	 * @name acosineDeg
 	 */
 	acosineDeg = (r) => {
-		return radToDeg(Math.fround(acosine(r)));
-	},
-	/**
-	 * @name Hyperbolic cosine (cosineh)
-	 */
-	cosineh = (r) => {
-		return (Math.pow(E, r) + Math.pow(E, -r)) / 2;
+		return abs0(r, 0) <= 1e-8 ? 90 : Number(radToDeg(Math.acos(r)).toFixed(15));
 	},
 	/**
 	 * @name Hyperbolic cosine (cosinehRad)
 	 */
 	cosinehRad = (r) => {
-		return Math.fround(cosineh(r));
+		return abs0(r, 0) <= 1e-8 ? 1 : Number(Math.cosh(r).toFixed(15));
 	},
 	/**
 	 * @name Hyperbolic cosineDeg (cosinehDeg)
 	 */
 	cosinehDeg = (r) => {
-		return Math.fround(cosineh(degToRad(r)));
-	},
-	/**
-	 * @name Inverse hyperbolic cosine (acosineh)
-	 */
-	acosineh = (r) => {
-		return Math.log(r + Math.sqrt(r * r - 1));
+		return abs0(degToRad(r), 0) <= degToRad(1e-8) ? 1 : Number(Math.cosh(degToRad(r)).toFixed(15));
 	},
 	/**
 	 * @name Inverse hyperbolic cosine (acosinehRad)
+	 * @note when r < 0, the function is returning NaN
 	 */
 	acosinehRad = (r) => {
-		return Math.fround(acosineh(r));
+		return Number(Math.acosh(r).toFixed(15));
 	},
 	/**
 	 * @name Inverse hyperbolic cosine (acosinehDeg)
 	 */
 	acosinehDeg = (r) => {
-		return radToDeg(Math.fround(acosineh(r)));
+		return Number(radToDeg(Math.acosh(r)).toFixed(15));
 	},
 	/**
 	 * @name tangentRad
+	 * @note tan(n*PI) = 0 where n = 0,1,2, ..., 10, if n = 11, 12, 13, ..., the function returns an incorrect result.
 	 */
 	tangentRad = (r) => {
-		return Math.fround(sineRad(r) / cosineRad(r));
+		// convert any +r or -r angle to +r value from 0 to 2π.
+		r = abs0(r % (2 * PI), 0);
+		// return the sign of r
+		r = r * signx(r);
+		return abs0(r, 0) <= 1e-8 ? r : r % PI === PI / 2 ? Infinity : Number(Math.tan(r).toFixed(15));
 	},
 	/**
 	 * @name tangentDeg
 	 */
 	tangentDeg = (r) => {
-		return Math.fround(sineDeg(r) / cosineDeg(r));
-	},
-	/**
-	 * @name atangent
-	 */
-	atangent = (r) => {
-		return Math.atan(r);
+		// convert any +r or -r angle to +r value from 0 to 360.
+		r = abs0(r % 360, 0);
+		// return the sign of r
+		r = r * signx(r);
+		return abs0(degToRad(r), 0) <= degToRad(1e-8) ? degToRad(r) : r % 180 === 90 ? Infinity : Number(Math.tan(degToRad(r)).toFixed(15));
 	},
 	/**
 	 * @name atangentRad
 	 */
 	atangentRad = (r) => {
-		return Math.fround(atangent(r));
+		return abs0(r, 0) <= 1e-8 ? r : r === Infinity ? PI / 2 : Number(Math.atan(r).toFixed(15));
 	},
 	/**
 	 * @name atangentDeg
+	 * deg.atan()
 	 */
 	atangentDeg = (r) => {
-		return radToDeg(Math.fround(atangent(r)));
-	},
-	/**
-	 * @name Hyperbolic tangent (tangenth)
-	 */
-	tangenth = (r) => {
-		return (Math.pow(E, r) - Math.pow(E, -r)) / (Math.pow(E, r) + Math.pow(E, -r));
+		return abs0(r, 0) <= 1e-8 ? radToDeg(r) : r === Infinity ? 90 : Number(radToDeg(Math.atan(r)).toFixed(15));
 	},
 	/**
 	 * @name Hyperbolic tangent (tangenthRad)
 	 */
 	tangenthRad = (r) => {
-		return Math.fround(tangenth(r));
+		return abs0(r, 0) <= 1e-8 ? r : Number(Math.tanh(r).toFixed(15));
 	},
 	/**
 	 * @name Hyperbolic tangentDeg (tangenthDeg)
 	 */
 	tangenthDeg = (r) => {
-		return Math.fround(tangenth(degToRad(r)));
-	},
-	/**
-	 * @name Inverse hyperbolic tangent (atangenth)
-	 */
-	atangenth = (r) => {
-		return 0.5 * Math.log((1 + r) / (1 - r));
+		return abs0(degToRad(r), 0) <= degToRad(1e-8) ? r : Number(Math.tanh(degToRad(r)).toFixed(15));
 	},
 	/**
 	 * @name Inverse hyperbolic tangent (atangenthRad)
 	 */
 	atangenthRad = (r) => {
-		return Math.fround(atangenth(r));
+		return Number(Math.atanh(r).toFixed(15));
 	},
 	/**
 	 * @name Inverse hyperbolic tangent (atangenthDeg)
 	 */
 	atangenthDeg = (r) => {
-		return radToDeg(Math.fround(atangenth(r)));
+		return Number(radToDeg(Math.atanh(r)).toFixed(15));
 	},
 	/**
 	 * @name cotangentRad
 	 */
 	cotangentRad = (r) => {
-		return Math.fround(cosineRad(r) / sineRad(r));
+		return Number((1 / Math.tan(r)).toFixed(15));
 	},
 	/**
 	 * @name cotangentDeg
 	 */
 	cotangentDeg = (r) => {
-		return Math.fround(cosineDeg(r) / sineDeg(r));
-	},
-	/**
-	 * @name acotangent
-	 */
-	acotangent = (r) => {
-		return atangent(1 / r);
+		return Number((1 / Math.tan(degToRad(r))).toFixed(15));
 	},
 	/**
 	 * @name acotangentRad
 	 */
 	acotangentRad = (r) => {
-		return Math.fround(acotangent(r));
+		return Number(Math.atan(1 / r).toFixed(15));
 	},
 	/**
 	 * @name acotangentDeg
 	 */
 	acotangentDeg = (r) => {
-		return radToDeg(Math.fround(acotangent(r)));
-	},
-	/**
-	 * @name Hyperbolic cotangent (cotangenth)
-	 */
-	cotangenth = (r) => {
-		return (Math.pow(E, r) + Math.pow(E, -r)) / (Math.pow(E, r) - Math.pow(E, -r));
+		return Number(radToDeg(Math.atan(1 / r)).toFixed(15));
 	},
 	/**
 	 * @name Hyperbolic cotangent (cotangenthRad)
 	 */
 	cotangenthRad = (r) => {
-		return Math.fround(cotangenth(r));
+		return Number((1 / Math.tanh(r)).toFixed(15));
 	},
 	/**
 	 * @name Hyperbolic cotangentDeg (cotangenthDeg)
 	 */
 	cotangenthDeg = (r) => {
-		return Math.fround(cotangenth(degToRad(r)));
-	},
-	/**
-	 * @name Inverse hyperbolic cotangent (acotangenth)
-	 */
-	acotangenth = (r) => {
-		return 0.5 * Math.log((r + 1) / (r - 1));
+		return Number((1 / Math.tanh(degToRad(r))).toFixed(15));
 	},
 	/**
 	 * @name Inverse hyperbolic cotangent (acotangenthRad)
 	 */
 	acotangenthRad = (r) => {
-		return Math.fround(acotangenth(r));
+		return Number((0.5 * Math.log((r + 1) / (r - 1))).toFixed(15));
 	},
 	/**
 	 * @name Inverse hyperbolic cotangent (acotangenthDeg)
 	 */
 	acotangenthDeg = (r) => {
-		return radToDeg(Math.fround(acotangenth(r)));
-	},
-	/**
-	 * @name secant
-	 */
-	secant = (r) => {
-		return 1 / cosine(r);
+		return Number(radToDeg(0.5 * Math.log((r + 1) / (r - 1))).toFixed(15));
 	},
 	/**
 	 * @name secantRad
 	 */
 	secantRad = (r) => {
-		return Math.fround(secant(r));
+		return Number((1 / Math.cos(r)).toFixed(15));
 	},
 	/**
 	 * @name secantDeg
 	 */
 	secantDeg = (r) => {
-		return Math.fround(secant(degToRad(r)));
-	},
-	/**
-	 * @name asecant
-	 */
-	asecant = (r) => {
-		return Math.acos(1 / r);
+		return Number((1 / Math.cos(degToRad(r))).toFixed(15));
 	},
 	/**
 	 * @name asecantRad
 	 */
 	asecantRad = (r) => {
-		return Math.fround(asecant(r));
+		return Number(Math.acos(1 / r).toFixed(15));
 	},
 	/**
 	 * @name asecantDeg
 	 */
 	asecantDeg = (r) => {
-		return radToDeg(Math.fround(asecant(r)));
-	},
-	/**
-	 * @name Hyperbolic secant (secanth)
-	 */
-	secanth = (r) => {
-		return 2 / (Math.pow(E, r) + Math.pow(E, -r));
+		return Number(radToDeg(Math.acos(1 / r)).toFixed(15));
 	},
 	/**
 	 * @name Hyperbolic secant (secanthRad)
 	 */
 	secanthRad = (r) => {
-		return Math.fround(secanth(r));
+		return Number((2 / (Math.pow(E, r) + Math.pow(E, -r))).toFixed(15));
 	},
 	/**
 	 * @name Hyperbolic secantDeg (secanthDeg)
 	 */
 	secanthDeg = (r) => {
-		return Math.fround(secanth(degToRad(r)));
-	},
-	/**
-	 * @name Inverse hyperbolic secant (asecanth)
-	 */
-	asecanth = (r) => {
-		return Math.log(1 / r + Math.sqrt(1 / (r * r) - 1));
+		return Number((2 / (Math.pow(E, degToRad(r)) + Math.pow(E, -degToRad(r)))).toFixed(15));
 	},
 	/**
 	 * @name Inverse hyperbolic secant (asecanthRad)
 	 */
 	asecanthRad = (r) => {
-		return Math.fround(asecanth(r));
+		return Number(Math.log(1 / r + Math.sqrt(1 / (r * r) - 1)).toFixed(15));
 	},
 	/**
 	 * @name Inverse hyperbolic secant (asecanthDeg)
 	 */
 	asecanthDeg = (r) => {
-		return radToDeg(Math.fround(asecanth(r)));
-	},
-	/**
-	 * @name cosecant
-	 */
-	cosecant = (r) => {
-		return 1 / sineRad(r);
+		return Number(radToDeg(Math.log(1 / r + Math.sqrt(1 / (r * r) - 1))).toFixed(15));
 	},
 	/**
 	 * @name cosecantRad
 	 */
 	cosecantRad = (r) => {
-		return Math.fround(cosecant(r));
+		return Number((1 / Math.sin(r)).toFixed(15));
 	},
 	/**
 	 * @name cosecantDeg
 	 */
 	cosecantDeg = (r) => {
-		return Math.fround(cosecant(degToRad(r)));
-	},
-	/**
-	 * @name acosecant
-	 */
-	acosecant = (r) => {
-		return Math.asin(1 / r);
+		return Number((1 / Math.sin(degToRad(r))).toFixed(15));
 	},
 	/**
 	 * @name acosecantRad
 	 */
 	acosecantRad = (r) => {
-		return Math.fround(acosecant(r));
+		return Number(Math.asin(1 / r).toFixed(15));
 	},
 	/**
 	 * @name acosecantDeg
 	 */
 	acosecantDeg = (r) => {
-		return radToDeg(Math.fround(acosecant(r)));
-	},
-	/**
-	 * @name Hyperbolic cosecant (cosecanth)
-	 */
-	cosecanth = (r) => {
-		return 2 / (Math.pow(E, r) - Math.pow(E, -r));
+		return Number(radToDeg(Math.asin(1 / r)).toFixed(15));
 	},
 	/**
 	 * @name Hyperbolic cosecant (cosecanthRad)
 	 */
 	cosecanthRad = (r) => {
-		return Math.fround(cosecanth(r));
+		return Number((2 / (Math.pow(E, r) - Math.pow(E, -r))).toFixed(15));
 	},
 	/**
 	 * @name Hyperbolic cosecantDeg (cosecanthDeg)
 	 */
 	cosecanthDeg = (r) => {
-		return Math.fround(cosecanth(degToRad(r)));
-	},
-	/**
-	 * @name Inverse hyperbolic cosecant (acosecanth)
-	 */
-	acosecanth = (r) => {
-		return Math.log(1 / r + Math.sqrt(1 / (r * r) + 1));
+		return Number((2 / (Math.pow(E, degToRad(r)) - Math.pow(E, -degToRad(r)))).toFixed(15));
 	},
 	/**
 	 * @name Inverse hyperbolic cosecant (acosecanthRad)
 	 */
 	acosecanthRad = (r) => {
-		return Math.fround(acosecanth(r));
+		return Number(Math.log(1 / r + Math.sqrt(1 / (r * r) + 1)).toFixed(15));
 	},
 	/**
 	 * @name Inverse hyperbolic secant (acosecanthDeg)
 	 */
 	acosecanthDeg = (r) => {
-		return radToDeg(Math.fround(acosecanth(r)));
+		return Number(radToDeg(Math.log(1 / r + Math.sqrt(1 / (r * r) + 1))).toFixed(15));
 	},
 	/**
 	 * All mnjs functions
@@ -798,8 +656,12 @@ const ERRORS = {
 		throw new Error(ERRORS.MNJS_1_1);
 	},
 	/**
-	 * @name Division Function. (r = numerator, e = denominator)
-	 */
+ * @name Division Function. (r = numerator, e = denominator)
+ * divi(0.4e-15, 1)
+        0
+        0.4e-15 / 1
+        4e-16
+ */
 	divi = (r, e) => {
 		if ('number' == typeof r && 'number' == typeof e) return Number((r / e).toFixed(15));
 		if ('number' == typeof r && Array.isArray(e) && e.every((r) => 'number' == typeof r)) return e.map((e) => Number((r / e).toFixed(15)));
@@ -1039,7 +901,7 @@ const ERRORS = {
 	 * Doubly exponential sequences
 	 */
 	/**
-	 * @name Fermat number => 3, 5, 17, 257, 65537, ...
+	 * @name fermat number => 3, 5, 17, 257, 65537, ..., Infinity
 	 * @equation F_{n}=2^{2^{n}}+1,}, where n is a non-negative integer
 	 */
 	fermat = (r) => {
@@ -1052,7 +914,7 @@ const ERRORS = {
 	 */
 	/**
 	 * @name sin
-	 * @example math.sin(0.523598775598299) = 0.5
+	 * @example sin(0.5235987755982988) = 0.5
 	 */
 	sin = (r) => {
 		if ('number' == typeof r) return sineRad(r);
@@ -1454,74 +1316,52 @@ const ERRORS = {
 			(r.fact = fact),
 			(r.degToRad = degToRad),
 			(r.radToDeg = radToDeg),
-			(r.sine = sine),
 			(r.sineRad = sineRad),
 			(r.sineDeg = sineDeg),
-			(r.asine = asine),
 			(r.asineRad = asineRad),
 			(r.asineDeg = asineDeg),
-			(r.sineh = sineh),
 			(r.sinehRad = sinehRad),
 			(r.sinehDeg = sinehDeg),
-			(r.asineh = asineh),
 			(r.asinehRad = asinehRad),
 			(r.asinehDeg = asinehDeg),
-			(r.cosine = cosine),
 			(r.cosineRad = cosineRad),
 			(r.cosineDeg = cosineDeg),
-			(r.acosine = acosine),
 			(r.acosineRad = acosineRad),
 			(r.acosineDeg = acosineDeg),
-			(r.cosineh = cosineh),
 			(r.cosinehRad = cosinehRad),
 			(r.cosinehDeg = cosinehDeg),
-			(r.acosineh = acosineh),
 			(r.acosinehRad = acosinehRad),
 			(r.acosinehDeg = acosinehDeg),
 			(r.tangentRad = tangentRad),
 			(r.tangentDeg = tangentDeg),
-			(r.atangent = atangent),
 			(r.atangentRad = atangentRad),
 			(r.atangentDeg = atangentDeg),
-			(r.tangenth = tangenth),
 			(r.tangenthRad = tangenthRad),
 			(r.tangenthDeg = tangenthDeg),
-			(r.atangenth = atangenth),
 			(r.atangenthRad = atangenthRad),
 			(r.atangenthDeg = atangenthDeg),
 			(r.cotangentRad = cotangentRad),
 			(r.cotangentDeg = cotangentDeg),
-			(r.acotangent = acotangent),
 			(r.acotangentRad = acotangentRad),
 			(r.acotangentDeg = acotangentDeg),
-			(r.cotangenth = cotangenth),
 			(r.cotangenthRad = cotangenthRad),
 			(r.cotangenthDeg = cotangenthDeg),
-			(r.acotangenth = acotangenth),
 			(r.acotangenthRad = acotangenthRad),
 			(r.acotangenthDeg = acotangenthDeg),
-			(r.secant = secant),
 			(r.secantRad = secantRad),
 			(r.secantDeg = secantDeg),
-			(r.asecant = asecant),
 			(r.asecantRad = asecantRad),
 			(r.asecantDeg = asecantDeg),
-			(r.secanth = secanth),
 			(r.secanthRad = secanthRad),
 			(r.secanthDeg = secanthDeg),
-			(r.asecanth = asecanth),
 			(r.asecanthRad = asecanthRad),
 			(r.asecanthDeg = asecanthDeg),
-			(r.cosecant = cosecant),
 			(r.cosecantRad = cosecantRad),
 			(r.cosecantDeg = cosecantDeg),
-			(r.acosecant = acosecant),
 			(r.acosecantRad = acosecantRad),
 			(r.acosecantDeg = acosecantDeg),
-			(r.cosecanth = cosecanth),
 			(r.cosecanthRad = cosecanthRad),
 			(r.cosecanthDeg = cosecanthDeg),
-			(r.acosecanth = acosecanth),
 			(r.acosecanthRad = acosecanthRad),
 			(r.acosecanthDeg = acosecanthDeg),
 			(r.abs = abs),
