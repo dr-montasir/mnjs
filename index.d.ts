@@ -82,6 +82,17 @@ declare const ERRORS: {
 	 */
 	LOG10E: number,
 	/**
+	 * MNJS customes functions
+	 */
+	/**
+	 * @name mantissa (Decimal Part)
+	 */
+	mantissa: (r: number) => number,
+	/**
+	 * @name ml10pow2, ml10pow3, ml10powx (mantissa, length, 10, pow, 2 => (r, e))
+	 */
+	ml10pow2: (r: number, e: number) => number,
+	/**
 	 * The MNJS functions
 	 */
 	/**

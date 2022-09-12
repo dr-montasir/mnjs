@@ -87,6 +87,23 @@ const ERRORS = {
 	 */
 	LOG10E = Number(Math.LOG10E.toFixed(15)),
 	/**
+	 * MNJS customes functions
+	 */
+	/**
+	 * @name mantissa (Decimal Part)
+	 */
+	mantissa = (r) => {
+		return Number.isInteger(r) ? 0 : Number(r.toString().split('.')[1]);
+	},
+	/**
+	 * @name ml10pow2, ml10pow3, ml10powx (mantissa, length, 10, pow, 2 => (r, e))
+	 */
+	ml10pow2 = (r, e) => {
+		mantissa(r) === 0 ? (r = 0) : (r = String(mantissa(r)).length);
+		mantissa(e) === 0 ? (e = 0) : (e = String(mantissa(e)).length);
+		return Math.pow(10, r + e);
+	},
+	/**
 	 * The MNJS functions
 	 */
 	/**
@@ -802,10 +819,11 @@ const ERRORS = {
 	 * @name subt
 	 */
 	subt = (r, e) => {
-		if ('number' == typeof r && 'number' == typeof e) return Number((r - e).toFixed(15));
-		if ('number' == typeof r && Array.isArray(e) && e.every((r) => 'number' == typeof r)) return e.map((e) => Number((r - e).toFixed(15)));
-		if ('number' == typeof e && Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => Number((r - e).toFixed(15)));
-		if (Array.isArray(r) && Array.isArray(e) && r.length === e.length && r.every((r) => 'number' == typeof r) && e.every((r) => 'number' == typeof r)) return r.map((r, t) => Number((r - e[t]).toFixed(15)));
+		if ('number' == typeof r && 'number' == typeof e) return (r * ml10pow2(e, r) - e * ml10pow2(e, r)) / ml10pow2(e, r);
+		if ('number' == typeof r && Array.isArray(e) && e.every((r) => 'number' == typeof r)) return e.map((e) => (r * ml10pow2(e, r) - e * ml10pow2(e, r)) / ml10pow2(e, r));
+		if ('number' == typeof e && Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => (r * ml10pow2(e, r) - e * ml10pow2(e, r)) / ml10pow2(e, r));
+		if (Array.isArray(r) && Array.isArray(e) && r.length === e.length && r.every((r) => 'number' == typeof r) && e.every((r) => 'number' == typeof r))
+			return r.map((r, t) => (r * ml10pow2(e[t], r) - e[t] * ml10pow2(e[t], r)) / ml10pow2(e[t], r));
 		throw new Error(ERRORS.MNJS_1_3);
 	},
 	/**
