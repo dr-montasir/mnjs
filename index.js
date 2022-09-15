@@ -1,6 +1,7 @@
 'use strict';
 /**
  * @package : MNJS MATH NODE JS
+ * @version : 4.3.2
  * @author  : Montasir Mirghani
  * @npm     : https://www.npmjs.com/~dr-montasir
  * @gitHub  : https://github.com/dr-montasir
@@ -650,10 +651,11 @@ const ERRORS = {
 	 * @name Addition Operation @section Mathematical operations
 	 */
 	add = (r, e) => {
-		if ('number' == typeof r && 'number' == typeof e) return Number((r + e).toFixed(15));
-		if ('number' == typeof r && Array.isArray(e) && e.every((r) => 'number' == typeof r)) return e.map((e) => Number((r + e).toFixed(15)));
-		if ('number' == typeof e && Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => Number((r + e).toFixed(15)));
-		if (Array.isArray(r) && Array.isArray(e) && r.length === e.length && r.every((r) => 'number' == typeof r) && e.every((r) => 'number' == typeof r)) return r.map((r, t) => Number((r + e[t]).toFixed(15)));
+		if ('number' == typeof r && 'number' == typeof e) return (r * ml10pow2(e, r) + e * ml10pow2(e, r)) / ml10pow2(e, r);
+		if ('number' == typeof r && Array.isArray(e) && e.every((r) => 'number' == typeof r)) return e.map((e) => (r * ml10pow2(e, r) + e * ml10pow2(e, r)) / ml10pow2(e, r));
+		if ('number' == typeof e && Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => (r * ml10pow2(e, r) + e * ml10pow2(e, r)) / ml10pow2(e, r));
+		if (Array.isArray(r) && Array.isArray(e) && r.length === e.length && r.every((r) => 'number' == typeof r) && e.every((r) => 'number' == typeof r))
+			return r.map((r, t) => (r * ml10pow2(e[t], r) + e[t] * ml10pow2(e[t], r)) / ml10pow2(e[t], r));
 		throw new Error(ERRORS.MNJS_1_3);
 	},
 	/**

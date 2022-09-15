@@ -1,5 +1,6 @@
 /**
  * @package : MNJS MATH NODE JS
+ * @version : 4.3.2
  * @author  : Montasir Mirghani
  * @npm     : https://www.npmjs.com/~dr-montasir
  * @gitHub  : https://github.com/dr-montasir
