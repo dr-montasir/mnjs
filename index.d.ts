@@ -1,22 +1,29 @@
 /**
  * @package : MNJS MATH NODE JS
- * @version : 4.3.2
+ * @version : 4.4.0
  * @author  : Montasir Mirghani
  * @npm     : https://www.npmjs.com/~dr-montasir
  * @gitHub  : https://github.com/dr-montasir
  */
 /**
  * @license MIT License
- * @copyright Copyright (c) 2020 - 2022 Montasir Mirghani
+ * @copyright Copyright (c) 2020 - 2023 Montasir Mirghani
  * @text Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 /**
-/**
- * @name MNJS ERRORS
+ * @class MNJS
  */
-declare const ERRORS: {
+declare class MNJS {}
+/**
+ * @name mnjs
+ */
+declare const mnjs: any,
+	/**
+	 * @name MNJS ERRORS
+	 */
+	ERRORS: {
 		MNJS_0_1: string;
 		MNJS_0_2: string;
 		MNJS_1_1: string;
@@ -759,6 +766,4 @@ declare const ERRORS: {
 	/**
 	 * @name acsch.deg
 	 */
-	acschDeg: (r: number | number[]) => number | number[],
-	useMNJS: () => object,
-	mnjs: object;
+	acschDeg: (r: number | number[]) => number | number[];

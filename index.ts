@@ -1,22 +1,29 @@
 /**
  * @package : MNJS MATH NODE JS
- * @version : 4.3.2
+ * @version : 4.4.0
  * @author  : Montasir Mirghani
  * @npm     : https://www.npmjs.com/~dr-montasir
  * @gitHub  : https://github.com/dr-montasir
  */
 /**
  * @license MIT License
- * @copyright Copyright (c) 2020 - 2022 Montasir Mirghani
+ * @copyright Copyright (c) 2020 - 2023 Montasir Mirghani
  * @text Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 /**
-/**
- * @name MNJS ERRORS
+ * @class MNJS
  */
-const ERRORS = {
+class MNJS {}
+/**
+ * @name mnjs
+ */
+const mnjs: any = new MNJS(),
+	/**
+	 * @name MNJS ERRORS
+	 */
+	ERRORS = {
 		MNJS_0_1: 'NATIVE MATH ERROR No. 00 : 01: This function only accepts numbers',
 		MNJS_0_2: 'NATIVE MATH ERROR No. 00 : 02: fact() argument must be natural number (ℕ0) between 0 and 170',
 		MNJS_1_1: 'NATIVE MATH ERROR No. 01 : 01: This function accepting either a number or an array. In the case of an array, all elements must be a number',
@@ -1318,197 +1325,138 @@ const ERRORS = {
 		if ('number' == typeof r) return acosecanthDeg(r);
 		if (Array.isArray(r) && r.every((r) => 'number' == typeof r)) return r.map((r) => acosecanthDeg(r));
 		throw new Error(ERRORS.MNJS_1_1);
-	},
-	useMNJS = (): object => {
-		let r: any = {};
-		return (
-			(r.e = E),
-			(r.pi = PI),
-			(r.phi = PHI),
-			(r.tau = TAU),
-			(r.ln2 = LN2),
-			(r.ln10 = LN10),
-			(r.log2e = LOG2E),
-			(r.log10e = LOG10E),
-			(r.abs0 = abs0),
-			(r.signx = signx),
-			(r.fact = fact),
-			(r.degToRad = degToRad),
-			(r.radToDeg = radToDeg),
-			(r.sineRad = sineRad),
-			(r.sineDeg = sineDeg),
-			(r.asineRad = asineRad),
-			(r.asineDeg = asineDeg),
-			(r.sinehRad = sinehRad),
-			(r.sinehDeg = sinehDeg),
-			(r.asinehRad = asinehRad),
-			(r.asinehDeg = asinehDeg),
-			(r.cosineRad = cosineRad),
-			(r.cosineDeg = cosineDeg),
-			(r.acosineRad = acosineRad),
-			(r.acosineDeg = acosineDeg),
-			(r.cosinehRad = cosinehRad),
-			(r.cosinehDeg = cosinehDeg),
-			(r.acosinehRad = acosinehRad),
-			(r.acosinehDeg = acosinehDeg),
-			(r.tangentRad = tangentRad),
-			(r.tangentDeg = tangentDeg),
-			(r.atangentRad = atangentRad),
-			(r.atangentDeg = atangentDeg),
-			(r.tangenthRad = tangenthRad),
-			(r.tangenthDeg = tangenthDeg),
-			(r.atangenthRad = atangenthRad),
-			(r.atangenthDeg = atangenthDeg),
-			(r.cotangentRad = cotangentRad),
-			(r.cotangentDeg = cotangentDeg),
-			(r.acotangentRad = acotangentRad),
-			(r.acotangentDeg = acotangentDeg),
-			(r.cotangenthRad = cotangenthRad),
-			(r.cotangenthDeg = cotangenthDeg),
-			(r.acotangenthRad = acotangenthRad),
-			(r.acotangenthDeg = acotangenthDeg),
-			(r.secantRad = secantRad),
-			(r.secantDeg = secantDeg),
-			(r.asecantRad = asecantRad),
-			(r.asecantDeg = asecantDeg),
-			(r.secanthRad = secanthRad),
-			(r.secanthDeg = secanthDeg),
-			(r.asecanthRad = asecanthRad),
-			(r.asecanthDeg = asecanthDeg),
-			(r.cosecantRad = cosecantRad),
-			(r.cosecantDeg = cosecantDeg),
-			(r.acosecantRad = acosecantRad),
-			(r.acosecantDeg = acosecantDeg),
-			(r.cosecanthRad = cosecanthRad),
-			(r.cosecanthDeg = cosecanthDeg),
-			(r.acosecanthRad = acosecanthRad),
-			(r.acosecanthDeg = acosecanthDeg),
-			(r.abs = abs),
-			(r.sign = sign),
-			(r.range = range),
-			(r.monolist = monolist),
-			(r.dtr = dtr),
-			(r.rtd = rtd),
-			(r.nts = nts),
-			(r.stn = stn),
-			(r.zeros = zeros),
-			(r.change = change),
-			(r.change.isEqual = change),
-			(r.change.isNotEqual = isNotEqual),
-			(r.change.isGreater = isGreater),
-			(r.change.isLess = isLess),
-			(r.change.isGreaterOrEqual = isGreaterOrEqual),
-			(r.change.isLessOrEqual = isLessOrEqual),
-			(r.change.isFiniteNum = isFiniteNum),
-			(r.change.isInfinity = isInfinity),
-			(r.change.isPlusInfinity = isPlusInfinity),
-			(r.change.isMinusInfinity = isMinusInfinity),
-			(r.change.isNAN = isNAN),
-			(r.add = add),
-			(r.cube = cube),
-			(r.cbrt = cbrt),
-			(r.divi = divi),
-			(r.fix = fix),
-			(r.hypot = hypot),
-			(r.inv = inv),
-			(r.log = log),
-			(r.log2 = log2),
-			(r.log10 = log10),
-			(r.log1p = log1p),
-			(r.max = max),
-			(r.min = min),
-			(r.sum = sum),
-			(r.mult = mult),
-			(r.nrt = nrt),
-			(r.pow = pow),
-			(r.sqr = sqr),
-			(r.sqrt = sqrt),
-			(r.subt = subt),
-			(r.exp = exp),
-			(r.expm1 = expm1),
-			(r.trunc = trunc),
-			(r.imul = imul),
-			(r.round = round),
-			(r.fround = fround),
-			(r.floor = floor),
-			(r.rib = rib),
-			(r.rem = rem),
-			(r.ceil = ceil),
-			(r.fermat = fermat),
-			(r.sin = sin),
-			(r.sin.rad = sin),
-			(r.sin.deg = sinDeg),
-			(r.asin = asin),
-			(r.asin.rad = asin),
-			(r.asin.deg = asinDeg),
-			(r.sinh = sinh),
-			(r.sinh.rad = sinh),
-			(r.sinh.deg = sinhDeg),
-			(r.asinh = asinh),
-			(r.asinh.rad = asinh),
-			(r.asinh.deg = asinhDeg),
-			(r.cos = cos),
-			(r.cos.rad = cos),
-			(r.cos.deg = cosDeg),
-			(r.acos = acos),
-			(r.acos.rad = acos),
-			(r.acos.deg = acosDeg),
-			(r.cosh = cosh),
-			(r.cosh.rad = cosh),
-			(r.cosh.deg = coshDeg),
-			(r.acosh = acosh),
-			(r.acosh.rad = acosh),
-			(r.acosh.deg = acoshDeg),
-			(r.tan = tan),
-			(r.tan.rad = tan),
-			(r.tan.deg = tanDeg),
-			(r.atan = atan),
-			(r.atan.rad = atan),
-			(r.atan.deg = atanDeg),
-			(r.tanh = tanh),
-			(r.tanh.rad = tanh),
-			(r.tanh.deg = tanhDeg),
-			(r.atanh = atanh),
-			(r.atanh.rad = atanh),
-			(r.atanh.deg = atanhDeg),
-			(r.cot = cot),
-			(r.cot.rad = cot),
-			(r.cot.deg = cotDeg),
-			(r.acot = acot),
-			(r.acot.rad = acot),
-			(r.acot.deg = acotDeg),
-			(r.coth = coth),
-			(r.coth.rad = coth),
-			(r.coth.deg = cothDeg),
-			(r.acoth = acoth),
-			(r.acoth.rad = acoth),
-			(r.acoth.deg = acothDeg),
-			(r.sec = sec),
-			(r.sec.rad = sec),
-			(r.sec.deg = secDeg),
-			(r.asec = asec),
-			(r.asec.rad = asec),
-			(r.asec.deg = asecDeg),
-			(r.sech = sech),
-			(r.sech.rad = sech),
-			(r.sech.deg = sechDeg),
-			(r.asech = asech),
-			(r.asech.rad = asech),
-			(r.asech.deg = asechDeg),
-			(r.csc = csc),
-			(r.csc.rad = csc),
-			(r.csc.deg = cscDeg),
-			(r.acsc = acsc),
-			(r.acsc.rad = acsc),
-			(r.acsc.deg = acscDeg),
-			(r.csch = csch),
-			(r.csch.rad = csch),
-			(r.csch.deg = cschDeg),
-			(r.acsch = acsch),
-			(r.acsch.rad = acsch),
-			(r.acsch.deg = acschDeg),
-			r
-		);
-	},
-	mnjs = useMNJS();
+	};
+mnjs.e = E;
+mnjs.pi = PI;
+mnjs.phi = PHI;
+mnjs.ln2 = LN2;
+mnjs.ln10 = LN10;
+mnjs.log2e = LOG2E;
+mnjs.log10e = LOG10E;
+mnjs.abs0 = abs0;
+mnjs.fact = fact;
+mnjs.abs = abs;
+mnjs.sign = sign;
+mnjs.range = range;
+mnjs.monolist = monolist;
+mnjs.dtr = dtr;
+mnjs.rtd = rtd;
+mnjs.nts = nts;
+mnjs.stn = stn;
+mnjs.zeros = zeros;
+mnjs.change = change;
+mnjs.change.isEqual = change;
+mnjs.change.isNotEqual = isNotEqual;
+mnjs.change.isGreater = isGreater;
+mnjs.change.isLess = isLess;
+mnjs.change.isGreaterOrEqual = isGreaterOrEqual;
+mnjs.change.isLessOrEqual = isLessOrEqual;
+mnjs.change.isFiniteNum = isFiniteNum;
+mnjs.change.isInfinity = isInfinity;
+mnjs.change.isPlusInfinity = isPlusInfinity;
+mnjs.change.isMinusInfinity = isMinusInfinity;
+mnjs.change.isNAN = isNAN;
+mnjs.add = add;
+mnjs.cube = cube;
+mnjs.cbrt = cbrt;
+mnjs.divi = divi;
+mnjs.fix = fix;
+mnjs.hypot = hypot;
+mnjs.inv = inv;
+mnjs.log = log;
+mnjs.log2 = log2;
+mnjs.log10 = log10;
+mnjs.log1p = log1p;
+mnjs.max = max;
+mnjs.min = min;
+mnjs.sum = sum;
+mnjs.mult = mult;
+mnjs.nrt = nrt;
+mnjs.pow = pow;
+mnjs.sqr = sqr;
+mnjs.sqrt = sqrt;
+mnjs.subt = subt;
+mnjs.exp = exp;
+mnjs.expm1 = expm1;
+mnjs.trunc = trunc;
+mnjs.imul = imul;
+mnjs.round = round;
+mnjs.fround = fround;
+mnjs.floor = floor;
+mnjs.rib = rib;
+mnjs.rem = rem;
+mnjs.ceil = ceil;
+mnjs.fermat = fermat;
+mnjs.sin = sin;
+mnjs.sin.rad = sin;
+mnjs.sin.deg = sinDeg;
+mnjs.asin = asin;
+mnjs.asin.rad = asin;
+mnjs.asin.deg = asinDeg;
+mnjs.sinh = sinh;
+mnjs.sinh.rad = sinh;
+mnjs.sinh.deg = sinhDeg;
+mnjs.asinh = asinh;
+mnjs.asinh.rad = asinh;
+mnjs.asinh.deg = asinhDeg;
+mnjs.cos = cos;
+mnjs.cos.rad = cos;
+mnjs.cos.deg = cosDeg;
+mnjs.acos = acos;
+mnjs.acos.rad = acos;
+mnjs.acos.deg = acosDeg;
+mnjs.cosh = cosh;
+mnjs.cosh.rad = cosh;
+mnjs.cosh.deg = coshDeg;
+mnjs.acosh = acosh;
+mnjs.acosh.rad = acosh;
+mnjs.acosh.deg = acoshDeg;
+mnjs.tan = tan;
+mnjs.tan.rad = tan;
+mnjs.tan.deg = tanDeg;
+mnjs.atan = atan;
+mnjs.atan.rad = atan;
+mnjs.atan.deg = atanDeg;
+mnjs.tanh = tanh;
+mnjs.tanh.rad = tanh;
+mnjs.tanh.deg = tanhDeg;
+mnjs.atanh = atanh;
+mnjs.atanh.rad = atanh;
+mnjs.atanh.deg = atanhDeg;
+mnjs.cot = cot;
+mnjs.cot.rad = cot;
+mnjs.cot.deg = cotDeg;
+mnjs.acot = acot;
+mnjs.acot.rad = acot;
+mnjs.acot.deg = acotDeg;
+mnjs.coth = coth;
+mnjs.coth.rad = coth;
+mnjs.coth.deg = cothDeg;
+mnjs.acoth = acoth;
+mnjs.acoth.rad = acoth;
+mnjs.acoth.deg = acothDeg;
+mnjs.sec = sec;
+mnjs.sec.rad = sec;
+mnjs.sec.deg = secDeg;
+mnjs.asec = asec;
+mnjs.asec.rad = asec;
+mnjs.asec.deg = asecDeg;
+mnjs.sech = sech;
+mnjs.sech.rad = sech;
+mnjs.sech.deg = sechDeg;
+mnjs.asech = asech;
+mnjs.asech.rad = asech;
+mnjs.asech.deg = asechDeg;
+mnjs.csc = csc;
+mnjs.csc.rad = csc;
+mnjs.csc.deg = cscDeg;
+mnjs.acsc = acsc;
+mnjs.acsc.rad = acsc;
+mnjs.acsc.deg = acscDeg;
+mnjs.csch = csch;
+mnjs.csch.rad = csch;
+mnjs.csch.deg = cschDeg;
+mnjs.acsch = acsch;
+mnjs.acsch.rad = acsch;
+mnjs.acsch.deg = acschDeg;
 'undefined' == typeof window ? ((module.exports.mnjs = mnjs), (module.exports = mnjs)) : 'object' == typeof module ? ((window.exports = mnjs), (module.exports = mnjs)) : (window.exports = mnjs);
